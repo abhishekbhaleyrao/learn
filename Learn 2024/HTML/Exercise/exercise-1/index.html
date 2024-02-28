@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Intro to HTML</title>
+
+    <link href="assets/css/prism.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+
+  <body>
+    <div class="sidebar">
+      <a href="#basics">Basics</a>
+      <a href="#metadata">Metadata</a>
+      <a href="#content-section">Content Section</a>
+      <a href="#block-element">Block element</a>
+      <a href="#inline-elements">Inline elements</a>
+      <a href="#table">Table</a>
+      <a href="#form">Form</a>
+      <a href="#form-validation">Form validation</a>
+    </div>
+
+    <div id="my-id" class="content">
+      <!-- Basics -->
+      <section id="basics">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics"
+            >Basics</a
+          >
+        </h2>
+        <pre>
+          <code class="language-html">
+    &lt;p id="my-id" class="my-class"&gt;sample&lt;/p&gt;
+
+    <b>Tag:</b> p
+    <b>Attribute:</b> id & class
+          </code>
+        </pre>
+
+        <pre class="alert-box">
+    <b>Shortcut:</b> 
+    html>body
+    p#my-id.my-class
+
+    <b>Note:</b> Use emmets plugin and hit tab after shortcut
+        </pre>
+      </section>
+
+      <!-- Document Metadata -->
+      <section id="metadata">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Document_metadata"
+            >Document Metadata</a
+          >
+        </h2>
+        <pre>
+          <code class="language-html">
+    &lt;html&gt;
+        &lt;head&gt;
+            &lt;title&gt;Intro to HTML&lt;/title&gt;
+            &lt;link rel=&quot;stylesheet&quot; href=&quot;./style.css&quot; /&gt;
+
+            &lt;meta charset="UTF-8"&gt;
+            &lt;meta name="description" content="Free Web tutorials"&gt;
+            &lt;meta name="keywords" content="HTML,CSS,XML,JavaScript"&gt;
+            &lt;meta name="author" content="John Doe"&gt;
+            &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+            
+            &lt;style&gt;
+                hr {
+                    margin: 40px;
+                }
+            &lt;/style&gt;
+        &lt;/head&gt;
+    &lt;/html&gt;
+          </code>
+        </pre>
+
+        <pre class="alert-box">
+    <b>Shortcut:</b> title+link+meta*5+style
+        </pre>
+      </section>
+
+      <!-- Content Sections -->
+      <section id="content-section">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Content_sectioning"
+            >Content Sections</a
+          >
+        </h2>
+        <pre>
+          <code class="language-html">
+  &lt;body&gt;
+    &lt;header&gt;
+      &lt;h1&gt;Heading 1&lt;/h1&gt;
+      &lt;h2&gt;Heading 2&lt;/h2&gt;
+      &lt;h3&gt;Heading 3&lt;/h3&gt;
+      &lt;h4&gt;Heading 4&lt;/h4&gt;
+      &lt;h5&gt;Heading 5&lt;/h5&gt;
+      &lt;h6&gt;Heading 6&lt;/h6&gt;
+
+      &lt;nav&gt;&lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;main&gt;
+      &lt;section&gt;&lt;/section&gt;
+      &lt;article&gt;&lt;/article&gt;
+      &lt;aside&gt;&lt;/aside&gt;
+    &lt;/main&gt;
+
+    &lt;footer&gt;&lt;/footer&gt;
+  &lt;/body&gt;
+          </code> 
+        </pre>
+
+        <pre class="alert-box">
+    <b>Shortcut:</b> header>h1+h2+h3+h4+h5+h6+nav
+              main>section+article+aside
+              footer
+        </pre>
+      </section>
+
+      <!-- Block Text content -->
+      <section id="block-element">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Text_content"
+            >Block Text content</a
+          >
+        </h2>
+
+        <h3>Div</h3>
+        <div>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo et quod
+          odio velit, hic qui autem dolores magni earum ducimus dolorem modi,
+          numquam laborum accusamus adipisci eius excepturi doloremque vero.
+        </div>
+        <div>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+          voluptatum maiores vitae? Architecto amet provident labore error
+          officia accusantium reiciendis, vero perspiciatis. Incidunt numquam
+          enim deserunt, velit earum totam veritatis.
+          <div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium
+            nobis ex optio, minus in, eum ratione magnam aut distinctio, aliquid
+            libero eaque nihil provident nemo est adipisci repellendus nisi
+            numquam?
+          </div>
+        </div>
+
+        <h3>Paragraph</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia,
+          vero! Eum optio veniam nisi, assumenda ea velit in corrupti vel eos
+          reprehenderit beatae libero rem iusto, maiores, corporis sunt laborum.
+        </p>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis
+          porro consequuntur exercitationem, perspiciatis nam saepe, odit enim
+          omnis qui commodi cupiditate in eveniet. Nemo maxime ipsam recusandae
+          consectetur voluptatum non?
+        </p>
+
+        <h3>Ordered List</h3>
+        <ol>
+          <li>Ordered</li>
+          <li>list</li>
+          <li>items</li>
+        </ol>
+
+        <h3>Unordered List</h3>
+        <ul>
+          <li>Unordered</li>
+          <li>list</li>
+          <li>items</li>
+        </ul>
+
+        <h3>Definition List</h3>
+        <dl>
+          <dt>Definition title</dt>
+          <dd>Definition description</dd>
+        </dl>
+
+        <h3>Pre</h3>
+        <pre>
+          <code class="language-html">
+    // This is a pre tag            --           It respects spacing and tabs
+    
+    &lt;ul&gt;
+        &lt;li&gt;Unordered&lt;/li&gt;
+        &lt;li&gt;list&lt;/li&gt;
+        &lt;li&gt;items&lt;/li&gt;
+    &lt;/ul&gt;
+          </code>
+        </pre>
+
+        <pre>
+          <code class="language-html">
+    // But actual code still needs to be escaped
+    
+    &amp;lt;ul&amp;gt;
+        &amp;lt;li&amp;gt;Unordered&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;list&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;items&amp;lt;/li&amp;gt;
+    &amp;lt;/ul&amp;gt;
+          </code>
+        </pre>
+
+        <pre class="alert-box">
+    <b>Shortcut:</b> div+p+ol>li*3
+              ul>li*3
+              dl>dt+dd
+              pre
+        </pre>
+      </section>
+
+      <!-- Inline text elements -->
+      <section id="inline-elements">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Inline_text_semantics"
+            >Inline text elements</a
+          >
+        </h2>
+
+        <h3>Anchor tag and span</h3>
+
+        <a target="_blank" href="https://example.com">
+          Anchor Tag with
+          <span style="color: red">span tag wrapped around part of it</span>
+        </a>
+
+        <h3>Inline style tags</h3>
+        <p>
+          <b>b tag</b> <em>em tag</em> <i>i tag</i> <sub>sub tag</sub>
+          <sup>sup tab</sup> <code>code tag</code>
+        </p>
+
+        <h3>Image tag</h3>
+        <div>
+          <img src="assets/images/fabric.jpg" alt="Fabric Logo" width="100" />
+          <img src="assets/images/fabric.jpg" alt="Fabric Logo" width="50" />
+          <img src="assets/images/fabric.jpg" alt="Fabric Logo" width="150" />
+        </div>
+        <br />
+        <pre class="alert-box">
+    <b>Shortcut:</b> a+span+b+em+i+sub+sup+code+img
+        </pre>
+      </section>
+
+      <!-- Table content -->
+      <section id="table">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Table_content"
+            >Table content</a
+          >
+        </h2>
+
+        <table border="1">
+          <thead>
+            <tr>
+              <th>Column 1 header</th>
+              <th>Column 2 header</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>The table body</td>
+              <td>with two columns</td>
+            </tr>
+            <tr>
+              <td>Another table row</td>
+              <td>with two columns</td>
+            </tr>
+            <tr>
+              <td colspan="2">Row spanning both columns</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>Table Footer 1 header</th>
+              <th>Table Footer 2 header</th>
+            </tr>
+          </tfoot>
+        </table>
+
+        <br />
+        <pre class="alert-box">
+    <b>Shortcut:</b> table[border="1"]
+              thead>tr>th*2
+              tbody>tr*2>td*2^tr>td[colspan="2"]
+              tfoot>tr*2>th*2
+        </pre>
+      </section>
+
+      <!-- Forms -->
+      <section id="form">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Forms"
+            >Forms</a
+          >
+        </h2>
+
+        <form action="" method="get" class="form-example">
+          <div>
+            <label for="name">Enter your name: </label>
+            <input type="text" name="name" required />
+          </div>
+          <div>
+            <div>
+              <input type="checkbox" id="option1" name="option1" checked />
+              <label for="option1">Option 1</label>
+            </div>
+
+            <div>
+              <input type="checkbox" id="option2" name="option2" />
+              <label for="option2">Option 2</label>
+            </div>
+          </div>
+
+          <div>
+            <input type="color" id="color1" name="color1" value="#e66465" />
+            <label for="color1">Color 1</label>
+          </div>
+
+          <div>
+            <label for="start">Start date:</label>
+
+            <input
+              type="date"
+              id="start"
+              name="trip-start"
+              value="2018-07-22"
+              min="2018-01-01"
+              max="2018-12-31"
+            />
+          </div>
+          <div>
+            <div>
+              <input
+                type="radio"
+                id="Radio1"
+                name="radios"
+                value="Radio1"
+                checked
+              />
+              <label for="Radio1">Radio 1</label>
+            </div>
+
+            <div>
+              <input type="radio" id="radio2" name="radios" value="radio2" />
+              <label for="radio2">Radio 2</label>
+            </div>
+
+            <div>
+              <input type="radio" id="radio3" name="radios" value="radio3" />
+              <label for="radio3">Radio 3</label>
+            </div>
+          </div>
+          <div>
+            <label for="pet-select">Choose a pet:</label>
+
+            <select id="pet-select">
+              <option value="">--Please choose an option--</option>
+              <option value="dog">Dog</option>
+              <option value="cat">Cat</option>
+              <option value="hamster">Hamster</option>
+              <option value="parrot">Parrot</option>
+              <option value="spider">Spider</option>
+              <option value="goldfish">Goldfish</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="name">Address </label>
+            <textarea rows="5"></textarea>
+            <br />
+          </div>
+          <br />
+
+          <div>
+            <input type="submit" value="Subscribe!" />
+          </div>
+        </form>
+
+        <br />
+        <pre class="alert-box">
+    <b>Shortcut:</b> form
+              div>label+input
+              div>(div>input[type="checkbox"]+label)*2
+              div>input[type="color"]+label
+              div>label+input[type="date"]
+              div>input[type="radio"]*3
+              div>label+select>option*3
+              button
+        </pre>
+      </section>
+
+      <!-- Forms Validation -->
+      <section id="form-validation">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation"
+            >Form Validation</a
+          >
+        </h2>
+
+        <form action="" method="get" class="form-example">
+          <div>
+            <label>Required </label>
+            <input type="text" name="name" required />
+          </div>
+          <br />
+
+          <div>
+            <label>Email Minlength 3 </label>
+            <input type="email" name="name" minlength="3" required />
+          </div>
+          <br />
+
+          <div>
+            <label>Password Maxlength 2 </label>
+            <input type="password" name="name" maxlength="2" required />
+          </div>
+          <br />
+
+          <div>
+            <label for="name">Tel Pattern </label>
+            <input
+              type="tel"
+              pattern="[0-9]{3}"
+              placeholder="Enter 3 digit area code"
+              required
+            />
+            <br />
+            <small
+              >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Should
+              be 3 digit numbers only</small
+            >
+          </div>
+          <br />
+
+          <div>
+            <input type="submit" value="Submit" />
+          </div>
+        </form>
+
+        <br />
+        <pre class="alert-box">
+    <b>Shortcut:</b> form
+              div>label+input[required]
+              div>label+input[minlength="3"]
+              div>label+input[maxlength="2"]
+              div>label+input[pattern="[0-9]{3}"]+span
+              button
+        </pre>
+      </section>
+
+      <a href="#my-id">Go Top</a>
+    </div>
+
+    <script src="assets/js/prism.js"></script>
+  </body>
+</html>

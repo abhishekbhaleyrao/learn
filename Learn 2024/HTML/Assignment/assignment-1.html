@@ -1,0 +1,179 @@
+<html>
+  <head>
+    <title>Html exercise</title>
+    <style>
+      ol > li {
+        margin-bottom: 1rem;
+      }
+    </style>
+  </head>
+  <body id="top">
+    <ol>
+      <li>List down 5 html tags</li>
+      <li>List down 5 html attributes</li>
+      <li>Create a html page and add metadata</li>
+      <li>Create a html page and add header, footer, section, div, main elements</li>
+      <li>Create a html page and add 3 types of list with example</li>
+      <li>Create a html page and add 2 images</li>
+      <li>Create a html page and add div, paragraph, ordered list, unordered list, definition list, pre, horizontal line elements</li>
+      <li>Create a html page and add anchor, span, image, bold text and italic text elements</li>
+      <li>
+        Create a html page and add table like below
+        <table border="1">
+          <thead>
+            <tr>
+              <th>H</th>
+              <th>P</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>H1</td>
+              <td rowspan="2">p1</td>
+            </tr>
+            <tr>
+              <td>h11</td>
+            </tr>
+            <tr>
+              <td colspan="2">p11</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>
+        Create a html page and add form like below
+        <form action="" method="get" class="form-example">
+          <div>
+            <label for="name">Enter your name: </label>
+            <input type="text" name="name" required />
+          </div>
+          <div>
+            <div>
+              <input type="checkbox" id="option1" name="option1" checked />
+              <label for="option1">Option 1</label>
+            </div>
+
+            <div>
+              <input type="checkbox" id="option2" name="option2" />
+              <label for="option2">Option 2</label>
+            </div>
+          </div>
+
+          <div>
+            <input type="color" id="color1" name="color1" value="#e66465" />
+            <label for="color1">Color 1</label>
+          </div>
+
+          <div>
+            <label for="start">Start date:</label>
+
+            <input
+              type="date"
+              id="start"
+              name="trip-start"
+              value="2018-07-22"
+              min="2018-01-01"
+              max="2018-12-31"
+            />
+          </div>
+          <div>
+            <div>
+              <input
+                type="radio"
+                id="Radio1"
+                name="radios"
+                value="Radio1"
+                checked
+              />
+              <label for="Radio1">Radio 1</label>
+            </div>
+
+            <div>
+              <input type="radio" id="radio2" name="radios" value="radio2" />
+              <label for="radio2">Radio 2</label>
+            </div>
+
+            <div>
+              <input type="radio" id="radio3" name="radios" value="radio3" />
+              <label for="radio3">Radio 3</label>
+            </div>
+          </div>
+          <div>
+            <label for="pet-select">Choose a pet:</label>
+
+            <select id="pet-select">
+              <option value="">--Please choose an option--</option>
+              <option value="dog">Dog</option>
+              <option value="cat">Cat</option>
+              <option value="hamster">Hamster</option>
+              <option value="parrot">Parrot</option>
+              <option value="spider">Spider</option>
+              <option value="goldfish">Goldfish</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="name">Address </label><br/>
+            <textarea rows="5"></textarea>
+            <br />
+          </div>
+          <br />
+
+          <div>
+            <input type="submit" value="Subscribe!" />
+          </div>
+        </form>
+      </li>
+      <li>
+        Create a html page and add form like below with validation<br />
+        &nbsp;&nbsp;a. Name field should be mandatory<br />
+        &nbsp;&nbsp;b. Email field should have minimum 3 characters with email validation<br />
+        &nbsp;&nbsp;c. Password field should not be more than 10 characters<br />
+        &nbsp;&nbsp;d. Phone field should accept numbers only with 3 digit area code<br />
+
+        <form action="" method="get" class="form-example">
+          <div>
+            <label>Name </label>
+            <input type="text" name="name" required />
+          </div>
+          <br />
+
+          <div>
+            <label>Email</label>
+            <input type="email" name="name" minlength="3" required />
+          </div>
+          <br />
+
+          <div>
+            <label>Password</label>
+            <input type="password" name="name" maxlength="10" required />
+          </div>
+          <br />
+
+          <div>
+            <label for="name">Phone </label>
+            <input
+              type="tel"
+              pattern="[0-9]{3}"
+              placeholder="Enter 3 digit area code"
+              required
+            />
+            <br />
+            <small
+              >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Should
+              be 3 digit numbers only</small
+            >
+          </div>
+          <br />
+
+          <div>
+            <input type="submit" value="Submit" />
+          </div>
+        </form>
+      </li>
+      <li>
+        Create a html page with many lines of dummy data. Add link in the bottom which will redirect us to top of page on click of it.
+      </li>
+    </ul>
+  </body>
+</html>

@@ -1,0 +1,3660 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Intro to Javascript</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="assets/css/prism.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+
+  <body>
+    <div class="sidebar">
+      <a class="active" href="#basics">Basics</a>
+      <a href="#overview">Overview</a>
+      <a href="#errors">Errors</a>
+      <a href="#variable">Variable</a>
+      <a href="#math">Math</a>
+      <a href="#string">String</a>
+      <a href="#array">Array</a>
+      <a href="#condition">Condition</a>
+      <a href="#loop">Loop</a>
+      <a href="#funtion">Function</a>
+      <a href="#events">Events</a>
+      <a href="#object">Object</a>
+      <a href="#oop">Object-oriented</a>
+      <a href="#object-prototype">Object prototypes</a>
+      <a href="#inheritance">Inheritance</a>
+      <a href="#json">Json</a>
+      <a href="#asynchronous">Asynchronous</a>
+    </div>
+
+    <div class="content">
+      <!-- Basics -->
+      <section id="basics">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript"
+            >Basics</a
+          >
+        </h2>
+
+        <h4>External JavaScript: Include external js file</h4>
+        <pre><code class="language-javascript">
+    &lt;script src="scripts.js"&gt;&lt;/script&gt;
+        </code></pre>
+
+        <h4>Internal Javascript</h4>
+        <pre><code class="language-javascript">
+    &lt;script&gt;
+        // Javascript goes here
+    &lt;/style&gt;
+        </code></pre>
+
+        <h5>Examples:</h5>
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Html</th>
+              <th>Javascript</th>
+              <th>Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <pre><code class="language-javascript">
+&lt;button onclick="createParagraph()"&gt;Click me!&lt;/button&gt;
+                </code></pre>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+<b>FileName: scripts.js</b>
+function createParagraph() {
+  let para = document.createElement('p');
+  para.textContent = 'You clicked the button!';
+  document.body.appendChild(para);
+}
+                </code></pre>
+              </td>
+              <td>
+                <div class="basics-external">
+                  <button onclick="createParagraph()">Click me!</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <pre><code class="language-javascript">
+&lt;button onclick="createParagraph()"&gt;Click me!&lt;/button&gt;
+&lt;script&gt;
+function createParagraph() {
+  let para = document.createElement('p');
+  para.textContent = 'You clicked the button!';
+  document.body.appendChild(para);
+}
+&lt;/script&gt;
+                </code></pre>
+              </td>
+              <td></td>
+              <td>
+                <div class="basics-internal">
+                  <button onclick="createParagraphInternal()">Click me!</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>Async: <small>Did not execute in order</small></h4>
+        <pre><code class="language-javascript">
+  &lt;script async src="js/script1.js"&gt;&lt;/script&gt;
+  &lt;script async src="js/script2.js"&gt;&lt;/script&gt;
+  &lt;script async src="js/script3.js"&gt;&lt;/script&gt;
+        </code></pre>
+
+        <h4>Defer: <small>Execute in order</small></h4>
+        <pre><code class="language-javascript">
+  &lt;script defer src="js/script1.js"&gt;&lt;/script&gt;
+  &lt;script defer src="js/script2.js"&gt;&lt;/script&gt;
+  &lt;script defer src="js/script3.js"&gt;&lt;/script&gt;
+        </code></pre>
+
+        <h4>Variables to store our data</h4>
+        <pre><code class="language-javascript">
+  const guessCount = 1;
+  let resetButton;
+        </code></pre>
+
+        <h4>Functions</h4>
+        <pre><code class="language-javascript">
+  // Define function
+  function checkGuess() {
+    alert('I am a placeholder');
+  }
+
+  // Call function
+  checkGuess();
+        </code></pre>
+
+        <h5>Operators:</h5>
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Operator</th>
+              <th>Name</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="3"><b>Arithmetic</b></td>
+            </tr>
+            <tr>
+              <td>+</td>
+              <td>Addition</td>
+              <td>6 + 9</td>
+            </tr>
+            <tr>
+              <td>-</td>
+              <td>Subtraction</td>
+              <td>20 - 15</td>
+            </tr>
+            <tr>
+              <td>*</td>
+              <td>Multiplication</td>
+              <td>3 * 7</td>
+            </tr>
+            <tr>
+              <td>/</td>
+              <td>Division</td>
+              <td>3 / 7</td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><b>Comparison</b></td>
+            </tr>
+            <tr>
+              <td>===</td>
+              <td>Strict equality</td>
+              <td>
+                5 === 2 + 4 // false<br />
+                'Chris' === 'Bob' // false<br />
+                5 === 2 + 3 // true<br />
+                2 === '2' // false; number versus string<br />
+              </td>
+            </tr>
+            <tr>
+              <td>!==</td>
+              <td>Non-equality</td>
+              <td>
+                5 !== 2 + 4 // true<br />
+                'Chris' !== 'Bob' // true<br />
+                5 !== 2 + 3 // false<br />
+                2 !== '2' // true; number versus string<br />
+              </td>
+            </tr>
+            <tr>
+              <td><</td>
+              <td>Less than</td>
+              <td>
+                6 < 10 // true<br />
+                20 < 10 // false
+              </td>
+            </tr>
+            <tr>
+              <td>></td>
+              <td>Greater than</td>
+              <td>
+                6 > 10 // false<br />
+                20 > 10 // true
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Overview -->
+      <section id="overview">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript"
+            >Overview</a
+          >
+        </h2>
+
+        <h4>Variables to store our data</h4>
+        <pre><code class="language-javascript">
+  const guessCount = 1;
+  let resetButton;
+        </code></pre>
+
+        <h4>Functions</h4>
+        <pre><code class="language-javascript">
+  // Define function
+  function checkGuess() {
+    alert('I am a placeholder');
+  }
+
+  // Call function
+  checkGuess();
+        </code></pre>
+
+        <h5>Operators:</h5>
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Operator</th>
+              <th>Name</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="3"><b>Arithmetic</b></td>
+            </tr>
+            <tr>
+              <td>+</td>
+              <td>Addition</td>
+              <td>6 + 9</td>
+            </tr>
+            <tr>
+              <td>-</td>
+              <td>Subtraction</td>
+              <td>20 - 15</td>
+            </tr>
+            <tr>
+              <td>*</td>
+              <td>Multiplication</td>
+              <td>3 * 7</td>
+            </tr>
+            <tr>
+              <td>/</td>
+              <td>Division</td>
+              <td>3 / 7</td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><b>Comparison</b></td>
+            </tr>
+            <tr>
+              <td>===</td>
+              <td>Strict equality</td>
+              <td>
+                5 === 2 + 4 // false<br />
+                'Chris' === 'Bob' // false<br />
+                5 === 2 + 3 // true<br />
+                2 === '2' // false; number versus string<br />
+              </td>
+            </tr>
+            <tr>
+              <td>!==</td>
+              <td>Non-equality</td>
+              <td>
+                5 !== 2 + 4 // true<br />
+                'Chris' !== 'Bob' // true<br />
+                5 !== 2 + 3 // false<br />
+                2 !== '2' // true; number versus string<br />
+              </td>
+            </tr>
+            <tr>
+              <td><</td>
+              <td>Less than</td>
+              <td>
+                6 < 10 // true<br />
+                20 < 10 // false
+              </td>
+            </tr>
+            <tr>
+              <td>></td>
+              <td>Greater than</td>
+              <td>
+                6 > 10 // false<br />
+                20 > 10 // true
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>Think like developer</h4>
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Html</th>
+              <th>Javascript</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <pre><code class="language-javascript">
+<b>Condition: if (condition) { ... } </b>
+&lt;button class="my-button"&gt;Click me!&lt;/button&gt;
+                </code></pre>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+const myBtn = document.querySelector('.my-button');
+myBtn.addEventListener('click', check);
+
+function check() {
+  if (6 === 6) {
+    console.log('true');
+  } else {
+    console.log('false');
+  }
+}
+                </code></pre>
+              </td>
+              <td>
+                <div class="overview-condition">
+                  <button class="my-button">Click me!</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <pre><code class="language-javascript">
+<b>Event: element.addEventListener(eventName, function)</b>
+&lt;button class="my-button"&gt;Click me!&lt;/button&gt;
+                </code></pre>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+const myBtn = document.querySelector('.my-button');
+myBtn.addEventListener('click', check);
+
+function check() {
+  console.log('my-button clicked!');
+}
+                </code></pre>
+              </td>
+              <td>
+                <div class="overview-event">
+                  <button class="my-button">Click me!</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <pre><code class="language-javascript">
+<b>Loop: for(variable ; condition : increment/decrement) { ... }</b>
+&lt;button class="my-button"&gt;Click me!&lt;/button&gt;
+                </code></pre>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+const myBtn = document.querySelector('.my-button');
+myBtn.addEventListener('click', check);
+
+function check() {
+  for (let i = 1 ; i < 5 ; i++) { 
+    console.log(i);
+  }
+}
+                </code></pre>
+              </td>
+              <td>
+                <div class="overview-loop">
+                  <button class="my-button">Click me!</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <pre><code class="language-javascript">
+<b>Browser object:</b>
+&lt;button class="my-button"&gt;Click me!&lt;/button&gt;
+                </code></pre>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+const myBtn = document.querySelector('.my-button');
+myBtn.addEventListener('click', check);
+
+function check() {
+  console.log('Button value: ', myBtn.value);
+  myBtn.textContent = 'Changed!';
+  myBtn.style.backgroundColor = 'yellow';
+  myBtn.style.fontSize = '200%';
+  myBtn.style.padding = '10px';
+  myBtn.style.boxShadow = '3px 3px 6px black';
+}
+                </code></pre>
+              </td>
+              <td>
+                <div class="overview-browser-object">
+                  <button class="my-button">Click me!</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Errors -->
+      <section id="errors">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_went_wrong"
+            >Errors</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Error</th>
+              <th>Info</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                syntax error:<br />
+                "TypeError: guessSubmit.addeventListener is not a function"
+              </td>
+              <td>addeventListener spell mistake</td>
+              <td>
+                guessSubmit = '';<br />
+                guessSubmit.addeventListener('click', ()=>{});
+              </td>
+            </tr>
+            <tr>
+              <td>
+                syntax error:<br />
+                "TypeError: Cannot set property 'textContent' of null"
+              </td>
+              <td>
+                lowOrHi is not a element it is a class because of wrong
+                selection lowOrHi is null
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+<b>HTML: </b>&lt;p class="lowOrHi"&gt;&lt;/p&gt;
+<b>Javascript: </b>
+const lowOrHi = document.querySelector('lowOrHi');
+lowOrHi.textContent = 'Last guess was too high!';
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                logic error:<br />
+                This will not give any error it is just your code issue.
+              </td>
+              <td>
+                Example statement will always be true because we are using
+                assignment operator(=) instead of strict equality(===)
+              </td>
+              <td>if (a = 10) {}</td>
+            </tr>
+            <tr>
+              <td>
+                common error:<br />
+                SyntaxError: missing ; before statement
+              </td>
+              <td>
+                Here you need to use assignment(=) instead of equality(===)<br />
+              </td>
+              <td>var userGuess === Number(guessField.value);<br /></td>
+            </tr>
+            <tr>
+              <td>
+                common error:<br />
+                "SyntaxError: missing ) after argument list"
+              </td>
+              <td>incorrectly formed JavaScript object</td>
+              <td>function checkGuess( {</td>
+            </tr>
+            <tr>
+              <td>
+                common error:<br />
+                "SyntaxError: Invalid or unexpected token"
+              </td>
+              <td>string ending quote is missing</td>
+              <td>var a = 'aaa;</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Variable -->
+      <section id="variable">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Variables"
+            >Variable</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Info</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Declaration</td>
+              <td>Create a variable</td>
+              <td>let myName;</td>
+            </tr>
+            <tr>
+              <td>Initialization</td>
+              <td>Assign a value</td>
+              <td>myName = 'Chris';</td>
+            </tr>
+            <tr>
+              <td>Update</td>
+              <td>update a value</td>
+              <td>
+                <pre><code class="language-javascript">
+myName = 'Chris';
+myName = 'Bob';
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Difference between var and let</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// Multiple recreation will work with var
+var a;
+var a = 2;
+
+// Multiple recreation will give error: Identifier 'b' has already been declared
+let b;
+let b = 2;
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Var Hosting</td>
+              <td>
+                var declarations, wherever they occur, are processed before any
+                code is executed. This is called hoisting.
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+bla = 2;
+// ...is implicitly understood as:
+var bla;
+bla = 2;
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Constants</td>
+              <td>We can not update the value of constants</td>
+              <td>
+                <pre><code class="language-javascript">
+const daysInWeek = 7;
+daysInWeek = 8;   // Error: Assignment to constant variable.
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Variable types</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// Number
+let myAge = 17;
+
+// String
+let dolphinGoodbye = 'So long and thanks for all the fish';
+
+// Boolean
+let iAmAlive = true;
+
+// Arrays
+let myNameArray = ['Chris', 'Bob', 'Jim'];
+let myNumberArray = [10, 15, 40];
+
+  // Access array value
+  myNameArray[0]; // should return 'Chris'
+  myNumberArray[2]; // should return 40
+
+// Objects
+let dog = { name : 'Spot', breed : 'Dalmatian' };
+
+  // Retrieve value
+  dog.name; // should return 'Spot'
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Dynamic typing</td>
+              <td>
+                You can store any type of data in variable.<br />
+                No need to specify any data type
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+let myNumber = '500'; 
+typeof myNumber; // string
+
+myNumber = 500;
+typeof myNumber; // number
+                </code></pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Math -->
+      <section id="math">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Math"
+            >Math</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Info</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Types of numbers</td>
+              <td>
+                Integers are whole numbers<br />
+                Floating point numbers (floats) have decimal points and decimal
+                places<br />
+                Doubles are a specific type of floating point number that have
+                greater precision than standard floating point numbers
+              </td>
+              <td>
+                Integer: 10, 400, -5<br />
+                Float: 12.5, 56.77865
+              </td>
+            </tr>
+            <tr>
+              <td>Number systems</td>
+              <td>
+                <b>Binary</b>: The lowest level language of computers; 0s and
+                1s.<br />
+                <b>Octal</b>: Base 8, uses 0–7 in each column.<br />
+                <b>Hexadecimal</b>: Base 16, uses 0–9 and then a–f in each
+                column.<br />
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Number</td>
+              <td>It's all numbers</td>
+              <td>
+                <pre><code class="language-javascript">
+let myInt = 5;
+let myFloat = 6.667;
+typeof myInt;     // number
+typeof myFloat;   // number
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>toFixed()</td>
+              <td>Round your number to a fixed number of decimal places</td>
+              <td>
+                <pre><code class="language-javascript">
+let lotsOfDecimal = 1.766584958675746364;
+let twoDecimalPlaces = lotsOfDecimal.toFixed(2);
+twoDecimalPlaces;   // 1.77
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Converting to number data types</td>
+              <td>Round your number to a fixed number of decimal places</td>
+              <td>
+                <pre><code class="language-javascript">
+let myNumber = '74';
+myNumber + 3;             // "743" [wrong]
+typeof myNumber;          // string
+
+let cn = Number(myNumber) + 3;   // 77 [correct]
+typeof cn;                       // number
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Operators</td>
+              <td>
+                + Addition<br />
+                - Subtraction<br />
+                * Multiplication<br />
+                / Division<br />
+                % Remainder / modulo<br />
+                ** Exponent
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+6 + 9
+20 - 15
+3 * 7
+10 / 5
+8 % 3
+5 ** 2
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Increment and decrement operators</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// Increment
+let num1 = 4;
+num1++;     // 5
+
+// Decrement
+let num2 = 6;
+num2--;     // 5
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Assignment operators</td>
+              <td>
+                += Addition assignment<br />
+                -= Subtraction assignment<br />
+                *= Multiplication assignment<br />
+                /= Division assignment<br />
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+let x = 3; // x contains the value 3
+let y = 4; // y contains the value 4
+x = y; // x now contains the same value y contains, 4
+
+x += 4;     // x = x + 4;
+x -= 3;     // x = x - 3;
+x *= 3;     // x = x * 3;
+x /= 5;     // x = x / 5;
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Comparison operators</td>
+              <td>
+                === Strict equality<br />
+                !== Strict-non-equality<br />
+                < Less than<br />
+                > Greater than<br />
+                <= Less than or equal to<br />
+                >= Greater than or equal to<br />
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+5 === 2 + 4
+5 !== 2 + 3
+10 < 6
+10 > 20
+3 <= 2
+5 >= 4
+                </code></pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- String -->
+      <section id="string">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Strings"
+            >String</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Info</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Creating a string</td>
+              <td></td>
+              <td>
+                let string = 'The revolution';<br />
+                let string1 = "I'm feeling blue.";
+              </td>
+            </tr>
+            <tr>
+              <td>Escaping characters in a string</td>
+              <td></td>
+              <td>
+                let bigmouth = 'I\'ve got no right to take my place...';<br />
+                bigmouth;
+              </td>
+            </tr>
+            <tr>
+              <td>Concatenating strings</td>
+              <td></td>
+              <td>
+                let one = 'Hello, ';<br />
+                let two = 'how are you?';<br />
+                let joined = one + two;<br />
+                joined; // 'Hello, how are you?'<br />
+                <br />
+                let response = one + 'I am fine — ' + two;<br />
+                response;
+              </td>
+            </tr>
+            <tr>
+              <td>Numbers vs. strings</td>
+              <td></td>
+              <td>
+                // Browser converts number to string<br />
+                let one = 'Front ' + 242;<br />
+                one; // 'Front 242'
+              </td>
+            </tr>
+            <tr>
+              <td>toString() method</td>
+              <td></td>
+              <td>
+                let myNum = 123;<br />
+                let myString = myNum.toString();<br />
+                typeof myString; // string<br />
+              </td>
+            </tr>
+            <tr>
+              <td>Template literals</td>
+              <td></td>
+              <td>
+                let song = 'believer';<br />
+                let score = 9;<br />
+                let highestScore = 10;<br />
+                let output = 'I like the song "' + song + '". I gave it a score
+                of ' + (score/highestScore * 100) + '%.';<br />
+                <br />
+                // Easy to read<br />
+                output = `I like the song ${ song }. I gave it a score of ${
+                score/highestScore * 100 }%.`;
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3"><b>String Methods</b></td>
+            </tr>
+            <tr>
+              <td>Get length</td>
+              <td></td>
+              <td>
+                let string = 'This is my string';<br />
+                string.length; // 17
+              </td>
+            </tr>
+            <tr>
+              <td>Retrieving a specific string character</td>
+              <td></td>
+              <td>
+                let string = 'This is my string';<br />
+                string[0]; // T<br />
+                string[string.length -1]; // g
+              </td>
+            </tr>
+            <tr>
+              <td>Finding a substring</td>
+              <td></td>
+              <td>
+                let string = 'This is my string';<br />
+                string.indexOf('my'); // 8<br />
+                string.indexOf('vanilla') !== -1 // true<br />
+                string.slice(8,10); // "my"
+              </td>
+            </tr>
+            <tr>
+              <td>Changing case</td>
+              <td></td>
+              <td>
+                let radData = 'My NaMe Is MuD';<br />
+                radData.toLowerCase();<br />
+                radData.toUpperCase();<br />
+              </td>
+            </tr>
+            <tr>
+              <td>Updating parts of a string</td>
+              <td></td>
+              <td>
+                let radData = 'My NaMe Is MuD';<br />
+                radData.replace('MuD', 'John');
+              </td>
+            </tr>
+            <tr>
+              <td>Updating parts of a string</td>
+              <td></td>
+              <td>
+                let radData = 'My NaMe Is MuD';<br />
+                radData.replace('MuD', 'John');
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Array -->
+      <section id="array">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Arrays"
+            >Array</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Info</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Creating arrays</td>
+              <td></td>
+              <td>
+                let shopping = [];<br />
+                shopping = ['bread', 'milk', 'cheese', 'hummus', 'noodles'];<br />
+              </td>
+            </tr>
+            <tr>
+              <td>Accessing and modifying array items</td>
+              <td></td>
+              <td>
+                let shopping = [];<br />
+                shopping = ['bread', 'milk', 'cheese', 'hummus', 'noodles'];<br />
+                shopping[0]; // 'bread'<br />
+                shopping[0] = 'tahini';<br />
+                shopping; // [ "tahini", "milk", "cheese", "hummus", "noodles" ]
+              </td>
+            </tr>
+            <tr>
+              <td>Finding the length</td>
+              <td></td>
+              <td>
+                let shopping = ['bread', 'milk', 'cheese', 'hummus',
+                'noodles'];<br />
+                shopping.length; // 5
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">Array methods</td>
+            </tr>
+            <tr>
+              <td>Converting between strings and arrays</td>
+              <td></td>
+              <td>
+                let myData =
+                'Manchester,London,Liverpool,Birmingham,Leeds,Carlisle';<br />
+                let myArray = myData.split(','); // ["Manchester", "London",
+                "Liverpool", "Birmingham", "Leeds", "Carlisle"]<br />
+                <br />
+                let myNewString = myArray.join(',');<br />
+                myNewString; //
+                'Manchester,London,Liverpool,Birmingham,Leeds,Carlisle'
+              </td>
+            </tr>
+            <tr>
+              <td>Adding and removing array items</td>
+              <td>
+                push(): Add elements from end<br />
+                pop(): remove element from end<br />
+                unshift(): Add elements from start<br />
+                shift(): remove element from start<br />
+              </td>
+              <td>
+                let myArray = ['Manchester', 'London'];<br />
+                myArray.push('Liverpool');<br />
+                myArray; // ['Manchester', 'London', 'Liverpool']<br />
+                myArray.pop();<br />
+                myArray; // ['Manchester', 'London']<br />
+
+                myArray.unshift('Liverpool');<br />
+                myArray; // ["Liverpool", "Manchester", "London"]<br />
+                myArray.shift();<br />
+                myArray; // ['Manchester', 'London']<br />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Condition -->
+      <section id="condition">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/conditionals"
+            >Condition</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Info</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>if...else</td>
+              <td>
+                <pre><code class="language-javascript">
+if (condition) {
+  // code to run if condition is true
+} else {
+  // run some other code instead
+}
+                </code></pre>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+let shoppingDone = false;
+let allowance;
+
+if (shoppingDone === true) {
+  allowance = 10;
+} else {
+  allowance = 5;
+}
+               </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>else if</td>
+              <td>
+                <pre><code class="language-javascript">
+// html
+&lt;select id="weather"&gt;
+  &lt;option value=""&gt;Select weather&lt;/option&gt;
+  &lt;option value="sunny"&gt;Sunny&lt;/option&gt;
+  &lt;option value="rainy"&gt;Rainy&lt;/option&gt;
+&lt;/select&gt;
+&lt;p&gt;&lt;/p&gt;
+
+// JavaScript
+const select = document.querySelector('select');
+const para = document.querySelector('p');
+select.addEventListener('change', setWeather);
+function setWeather() {
+  const choice = select.value;
+  if (choice === 'sunny') {
+    para.textContent = 'It is nice and sunny outside.';
+  } else if (choice === 'rainy') {
+    para.textContent = 'Rain is falling outside.';
+  } else {
+    para.textContent = '';
+  }
+}
+                </code></pre>
+              </td>
+              <td>
+                <div class="else-if">
+                  <select id="weather">
+                    <option value="">Select weather</option>
+                    <option value="sunny">Sunny</option>
+                    <option value="rainy">Rainy</option>
+                  </select>
+                  <p></p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Nesting if ... else</td>
+              <td>
+                <pre><code class="language-javascript">
+if (choice === 'sunny') {
+  if (temperature < 86) {
+    para.textContent = 'It is ' + temperature;
+  } else if (temperature >= 86) {
+    para.textContent = 'It is ' + temperature;
+  }
+}
+                </code></pre>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Switch</td>
+              <td>
+                <pre><code class="language-javascript">
+switch (expression) {
+  case choice1:
+    run this code
+    break;
+  case choice2:
+    run this code instead
+    break;
+  default:
+    actually, just run this code
+}
+                </code></pre>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>switch example</td>
+              <td>
+                <pre><code class="language-javascript">
+// html
+&lt;select id="weather"&gt;
+  &lt;option value=""&gt;Select weather&lt;/option&gt;
+  &lt;option value="sunny"&gt;Sunny&lt;/option&gt;
+  &lt;option value="rainy"&gt;Rainy&lt;/option&gt;
+&lt;/select&gt;
+&lt;p&gt;&lt;/p&gt;
+
+// JavaScript
+const select = document.querySelector('select');
+const para = document.querySelector('p');
+select.addEventListener('change', setWeather);
+function setWeather() {
+  const choice = select.value;
+  switch (choice) {
+    case 'sunny':
+      para.textContent = 'It is nice and sunny outside.';
+      break;
+    case 'rainy':
+      para.textContent = 'Rain is falling outside.';
+      break;
+    default:
+      para.textContent = '';
+  }
+}
+                </code></pre>
+              </td>
+              <td>
+                <div class="switch">
+                  <select id="weather">
+                    <option value="">Select weather</option>
+                    <option value="sunny">Sunny</option>
+                    <option value="rainy">Rainy</option>
+                  </select>
+                  <p></p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Ternary operator</td>
+              <td>
+                <pre><code class="language-javascript">
+( condition ) ? run this code : run this code instead
+                </code></pre>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Ternary operator example</td>
+              <td>
+                <pre><code class="language-javascript">
+// html
+&lt;select id="theme"&gt;
+  &lt;option&gt; value="white"&gt;White&lt;/option&gt;
+  &lt;option&gt; value="black"&gt;Black&lt;/option&gt;
+&lt;/select&gt;
+&lt;h1&gt;This is my website&lt;/h1&gt;
+
+// JavaScript
+const select = document.querySelector('select');
+const html = document.querySelector('html');
+
+function update(bgColor, textColor) {
+  html.style.backgroundColor = bgColor;
+  html.style.color = textColor;
+}
+
+select.onchange = function() {
+  ( select.value === 'black' ) ? update('black','white') : update('white','black');
+}
+                </code></pre>
+              </td>
+              <td>
+                <div class="ternary">
+                  <select id="theme">
+                    <option value="white">White</option>
+                    <option value="black">Black</option>
+                  </select>
+                  <h3>This is my website</h3>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Loop -->
+      <section id="loop">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Looping_code"
+            >Loop</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Info</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="3">For</td>
+            </tr>
+            <tr>
+              <td>Standard for loop</td>
+              <td>
+                <pre><code class="language-javascript">
+for (initializer; condition; final-expression) {
+  // code to run
+}
+                </code></pre>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+const cats = ['Bill', 'Jeff', 'Pete', 'Biggles', 'Jasmin'];
+let info = 'My cats are called ';
+
+for (let i = 0; i < cats.length; i++) {
+  info += cats[i] + ', ';
+}
+console.log(info);
+
+<b>Output:</b> My cats are called Bill, Jeff, Pete, Biggles, Jasmin,
+               </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Exiting loops with break</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+const cats = ['Bill', 'Jeff', 'Pete', 'Biggles', 'Jasmin'];
+let info = 'My cats are called ';
+
+for (let i = 0; i < cats.length; i++) {
+  if(i===2) {
+    break;
+  }
+  info += cats[i] + ', ';
+}
+console.log(info);
+
+<b>Output:</b> My cats are called Bill, Jeff, 
+               </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Skipping iterations with continue</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+const cats = ['Bill', 'Jeff', 'Pete', 'Biggles', 'Jasmin'];
+let info = 'My cats are called ';
+
+for (let i = 0; i < cats.length; i++) {
+  if(i===2) {
+    continue;
+  }
+  info += cats[i] + ', ';
+}
+console.log(info);
+
+<b>Output:</b> My cats are called Bill, Jeff, Biggles, Jasmin, 
+               </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">while and do ... while</td>
+            </tr>
+            <tr>
+              <td>While</td>
+              <td>
+                <pre><code class="language-javascript">
+initializer
+while (condition) {
+  // code to run
+
+  final-expression
+}
+                </code></pre>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+let cats = ['Bill', 'Jeff', 'Pete', 'Biggles', 'Jasmin'];
+let info = 'My cats are called ';
+
+let i = 0;
+while (i < cats.length) {
+  if (i === cats.length - 1) {
+    info += 'and ' + cats[i] + '.';
+  } else {
+    info += cats[i] + ', ';
+  }
+  i++;
+}
+console.log(info);
+
+<b>Output:</b> My cats are called Bill, Jeff, Pete, Biggles, and Jasmin.
+               </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>do while: atleast run once</td>
+              <td>
+                <pre><code class="language-javascript">
+initializer
+do {
+  // code to run
+
+  final-expression
+} while (condition)
+                </code></pre>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+let cats = ['Bill', 'Jeff', 'Pete', 'Biggles', 'Jasmin'];
+let info = 'My cats are called ';
+
+let i = 0;
+do {
+  if (i === cats.length - 1) {
+    info += 'and ' + cats[i] + '.';
+  } else {
+    info += cats[i] + ', ';
+  }
+  i++;
+} while (i < cats.length);
+console.log(info);
+
+<b>Output:</b> My cats are called Bill, Jeff, Pete, Biggles, and Jasmin.
+               </code></pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Function -->
+      <section id="function">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Functions"
+            >Function</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Info</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Built-in browser functions</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+let myText = 'I am a string';
+let newString = myText.replace('string', 'sausage');
+console.log(newString);
+
+<b>Output:</b> I am a sausage
+               </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Built-in browser functions</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+let myArray = ['I', 'love', 'chocolate', 'frogs'];
+let madeAString = myArray.join(' ');
+console.log(madeAString);
+
+<b>Output:</b> I love chocolate frogs
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Invoking functions</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// function definition
+function myFunction() {
+  alert('hello');
+}
+
+// function call
+myFunction();
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Anonymous functions</td>
+              <td>function that doesn't have a name</td>
+              <td>
+                <pre><code class="language-javascript">
+const myButton = document.querySelector('button');
+
+myButton.onclick = function() {
+  alert('hello');
+}
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Anonymous functions assign to variable</td>
+              <td>
+                You can also assign an anonymous function to be the value of a
+                variable
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+const myGreeting = function() {
+  alert('hello');
+}
+myGreeting();
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Function parameters</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+function myGreeting(arg1, arg2) {
+  console.log(arg1, arg2)
+}
+myGreeting('para-1', 'para-2');
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Function scope and conflicts</td>
+              <td>
+                In same file last function will work which is having same
+                function name
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+function myGreeting() {
+  console.log('1');
+}
+function myGreeting() {
+  console.log('2');
+}
+myGreeting(); // 2
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Function scope and conflicts</td>
+              <td>
+                In different files first file function will work because in
+                second file we are using let variable with same name
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+<!-- HTML -->
+&lt;script src="first.js"&gt;&lt;/script&gt;
+&lt;script src="second.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  greeting();
+&lt;/script&gt;
+
+// first.js
+let name = 'Chris';
+function greeting() {
+  alert('Hello ' + name + ': welcome to our company.');
+}
+
+// second.js
+let name = 'Zaptec';  // Error: Identifier 'name' has already been declared
+function greeting() {
+  alert('Our company is called ' + name + '.');
+}
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Functions inside functions</td>
+              <td>
+                You can call a function from anywhere, even inside another
+                function
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+function myBigFunction() {
+  subFunction1('1');
+  subFunction2('2');
+}
+
+function subFunction1(value) {
+  console.log(myValue);
+}
+
+function subFunction2(value) {
+  console.log(myValue);
+}
+
+myBigFunction();
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Functions return values</td>
+              <td>
+                You can call a function from anywhere, even inside another
+                function
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+function random(number) {
+  return Math.floor(Math.random() * number);
+}
+console.log(random(12));
+                </code></pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Events -->
+      <section id="events">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events"
+            >Events</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Info</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Events example</td>
+              <td>
+                click event:<br />
+                <pre><code class="language-javascript">
+// html
+&lt;button&gt;Change color&lt;/button&gt;
+
+// Javascript
+const btn = document.querySelector('button');
+
+function random(number) {
+  return Math.floor(Math.random() * (number+1));
+}
+
+btn.onclick = function() {
+  const rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+  document.body.style.backgroundColor = rndCol;
+}
+                </code></pre>
+              </td>
+              <td>
+                <div class="events-click">
+                  <button>Change color</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">Ways of using web events</td>
+            </tr>
+            <tr>
+              <td>Event handler properties</td>
+              <td>
+                click event:<br />
+                <pre><code class="language-javascript">
+const btn = document.querySelector('button');
+
+btn.onclick = function() { }
+--- or ---
+function bgChange() { }
+btn.onclick = bgChange;
+                </code></pre>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Inline event handlers — don't use these</td>
+              <td>
+                <pre><code class="language-javascript">
+// html
+&lt;button&gt; onclick="bgChange()"&gt;Press me&lt;/button&gt;
+
+// Add javascript directly
+&lt;button&gt; onclick="alert('Hello');"&gt;Press me&lt;/button&gt;
+                </code></pre>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                Inline event handlers — don't use these<br /><br />
+                // it is not a good idea to mix up your HTML and your
+                JavaScript, as it becomes hard to parse<br />
+                // — keeping your JavaScript separate is best practice<br /><br />
+
+                // inline event handlers are not a good idea. One button is OK,
+                but what if you had 100 buttons? so use html and javascript
+                separate
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+const buttons = document.querySelectorAll('button');
+
+for (let i = 0; i < buttons.length; i++) {
+  buttons[i].onclick = bgChange;
+}
+--- or ---
+buttons.forEach(function(button) {
+  button.onclick = bgChange;
+});
+                </code></pre>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                addEventListener() and removeEventListener()<br />
+                Use this mechanism always
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+const buttons = document.querySelectorAll('button');
+
+// addEventListener
+  btn.addEventListener('click', function() { ... });
+  --- or ---
+  btn.addEventListener('click', bgChange);
+
+// removeEventListener
+  btn.removeEventListener('click', bgChange);
+                </code></pre>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td colspan="3">Events concepts</td>
+            </tr>
+            <tr>
+              <td>
+                Event objects<br />
+                Parameter specified with a name such as event, evt, or simply e.
+                This is called the event object
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+function bgChange(e) {
+  console.log(e);
+}  
+
+btn.addEventListener('click', bgChange);
+                </code></pre>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                Event objects<br />
+                e.target
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+const divs = document.querySelectorAll('div');
+
+for (let i = 0; i < divs.length; i++) {
+  divs[i].onclick = function(e) {
+    e.target.style.backgroundColor = bgChange();
+  }
+}
+                </code></pre>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                Preventing default behavior<br />
+                e.preventDefault();
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// html
+&lt;form&gt;
+  &lt;div&gt;
+    &lt;label&gt;Name: &lt;/label&gt;
+    &lt;input id="fname" type="text"&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+      &lt;input id="submit" type="submit"&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+&lt;p&gt;&lt;/p&gt;
+
+// javascript
+const form = document.querySelector('form');
+const fname = document.getElementById('fname');
+const para = document.querySelector('p');
+
+form.onsubmit = function(e) {
+  if (fname.value === '') {
+    e.preventDefault();
+    para.textContent = 'You need to fill name!';
+  } else {
+    para.textContent = '';
+  }
+}
+                </code></pre>
+              </td>
+              <td>
+                <div class="events-prevent">
+                  <form>
+                    <div>
+                      <label>Name: </label>
+                      <input id="fnameEP" type="text" />
+                    </div>
+                    <div>
+                      <input id="submit" type="submit" />
+                    </div>
+                  </form>
+                  <p></p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Event bubbling and capture</td>
+              <td>
+                Event bubbling and capture are two mechanisms that describe what
+                happens when two handlers of the same event type are activated
+                on one element.<br /><br />
+                <pre><code class="language-javascript">
+// html 
+&lt;button&gt;Display video&lt;/button&gt;
+
+&lt;div class="hidden"&gt;
+  &lt;video&gt;
+    &lt;source src="rabbit320.mp4" type="video/mp4"&gt;
+    &lt;source src="rabbit320.webm" type="video/webm"&gt;
+  &lt;/video&gt;
+&lt;/div&gt;
+
+// javascript
+const btn = document.querySelector('button');
+const videoBox = document.querySelector('div');
+const video = document.querySelector('video');
+
+// show video onClickBtn
+btn.onclick = function() {
+  videoBox.setAttribute('class','showing');
+}
+
+// hide video onClickVideo
+videoBox.onclick = function() {
+  videoBox.setAttribute('class','hidden');
+};
+
+// play video onCLickVideo
+video.onclick = function() {
+  video.play();
+};
+                </code></pre>
+              </td>
+              <td>
+                <a
+                  href="http://mdn.github.io/learning-area/javascript/building-blocks/events/show-video-box.html"
+                  target="_blank"
+                  >Live example</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Object -->
+      <section id="object">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics"
+            >Object</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Info</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Creating object</td>
+              <td>
+                collection of related data and/or functionality<br /><br />
+                <pre><code class="language-javascript">
+<b>Syntax:</b>
+const objectName = {
+  member1Name: member1Value,
+  member2Name: member2Value,
+  member3Name: member3Value
+};
+                </code></pre>
+              </td>
+              <td>const person = {};</td>
+            </tr>
+            <tr>
+              <td>Object assign and retrieve data</td>
+              <td>collection of related data and/or functionality</td>
+              <td>
+                <pre><code class="language-javascript">
+// Assign
+const person = {
+  name: ['Bob', 'Smith'],
+  age: 32,
+  gender: 'male',
+  interests: ['music', 'skiing'],
+  bio: function() {
+    alert(this.name[0] + ' ' + this.name[1] + ' is ' + this.age + 
+    ' years old. He likes ' + this.interests[0] + ' and 
+    ' + this.interests[1] + '.');
+  },
+  greeting: function() {
+    alert('Hi! I\'m ' + this.name[0] + '.');
+  }
+};
+
+// Retrieve
+person.name           // ['Bob', 'Smith']
+person.name[0]        // Bob
+person.age            // 32
+person.interests[1]   // skiing
+person.bio()
+person.greeting()
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Dot notation</td>
+              <td>Access object properties and methods using dot notation.</td>
+              <td>
+                <pre><code class="language-javascript">
+person.age
+person.interests[1]
+person.bio()
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Sub-namespaces</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+const person = {
+  name: {
+    first: 'Bob',
+    last: 'Smith'
+  }
+}
+
+// Access Sub-namespaces
+person.name.first
+person.name.last
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Bracket notation</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+const person = {
+  name: {
+    first: 'Bob',
+    last: 'Smith'
+  }
+}
+
+// Access Sub-namespaces
+person.name.first
+--- or ---
+person['name']['first']
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Setting object members</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+const person = {
+  name: {
+    first: 'Bob',
+    last: 'Smith'
+  }
+}
+
+// Access Sub-namespaces
+person.name.first = 'Michael'
+--- or ---
+person['name']['first'] = 'John';
+                </code></pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Object-oriented programming -->
+      <section id="oop">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_JS"
+            >Object-oriented programming</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Info</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Simple way to create object- Declaring a object literal</td>
+              <td>
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_JS"
+                  target="_blank"
+                  >More details</a
+                ><br />
+                Why do we need to explicitly create a new empty object and
+                return it instead use Constructor function.
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+function createNewPerson(name) {
+  const obj = {};
+  obj.name = name;
+  obj.greeting = function() {
+    alert('Hi! I\'m ' + obj.name + '.');
+  };
+  return obj;
+}
+
+const salva = createNewPerson('Salva');
+salva.name;         // Salva
+salva.greeting();   // Hi! I'm Salva.
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Constructor function</td>
+              <td>
+                The constructor function is JavaScript's version of a class.<br />
+                <i>
+                  <b>Note:</b><br />
+                  A constructor function name usually starts with a capital
+                  letter — this convention is used to make constructor functions
+                  easier to recognize in code.
+                </i>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+function Person(name) {
+  this.name = name;
+  this.greeting = function() {
+    alert('Hi! I\'m ' + this.name + '.');
+  };
+}
+
+let person1 = new Person('Bob');
+person1.name;       // Bob
+person1.greeting()  // Hi! I'm Bob.
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>The Object() constructor</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+let person1 = new Object();
+
+person1.name = 'Chris';
+person1['age'] = 38;
+person1.greeting = function() {
+  alert('Hi! I\'m ' + this.name + '.');
+};
+
+// --- or ---
+let person1 = new Object({
+  name: 'Chris',
+  age: 38,
+  greeting: function() {
+    alert('Hi! I\'m ' + this.name + '.');
+  }
+});
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Using the create() method</td>
+              <td>You can create a new object based on any existing object.</td>
+              <td>
+                <pre><code class="language-javascript">
+let person2 = Object.create(person1);
+
+person2.name;   // Chris
+                </code></pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Object prototypes -->
+      <section id="object-prototype">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes"
+            >Object prototypes</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Info</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Understanding prototype objects</td>
+              <td>
+                When you create object you will see some other members —
+                toString, valueOf, etc — these are defined on person1's
+                prototype object, which is Object.prototype.
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// constructor function
+function Person(first, last, age) {
+  this.name = {
+    'first': first,
+    'last' : last
+  };
+  this.age = age;
+}
+
+// create object instance
+let person1 = new Person('Bob', 'Smith', 32);
+
+// call valueOf method from prototype object
+person1.valueOf();  // {name: { first: 'Bob', last: 'Smith' }, age: 32}
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                The prototype property: Where inherited members are defined
+              </td>
+              <td>
+                1) Person.prototype; <br />
+                The output won't show you very much because we haven't defined
+                anything on our custom constructor's prototypes
+                <br /><br />
+
+                2) Object.prototype;<br />
+                large number of methods defined on Object's prototype property,
+                which are then available on objects that inherit from Object, as
+                shown earlier.
+                <br /><br />
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// custom constructor function
+function Person(first, last, age) {
+  this.name = {
+    'first': first,
+    'last' : last
+  };
+  this.age = age;
+}
+
+// custom constructor's prototype
+Person.prototype;   // {constructor: ƒ}
+
+// Object's prototype
+Object.prototype;   // {constructor: ƒ, hasOwnProperty: ƒ, toString: ƒ, ... }
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>More datatype & there prototypes</td>
+              <td>
+                Try looking for the methods and properties defined on the
+                prototype of the <b>String, Date, Number, and Array</b> global
+                objects
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+let myString = 'This is my string.';
+// myString has a number of useful methods available on it, 
+// like split(), indexOf(), replace()
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Revisiting create()</td>
+              <td>
+                What create() actually does is to create a new object from a
+                specified prototype object. Here, person2 is being created using
+                person1 as a prototype object.
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// constructor function
+function Person(first, last, age) {
+  this.name = {
+    'first': first,
+    'last' : last
+  };
+  this.age = age;
+}
+
+// create object instance
+let person1 = new Person('Bob', 'Smith', 32);
+
+// create a new object instance
+let person2 = Object.create(person1);
+
+// check prototype
+person2.__proto__;  // Person {name: {first: "Bob", last: "Smith"}, age: 32}
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>The constructor property</td>
+              <td>
+                Every constructor function has a prototype property.<br />
+                This constructor property points to the original constructor
+                function.<br />
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+person1.constructor;
+person2.constructor;
+
+// Output:
+ƒ Person(first, last, age) {
+  this.name = {
+    'first': first,
+    'last' : last
+  };
+  this.age = age;
+}
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>create another object instance from that constructor</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// new keyword to specify that you want to use the function as a constructor.
+let person3 = new person1.constructor('Karen', 'Stephenson', 26);
+
+person3.name.first;   // Karen
+person3.age           // 26
+
+// The constructor property has other uses
+person1.constructor.name;   // Person
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Modifying prototypes</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// add a new method to the constructor's prototype property
+Person.prototype.farewell = function() {
+  console.log(this.name.first + ' has left the building.');
+};
+
+person3.farewell();   // Karen has left the building.
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Step by step</td>
+              <td>
+                In our code we define the constructor, then we create an
+                instance object from the constructor, then we add a new method
+                to the constructor's prototype
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// 1. Define custom constructor
+function Person(first, last, age) {
+  this.name = {
+    'first': first,
+    'last' : last
+  };
+  this.age = age;
+}
+
+// 2. Create an instance object from the custom constructor
+let person1 = new Person('Tammi', 'Smith', 32);
+
+// 3. add a new method to the custom constructor's prototype
+Person.prototype.farewell = function() {
+  console.log(this.name.first + ' has left the building');
+};
+                </code></pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Inheritance -->
+      <section id="inheritance">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Inheritance"
+            >Inheritance</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Info</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Getting started</td>
+              <td>Person custom constructor and constructor's prototype</td>
+              <td>
+                <pre><code class="language-javascript">
+// custom constructor
+function Person(first, last, age, gender, interests) {
+  this.name = {
+    first,
+    last
+  };
+  this.age = age;
+  this.gender = gender;
+  this.interests = interests;
+};
+
+// constructor's prototype method
+Person.prototype.greeting = function() {
+  alert('Hi! I\'m ' + this.name.first + '.');
+};
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Defining a Teacher() constructor function</td>
+              <td>
+                - We need to add subject property.<br />
+                - Call function allows you to call a function defined somewhere
+                else.
+              </td>
+              <td>
+                <pre>
+                  <code class="language-javascript">
+function Teacher(first, last, age, gender, interests, subject) {
+  Person.call(this, first, last, age, gender, interests);
+
+  this.subject = subject;
+}
+                  </code>
+                </pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Inheriting from a constructor with no parameters</td>
+              <td>
+                If the constructor you are inheriting from doesn't take its
+                property values from parameters, you don't need to specify them
+                as additional arguments in call().
+              </td>
+              <td>
+                <pre>
+                  <code class="language-javascript">
+function Brick() {
+  this.width = 10;
+  this.height = 20;
+}
+
+function BlueGlassBrick() {
+  Brick.call(this);
+
+  this.opacity = 0.5;
+  this.color = 'blue';
+}
+
+var blueGlass = new BlueGlassBrick();
+console.log(blueGlass); // {width: 10, height: 20, opacity: 0.5, color: "blue"}
+                  </code>
+                </pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Setting Teacher()'s prototype and constructor reference</td>
+              <td>
+                - We are using create() function to create a new object and make
+                it the value of Teacher.prototype.<br />
+                - Teacher.prototype.constructor should return Teacher(), as
+                desired, plus we are now inheriting from Person()
+              </td>
+              <td>
+                <pre>
+                  <code class="language-javascript">
+Teacher.prototype = Object.create(Person.prototype);
+
+Teacher.prototype.constructor
+/* Output
+Person(first, last, age, gender, interests) {
+  this.name = {
+    first,
+    last
+  };
+  this.age = age;
+  this.gender = gender;
+  this.interests = interests;
+}
+*/
+// This is returning the Person object so we need to define it right
+
+Object.defineProperty(Teacher.prototype, 'constructor', { 
+    value: Teacher, 
+    enumerable: false, // so that it does not appear in 'for in' loop
+    writable: true });
+
+Teacher.prototype.constructor
+/* Output:
+Teacher(first, last, age, gender, interests, subject) {
+  Person.call(this, first, last, age, gender, interests);
+  this.subject = subject;
+}
+*/
+                  </code>
+                </pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Giving Teacher() a new greeting() function</td>
+              <td></td>
+              <td>
+                <pre>
+                  <code class="language-javascript">
+Teacher.prototype.greeting = function() {
+  let prefix;
+
+  if (this.gender === 'M') {
+    prefix = 'Mr.';
+  } else if (this.gender === 'F') {
+    prefix = 'Ms.';
+  } else {
+    prefix = 'Mx.';
+  }
+
+  console.log('Hello. My name is ' + prefix + ' ' + 
+    this.name.last + ', and I teach ' + this.subject + '.');
+};
+
+Teacher.prototype.farewell = function() {
+  console.log(`${this.name.first} has left the building. Bye for now!`);
+};
+                  </code>
+                </pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Trying the example out</td>
+              <td></td>
+              <td>
+                <pre>
+                  <code class="language-javascript">
+let teacher1 = new Teacher('Dave', 'Griffiths', 31, 'male', 
+                  ['football', 'cookery'], 'mathematics');
+
+teacher1.name.first;      // Dave
+teacher1.interests[0];    // football
+teacher1.subject;         // mathematics
+teacher1.greeting();      // Hello. My name is ...
+teacher1.farewell();      // Dave has left the building...
+                  </code>
+                </pre>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">ECMAScript 2015 Classes</td>
+            </tr>
+            <tr>
+              <td>Rewritten version of the Person</td>
+              <td>
+                - The constructor() method defines the constructor function that
+                represents our Person class.<br />
+                - greeting() and farewell() are class methods.
+              </td>
+              <td>
+                <pre>
+                  <code class="language-javascript">
+class Person {
+  constructor(first, last, age, gender, interests) {
+    this.name = {
+      first,
+      last
+    };
+    this.age = age;
+    this.gender = gender;
+    this.interests = interests;
+  }
+
+  greeting() {
+    console.log(`Hi! I'm ${this.name.first}`);
+  };
+
+  farewell() {
+    console.log(`${this.name.first} has left the building. Bye for now!`);
+  };
+}
+                  </code>
+                </pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Inheritance with class syntax</td>
+              <td>To create a subclass we use the extends keyword</td>
+              <td>
+                <pre>
+                  <code class="language-javascript">
+class Teacher extends Person {
+  constructor(subject, grade) {
+    this.subject = subject;
+    this.grade = grade;
+  }
+}
+/* <b>This will return error:</b>
+    Uncaught ReferenceError: Must call super constructor in derived 
+    class before accessing 'this' or returning from derived constructor
+
+  To call the parent constructor we have to use the super() operator
+*/
+
+class Teacher extends Person {
+  constructor(subject, grade) { 
+    super(); // Now 'this' is initialized by calling the parent constructor.
+    this.subject = subject;   
+    this.grade = grade; 
+  }
+}
+
+/* Since the super() operator is actually the parent class constructor, 
+   passing it the necessary arguments of the Parent class constructor 
+   will also initialize the parent class properties
+*/
+class Teacher extends Person {
+  constructor(first, last, age, gender, interests, subject, grade) {
+    super(first, last, age, gender, interests);
+
+    // subject and grade are specific to Teacher
+    this.subject = subject;
+    this.grade = grade;
+  }
+}
+                  </code>
+                </pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Instantiate Teacher object instances</td>
+              <td></td>
+              <td>
+                <pre>
+                  <code class="language-javascript">
+let snape = new Teacher('Severus', 'Snape', 58, 'male', ['Potions'], 'Dark arts', 5);
+snape.greeting(); // Hi! I'm Severus.
+snape.farewell(); // Severus has left the building. Bye for now.
+snape.age // 58
+snape.subject; // Dark arts
+                  </code>
+                </pre>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">Getters and Setters</td>
+            </tr>
+            <tr>
+              <td>Enhance the Teacher class with getters and setters.</td>
+              <td></td>
+              <td>
+                <pre>
+                  <code class="language-javascript">
+class Teacher extends Person {
+  constructor(first, last, age, gender, interests, subject, grade) {
+    super(first, last, age, gender, interests);
+    // subject and grade are specific to Teacher
+    this._subject = subject;
+    this.grade = grade;
+  }
+
+  get subject() {
+    return this._subject;
+  }
+
+  set subject(newSubject) {
+    this._subject = newSubject;
+  }
+}
+
+// Instantiate Teacher
+let snape = new Teacher('Severus', 'Snape', 58, 'male', ['Potions'], 'Dark arts', 5);
+
+// Check the default value
+console.log(snape.subject) // Returns "Dark arts"
+
+// Change the value
+snape.subject = "Balloon animals" // Sets _subject to "Balloon animals"
+
+// Check it again and see if it matches the new value
+console.log(snape.subject) // Returns "Balloon animals"
+                  </code>
+                </pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Json -->
+      <section id="json">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON"
+            >Json</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Info</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>What is JSON?</td>
+              <td>
+                - JavaScript Object Notation (JSON) is a text-based data format
+                following JavaScript object syntax.<br />
+                - A JSON string can be stored in file, which is a text file with
+                an extension of <b>.json</b>, and a MIME type of
+                <b>application/json</b>.<br />
+                - It contains only properties, no methods.<br />
+                - Validate your json from
+                <a href="https://jsonlint.com/">Json lint</a>.
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+{
+  "squadName": "Super hero squad",
+  "homeTown": "Metro City",
+  "formed": 2016,
+  "members": [
+    {
+      "name": "Molecule Man",
+      "age": 29,
+    },
+    {
+      "name": "Madame Uppercut",
+      "age": 39,
+    },
+  ]
+}
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Accessing JSON data</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+const superheroes = {
+  "squadName": "Super hero squad",
+  "members": [
+    {
+      "name": "Molecule Man",
+    },
+  ]
+}
+superheroes.members[0].name;    // "Molecule Man"
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Arrays as JSON</td>
+              <td>- This is perfectly valid JSON</td>
+              <td>
+                <pre><code class="language-javascript">
+[
+  {
+    "name": "Molecule Man",
+    "age": 29,
+    "secretIdentity": "Dan Jukes",
+    "powers": [
+      "Radiation resistance",
+      "Turning tiny",
+      "Radiation blast"
+    ]
+  },
+  {
+    "name": "Madame Uppercut",
+    "age": 39,
+    "secretIdentity": "Jane Wilson",
+    "powers": [
+      "Million tonne punch",
+      "Damage resistance",
+      "Superhuman reflexes"
+    ]
+  }
+]
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Accessing Arrays as JSON</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+const superheroes = [
+  {
+    "name": "Molecule Man",
+    "age": 29,
+    "secretIdentity": "Dan Jukes",
+    "powers": [
+      "Radiation resistance",
+      "Turning tiny",
+      "Radiation blast"
+    ]
+  },
+  {
+    "name": "Madame Uppercut",
+    "age": 39,
+    "secretIdentity": "Jane Wilson",
+    "powers": [
+      "Million tonne punch",
+      "Damage resistance",
+      "Superhuman reflexes"
+    ]
+  }
+]
+
+superheroes[0]["powers"][0]   // "Radiation resistance"
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Obtaining the JSON</td>
+              <td>
+                <ul>
+                  <li>
+                    To obtain the JSON, we use an API called XMLHttpRequest
+                    (often called XHR).
+                  </li>
+                  <li>
+                    This allows us to make network requests to retrieve
+                    resources from a server via JavaScript (e.g. images, text,
+                    JSON, even HTML snippets)
+                  </li>
+                  <li>
+                    output with some style:
+                    <a
+                      target="_blank"
+                      href="https://mdn.github.io/learning-area/javascript/oojs/json/heroes-finished.html"
+                      >heroes.html</a
+                    >
+                  </li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// Add "header" & "section" element inside html page.
+
+// Add script tag and inside it add below code.
+const header = document.querySelector('header');
+const section = document.querySelector('section');
+
+let requestURL =
+  "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json";
+let request = new XMLHttpRequest();
+request.open("GET", requestURL);
+request.responseType = "json";
+request.send();
+
+// This section involves waiting for the response to return from the server
+request.onload = function () {
+  const superHeroes = request.response;
+  populateHeader(superHeroes);
+  showHeroes(superHeroes);
+};
+
+function populateHeader(obj) {
+  const myH1 = document.createElement('h1');
+  myH1.textContent = obj['squadName'];
+  header.appendChild(myH1);
+
+  const myPara = document.createElement('p');
+  myPara.textContent = 'Hometown: ' + obj['homeTown'] + ' // Formed: ' + obj['formed'];
+  header.appendChild(myPara);
+}
+
+function showHeroes(obj) {
+  const heroes = obj['members'];
+
+  for (let i = 0; i < heroes.length; i++) {
+    const myArticle = document.createElement('article');
+    const myH2 = document.createElement('h2');
+    const myPara1 = document.createElement('p');
+    const myPara2 = document.createElement('p');
+    const myPara3 = document.createElement('p');
+    const myList = document.createElement('ul');
+
+    myH2.textContent = heroes[i].name;
+    myPara1.textContent = 'Secret identity: ' + heroes[i].secretIdentity;
+    myPara2.textContent = 'Age: ' + heroes[i].age;
+    myPara3.textContent = 'Superpowers:';
+
+    const superPowers = heroes[i].powers;
+    for (let j = 0; j < superPowers.length; j++) {
+      const listItem = document.createElement('li');
+      listItem.textContent = superPowers[j];
+      myList.appendChild(listItem);
+    }
+
+    myArticle.appendChild(myH2);
+    myArticle.appendChild(myPara1);
+    myArticle.appendChild(myPara2);
+    myArticle.appendChild(myPara3);
+    myArticle.appendChild(myList);
+
+    section.appendChild(myArticle);
+  }
+}
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Converting between objects and text</td>
+              <td>
+                <ul>
+                  <li>
+                    <b>parse()</b>: Accepts a JSON string as a parameter, and
+                    returns the corresponding JavaScript object.
+                  </li>
+                  <li>
+                    <b>stringify()</b>: Accepts an object as a parameter, and
+                    returns the equivalent JSON string.
+                  </li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+request.responseType = 'text'; // now we're getting a string!
+request.send();
+
+request.onload = function() {
+  const superHeroesText = request.response;
+
+  // convert string to an object
+  const superHeroes = JSON.parse(superHeroesText);
+
+  // convert object to an string
+  const superHeroesString = JSON.stringify(superHeroes); 
+}
+                </code></pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Asynchronous -->
+      <section id="asynchronous">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Concepts"
+            >Asynchronous</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Info</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Asynchronous?</td>
+              <td>
+                <ul>
+                  <li>
+                    Normally, a given program's code runs straight along, with
+                    only one thing happening at once.
+                  </li>
+                  <li>
+                    If a function relies on the result of another function, it
+                    has to wait for the other function to finish and return, and
+                    until that happens, the entire program is essentially
+                    stopped from the perspective of the user.
+                  </li>
+                  <li>
+                    There's no sense sitting there waiting for something when
+                    you could let the other task chug along on another processor
+                    core and let you know when it's done. This lets you get
+                    other work done in the meantime, which is the basis of
+                    <b>asynchronous programming</b>.
+                  </li>
+                </ul>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Blocking code</td>
+              <td>
+                <ul>
+                  <li>
+                    When a web app runs in a browser and it executes an
+                    intensive chunk of code without returning control to the
+                    browser, the browser can appear to be frozen. This is called
+                    <b>blocking</b>.
+                  </li>
+                  <li>When we click on button it will take time to print text.
+                    This is where user is blocking.</li>
+                    
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+const btn = document.querySelector('button');
+btn.addEventListener('click', () => {
+  let myDate;
+  for(let i = 0; i < 10000000; i++) {
+    let date = new Date();
+    myDate = date
+  }
+
+  let pElem = document.createElement('p');
+  pElem.textContent = 'This is a newly-added paragraph.';
+  btn.parentNode.appendChild(pElem);
+});
+                </code></pre>
+                Output:<br />
+                <button id="blockingBtn">Click here!</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Threads</td>
+              <td>
+                <ul>
+                  <li>
+                    A thread is basically a single process that a program can use to complete tasks. Each thread can only do a single task at once.<br /><br />
+                    <b>Task A --> Task B --> Task C</b><br />
+                    <br />
+                  </li>
+                  <li>Many computers now have multiple cores, so can do multiple things at once.</li>
+                  <li>Programming languages that can support multiple threads can use multiple cores to complete multiple tasks simultaneously<br /><br />
+                  <b>Thread 1: Task A --> Task B<br />
+                    Thread 2: Task C --> Task D</br></li>
+                </ul>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>JavaScript is single-threaded</td>
+              <td>
+                <ul>
+                  <li>
+                    JavaScript is traditionally single-threaded.
+                  </li>
+                  <li><b>Web workers</b> allow you to send some of the JavaScript processing off to a separate thread, called a worker so that you can run multiple JavaScript chunks simultaneously.
+                  <br /><br />
+                  <b>  Main thread: Task A --> Task C<br />
+                    Worker thread: Expensive task B</b><br /><br />
+                  </li>
+                  <li>Have a look at <a href="https://mdn.github.io/learning-area/javascript/asynchronous/introducing/simple-sync-worker.html" target="_blank">simple-sync-worker.html</a></li>
+                </ul>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Asynchronous code</td>
+              <td>
+                <ul>
+                  <li>
+                    Web workers are pretty useful, but they do have their limitations.
+                  </li>
+                  <li>A major one is they are not able to access the DOM — you can't get a worker to directly do anything to update the UI.
+                  </li>
+                  <li>The second problem is that although code run in a worker is not blocking, it is still basically synchronous. This becomes a problem when a function relies on the results of multiple previous processes to function.</li>
+                </ul>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td colspan="3">Introducing asynchronous JavaScript</td>
+            </tr>
+            <tr>
+              <td>Synchronous JavaScript</td>
+              <td>
+                <ul>
+                  <li>
+                    In this block, the lines are executed one after the other.
+                  </li>
+                  <li>After you've clicked the button the paragraph won't appear until after the OK button is pressed in the alert box.</li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+const btn = document.querySelector('button');
+btn.addEventListener('click', () => {
+  alert('You clicked me!');
+
+  let pElem = document.createElement('p');
+  pElem.textContent = 'This is a newly-added paragraph.';
+  btn.parentNode.appendChild(pElem);
+});
+                </code></pre>
+                Output: <br />
+                <button id="synchronousBtn">Click here!</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Asynchronous JavaScript</td>
+              <td>
+                <ul>
+                  <li>
+                    Two main types: <br />
+                    1. callbacks<br />
+                    2. promise
+                  </li>
+                </ul>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Async callbacks</td>
+              <td>
+                <ul>
+                  <li>
+                    Async callbacks are functions that are specified as arguments when calling a function which will start executing code in the background.
+                  </li>
+                  <li>When the background code finishes running, it calls the callback function to let you know the work is done</li>
+                  <li>An example of an async callback is the second parameter of the addEventListener() method</li>
+                  <li>The first parameter is the type of event to be listened for, and the second parameter is a callback function that is invoked when the event is fired.</li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+btn.addEventListener('click', () => {
+  alert('You clicked me!');
+
+  let pElem = document.createElement('p');
+  pElem.textContent = 'This is a newly-added paragraph.';
+  document.body.appendChild(pElem);
+});
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Custom Async callbacks</td>
+              <td>
+                <ul>
+                  <li>
+                    Callback(displayImage()) is waiting on the XHR call to finish downloading the resource (using the onload event handler) before it passes it to the callback</li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+function loadAsset(url, type, callback) {
+  let xhr = new XMLHttpRequest();
+  xhr.open('GET', url);
+  xhr.responseType = type;
+
+  xhr.onload = function() {
+    callback(xhr.response);
+  };
+
+  xhr.send();
+}
+
+function displayImage(blob) {
+  let objectURL = URL.createObjectURL(blob);
+
+  let image = document.createElement('img');
+  image.src = objectURL;
+  document.body.appendChild(image);
+}
+
+loadAsset('coffee.jpg', 'blob', displayImage);
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">Promises</td>
+            </tr>
+            <tr>
+              <td>Promises</td>
+              <td>
+                <ul>
+                  <li>
+                    The promise is an object representing the completion or failure of the async operation.
+                  </li>
+                  <li>It's the browser's way of saying "I promise to get back to you with the answer as soon as I can," hence the name "promise"</li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+fetch('products.json').then(function(response) {
+  return response.json();
+}).then(function(json) {
+  products = json;
+  initialize();
+}).catch(function(err) {
+  console.log('Fetch problem: ' + err.message);
+});
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>The event queue</td>
+              <td>
+                <ul>
+                  <li>
+                    Async operations like promises are put into an event queue, which runs after the main thread has finished processing so that they do not block subsequent JavaScript code from running.
+                  </li>
+                  <li>The queued operations will complete as soon as possible then return their results to the JavaScript environment.</li>
+                </ul>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Promises versus callbacks</td>
+              <td>
+                <ul>
+                  <li>
+                    Promises are essentially a returned object to which you attach callback functions, rather than having to pass callbacks into a function.
+                  </li>
+                  <li>Promise Advantages:<br />
+                    <ol>
+                      <li>chain multiple async operations together using multiple .then() operations</li>
+                      <li>Promise callbacks are always called in the strict order they are placed in the event queue.</li>
+                      <li>Error handling is much better — all errors are handled by a single .catch() block</li>
+                      <li>Promises avoid inversion of control, unlike old-style callbacks, which lose full control of how the function will be executed when passing a callback to a third-party library.</li>
+                    </ol>
+                  </li>
+                </ul>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td colspan="3">Cooperative asynchronous JavaScript: Timeouts and intervals</td>
+            </tr>
+            <tr>
+              <td>setTimeout()</td>
+              <td>
+                <ul>
+                  <li>setTimeout() executes a particular block of code once after a specified time has elapsed.</li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+let myGreeting = setTimeout(function() {
+  alert('Hello, Mr. Universe!');
+}, 3000)
+                </code></pre>
+                Output: <br />
+                <button id="timeout">Click here!</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Clearing timeout</td>
+              <td>
+                <ul>
+                  <li>You can cancel timeout before the specified time has elapsed by calling clearTimeout()</li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+clearTimeout(myGreeting);
+                </code></pre>
+                Output: <br />
+                // First click on above button and then immediately click this button to cancel timeout<br />
+                <button id="stopTimeout">Click here!</button>
+              </td>
+            </tr>
+            <tr>
+              <td>setInterval()</td>
+              <td>
+                <ul>
+                  <li>setTimeout() executes a particular block of code repeatedly after a specified time has elapsed every time.</li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+function displayTime() {
+   let date = new Date();
+   let time = date.toLocaleTimeString();
+   alert(time);
+}
+
+const createClock = setInterval(displayTime, 3000);
+                </code></pre>
+                Output: <br />
+                <button id="interval">Click here!</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Clearing intervals</td>
+              <td>
+                <ul>
+                  <li>You can stop interval by calling clearInterval()</li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+clearInterval(createClock);
+                </code></pre>
+                Output: <br />
+                // First click on above button and then immediately click this button to cancel interval<br />
+                <button id="stopInterval">Click here!</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Recursive timeouts</td>
+              <td>
+                <ul>
+                  <li>When your code has the potential to take longer to run than the time interval you’ve assigned, it’s better to use recursive setTimeout() — this will keep the time interval constant</li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+let i = 1;
+
+setTimeout(function run() {
+  console.log(i);
+  i++;
+  setTimeout(run, 100);
+}, 100);
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Immediate timeouts</td>
+              <td>
+                <ul>
+                  <li>This can be useful in cases where you want to set a block of code to run as soon as all of the main thread has finished running — put it on the async event loop, so it will run straight afterwards.</li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+setTimeout(function() {
+  alert('World');
+}, 0);
+
+alert('Hello');
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>requestAnimationFrame()</td>
+              <td>
+                <ul>
+                  <li>requestAnimationFrame() is a specialized looping function created for running animations efficiently in the browser.</li>
+                  <li>It is basically the modern version of setInterval()</li>
+                  <li>It executes a specified block of code before the browser next repaints the display, allowing an animation to be run at a suitable frame rate regardless of the environment it is being run in</li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+function draw() {
+   // Drawing code goes here
+   requestAnimationFrame(draw);
+}
+
+draw();
+                </code></pre>
+                Example: <br />
+                <a href="https://mdn.github.io/learning-area/javascript/asynchronous/loops-and-intervals/simple-raf-spinner.html" target="_blank">Live Example</a>&nbsp;&nbsp;<a href="https://github.com/mdn/learning-area/blob/master/javascript/asynchronous/loops-and-intervals/simple-raf-spinner.html" target="_blank">Code</a>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">Graceful asynchronous programming with Promises</td>
+            </tr>
+            <tr>
+              <td>Improvements with promises</td>
+              <td>
+                <ul>
+                  <li>Promises make situations like the above much easier to write, parse, and run.</li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// First way
+chooseToppings()
+.then(function(toppings) {
+  return placeOrder(toppings);
+})
+.then(function(order) {
+  return collectOrder(order);
+})
+.then(function(pizza) {
+  eatPizza(pizza);
+})
+.catch(failureCallback);
+
+// Second way
+chooseToppings()
+.then(toppings =>
+  placeOrder(toppings)
+)
+.then(order =>
+  collectOrder(order)
+)
+.then(pizza =>
+  eatPizza(pizza)
+)
+.catch(failureCallback);
+
+// Third way
+chooseToppings()
+.then(toppings => placeOrder(toppings))
+.then(order => collectOrder(order))
+.then(pizza => eatPizza(pizza))
+.catch(failureCallback);
+
+// Forth way
+chooseToppings().then(placeOrder).then(collectOrder).then(eatPizza).catch(failureCallback);
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Real example of promise</td>
+              <td>
+                <ul>
+                  <li>setTimeout() executes a particular block of code once after a specified time has elapsed.</li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+fetch('coffee.jpg')
+.then(response => {
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  } else {
+    return response.blob();
+  }
+})
+.then(myBlob => {
+  let objectURL = URL.createObjectURL(myBlob);
+  let image = document.createElement('img');
+  image.src = objectURL;
+  document.body.appendChild(image);
+})
+.catch(e => {
+  console.log('Problem with your fetch operation: ' + e.message);
+});
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Running code in response to multiple promises fulfilling</td>
+              <td>
+                <ul>
+                  <li>what if you want to run some code only after a whole bunch of promises have all fulfilled?</li>
+                  <li>You can do this with the ingeniously named Promise.all() static method.</li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+let a = fetch(url1);
+let b = fetch(url2);
+let c = fetch(url3);
+
+Promise.all([a, b, c]).then(values => {
+  ...
+});
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Multiple promises example</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+function fetchAndDecode(url, type) {
+  return fetch(url).then(response => {
+    if(!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    } else {
+      if(type === 'blob') {
+        return response.blob();
+      } else if(type === 'text') {
+        return response.text();
+      }
+    }
+  })
+  .catch(e => {
+    console.log(`Problem with your fetch operation "${url}": ` + e.message);
+  });
+}
+
+let coffee = fetchAndDecode('coffee.jpg', 'blob');
+let tea = fetchAndDecode('tea.jpg', 'blob');
+let description = fetchAndDecode('description.txt', 'text');
+
+Promise.all([coffee, tea, description]).then(values => {
+
+});
+                </code></pre>
+                Example: <br />
+                <a href="https://mdn.github.io/learning-area/javascript/asynchronous/promises/promise-all.html" target="_blank">Live Example</a>&nbsp;&nbsp;<a href="https://github.com/mdn/learning-area/blob/master/javascript/asynchronous/promises/promise-all.html" target="_blank">Code</a>
+              </td>
+            </tr>
+            <tr>
+              <td>Running some final code after a promise fulfills/rejects</td>
+              <td>
+                <ul>
+                  <li>The .finally() method is available, which can be chained onto the end of your regular promise chain allowing you to cut down on code repetition and do things more elegantly.</li>
+                  <li>In the example finally() logs a simple message to the console to tell us when each fetch attempt has finished.</li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+function fetchAndDecode(url, type) {
+  return fetch(url).then(response => {
+    if(!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    } else {
+      if(type === 'blob') {
+        return response.blob();
+      } else if(type === 'text') {
+        return response.text();
+      }
+    }
+  })
+  .catch(e => {
+    console.log(`Problem with your fetch operation  "${url}": ` + e.message);
+  })
+  .finally(() => {
+    console.log(`fetch attempt for "${url}" finished.`);
+  });
+}
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">Building your own custom promises</td>
+            </tr>
+            <tr>
+              <td>Using the Promise() constructor</td>
+              <td>
+                <ul>
+                  <li>resolve() and reject() are functions that you call to fulfil or reject the newly-created promise.</li>
+                  <li>timeoutPromise() function returns a Promise, we can chain .then(), .catch(), etc. onto it to make use of its functionality.</li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+function timeoutPromise(message, interval) {
+  return new Promise((resolve, reject) => {
+    if (message === '' || typeof message !== 'string') {
+      reject('Message is empty or not a string');
+    } else if (interval < 0 || typeof interval !== 'number') {
+      reject('Interval is negative or not a number');
+    } else {
+      setTimeout(function(){
+        resolve(message);
+      }, interval);
+    }
+  });
+};
+
+// Custom promise
+timeoutPromise('Hello there!', 1000)
+.then(message => {
+   alert(message);
+})
+.catch(e => {
+  console.log('Error: ' + e);
+});
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">Making asynchronous programming easier with async and await</td>
+            </tr>
+            <tr>
+              <td>The async keyword</td>
+              <td>
+                <ul>
+                  <li>async keyword you put in front of a function declaration to turn it into an async function</li>
+                  <li>An async function is a function that knows how to expect the possibility of the await keyword being used to invoke asynchronous code.</li>
+                  <li>So the async keyword is added to functions to tell them to return a promise rather than directly returning the value.</li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+function hello() { return "Hello" };
+hello();    // "Hello"
+
+async function hello() { return "Hello" };
+hello();    // Promise {<fulfilled>: "Hello"}
+
+// async function expression
+let hello = async function() { return "Hello" };
+hello();
+
+// Arrow function
+let hello = async () => { return "Hello" };
+
+// consume return value from .then()
+hello().then((value) => console.log(value))
+
+// shorthand
+hello().then(console.log)
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>The await keyword</td>
+              <td>
+                <ul>
+                  <li>await only works inside async functions</li>
+                  <li>await can be put in front of any async promise-based function to pause your code on that line until the promise fulfills, then return the resulting value.</li>
+                  <li>You can use await when calling any function that returns a Promise, including web API functions.</li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+async function hello() {
+  return greeting = await Promise.resolve("Hello");
+};
+
+hello().then(alert);
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Rewriting promise code with async/await</td>
+              <td>
+                <ul>
+                  <li>It makes code much simpler and easier to understand — no more .then() blocks everywhere!</li>
+                  <li>You could refactor your code to use a hybrid approach of promises and await, bringing the second half of the function out into a new block to make it more flexible</li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+async function myFetch() {
+  let response = await fetch('coffee.jpg');
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  let myBlob = await response.blob();
+
+  let objectURL = URL.createObjectURL(myBlob);
+  let image = document.createElement('img');
+  image.src = objectURL;
+  document.body.appendChild(image);
+  }
+}
+
+myFetch()
+.catch(e => {
+  console.log('Problem with your fetch operation: ' + e.message);
+});
+
+// ---- or ----
+async function myFetch() {
+  let response = await fetch('coffee.jpg');
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+  return await response.blob();
+
+}
+
+myFetch().then((blob) => {
+  let objectURL = URL.createObjectURL(blob);
+  let image = document.createElement('img');
+  image.src = objectURL;
+  document.body.appendChild(image);
+}).catch(e => console.log(e));
+                </code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Async/await class methods</td>
+              <td>
+                <ul>
+                  <li>You can even add async in front of class/object methods to make them return promises, and await promises inside them.</li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+class Person {
+  constructor(first, last, age, gender, interests) {
+    this.name = {
+      first,
+      last
+    };
+    this.age = age;
+    this.gender = gender;
+    this.interests = interests;
+  }
+
+  async greeting() {
+    return await Promise.resolve(`Hi! I'm ${this.name.first}`);
+  };
+
+  farewell() {
+    console.log(`${this.name.first} has left the building. Bye for now!`);
+  };
+}
+
+let han = new Person('Han', 'Solo', 25, 'male', ['Smuggling']);
+
+han.greeting().then(console.log);   // Hi! I'm Han  [/n] Promise {<fulfilled>: undefined}
+                </code></pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+
+    <script src="assets/js/prism.js"></script>
+    <script src="assets/js/scripts.js"></script>
+  </body>
+</html>

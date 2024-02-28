@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Intro to Node</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="assets/css/prism.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+
+  <body>
+    <div class="sidebar">
+      <a class="active" href="#setup">Setup</a>
+      <a class="active" href="#introduction">Introduction</a>
+      <a class="active" href="#skeleton">Skeleton</a>
+      <a class="active" href="#database">Database</a>
+      <a class="active" href="#routes">Routes and controllers</a>
+      <a class="active" href="#forms">Working with forms</a>
+      <a class="active" href="#deploy">Deploying to production</a>
+    </div>
+
+    <div class="content">
+      <!-- Setup -->
+      <section id="setup">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/development_environment"
+            >Setup</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Info</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Installing Node</td>
+              <td>
+                - Download and install node from
+                <a href="https://nodejs.org/en/" target="_blank"
+                  >https://nodejs.org/en/</a
+                >
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// Test your Nodejs and NPM version(open cmd)
+> node -v
+  v12.18.4
+
+> npm -v
+  6.14.6
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Adding dependencies</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// create a directory and navigate into it
+  > mkdir myapp
+  > cd myapp
+
+// command to create a package.json file
+  > npm init
+
+//  install Express in the myapp directory
+  > npm install express
+
+// Now package.json will look like
+  {
+    "name": "myapp",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "express": "^4.17.1"
+    }
+  }
+
+// create index.js
+  const express = require('express')
+  const app = express();
+  const port = 8000;
+
+  app.get('/', (req, res) => {
+    res.send('Hello World!')
+  });
+
+  app.listen(port, () => {
+    console.log(`Example app listening on port ${port}!`)
+  });
+
+// start the server 
+  > node index.js
+  Example app listening on port 8000
+
+// Navigate to the URL http://127.0.0.1:8000/
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Development dependencies</td>
+              <td>
+                - If a dependency is only used during development, you should
+                instead save it as a "development dependency"
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// cmd
+  > npm install eslint --save-dev
+
+// Now package.json will be updated by
+"devDependencies": {
+  "eslint": "^7.10.0"
+} 
+                  </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Running tasks</td>
+              <td>
+                - You can define named scripts in your package.json files and
+                call NPM to execute them with the run-script command
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// package.json
+"scripts": {
+  "lint": "eslint src/js"
+}
+
+// cmd
+npm run-script lint
+// OR (using the alias)
+npm run lint
+                  </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Installing the Express Application Generator</td>
+              <td>- Tool generates an Express application "skeleton"</td>
+              <td>
+                <pre><code class="language-javascript">
+// cmd
+> npm install express-generator -g
+// Express app named "helloworld"
+> express helloworld
+> cd helloworld
+> npm install
+// # Run helloworld on Windows with Command Prompt
+> SET DEBUG=helloworld:* & npm start
+// Open a browser and navigate to http://127.0.0.1:3000/
+                </code></pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Introduction -->
+      <section id="introduction">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Introduction"
+            >Introduction</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Info</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Introducing Node</td>
+              <td>
+                - Node allows developers to create all kinds of server-side
+                tools and applications in JavaScript.<br />
+                - Runs outside of a browser context<br /><br />
+                - Benefits
+                <ul>
+                  <li>Performance</li>
+                  <li>Node package manager (NPM) reusable packages</li>
+                  <li>Portable. Runs on all Operative system</li>
+                  <li>Huge developer community to help</li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// 1. Open terminal(cmd)
+// 2. Create the folder "test-node"
+  > mkdir test-node
+  > cd test-node
+
+// 3. create a file called "app.js"
+  // Load HTTP module
+  const http = require("http");
+  const hostname = "127.0.0.1";
+  const port = 8000;
+  // Create HTTP server
+  const server = http.createServer((req, res) => {
+      // Set the response HTTP header with HTTP status & type
+      res.writeHead(200, {'Content-Type': 'text/plain'});
+      // Send the response body "Hello World"
+      res.end('Hello World\n');
+  });
+  // Prints a log once the server starts listening
+  server.listen(port, hostname, () => {
+      console.log(`Server running at http://${hostname}:${port}/`);
+  })
+
+// 4. Npm init to add project information
+  > npm init
+
+// 5. Install packages
+  > npm i http
+
+// 6. Start node server
+  > node app.js
+
+// 7. Navigate to "http://127.0.0.1:8000" in your web browser
+
+// Output: Hello World
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Introducing Express</td>
+              <td>
+                - Node web framework - provides mechanisms to
+                <ul>
+                  <li>
+                    Write handlers for requests with different HTTP verbs at
+                    different URL paths (routes)
+                  </li>
+                  <li>Integrate with "view" rendering engines</li>
+                  <li>
+                    Set common web application settings like the port to use for
+                    connecting, and the location of templates that are used for
+                    rendering the response.
+                  </li>
+                  <li>
+                    Add additional request processing "middleware" at any point
+                    within the request handling pipeline.
+                  </li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}!`)
+});
+
+// Output: Hello World!
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Importing modules</td>
+              <td>- Import module by name</td>
+              <td>
+                <pre><code class="language-javascript">
+const express = require('express');
+const app = express();
+                  </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Creating module</td>
+              <td>- Create a custom module called "square"</td>
+              <td>
+                <pre><code class="language-javascript">
+// Create a file called "square.js"
+module.exports = {
+  area: function (width) {
+    return width * width;
+  },
+
+  perimeter: function (width) {
+    return 4 * width;
+  },
+};
+
+// add below lines in "app.js"
+// Here we require() the name of the file without the .js file extension
+const square = require('./square'); 
+console.log('Area of a square with a width of 4 is ' + square.area(4));
+
+// Output: Area of a square with a width of 4 is 16
+                  </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Using asynchronous APIs</td>
+              <td>
+                - Node is a single-threaded event-driven execution environment -
+                "Single threaded" means that all requests to the server are run
+                on the same thread - if any of your functions call synchronous
+                methods that take a long time to complete, they will block not
+                just the current request, but every other request being handled
+                by your web application.
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+setTimeout(function() {
+   console.log('First ');
+   }, 3000);
+console.log('Second ');
+
+// Output: Second First
+                  </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Creating route handlers</td>
+              <td>
+                - Callback route handler function for HTTP GET requests to the
+                site root ('/'). - res.send() to send the string "Hello World!"
+                - res.json() to send a JSON response - res.sendFile() to send a
+                file.<br /><br />
+                - Few route methods - checkout(), copy(), delete(), get(),
+                head(), lock(), merge(), mkactivity(), mkcol(), move(),
+                m-search(), notify(), options(), patch(), post(), purge(),
+                put(), report(), search(), subscribe(), trace(), unlock(),
+                unsubscribe()<br /><br />
+                - app.all() which will be called in response to any HTTP method
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// wiki.js
+const express = require('express');
+const router = express.Router();
+// Home page route
+router.get('/', function(req, res) {
+  res.send('Wiki home page');
+});
+// About page route
+router.get('/about', function(req, res) {
+  res.send('About this wiki');
+});
+module.exports = router;
+
+// app.js
+const wiki = require('./wiki.js');
+app.use('/wiki', wiki);
+                  </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Using middleware</td>
+              <td>- install the morgan HTTP request logger middleware</td>
+              <td>
+                <pre><code class="language-javascript">
+// Install morgan using  > npm install morgan
+const express = require('express');
+const logger = require('morgan');
+const app = express();
+app.use(logger('dev'));
+
+// The example below shows how you can add the middleware function 
+// using both approaches, and with/without a route.
+const express = require('express');
+const app = express();
+// An example middleware function
+let a_middleware_function = function(req, res, next) {
+  // ... perform some operations
+  next(); // Call next() so Express will call the next middleware function.
+}
+// Function added with use() for all routes and verbs
+app.use(a_middleware_function);
+// Function added with use() for a specific route
+app.use('/someroute', a_middleware_function);
+// A middleware function added for a specific HTTP verb and route
+app.get('/', a_middleware_function);
+app.listen(3000);
+                  </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Serving static files</td>
+              <td>
+                - You can use the express.static middleware to serve static
+                files, including your images, CSS and JavaScript
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// You can call static() multiple times to serve multiple directories.
+app.use(express.static('public'));
+app.use(express.static('media'));
+// Output: http://localhost:3000/images/dog.jpg
+
+// You can also create a virtual prefix for your static URLs, 
+// rather than having the files added to the base URL. 
+// For example, mount path with the prefix "/media":
+app.use('/media', express.static('public'));
+// Output: http://localhost:3000/media/images/dog.jpg
+                  </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Handling errors</td>
+              <td>
+                - Errors are handled by one or more special middleware functions
+                that have four arguments, instead of the usual three: (err, req,
+                res, next)
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+                  </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Rendering data (views)</td>
+              <td>
+                - you would call Response.render() in a route handler function
+                to create and send the HTML response
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+const express = require('express');
+const path = require('path');
+const app = express();
+
+// Set directory to contain the templates ('views')
+app.set('views', path.join(__dirname, 'views'));
+
+// Set view engine to use, in this case 'some_template_engine_name'
+app.set('view engine', 'some_template_engine_name');
+
+
+app.get('/', function(req, res) {
+  res.render('index', { title: 'About dogs', message: 'Dogs rock!' });
+});
+                  </code></pre>
+                Example:
+                <a
+                  href="http://expressjs.com/en/guide/using-template-engines.html"
+                  target="_blank"
+                  >Pug template engine</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Skeleton -->
+      <section id="skeleton">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/skeleton_website"
+            >Skeleton Website</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Info</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Creating a skeleton website</td>
+              <td>
+                - View engines: EJS, Hbs, Pug(Jade), Twig, and Vash<br />
+                - Css engines: LESS, SASS, Compass, Stylus<br />
+                - Complete project
+                <a
+                  href="https://github.com/mdn/express-locallibrary-tutorial"
+                  target="_blank"
+                  >project</a
+                >
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// cmd
+> npm install express-generator -g
+
+// check options
+> npm --help
+
+// Create a project inside the current directory
+> express
+// or 
+> express express-locallibrary-tutorial --view=pug
+
+// Change directory:
+> cd express-locallibrary-tutorial
+
+// install dependencies:
+> npm install
+
+// run the app
+> DEBUG=express-locallibrary-tutorial:* npm start
+                  </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Enable server restart on file changes</td>
+              <td>
+                - Any changes you make to your Express website are currently not
+                visible until you restart the server. - A convenient tool for
+                this purpose is "nodemon"
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// cmd
+> npm install --save-dev nodemon
+
+// add scripts in package.json
+"scripts": {
+  "devstart": "nodemon ./bin/www",
+  "serverstart": "DEBUG=express-locallibrary-tutorial:* npm run devstart"
+},
+
+// start server 
+> SET DEBUG=express-locallibrary-tutorial:* & npm run devstart
+                  </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">The generated project</td>
+            </tr>
+
+            <tr>
+              <td>package.json</td>
+              <td>
+                - <b>package.json:</b> defines the application dependencies and
+                other information<br />
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// package.json
+  {
+    "name": "express-locallibrary-tutorial",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+      "start": "node ./bin/www",
+      "devstart": "nodemon ./bin/www",
+      "serverstart": "DEBUG=express-locallibrary-tutorial:* npm run devstart"
+    },
+    "dependencies": {
+      "cookie-parser": "~1.4.4",
+      "debug": "~2.6.9",
+      "express": "~4.16.1",
+      "http-errors": "~1.6.3",
+      "morgan": "~1.9.1",
+      "pug": "2.0.0-beta11"
+    },
+    "devDependencies": {
+      "nodemon": "^2.0.4"
+    }
+  }
+                  </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>www file</td>
+              <td>
+                - <b>www file:</b> /bin/www is the application entry point<br />
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// www file
+  #!/usr/bin/env node
+
+  /**
+  * Module dependencies.
+  */
+
+  var app = require('../app');
+                  </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>app.js</td>
+              <td>
+                - <b>app.js: </b> creates an express application object<br />
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// app.js
+  // node libraries
+  var createError = require('http-errors');
+  var express = require('express');
+  var path = require('path');
+  var cookieParser = require('cookie-parser');
+  var logger = require('morgan');
+
+  // routes
+  var indexRouter = require('./routes/index');
+  var usersRouter = require('./routes/users');
+
+  // set up the view engine
+  app.set('views', path.join(__dirname, 'views'));
+  app.set('view engine', 'pug');
+
+  // app.use() to add the middleware libraries 
+  app.use(logger('dev'));
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: false }));
+  app.use(cookieParser());
+  app.use(express.static(path.join(__dirname, 'public')));
+
+  // route-handling code
+  app.use('/', indexRouter);
+  app.use('/users', usersRouter);
+
+  // adds handler methods for errors and HTTP 404 responses
+  app.use(function(req, res, next) {
+    next(createError(404));
+  });
+  app.use(function(err, req, res, next) {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
+  });
+
+  // export module
+  module.exports = app;
+                  </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>users.js</td>
+              <td>
+                - first loads the express module and uses it to get an
+                express.Router object. - Then it specifies a route on that
+                object and lastly exports the router from the module
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// users.js
+  var express = require('express');
+  var router = express.Router();
+
+  /* GET users listing. */
+  router.get('/', function(req, res, next) {
+    res.send('respond with a resource');
+  });
+
+  module.exports = router;
+                  </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>index.pug</td>
+              <td>
+                - title variable (with value 'Express') is inserted where
+                specified in the template
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+//  app.js
+  router.get('/', function(req, res, next) {
+    res.render('index', { title: 'Express' });
+  });
+
+// index.pug
+  extends layout
+
+  block content
+    h1= title
+    p Welcome to #{title}
+                  </code></pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Database -->
+      <section id="database">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose"
+            >Database</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Info</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>What databases can I use?</td>
+              <td>
+                - There are
+                <a
+                  href="https://expressjs.com/en/guide/database-integration.html"
+                  target="_blank"
+                  >many popular options</a
+                >, including PostgreSQL, MySQL, Redis, SQLite, and MongoDB. -
+                When choosing a database, consider things like
+                time-to-productivity, performance, backup, cost, community
+                support, etc
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+                  </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>What is the best way to interact with a database?</td>
+              <td>
+                - Two common approaches
+                <ul>
+                  <li>Using the databases' native query language (e.g. SQL)</li>
+                  <li>
+                    Using an Object Data Model ("ODM") or an Object Relational
+                    Model ("ORM")
+                  </li>
+                </ul>
+                - ODM's are often slower because they use translation code to
+                map between objects and the database format
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+                  </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>What ORM/ODM should I use?</td>
+              <td>
+                - Few solutions
+                <ul>
+                  <li>
+                    Mongoose: Mongoose is a MongoDB object modeling tool
+                    designed to work in an asynchronous environment.
+                  </li>
+                  <li>
+                    Waterline: An ORM extracted from the Express-based Sails web
+                    framework. It provides a uniform API for accessing numerous
+                    different databases, including Redis, MySQL, LDAP, MongoDB,
+                    and Postgres.
+                  </li>
+                  <li>
+                    Bookshelf: Features both promise-based and traditional
+                    callback interfaces, providing transaction support,
+                    eager/nested-eager relation loading, polymorphic
+                    associations, and support for one-to-one, one-to-many, and
+                    many-to-many relations. Works with PostgreSQL, MySQL, and
+                    SQLite3.
+                  </li>
+                  <li>
+                    Objection: Makes it as easy as possible to use the full
+                    power of SQL and the underlying database engine (supports
+                    SQLite3, Postgres, and MySQL).
+                  </li>
+                  <li>
+                    Sequelize: is a promise-based ORM for Node.js and io.js. It
+                    supports the dialects PostgreSQL, MySQL, MariaDB, SQLite,
+                    and MSSQL and features solid transaction support, relations,
+                    read replication and more.
+                  </li>
+                  <li>
+                    Node ORM2: is an Object Relationship Manager for NodeJS. It
+                    supports MySQL, SQLite, and Progress, helping to work with
+                    the database using an object-oriented approach.
+                  </li>
+                  <li>
+                    GraphQL: Primarily a query language for restful APIs,
+                    GraphQL is very popular, and has features available for
+                    reading data from databases.
+                  </li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+                  </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Designing the LocalLibrary models</td>
+              <td>
+                - Before you jump in and start coding the models, it's worth
+                taking a few minutes to think about what data we need to store
+                and the relationships between the different objects.
+              </td>
+              <td>
+                <img
+                  src="./assets/images/library_website_-_mongoose_express.png"
+                  alt="db"
+                  height="300"
+                />
+              </td>
+            </tr>
+
+            <tr>
+              <td>Connecting to MongoDB</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// install
+> npm install mongoose
+
+//Import the mongoose module
+var mongoose = require('mongoose');
+
+//Set up default mongoose connection
+var mongoDB = 'mongodb://127.0.0.1/my_database';
+mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
+
+//Get the default connection
+var db = mongoose.connection;
+
+//Bind connection to error event (to get notification of connection errors)
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+                  </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Defining the LocalLibrary Schema</td>
+              <td>
+                - Check all the models
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose#defining_the_locallibrary_schema"
+                  target="_blank"
+                  >here</a
+                >
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+/express-locallibrary-tutorial  //the project root
+  /models
+    author.js
+    book.js
+    bookinstance.js
+    genre.js
+                  </code></pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Routes and controllers -->
+      <section id="routes">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/routes"
+            >Routes and controllers</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Info</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Overview</td>
+              <td>
+                - "Routes" to forward the supported requests<br />
+                - Controller functions to get the requested data from the
+                models, create an HTML page displaying the data, and return it
+                to the user to view in the browser.<br />
+                - Views (templates) used by the controllers to render the data.
+              </td>
+              <td>
+                <img
+                  src="./assets/images/mvc_express.png"
+                  alt="mvc"
+                  width="400"
+                />
+              </td>
+            </tr>
+
+            <tr>
+              <td>Defining and using separate route modules</td>
+              <td>
+                - First we create wiki module<br />
+                - To use wiki module in our app we will import and add the
+                Router to the middleware handling path.<br />
+                - This way we have defined "/wiki" and "/wiki/about" two paths.
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// ./routes/wiki.js - Wiki route module.
+  var express = require('express');
+  var router = express.Router();
+
+  router.get('/', function (req, res) {
+    res.send('Wiki home page');
+  })
+
+  router.get('/about', function (req, res) {
+    res.send('About this wiki');
+  })
+
+  module.exports = router;
+
+// app.js
+  var wiki = require('./wiki.js');
+  app.use('/wiki', wiki);
+                  </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Route functions</td>
+              <td>
+                <table border="1">
+                  <thead>
+                    <tr>
+                      <th>Method</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>res.download()</td>
+                      <td>Prompt a file to be downloaded.</td>
+                    </tr>
+                    <tr>
+                      <td>res.end()</td>
+                      <td>End the response process.</td>
+                    </tr>
+                    <tr>
+                      <td>res.json()</td>
+                      <td>Send a JSON response.</td>
+                    </tr>
+                    <tr>
+                      <td>res.jsonp()</td>
+                      <td>Send a JSON response with JSONP support.</td>
+                    </tr>
+                    <tr>
+                      <td>res.redirect()</td>
+                      <td>Redirect a request.</td>
+                    </tr>
+                    <tr>
+                      <td>res.render()</td>
+                      <td>Render a view template.</td>
+                    </tr>
+                    <tr>
+                      <td>res.send()</td>
+                      <td>Send a response of various types.</td>
+                    </tr>
+                    <tr>
+                      <td>res.sendFile()</td>
+                      <td>Send a file as an octet stream.</td>
+                    </tr>
+                    <tr>
+                      <td>res.sendStatus()</td>
+                      <td>
+                        Set the response status code and send its string
+                        representation as the response body.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+router.get('/about', function (req, res) {
+  res.status(200).send('About wiki');// return string
+  res..json({ 'message': 'Error' }); // return json
+  res.sendFile('path/to/404.png');   // return file
+})
+                  </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>HTTP verbs</td>
+              <td>
+                - HTTP verbs: get(), post(), put(), delete(), options(),
+                trace(), copy(), lock(), mkcol(), move(), purge(), propfind(),
+                proppatch(), unlock(), report(), mkactivity(), checkout(),
+                merge(), m-search(), notify(), subscribe(), unsubscribe(),
+                patch(), search(), and connect().
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+router.post('/about', function (req, res) {
+  res.send('About this wiki');
+})
+                  </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Route paths</td>
+              <td>
+                - The route paths define the endpoints at which requests can be
+                made.<br />
+                - Route paths can also be string patterns.<br />
+                <ul>
+                  <li>
+                    ? : The endpoint must have 0 or 1 of the preceding character
+                    (or group), e.g. a route path of '/ab?cd' will match
+                    endpoints acd or abcd.
+                  </li>
+                  <li>
+                    + : The endpoint must have 1 or more of the preceding
+                    character (or group), e.g. a route path of '/ab+cd' will
+                    match endpoints abcd, abbcd, abbbcd, and so on.
+                  </li>
+                  <li>
+                    * : The endpoint may have an arbitrary string where the *
+                    character is placed. E.g. a route path of '/ab*cd' will
+                    match endpoints abcd, abXcd, abSOMErandomTEXTcd, and so on.
+                  </li>
+                  <li>
+                    () : Grouping match on a set of characters to perform
+                    another operation on, e.g. '/ab(cd)?e' will perform a
+                    ?-match on the group (cd)—it will match abe and abcde.
+                  </li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+//  the route path below will match 
+// catfish and dogfish, but not catflap, catfishhead
+app.get(/.*fish$/, function (req, res) {
+  ...
+})
+                  </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Route parameters</td>
+              <td>
+                - Route parameters are named URL segments used to capture values
+                at specific positions in the URL.
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// http://localhost:3000/users/34/books/8989
+app.get('/users/:userId/books/:bookId', function (req, res) {
+  // Access userId via: req.params.userId
+  // Access bookId via: req.params.bookId
+  res.send(req.params);
+})
+                  </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Routes needed for the LocalLibrary</td>
+              <td>
+                <ul>
+                  <li><code>catalog/</code> — The home/index page.</li>
+                  <li>
+                    <code>catalog/&lt;objects&gt;/</code> — The list of all
+                    books, bookinstances, genres, or authors (e.g.
+                    /<code>catalog/books/</code>, /<code>catalog/genres/</code>,
+                    etc.)
+                  </li>
+                  <li>
+                    <code>catalog/&lt;object&gt;/<em>&lt;id&gt;</em></code> —
+                    The detail page for a specific book, bookinstance, genre, or
+                    author with the given <code><em>_id</em></code> field value
+                    (e.g. <code>/catalog/book/584493c1f4887f06c0e67d37)</code>.
+                  </li>
+                  <li>
+                    <code>catalog/&lt;object&gt;/create</code> — The form to
+                    create a new book, bookinstance, genre, or author (e.g.
+                    <code>/catalog/book/create)</code>.
+                  </li>
+                  <li>
+                    <code
+                      >catalog/&lt;object&gt;/<em>&lt;id&gt;</em>/update</code
+                    >
+                    — The form to update a specific book, bookinstance, genre,
+                    or author with the given <code><em>_id</em></code> field
+                    value (e.g.
+                    <code>/catalog/book/584493c1f4887f06c0e67d37/update)</code>.
+                  </li>
+                  <li>
+                    <code
+                      >catalog/&lt;object&gt;/<em>&lt;id&gt;</em>/delete</code
+                    >
+                    — The form to delete a specific book, bookinstance, genre,
+                    author with the given <code><em>_id</em></code> field value
+                    (e.g.
+                    <code>/catalog/book/584493c1f4887f06c0e67d37/delete)</code>.
+                  </li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+                  </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Create the route-handler callback functions</td>
+              <td>
+                - we'll first create all the dummy/skeleton callback
+                functions<br />
+                - check files
+                <a
+                  href="https://github.com/mdn/express-locallibrary-tutorial/tree/master/controllers"
+                  target="_blank"
+                  >here</a
+                >
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+/express-locallibrary-tutorial  //the project root
+  /controllers
+    authorController.js
+    bookController.js
+    bookinstanceController.js
+    genreController.js
+                  </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Create the catalog route module</td>
+              <td>
+                - check files
+                <a
+                  href="https://github.com/mdn/express-locallibrary-tutorial/tree/master/routes"
+                  target="_blank"
+                  >here</a
+                >
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+/express-locallibrary-tutorial
+  /routes
+    catalog.js
+                  </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Update the index route module</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// GET home page.
+router.get('/', function(req, res) {
+  res.redirect('/catalog');
+});
+                  </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Update app.js</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+var catalogRouter = require('./routes/catalog');
+app.use('/catalog', catalogRouter);
+                  </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Testing the routes</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+http://localhost:3000/
+http://localhost:3000/catalog
+http://localhost:3000/catalog/books
+http://localhost:3000/catalog/bookinstances/
+http://localhost:3000/catalog/authors/
+http://localhost:3000/catalog/genres/
+http://localhost:3000/catalog/book/54654
+http://localhost:3000/catalog/book/create
+                </code></pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Working with forms -->
+      <section id="forms">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/forms"
+            >Working with forms</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Info</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Form handling process</td>
+              <td></td>
+              <td>
+                <img
+                  src="./assets/images/web_server_form_handling.png"
+                  alt="mvc"
+                  width="400"
+                />
+              </td>
+            </tr>
+
+            <tr>
+              <td>Validation and sanitization</td>
+              <td>
+                - Validation checks that entered values are appropriate<br />
+                - Sanitization removes/replaces characters in the data that
+                might potentially be used to send malicious content to the
+                server.
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+> npm install express-validator
+
+const { body,validationResult } = require('express-validator');
+
+// trim() to remove whitespace
+// isLength() to check the resulting string isn't empty
+// escape() to remove HTML characters
+body('name', 'Empty name').trim().isLength({ min: 1 }).escape(),
+
+// valid date
+body('age', 'Invalid age').optional({ checkFalsy: true })
+    .isISO8601().toDate(),
+
+// You can also daisy chain different validators, and add messages
+body('name').trim().isLength({min:1}).withMessage('Name empty')
+    .isAlpha().withMessage('Name must be alphabet letters.'),
+
+// validationResult
+(req, res, next) => {
+  // Extract the validation errors from a request.
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+      // There are errors. Render form again with sanitized values/errors messages.
+      // Error messages can be returned in an array using `errors.array()`.
+      }
+  else {
+      // Data from form is valid.
+  }
+}
+                </code></pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Working with forms -->
+      <section id="deploy">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/deployment"
+            >Deploying to production</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Info</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Log appropriately</td>
+              <td>
+                - you should attempt to minimize the amount of logging added for
+                debugging purposes<br />
+                - debug module allows you to control what logging is performed
+                by setting an environment variable
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+var debug = require('debug')('author');
+
+// Display Author update form on GET
+exports.author_update_get = function(req, res, next) {
+    req.sanitize('id').escape().trim();
+    Author.findById(req.params.id, function(err, author) {
+        if (err) {
+            debug('update error:' + err);
+            return next(err);
+        }
+        //On success
+        res.render('author_form', { title: 'Update Author', author: author });
+    });
+};
+
+#Windows
+set DEBUG=author,book
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Use gzip/deflate compression for responses</td>
+              <td>
+                - Web servers can often compress the HTTP response sent back to
+                a client, significantly reducing the time required for the
+                client to get and load the page.
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+> npm install compression
+
+// app.js
+var compression = require('compression');
+// Create the Express application object
+var app = express();
+app.use(compression()); //Compress all routes
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>helmet</td>
+              <td>
+                - Use Helmet to protect against well known vulnerabilities<br />
+                - Helmet is a middleware package. It can set appropriate HTTP
+                headers that help protect your app from well-known web
+                vulnerabilities
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+> npm install helmet
+
+var helmet = require('helmet');
+// Create the Express application object
+var app = express();
+app.use(helmet());
+
+// if heroku set NODE_ENV
+> Set NODE_ENV to 'production'
+                </code></pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+
+    <script src="assets/js/prism.js"></script>
+    <script src="assets/js/scripts.js"></script>
+  </body>
+</html>

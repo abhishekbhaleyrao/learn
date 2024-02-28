@@ -1,0 +1,3481 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Intro to CSS</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="assets/css/prism.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <style>
+      /* basics */
+      .basics .internal {
+        color: purple;
+      }
+    </style>
+    <script src="assets/js/prism.js"></script>
+  </head>
+
+  <body>
+    <div class="sidebar">
+      <a class="active" href="#basics">Basics</a>
+      <a href="#selectors">Selectors</a>
+      <a href="#pseudo">Pseudo class</a>
+      <a href="#pseudo-element">Pseudo element</a>
+      <a href="#box-model">Box model</a>
+      <a href="#background">Background</a>
+      <a href="#border">Border</a>
+      <a href="#text-direction">Text direction</a>
+      <a href="#overflow">Overflow</a>
+      <a href="#image">Image</a>
+      <a href="#form">Form</a>
+      <a href="#table">Table</a>
+      <hr />
+      <a href="#text">Text</a>
+      <a href="#list">List</a>
+      <hr />
+      <a href="#flex-layout">Flex layout</a>
+      <a href="#grid-layout">Grid layout</a>
+      <a href="#multiple-column-layout">Multiple column layout</a>
+      <a href="#float">Float</a>
+      <a href="#position">Position</a>
+      <a href="#responsive-design">Responsive design</a>
+      <a href="#media-query">Media query</a>
+    </div>
+
+    <div class="content">
+      <!-- Basics -->
+      <section id="basics">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/Getting_started"
+            >Basics</a
+          >
+        </h2>
+
+        <h4>Include external css file</h4>
+        <pre>
+          <code class="language-html">
+    &lt;link rel="stylesheet" type="text/css" href="style.css" /&gt;
+          </code>
+        </pre>
+
+        <h4>Internal style</h4>
+        <pre>
+          <code class="language-html">
+    &lt;style type="text/css"&gt;
+        selector { 
+            property: value;
+        }
+    &lt;/style&gt;
+          </code>
+        </pre>
+
+        <h4>Inline style</h4>
+        <pre>
+          <code class="language-html">
+    &lt;tag style="property: value"&gt; &lt;/tag&gt;
+          </code>
+        </pre>
+
+        <h5>Examples:</h5>
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Html</th>
+              <th>Css</th>
+              <th>Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <pre>
+                  <code class="language-html">
+&lt;p class="external"&gt;Color using external css&lt;/p&gt;
+                  </code>
+                </pre>
+              </td>
+              <td>
+                <pre>
+<b>FileName: style.css</b>
+<code class="language-css">
+.external {
+  color: green;
+}
+</code>
+                </pre>
+              </td>
+              <td>
+                <p class="external">Color using external css</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <pre>
+                  <code class="language-html">
+&lt;p class="internal"&gt;Color using internal css&lt;/p&gt;
+                  </code>
+                </pre>
+              </td>
+              <td>
+                <pre>
+<b>FileName: index.html</b>
+<code class="language-html">
+&lt;style&gt;
+  .internal {
+    color: purple;
+  }
+&lt;/style&gt;
+</code>
+              </pre>
+              </td>
+              <td>
+                <p class="internal">Color using internal css</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <pre>
+<code class="language-html">
+&lt;p style="color: blue;"&gt;Color using inline css&lt;/p&gt;
+</code>
+                </pre>
+              </td>
+              <td></td>
+              <td>
+                <p style="color: blue">Color using inline css</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Selectors -->
+      <section id="selectors">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors"
+            >Selectors</a
+          >
+        </h2>
+
+        <h4>Syntax</h4>
+        <pre>
+    selector {
+        property: value;
+        property2: value2;
+    }
+      </pre
+        >
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Selector</th>
+              <th>Html</th>
+              <th>Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <b>Universal:</b><br />
+                * {...}
+              </td>
+              <td>
+                <pre>all elements</pre>
+              </td>
+              <td>
+                <h5>all elements</h5>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Tag selection:</b><br />
+                h5 {...}
+              </td>
+              <td>
+                <pre>&lt;h5&gt;H5 tag&lt;/h5&gt;</pre>
+              </td>
+              <td>
+                <h5>H5 tag</h5>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Id selection:</b><br />
+                #id-select {...}
+              </td>
+              <td>
+                <pre>
+&lt;h5 id="id-select"&gt;H5 tag with id id-select&lt;/h5&gt;</pre
+                >
+              </td>
+              <td>
+                <h5 id="id-select">H5 tag with id id-select</h5>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Class selection:</b><br />
+                .class-select {...}
+              </td>
+              <td>
+                <pre>
+&lt;h5 class="class-select"&gt;H5 tag with class class-select&lt;/h5&gt;
+              </pre
+                >
+              </td>
+              <td>
+                <h5 class="class-select">H5 tag with class class-select</h5>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Grouping:</b><br />
+                h4, h5, h6 {...}
+              </td>
+              <td>
+                <pre>
+&lt;h4&gt;H4 Tag&lt;/h4&gt;
+&lt;h5&gt;H5 Tag&lt;/h5&gt;
+&lt;h6&gt;H6 Tag&lt;/h6&gt;
+              </pre
+                >
+              </td>
+              <td>
+                <div class="group">
+                  <h4>H4 Tag</h4>
+                  <h5>H5 Tag</h5>
+                  <h6>H6 Tag</h6>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Descendant:</b><br />
+                .descendant p {...}
+              </td>
+              <td>
+                <pre>
+&lt;div class="descendant"&gt;
+  &lt;p&gt;P1&lt;/p&gt;
+  &lt;div&gt;
+    &lt;p&gt;P2 inside div&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;p&gt;P3&lt;/p&gt;
+&lt;/div&gt;
+              </pre
+                >
+              </td>
+              <td>
+                <div class="descendant">
+                  <p>P1</p>
+                  <div>
+                    <p>P2 inside div</p>
+                  </div>
+                  <p>P3</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Child:</b><br />
+                .child > p {...}
+              </td>
+              <td>
+                <pre>
+&lt;div class="child"&gt;
+  &lt;p&gt;P1&lt;/p&gt;
+  &lt;div&gt;
+    &lt;p&gt;P2 inside div&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;p&gt;P3&lt;/p&gt;
+&lt;/div&gt;
+              </pre
+                >
+              </td>
+              <td>
+                <div class="child">
+                  <p>P1</p>
+                  <div>
+                    <p>P2 inside div</p>
+                  </div>
+                  <p>P3</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Adjacent sibling:</b><br />
+                div + p {...}
+              </td>
+              <td>
+                <pre>
+&lt;div class="adjacent-sibling"&gt;
+  &lt;p&gt;P1&lt;/p&gt;
+  &lt;div&gt;
+    &lt;p&gt;P2 inside div&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;p&gt;P3&lt;/p&gt;
+  &lt;p&gt;P4&lt;/p&gt;
+&lt;/div&gt;
+              </pre
+                >
+              </td>
+              <td>
+                <div class="adjacent-sibling">
+                  <p>P1</p>
+                  <div>
+                    <p>P2 inside div</p>
+                  </div>
+                  <p>P3</p>
+                  <p>P4</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>General sibling:</b><br />
+                div ~ p {...}
+              </td>
+              <td>
+                <pre>
+&lt;div class="general-sibling"&gt;
+  &lt;p&gt;P1&lt;/p&gt;
+  &lt;div&gt;
+    &lt;p&gt;P2 inside div&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;p&gt;P3&lt;/p&gt;
+  &lt;p&gt;P4&lt;/p&gt;
+&lt;/div&gt;
+              </pre
+                >
+              </td>
+              <td>
+                <div class="general-sibling">
+                  <p>P1</p>
+                  <div>
+                    <p>P2 inside div</p>
+                  </div>
+                  <p>P3</p>
+                  <p>P4</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Attribute with any value:</b><br />
+                p[selected] {...}
+              </td>
+              <td>
+                <pre>
+&lt;div class="attribute-any-value"&gt;
+  &lt;p selected="selected"&gt;P1&lt;/p&gt;
+  &lt;div&gt;
+    &lt;p selected&gt;P2 inside div&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;p selected&gt;P3&lt;/p&gt;
+  &lt;p selected="none"&gt;P4&lt;/p&gt;
+&lt;/div&gt;
+              </pre
+                >
+              </td>
+              <td>
+                <div class="attribute-any-value">
+                  <p selected="selected">P1</p>
+                  <div>
+                    <p selected>P2 inside div</p>
+                  </div>
+                  <p selected>P3</p>
+                  <p selected="none">P4</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Attribute with value:</b><br />
+                p[selected="selected"] {...}
+              </td>
+              <td>
+                <pre>
+&lt;div class="attribute-with-value"&gt;
+  &lt;p selected="selected"&gt;P1&lt;/p&gt;
+  &lt;div&gt;
+    &lt;p selected&gt;P2 inside div&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;p selected&gt;P3&lt;/p&gt;
+  &lt;p selected="none"&gt;P4&lt;/p&gt;
+&lt;/div&gt;
+              </pre
+                >
+              </td>
+              <td>
+                <div class="attribute-with-value">
+                  <p selected="selected">P1</p>
+                  <div>
+                    <p selected>P2 inside div</p>
+                  </div>
+                  <p selected>P3</p>
+                  <p selected="none">P4</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Attribute with value or space separated value:</b><br />
+                p[selected~="selected"] {...}
+              </td>
+              <td>
+                <pre>
+&lt;div class="attribute-with-value-or-space-separated-value"&gt;
+  &lt;p selected="selected"&gt;P1&lt;/p&gt;
+  &lt;div&gt;
+    &lt;p selected="not selected"&gt;P2 inside div&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;p selected&gt;P3&lt;/p&gt;
+  &lt;p selected="none"&gt;P4&lt;/p&gt;
+&lt;/div&gt;
+              </pre
+                >
+              </td>
+              <td>
+                <div class="attribute-with-value-or-space-separated-value">
+                  <p selected="selected">P1</p>
+                  <div>
+                    <p selected="not selected">P2 inside div</p>
+                  </div>
+                  <p selected>P3</p>
+                  <p selected="none">P4</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Attribute with value or starting with value:</b><br />
+                p[selected|="selected"] {...}
+              </td>
+              <td>
+                <pre>
+&lt;div class="attribute-with-value-or-starting-with-value"&gt;
+  &lt;p selected="selected"&gt;P1&lt;/p&gt;
+  &lt;div&gt;
+    &lt;p selected="selected item"&gt;P2 inside div&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;p selected="selected-item"&gt;P3&lt;/p&gt;
+  &lt;p selected="selecteditem"&gt;P4&lt;/p&gt;
+  &lt;p selected="item selected"&gt;P5&lt;/p&gt;
+&lt;/div&gt;
+              </pre
+                >
+              </td>
+              <td>
+                <div class="attribute-with-value-or-starting-with-value">
+                  <p selected="selected">P1</p>
+                  <div>
+                    <p selected="selected item">P2 inside div</p>
+                  </div>
+                  <p selected="selected-item">P3</p>
+                  <p selected="selecteditem">P4</p>
+                  <p selected="item selected">P5</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Attribute with value or begins with value:</b><br />
+                p[selected^="selected"] {...}
+              </td>
+              <td>
+                <pre>
+&lt;div class="attribute-with-value-or-begins-with-value"&gt;
+  &lt;p selected="selected"&gt;P1&lt;/p&gt;
+  &lt;div&gt;
+    &lt;p selected="selected item"&gt;P2 inside div&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;p selected="selected-item"&gt;P3&lt;/p&gt;
+  &lt;p selected="selecteditem"&gt;P4&lt;/p&gt;
+  &lt;p selected="item selected"&gt;P5&lt;/p&gt;
+&lt;/div&gt;
+              </pre
+                >
+              </td>
+              <td>
+                <div class="attribute-with-value-or-begins-with-value">
+                  <p selected="selected">P1</p>
+                  <div>
+                    <p selected="selected item">P2 inside div</p>
+                  </div>
+                  <p selected="selected-item">P3</p>
+                  <p selected="selecteditem">P4</p>
+                  <p selected="item selected">P5</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Attribute with value or ends with value:</b><br />
+                p[selected$="item"] {...}
+              </td>
+              <td>
+                <pre>
+&lt;div class="attribute-with-value-or-ends-with-value"&gt;
+  &lt;p selected="selected"&gt;P1&lt;/p&gt;
+  &lt;div&gt;
+    &lt;p selected="selected item"&gt;P2 inside div&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;p selected="selected-item"&gt;P3&lt;/p&gt;
+  &lt;p selected="selecteditem"&gt;P4&lt;/p&gt;
+  &lt;p selected="item selected"&gt;P5&lt;/p&gt;
+&lt;/div&gt;
+              </pre
+                >
+              </td>
+              <td>
+                <div class="attribute-with-value-or-ends-with-value">
+                  <p selected="selected">P1</p>
+                  <div>
+                    <p selected="selected item">P2 inside div</p>
+                  </div>
+                  <p selected="selected-item">P3</p>
+                  <p selected="selecteditem">P4</p>
+                  <p selected="item selected">P5</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Attribute contains value:</b><br />
+                p[selected*="item"] {...}
+              </td>
+              <td>
+                <pre>
+&lt;div class="attribute-contains-value"&gt;
+  &lt;p selected="selected"&gt;P1&lt;/p&gt;
+  &lt;div&gt;
+    &lt;p selected="selected item"&gt;P2 inside div&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;p selected="selected-item"&gt;P3&lt;/p&gt;
+  &lt;p selected="selecteditem"&gt;P4&lt;/p&gt;
+  &lt;p selected="item selected"&gt;P5&lt;/p&gt;
+&lt;/div&gt;
+              </pre
+                >
+              </td>
+              <td>
+                <div class="attribute-contains-value">
+                  <p selected="selected">P1</p>
+                  <div>
+                    <p selected="selected item">P2 inside div</p>
+                  </div>
+                  <p selected="selected-item">P3</p>
+                  <p selected="selecteditem">P4</p>
+                  <p selected="item selected">P5</p>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Pseudo -->
+      <section id="pseudo">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors"
+            >Pseudo class</a
+          >
+        </h2>
+
+        <h4>Syntax</h4>
+        <pre>
+    selector:pseudo-class {
+        property: value;
+        property2: value2;
+    }
+      </pre
+        >
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Selector</th>
+              <th>Html</th>
+              <th>Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <b>Unvisited link:</b><br />
+                a:link { color: red; }
+              </td>
+              <td>
+                <pre>&lt;a href="#"&gt;Anchor tag&lt;/a&gt;</pre>
+              </td>
+              <td>
+                <h5>
+                  <div class="psuedo-anchor">
+                    <a href="#">Anchor tag</a>
+                  </div>
+                </h5>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>visited link:</b><br />
+                a:visited { color: green; }
+              </td>
+              <td>
+                <pre>&lt;a href="#"&gt;Anchor tag&lt;/a&gt;</pre>
+              </td>
+              <td>
+                <h5>
+                  <div class="psuedo-anchor">
+                    <a href="#">Anchor tag</a>
+                  </div>
+                </h5>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>mouse over link:</b><br />
+                a:hover { color: hotpink; }
+              </td>
+              <td>
+                <pre>&lt;a href="#"&gt;Anchor tag&lt;/a&gt;</pre>
+              </td>
+              <td>
+                <h5>
+                  <div class="psuedo-anchor">
+                    <a href="#">Anchor tag</a>
+                  </div>
+                </h5>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>selected link:</b><br />
+                a:active { color: blue; }
+              </td>
+              <td>
+                <pre>&lt;a href="#"&gt;Anchor tag&lt;/a&gt;</pre>
+              </td>
+              <td>
+                <h5>
+                  <div class="psuedo-anchor">
+                    <a href="#">Anchor tag</a>
+                  </div>
+                </h5>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>focus:</b><br />
+                input:focus { background: yellow; }
+              </td>
+              <td>
+                <pre>&lt;input type="text"/&gt;</pre>
+              </td>
+              <td>
+                <h5>
+                  <div class="psuedo-input">
+                    <input type="text" />
+                  </div>
+                </h5>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>enabled:</b><br />
+                input:enabled { background: turquoise }
+              </td>
+              <td>
+                <pre>&lt;input type="text"/&gt;</pre>
+              </td>
+              <td>
+                <h5>
+                  <div class="psuedo-enabled">
+                    <input type="text" />
+                  </div>
+                </h5>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>disabled:</b><br />
+                input:disabled { background: violet }
+              </td>
+              <td>
+                <pre>&lt;input type="text" disabled/&gt;</pre>
+              </td>
+              <td>
+                <h5>
+                  <div class="psuedo-disabled">
+                    <input type="text" disabled />
+                  </div>
+                </h5>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>valid:</b><br />
+                input:valid { border: 2px solid greenyellow }
+              </td>
+              <td>
+                <pre>&lt;input type="email" value="a@b.com"/&gt;</pre>
+              </td>
+              <td>
+                <h5>
+                  <div class="psuedo-valid">
+                    <input type="email" value="a@b.com" />
+                  </div>
+                </h5>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>invalid:</b><br />
+                input:invalid { border: 2px solid red }
+              </td>
+              <td>
+                <pre>&lt;input type="email" value="ab"/&gt;</pre>
+              </td>
+              <td>
+                <h5>
+                  <div class="psuedo-invalid">
+                    <input type="email" value="ab" />
+                  </div>
+                </h5>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>required:</b><br />
+                input:required { border: 2px solid darkcyan }
+              </td>
+              <td>
+                <pre>&lt;input type="text" required/&gt;</pre>
+              </td>
+              <td>
+                <h5>
+                  <div class="psuedo-required">
+                    <input type="text" required />
+                  </div>
+                </h5>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>checked:</b><br />
+                input:checked { height: 20px; width: 20px; }
+              </td>
+              <td>
+                <pre>&lt;input type="checkbox" value="car"/&gt;</pre>
+              </td>
+              <td>
+                <h5>
+                  <div class="psuedo-checked">
+                    <input type="checkbox" value="car" />
+                  </div>
+                </h5>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Select first element</b><br />
+                p:first-child { background: yellow }
+              </td>
+              <td>
+                <pre>
+&lt;p&gt;First p tag&lt;/p&gt;
+&lt;p&gt;Second p tag&lt;/p&gt;
+&lt;p&gt;Third p tag&lt;/p&gt;
+              </pre
+                >
+              </td>
+              <td>
+                <div class="psuedo-select-first">
+                  <p>First p tag</p>
+                  <p>Second p tag</p>
+                  <p>Third p tag</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Select last element</b><br />
+                p:last-child { background: yellow }
+              </td>
+              <td>
+                <pre>
+&lt;p&gt;First p tag&lt;/p&gt;
+&lt;p&gt;Second p tag&lt;/p&gt;
+&lt;p&gt;Third p tag&lt;/p&gt;
+              </pre
+                >
+              </td>
+              <td>
+                <div class="psuedo-select-last">
+                  <p>First p tag</p>
+                  <p>Second p tag</p>
+                  <p>Third p tag</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Select nth element</b><br />
+                p:nth-child(2) { background: yellow }
+              </td>
+              <td>
+                <pre>
+&lt;p&gt;First p tag&lt;/p&gt;
+&lt;p&gt;Second p tag&lt;/p&gt;
+&lt;p&gt;Third p tag&lt;/p&gt;
+              </pre
+                >
+              </td>
+              <td>
+                <div class="psuedo-select-nth">
+                  <p>First p tag</p>
+                  <p>Second p tag</p>
+                  <p>Third p tag</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Select nth last element</b><br />
+                p:nth-last-child(2) { background: pink }
+              </td>
+              <td>
+                <pre>
+&lt;p&gt;First p tag&lt;/p&gt;
+&lt;p&gt;Second p tag&lt;/p&gt;
+&lt;p&gt;Third p tag&lt;/p&gt;
+              </pre
+                >
+              </td>
+              <td>
+                <div class="psuedo-select-nth-last">
+                  <p>First p tag</p>
+                  <p>Second p tag</p>
+                  <p>Third p tag</p>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Pseudo element -->
+      <section id="pseudo-element">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors"
+            >Pseudo elements</a
+          >
+        </h2>
+
+        <h4>Syntax</h4>
+        <pre>
+    selector::pseudo-class {
+        property: value;
+        property2: value2;
+    }
+      </pre
+        >
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Selector</th>
+              <th>Html</th>
+              <th>Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <b>Insert before:</b><br />
+                p::before { content: 'HIHI' }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="psuedo-element-before">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Insert after:</b><br />
+                p::after { content: 'HAHA' }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="psuedo-element-after">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Select first letter:</b><br />
+                p::first-letter { font-size: xx-large; }
+              </td>
+              <td>
+                <pre>&lt;p&gt;Lorem ipsum ...&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="psuedo-element-first-letter">
+                  <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Sequi sed quaerat, dolore culpa explicabo velit repellendus
+                    tenetur. Sequi magnam eos!
+                  </p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Select first line:</b><br />
+                p::first-line { color: blue }
+              </td>
+              <td>
+                <pre>&lt;p&gt;Lorem ipsum ...&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="psuedo-element-first-line">
+                  <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Sequi sed quaerat, dolore culpa explicabo velit repellendus
+                    tenetur. Sequi magnam eos!
+                  </p>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- box-model -->
+      <section id="box-model">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model"
+            >Box model</a
+          >
+        </h2>
+
+        <div class="box">
+          margin
+          <div>
+            border
+            <div>
+              padding
+              <div>content</div>
+            </div>
+          </div>
+        </div>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Selector</th>
+              <th>Html</th>
+              <th>Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <b>Margin:</b><br />
+                p { margin: 10px 12px 14px 16px;<br />
+                border: 1px solid goldenrod; }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="margin">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>border:</b><br />
+                p { border: 1px solid goldenrod; }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="border">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Padding:</b><br />
+                p { padding: 10px 12px 14px 16px;<br />
+                border: 1px solid goldenrod; }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="padding">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Content:</b><br />
+                p { background: brown }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="content-back">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Height:</b><br />
+                p { height: 40px; background: brown }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="height">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Width:</b><br />
+                p { width: 100px; background: brown }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="width">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Display flex:</b><br />
+                div { display: flex }<br />div > p { border: 1px solid
+                goldenrod; }
+              </td>
+              <td>
+                <pre>
+&lt;div&gt;
+  &lt;p&gt;Item1&lt;/p&gt;
+  &lt;p&gt;Item2&lt;/p&gt;
+  &lt;p&gt;Item3&lt;/p&gt;
+&lt;/div&gt;
+                </pre>
+              </td>
+              <td>
+                <div class="display-flex">
+                  <div>
+                    <p>Item1</p>
+                    <p>Item2</p>
+                    <p>Item3</p>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Display block: change word style</b><br />
+                p > span { color: orangered }
+              </td>
+              <td>
+                <pre>
+&lt;p&gt;This is my &lt;span&gt;line&lt;/span&gt;&lt;/p&gt;</pre
+                >
+              </td>
+              <td>
+                <div class="change-word-style">
+                  <p>This is my <span>line</span></p>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- background -->
+      <section id="background">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Backgrounds_and_borders"
+            >Background</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Selector</th>
+              <th>Html</th>
+              <th>Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <b>Background:</b><br />
+                p { background: brown }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="background">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Background: gradient</b><br />
+                p { background: linear-gradient(to bottom, #1C6EA4 0%, #010923
+                100%);<br />
+                height: 50px; }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="background-gradient">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Background image:</b><br />
+                p { background: url(star.png) }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="background-image">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Background image: no repeat</b><br />
+                p { background: url(star.png);<br />background-repeat:
+                no-repeat; }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="background-image-no-repeat">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Background image: size</b><br />
+                p { background: url(star.png);<br />
+                background-repeat: no-repeat;<br />
+                background-size: 100px 20px; }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="background-image-size">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Background image: position</b><br />
+                p { background: url(star.png);<br />
+                background-repeat: no-repeat;<br />
+                background-position: center center; }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="background-image-position">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Background image: attachment</b><br />
+                p { background: url(star.png);<br />
+                background-attachment: fixed;<br />
+                height: 50px; }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="background-image-attachment">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Background image: multiple</b><br />
+                p { background: url(star.png), url(big-star.png);<br />
+                height: 50px; }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="background-image-multiple">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- border -->
+      <section id="border">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Backgrounds_and_borders"
+            >Border</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Selector</th>
+              <th>Html</th>
+              <th>Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <b>border:</b><br />
+                p { border: 1px solid goldenrod }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="border">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>border: rounded corners</b><br />
+                p { border: 1px solid goldenrod;<br />
+                border-radius: 10px; }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="border-radius">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- text-direction -->
+      <section id="text-direction">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Handling_different_text_directions"
+            >Text direction</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Selector</th>
+              <th>Html</th>
+              <th>Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <b>Horizontal: </b><br />
+                p { writing-mode: horizontal-tb; }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="horizontal">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Vertical: </b><br />
+                p { writing-mode: vertical-rl; }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="vertical">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Physical properties: </b><br />
+                p { margin-top: 20px;<br />
+                padding-left: 2em;<br />
+                border-top: 3px solid pink; }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="physical">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Logical properties: Need to use this for most things</b
+                ><br />
+                p { margin-block-start: 20px;<br />
+                padding-inline-start: 2em;<br />
+                border-block-start: 3px solid pink; }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="logical">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- overflow -->
+      <section id="overflow">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Overflowing_content"
+            >Overflow</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Selector</th>
+              <th>Html</th>
+              <th>Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <b>Overflow: visible </b><br />
+                p { width: 58px;<br />
+                overflow: visible;<br />
+                border: 1px solid goldenrod; }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is overflow content&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="visible">
+                  <p>This is overflow content</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Overflow: hidden </b><br />
+                p { width: 58px;<br />
+                overflow: hidden;<br />
+                border: 1px solid goldenrod; }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is overflow content&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="hidden">
+                  <p>This is overflow content</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Overflow: auto </b><br />
+                p { width: 58px;<br />
+                overflow: auto;<br />
+                border: 1px solid goldenrod; }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is overflow content&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="auto">
+                  <p>This is overflow content</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Overflow: horizontal scroll </b><br />
+                p { width: 58px;<br />
+                overflow-x: scroll;<br />
+                border: 1px solid goldenrod; }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is overflow content&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="horizontal">
+                  <p>This is overflow content</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Overflow: vertical scroll </b><br />
+                p { height: 45px;<br />
+                width: 80px;<br />
+                overflow-y: scroll;<br />
+                border: 1px solid goldenrod; }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is overflow content&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="vertical">
+                  <p>This is overflow content</p>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- image -->
+      <section id="image">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Images_media_form_elements"
+            >Images</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Selector</th>
+              <th>Html</th>
+              <th>Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <b>Object fit: Use complete space </b><br />
+                <pre>
+.box {
+  width: 200px;
+  height: 200px;
+  border: 3px solid goldenrod;
+}
+.box img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+                </pre>
+              </td>
+              <td>
+                <pre>
+&lt;div class="box cover"&gt;
+  &lt;img src="balloons.jpg" alt="balloons"/&gt;
+&lt;/div&gt;
+                </pre>
+              </td>
+              <td>
+                <div class="box cover">
+                  <img src="assets/images/balloons.jpg" alt="balloons" />
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Object fit: Show complete image</b><br />
+                <pre>
+.box {
+  width: 200px;
+  height: 200px;
+  border: 3px solid goldenrod;
+}
+.box img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+                </pre>
+              </td>
+              <td>
+                <pre>
+&lt;div class="box contain"&gt;
+  &lt;img src="balloons.jpg" alt="balloons"/&gt;
+&lt;/div&gt;
+                </pre>
+              </td>
+              <td>
+                <div class="box contain">
+                  <img src="assets/images/balloons.jpg" alt="balloons" />
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- form -->
+      <section id="form">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Images_media_form_elements"
+            >Form</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Selector</th>
+              <th>Html</th>
+              <th>Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <b>Input</b><br />
+                <pre>
+form input[type="text"], 
+form input[type="email"] {
+  border: 1px solid blueviolet;
+  margin: 0 0 1em 0;
+  width: 100%;
+}
+form input[type="submit"] {
+  border: 3px solid #333;
+  background-color: #999;
+  border-radius: 5px;
+  padding: 5px 2em;
+  color: #fff;
+}
+form input[type="submit"]:hover {
+  background-color: #333;
+}
+                </pre>
+              </td>
+              <td>
+                <pre>
+&lt;form&gt;
+  &lt;div&gt;
+    &lt;label for="name"&gt;Name&lt;/label&gt;
+    &lt;input type="text" id="name"/&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;label for="email"&gt;Email&lt;/label&gt;
+    &lt;input type="email" id="email"/&gt;
+  &lt;/div&gt;
+
+  &lt;div class="buttons"&gt;
+    &lt;input type="submit" value="Submit"/&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+                </pre>
+              </td>
+              <td>
+                <form class="input">
+                  <div>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" />
+                  </div>
+                  <div>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" />
+                  </div>
+
+                  <div class="buttons">
+                    <input type="submit" value="Submit" />
+                  </div>
+                </form>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b
+                  >Inheritance: In some browser form element do not inherit font
+                  styling so add inherit first to parent then apply style</b
+                ><br />
+                <pre>
+button, 
+input, 
+select, 
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+}
+
+textarea {
+  font-family: sans-serif;
+  overflow: auto;
+}
+                </pre>
+              </td>
+              <td>
+                <pre>
+&lt;form&gt;
+  &lt;div&gt;
+    &lt;label for="name"&gt;Address&lt;/label&gt;
+    &lt;textarea&gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+                </pre>
+              </td>
+              <td>
+                <form class="inheritance">
+                  <div>
+                    <label for="name">Address</label>
+                    <textarea></textarea>
+                  </div>
+                </form>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- table -->
+      <section id="table">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Styling_tables"
+            >Table</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Selector</th>
+              <th>Html</th>
+              <th>Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <b>Column Spacing</b><br />
+                <pre>
+table {
+  table-layout: fixed;
+  width: 100%;
+  border: 3px solid purple;
+}
+table th, table td {
+  padding: 20px;
+  border: 1px solid grey;
+}
+table thead th:nth-child(1) {
+  width: 20%;
+}
+table thead th:nth-child(2) {
+  width: 70%;
+}
+                </pre>
+              </td>
+              <td>
+                <pre>
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Heading 1&lt;/th&gt;
+      &lt;th&gt;Heading 2&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Data 1&lt;/th&gt;
+      &lt;th&gt;Data 2&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+                </pre>
+              </td>
+              <td>
+                <table class="table-spacing">
+                  <thead>
+                    <tr>
+                      <th>Heading 1</th>
+                      <th>Heading 2</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>Data 1</th>
+                      <th>Data 2</th>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Remove table default spacing</b><br />
+                <pre>
+table {
+  border-collapse: collapse;
+}
+                </pre>
+              </td>
+              <td>
+                <pre>
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Heading 1&lt;/th&gt;
+      &lt;th&gt;Heading 2&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Data 1&lt;/th&gt;
+      &lt;th&gt;Data 2&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+                </pre>
+              </td>
+              <td>
+                <table class="table-remove-spacing">
+                  <thead>
+                    <tr>
+                      <th>Heading 1</th>
+                      <th>Heading 2</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>Data 1</th>
+                      <th>Data 2</th>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Zebra striping</b><br />
+                <pre>
+table tbody tr:nth-child(odd) {
+  background-color: #ff33cc;
+}
+table tbody tr:nth-child(even) {
+  background-color: #e495e4;
+}
+                </pre>
+              </td>
+              <td>
+                <pre>
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Heading 1&lt;/th&gt;
+      &lt;th&gt;Heading 2&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Data 1&lt;/th&gt;
+      &lt;th&gt;Data 2&lt;/th&gt;
+    &lt;/tr&gt;
+    [...]
+  &lt;/tbody&gt;
+&lt;/table&gt;
+                </pre>
+              </td>
+              <td>
+                <table class="table-zebra-striping">
+                  <thead>
+                    <tr>
+                      <th>Heading 1</th>
+                      <th>Heading 2</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>Data 1</th>
+                      <th>Data 2</th>
+                    </tr>
+                    <tr>
+                      <th>Data 1</th>
+                      <th>Data 2</th>
+                    </tr>
+                    <tr>
+                      <th>Data 1</th>
+                      <th>Data 2</th>
+                    </tr>
+                    <tr>
+                      <th>Data 1</th>
+                      <th>Data 2</th>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- text -->
+      <section id="text">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Fundamentals"
+            >Text</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Selector</th>
+              <th>Html</th>
+              <th>Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <b>color:</b><br />
+                p { color: purple }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="color">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>font-family:</b><br />
+                p { font-family: arial }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="font-family">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>font-size:</b><br />
+                p { font-size: 16px }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="font-size">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>font-style:</b><br />
+                p { font-style: italic }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="font-style">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>font-weight:</b><br />
+                p { font-weight: bold }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="font-weight">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>text-transform:</b><br />
+                p { text-transform: uppercase }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="text-transform">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>text-decoration:</b><br />
+                p { text-decoration: underline; }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="text-decoration">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b
+                  >text-shadow:
+                  <br />
+                  [horizontal-offset vertical-offset blur-radius color] </b
+                ><br />
+                p { text-shadow: 4px 4px 5px red; }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="text-shadow">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>multiple text-shadow: </b><br />
+                p { text-shadow: 4px 4px 5px red,<br />
+                8px 8px 5px blue }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="text-shadow-multiple">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>text-align: </b><br />
+                p { text-align: right }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="text-align">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>line-height: </b><br />
+                p { line-height: 50px; border: 1px solid goldenrod; }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="line-height">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>letter-spacing: </b><br />
+                p { letter-spacing: 5px }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="letter-spacing">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>word-spacing: </b><br />
+                p { word-spacing: 10px }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is data&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="word-spacing">
+                  <p>This is data</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>break line within words</b><br />
+                p { word-break: break-all }
+              </td>
+              <td>
+                <pre>&lt;p&gt;This is overflow content&lt;/p&gt;</pre>
+              </td>
+              <td>
+                <div class="word-break">
+                  <p>This is overflow content</p>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- list -->
+      <section id="list">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Styling_lists"
+            >List</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Selector</th>
+              <th>Html</th>
+              <th>Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <b>list-style-type:</b><br />
+                ol { list-style-type: upper-roman }
+              </td>
+              <td>
+                <pre>
+&lt;ol&gt;
+    &lt;li&gt;Toast pita, ...&lt;/li&gt;
+    &lt;li&gt;Fry the halloumi in a shallow, ...&lt;/li&gt;
+&lt;/ol&gt;
+                </pre>
+              </td>
+              <td>
+                <div class="list-style-type">
+                  <ol>
+                    <li>
+                      Toast pita, leave to cool, then slice down the edge.
+                    </li>
+                    <li>
+                      Fry the halloumi in a shallow, non-stick pan, until
+                      browned on both sides.
+                    </li>
+                  </ol>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>list-style-position:</b><br />
+                ol { list-style-position: inside }
+              </td>
+              <td>
+                <pre>
+&lt;ol&gt;
+    &lt;li&gt;Toast pita, ...&lt;/li&gt;
+    &lt;li&gt;Fry the halloumi in a shallow, ...&lt;/li&gt;
+&lt;/ol&gt;
+                </pre>
+              </td>
+              <td>
+                <div class="list-style-position">
+                  <ol>
+                    <li>
+                      Toast pita, leave to cool, then slice down the edge.
+                    </li>
+                    <li>
+                      Fry the halloumi in a shallow, non-stick pan, until
+                      browned on both sides.
+                    </li>
+                  </ol>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>list-style-image:</b><br />
+                ol { list-style-image: url('star.png'); }
+              </td>
+              <td>
+                <pre>
+&lt;ol&gt;
+    &lt;li&gt;Toast pita&lt;/li&gt;
+    &lt;li&gt;Fry the halloumi in a shallow&lt;/li&gt;
+&lt;/ol&gt;
+                </pre>
+              </td>
+              <td>
+                <div class="list-style-image">
+                  <ol>
+                    <li>Toast pita</li>
+                    <li>Fry the halloumi in a shallow</li>
+                  </ol>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Change start count and reversed</b>
+              </td>
+              <td>
+                <pre>
+&lt;ol start="4" reversed&gt;
+    &lt;li&gt;Toast pita&lt;/li&gt;
+    &lt;li&gt;Fry the&lt;/li&gt;
+    &lt;li&gt;Wash&lt;/li&gt;
+    &lt;li&gt;Fill&lt;/li&gt;
+&lt;/ol&gt;
+                </pre>
+              </td>
+              <td>
+                <div class="start-reversed">
+                  <ol start="4" reversed>
+                    <li>Toast pita</li>
+                    <li>Fry the</li>
+                    <li>Wash</li>
+                    <li>Fill</li>
+                  </ol>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- flex-layout -->
+      <section id="flex-layout">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox"
+            >Flex layout</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Selector</th>
+              <th>Html</th>
+              <th>Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <b>Make children element inline</b><br />
+                .wrapper { display: flex }
+              </td>
+              <td>
+                <pre>
+&lt;div class="wrapper"&gt;
+  &lt;div&gt;One&lt;/div&gt;
+  &lt;div&gt;Two&lt;/div&gt;
+  &lt;div&gt;Three&lt;/div&gt;
+&lt;/div&gt;
+                </pre>
+              </td>
+              <td>
+                <div class="flex">
+                  <div class="wrapper">
+                    <div>One</div>
+                    <div>Two</div>
+                    <div>Three</div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Fill complete container</b><br />
+                .wrapper { display: flex }<br />
+                .wrapper > div { flex: 1 }
+              </td>
+              <td>
+                <pre>
+&lt;div class="wrapper"&gt;
+  &lt;div&gt;One&lt;/div&gt;
+  &lt;div&gt;Two&lt;/div&gt;
+  &lt;div&gt;Three&lt;/div&gt;
+&lt;/div&gt;
+                </pre>
+              </td>
+              <td>
+                <div class="flex-fill">
+                  <div class="wrapper">
+                    <div>One</div>
+                    <div>Two</div>
+                    <div>Three</div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>column or row</b><br />
+                .wrapper { display: flex;<br />
+                flex-direction: column; }<br />
+              </td>
+              <td>
+                <pre>
+&lt;div class="wrapper"&gt;
+  &lt;div&gt;One&lt;/div&gt;
+  &lt;div&gt;Two&lt;/div&gt;
+  &lt;div&gt;Three&lt;/div&gt;
+&lt;/div&gt;
+                </pre>
+              </td>
+              <td>
+                <div class="flex-direction">
+                  <div class="wrapper">
+                    <div>One</div>
+                    <div>Two</div>
+                    <div>Three</div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Flex wrap</b><br />
+                .wrapper { display: flex;<br />
+                flex-wrap: wrap; }<br />
+              </td>
+              <td>
+                <pre>
+&lt;div class="wrapper"&gt;
+  &lt;div&gt;One&lt;/div&gt;
+  &lt;div&gt;Two&lt;/div&gt;
+  &lt;div&gt;Three&lt;/div&gt;
+  &lt;div&gt;Four&lt;/div&gt;
+  &lt;div&gt;Five&lt;/div&gt;
+  &lt;div&gt;six&lt;/div&gt;
+&lt;/div&gt;
+                </pre>
+              </td>
+              <td>
+                Without flex-wrap:
+                <div class="flex">
+                  <div class="wrapper">
+                    <div>One</div>
+                    <div>Two</div>
+                    <div>Three</div>
+                    <div>Four</div>
+                    <div>Five</div>
+                    <div>six</div>
+                  </div>
+                </div>
+                With flex-wrap
+                <div class="flex-wrap">
+                  <div class="wrapper">
+                    <div>One</div>
+                    <div>Two</div>
+                    <div>Three</div>
+                    <div>Four</div>
+                    <div>Five</div>
+                    <div>six</div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Flex item flexible sizing</b><br />
+                .wrapper { display: flex; }<br />
+                .wrapper>div { flex: 1 }<br />
+                .wrapper>div:first-child { flex: 2 }<br />
+              </td>
+              <td>
+                <pre>
+&lt;div class="wrapper"&gt;
+  &lt;div&gt;One&lt;/div&gt;
+  &lt;div&gt;Two&lt;/div&gt;
+  &lt;div&gt;Three&lt;/div&gt;
+&lt;/div&gt;
+                </pre>
+              </td>
+              <td>
+                <div class="flex-sizing">
+                  <div class="wrapper">
+                    <div>One</div>
+                    <div>Two</div>
+                    <div>Three</div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Flex item alignment</b><br />
+                .wrapper { display: flex;<br />
+                align-items: center;<br />
+                justify-content: space-around;<br />
+                height: 40px; }<br />
+                .wrapper>div { align-self: center }<br />
+                .wrapper>div:first-child { align-self: flex-end }<br />
+              </td>
+              <td>
+                <pre>
+&lt;div class="wrapper"&gt;
+  &lt;div&gt;One&lt;/div&gt;
+  &lt;div&gt;Two&lt;/div&gt;
+  &lt;div&gt;Three&lt;/div&gt;
+&lt;/div&gt;
+                </pre>
+              </td>
+              <td>
+                <div class="flex-align">
+                  <div class="wrapper">
+                    <div>One</div>
+                    <div>Two</div>
+                    <div>Three</div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Flex item ordering</b><br />
+                .wrapper { display: flex }<br />
+                .wrapper>div:first-child { order: 2 }<br />
+                .wrapper>div:nth-child(2) { order: 1 }<br />
+                .wrapper>div:nth-child(3) { order: 3 }<br />
+              </td>
+              <td>
+                <pre>
+&lt;div class="wrapper"&gt;
+  &lt;div&gt;One&lt;/div&gt;
+  &lt;div&gt;Two&lt;/div&gt;
+  &lt;div&gt;Three&lt;/div&gt;
+&lt;/div&gt;
+                </pre>
+              </td>
+              <td>
+                <div class="flex-ordering">
+                  <div class="wrapper">
+                    <div>One</div>
+                    <div>Two</div>
+                    <div>Three</div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Flex item ordering negative</b><br />
+                .wrapper { display: flex }<br />
+                .wrapper>div:last-child { order: -1 }<br />
+              </td>
+              <td>
+                <pre>
+&lt;div class="wrapper"&gt;
+  &lt;div&gt;One&lt;/div&gt;
+  &lt;div&gt;Two&lt;/div&gt;
+  &lt;div&gt;Three&lt;/div&gt;
+&lt;/div&gt;
+                </pre>
+              </td>
+              <td>
+                <div class="flex-ordering-last">
+                  <div class="wrapper">
+                    <div>One</div>
+                    <div>Two</div>
+                    <div>Three</div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- grid-layout -->
+      <section id="grid-layout">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids"
+            >Grid layout</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Selector</th>
+              <th>Html</th>
+              <th>Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <b>Grid</b>
+                <pre>
+.wrapper { 
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  --- or ---
+  grid-template-columns: repeat(3, 1fr); 
+}
+                </pre>
+              </td>
+              <td>
+                <pre>
+&lt;div class="wrapper"&gt;
+  &lt;div&gt;One&lt;/div&gt;
+  &lt;div&gt;Two&lt;/div&gt;
+  &lt;div&gt;Three&lt;/div&gt;
+  &lt;div&gt;Four&lt;/div&gt;
+  &lt;div&gt;Five&lt;/div&gt;
+  &lt;div&gt;six&lt;/div&gt;
+&lt;/div&gt;
+                </pre>
+              </td>
+              <td>
+                <div class="grid">
+                  <div class="wrapper">
+                    <div>One</div>
+                    <div>Two</div>
+                    <div>Three</div>
+                    <div>Four</div>
+                    <div>Five</div>
+                    <div>six</div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Grid gap</b><br />
+                <pre>
+.wrapper { 
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-gap: 10px; 
+}
+              </pre
+                >
+              </td>
+              <td>
+                <pre>
+&lt;div class="wrapper"&gt;
+  &lt;div&gt;One&lt;/div&gt;
+  &lt;div&gt;Two&lt;/div&gt;
+  &lt;div&gt;Three&lt;/div&gt;
+  &lt;div&gt;Four&lt;/div&gt;
+  &lt;div&gt;Five&lt;/div&gt;
+  &lt;div&gt;six&lt;/div&gt;
+&lt;/div&gt;
+                </pre>
+              </td>
+              <td>
+                <div class="grid-gap">
+                  <div class="wrapper">
+                    <div>One</div>
+                    <div>Two</div>
+                    <div>Three</div>
+                    <div>Four</div>
+                    <div>Five</div>
+                    <div>six</div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Line based placement</b><br />
+                <pre>
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-gap: 20px;
+}
+header {
+  grid-column: 1 / 3;
+  grid-row: 1;
+}
+article {
+  grid-column: 2;
+  grid-row: 2;
+}
+aside {
+  grid-column: 1;
+  grid-row: 2;
+  border-right: 1px solid #999;
+}
+footer {
+  grid-column: 1 / 3;
+  grid-row: 3;
+}
+header,
+footer {
+  border: 2px solid aqua;
+}
+                </pre>
+              </td>
+              <td>
+                <pre>
+&lt;div class="wrapper"&gt;
+    &lt;header&gt;This is my lovely blog&lt;/header&gt;
+    &lt;article&gt;
+        &lt;h1&gt;My article&lt;/h1&gt;
+        &lt;p&gt;Duis felis orci, pulvinar.&lt;/p&gt;
+    &lt;/article&gt;
+    &lt;aside&gt;
+        &lt;h2&gt;Other things&lt;/h2&gt;
+        &lt;p&gt;Nam &lt;/p&gt;
+    &lt;/aside&gt;
+    &lt;footer&gt;Contact me@mysite.com&lt;/footer&gt;
+&lt;/div&gt;
+                </pre>
+              </td>
+              <td>
+                <div class="grid-line-based">
+                  <div class="wrapper">
+                    <header>This is my lovely blog</header>
+                    <article>
+                      <h1>My article</h1>
+                      <p>
+                        Duis felis orci, pulvinar id metus ut, rutrum luctus
+                        orci.
+                      </p>
+                    </article>
+                    <aside>
+                      <h2>Other things</h2>
+                      <p>Nam</p>
+                    </aside>
+                    <footer>Contact me@mysite.com</footer>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Positioning with grid-template-areas</b><br />
+                <pre>
+.wrapper {
+  display: grid;
+  grid-template-areas: 
+    "header header"
+    "sidebar content"
+    "footer footer";
+  grid-template-columns: 1fr 3fr;
+  grid-gap: 20px;
+}
+header {
+  grid-area: header;
+  border: 2px solid cadetblue;
+}
+article {
+  grid-area: content;
+}
+aside {
+  grid-area: sidebar;
+  border-right: 1px solid #999;
+}
+footer {
+  grid-area: footer;
+  border: 2px solid cadetblue;
+}          
+                </pre>
+              </td>
+              <td>
+                <pre>
+&lt;div class="wrapper"&gt;
+    &lt;header&gt;This is my lovely blog&lt;/header&gt;
+    &lt;article&gt;
+        &lt;h1&gt;My article&lt;/h1&gt;
+        &lt;p&gt;Duis felis orci, pulvinar.&lt;/p&gt;
+    &lt;/article&gt;
+    &lt;aside&gt;
+        &lt;h2&gt;Other things&lt;/h2&gt;
+        &lt;p&gt;Nam &lt;/p&gt;
+    &lt;/aside&gt;
+    &lt;footer&gt;Contact me@mysite.com&lt;/footer&gt;
+&lt;/div&gt;
+                </pre>
+              </td>
+              <td>
+                <div class="grid-template-areas">
+                  <div class="wrapper">
+                    <header>This is my lovely blog</header>
+                    <article>
+                      <h1>My article</h1>
+                      <p>
+                        Duis felis orci, pulvinar id metus ut, rutrum luctus
+                        orci.
+                      </p>
+                    </article>
+                    <aside>
+                      <h2>Other things</h2>
+                      <p>Nam</p>
+                    </aside>
+                    <footer>Contact me@mysite.com</footer>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Grid Framework</b><br />
+                <pre>
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0,1fr));
+  grid-gap: 5px;
+}
+header {
+  grid-column: 1 / 13;
+  grid-row: 1;
+  border: 1px solid cadetblue;
+}
+article {
+  grid-column: 4 / 13;
+  grid-row: 2;
+}
+aside {
+  grid-column: 1 / 4;
+  grid-row: 2;
+  border-right: 1px solid #999;
+}
+footer {
+  grid-column: 1 / 13;
+  grid-row: 3;
+  border: 1px solid cadetblue;
+}
+                </pre>
+              </td>
+              <td>
+                <pre>
+&lt;div class="wrapper"&gt;
+    &lt;header&gt;This is my lovely blog&lt;/header&gt;
+    &lt;article&gt;
+        &lt;h1&gt;My article&lt;/h1&gt;
+        &lt;p&gt;Duis felis orci, pulvinar.&lt;/p&gt;
+    &lt;/article&gt;
+    &lt;aside&gt;
+        &lt;h2&gt;Other things&lt;/h2&gt;
+        &lt;p&gt;Nam &lt;/p&gt;
+    &lt;/aside&gt;
+    &lt;footer&gt;Contact me@mysite.com&lt;/footer&gt;
+&lt;/div&gt;
+                </pre>
+              </td>
+              <td>
+                <div class="grid-framework">
+                  <div class="wrapper">
+                    <header>This is my lovely blog</header>
+                    <article>
+                      <h1>My article</h1>
+                      <p>
+                        Duis felis orci, pulvinar id metus ut, rutrum luctus
+                        orci.
+                      </p>
+                    </article>
+                    <aside>
+                      <h2>Other things</h2>
+                      <p>Nam</p>
+                    </aside>
+                    <footer>Contact me@mysite.com</footer>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- multiple-column-layout -->
+      <section id="multiple-column-layout">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Multiple-column_Layout"
+            >Multiple column layout</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Selector</th>
+              <th>Html</th>
+              <th>Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <b>Multiple column example</b><br />
+                <pre>
+.multiple-column {
+  column-count: 3;
+}
+              </pre
+                >
+              </td>
+              <td>
+                <pre>
+&lt;div class="multiple-column"&gt;
+  &lt;p&gt;
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  &lt;/p&gt;
+  &lt;p&gt;
+    Nam vulputate diam nec tempor bibendum. Donec luctus augue eget
+  &lt;/p&gt;
+  &lt;p&gt;
+    Mauris ultricies lectus sed lobortis finibus. Vivamus eu urna
+  &lt;/p&gt;
+&lt;/div&gt;
+                </pre>
+              </td>
+              <td>
+                <div class="multiple-column">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  </p>
+                  <p>
+                    Nam vulputate diam nec tempor bibendum. Donec luctus augue
+                    eget
+                  </p>
+                  <p>
+                    Mauris ultricies lectus sed lobortis finibus. Vivamus eu
+                    urna
+                  </p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Multiple column styling</b><br />
+                <pre>
+.multiple-column-style {
+  column-count: 3;
+  column-gap: 20px;
+  column-rule: 4px dotted cadetblue;
+}
+              </pre
+                >
+              </td>
+              <td>
+                <pre>
+&lt;div class="multiple-column-style"&gt;
+  &lt;p&gt;
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  &lt;/p&gt;
+  &lt;p&gt;
+    Nam vulputate diam nec tempor bibendum. Donec luctus augue eget
+  &lt;/p&gt;
+  &lt;p&gt;
+    Mauris ultricies lectus sed lobortis finibus. Vivamus eu urna
+  &lt;/p&gt;
+&lt;/div&gt;
+                </pre>
+              </td>
+              <td>
+                <div class="multiple-column-style">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  </p>
+                  <p>
+                    Nam vulputate diam nec tempor bibendum. Donec luctus augue
+                    eget
+                  </p>
+                  <p>
+                    Mauris ultricies lectus sed lobortis finibus. Vivamus eu
+                    urna
+                  </p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Column and fragmentation</b><br />
+                <pre>
+.container {
+  column-width: 40px;
+  column-gap: 20px;
+}
+.card {
+  break-inside: avoid;
+  page-break-inside: avoid;
+  border: 2px solid aqua;
+}
+              </pre
+                >
+              </td>
+              <td>
+                <pre>
+&lt;div class="container"&gt;
+  &lt;div&gt; class="card"&gt;
+    &lt;p&gt; Lorem ipsum dolor sit amet&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div&gt; class="card"&gt;
+    &lt;p&gt; Lorem ipsum dolor sit amet&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div&gt; class="card"&gt;
+    &lt;p&gt; Lorem ipsum dolor sit amet&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div&gt; class="card"&gt;
+    &lt;p&gt; Lorem ipsum dolor sit amet&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div&gt; class="card"&gt;
+    &lt;p&gt; Lorem ipsum dolor sit amet&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+                </pre>
+              </td>
+              <td>
+                <div class="column-fragmentation">
+                  <div class="container">
+                    <div class="card">
+                      <p>Lorem ipsum dolor sit amet</p>
+                    </div>
+                    <div class="card">
+                      <p>Lorem ipsum dolor sit amet</p>
+                    </div>
+                    <div class="card">
+                      <p>Lorem ipsum dolor sit amet</p>
+                    </div>
+                    <div class="card">
+                      <p>Lorem ipsum dolor sit amet</p>
+                    </div>
+                    <div class="card">
+                      <p>Lorem ipsum dolor sit amet</p>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- float -->
+      <section id="float">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Floats"
+            >Float</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Selector</th>
+              <th>Html</th>
+              <th>Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <b>float:</b><br />
+                .box { float: right }
+              </td>
+              <td>
+                <pre>
+&lt;div class="box"&gt;Float box&lt;/div&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet.&lt;/p&gt;
+                </pre>
+              </td>
+              <td>
+                <div class="float">
+                  <div class="box">Float box</div>
+                  <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>float clearfix hack:</b><br />
+                <pre>
+.float-wrapper .box {
+  float: left;
+  height: 60px;
+  background-color: cadetblue;
+}
+.wrapper::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+                </pre>
+              </td>
+              <td>
+                <pre>
+&lt;div class="float-wrapper"&gt;
+  &lt;div&gt; class="box"&gt;Float box&lt;/div&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Duis felis orci, pulvinar&lt;/p&gt;
+                </pre>
+              </td>
+              <td>
+                <div class="float-wrapper">
+                  <div class="box">Float box</div>
+                  <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+                <p>Duis felis orci, pulvinar</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- position -->
+      <section id="position">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning"
+            >Position</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Selector</th>
+              <th>Html</th>
+              <th>Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <b>default static:</b><br />
+                p { position: static }
+              </td>
+              <td>
+                <pre>
+&lt;p&gt;Lorem ipsum dolor sit amet.&lt;/p&gt;
+                </pre>
+              </td>
+              <td>
+                <div class="position-static">
+                  <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>absolute position:</b><br />
+                <pre>
+.wrapper {
+  position: relative;
+}
+.wrapper > .pos-absolute {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: grey;
+}
+                </pre>
+              </td>
+              <td>
+                <pre>
+&lt;div class="wrapper"&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet consectetur&lt;/p&gt;
+  &lt;p class="pos-absolute"&gt;Ut nobis quia vel dolores&lt;/p&gt;
+&lt;/div&gt;
+                </pre>
+              </td>
+              <td>
+                <div class="position-absolute">
+                  <div class="wrapper">
+                    <p>Lorem ipsum dolor sit amet consectetur</p>
+                    <p class="pos-absolute">Ut nobis quia vel dolores</p>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Position absolute Indexing:</b><br />
+                <pre>
+.wrapper {
+  position: relative;
+}
+.wrapper > .pos-absolute {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: grey;
+  z-index: 2;
+}
+.wrapper .pos-absolute-second {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  background: cadetblue;
+  z-index: 1;
+}
+                </pre>
+              </td>
+              <td>
+                <pre>
+&lt;div class="wrapper"&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet consectetur&lt;/p&gt;
+  &lt;p class="pos-absolute"&gt;Ut nobis quia vel dolores&lt;/p&gt;
+  &lt;p class="pos-absolute-second"&gt;quia vel dolores&lt;/p&gt;
+&lt;/div&gt;
+                </pre>
+              </td>
+              <td>
+                <div class="position-index">
+                  <div class="wrapper">
+                    <p>Lorem ipsum dolor sit amet consectetur</p>
+                    <p class="pos-absolute">Ut nobis quia vel dolores</p>
+                    <p class="pos-absolute-second">quia vel dolores</p>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Position fixed</b><br />
+                <pre>
+header {
+  position:fixed;
+  top:0;
+  left :0;
+  right: 0;
+  color: black;
+  background: white;
+  border-bottom: 2px solid grey;
+}
+                </pre>
+              </td>
+              <td>
+                <pre>
+&lt;header&gt;Header fixed&lt;/header&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet ...&lt;/p&gt;
+                </pre>
+              </td>
+              <td>
+                <iframe
+                  src="data:text/html;charset=utf-8, <html> <head> <style> body { color: darkgrey; } header { position:fixed; top:0; left :0; right: 0; color: black; background: white; border-bottom: 2px solid grey; } </style> </head> <body> <header>Header fixed</header> <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci, pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc, at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta. Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula. Curabitur vehicula tellus neque, ac ornare ex malesuada et. In vitae convallis lacus. Aliquam erat volutpat. Suspendisse ac imperdiet turpis. Aenean finibus sollicitudin eros pharetra congue. Duis ornare egestas augue ut luctus. Proin blandit quam nec lacus varius commodo et a urna. Ut id ornare felis, eget fermentum sapien.</p> </body> </html>"
+                ></iframe>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Position sticky</b><br />
+                <pre>
+.wrapper1 header {
+  position:sticky;
+  top:0;
+  left :0;
+  right: 0;
+  color: black;
+  background: white;
+  border-bottom: 2px solid grey;
+}
+.wrapper2 header {
+  position:sticky;
+  top:0;
+  left :0;
+  right: 0;
+  color: black;
+  background: white;
+  border-bottom: 2px solid grey;
+}
+                </pre>
+              </td>
+              <td>
+                <pre>
+&lt;div class="wrapper1"&gt;
+    &lt;header&gt;Header sticky1&lt;/header&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet...&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="wrapper2"&gt;
+    &lt;header&gt;Header sticky2&lt;/header&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet...&lt;/p&gt;
+&lt;/div&gt;
+                </pre>
+              </td>
+              <td>
+                <iframe
+                  src="data:text/html;charset=utf-8, <html> <head> <style> body { color: darkgrey; } .wrapper1 header { position:sticky; top:0; left :0; right: 0; color: black; background: white; border-bottom: 2px solid grey; }  .wrapper2 header { position:sticky; top:0; left :0; right: 0; color: black; background: white; border-bottom: 2px solid grey; } </style> </head> <body> <div class='wrapper1'> <header>Header sticky1</header> <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci, pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc, at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta. Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula. Curabitur vehicula tellus neque, ac ornare ex malesuada et. In vitae convallis lacus. Aliquam erat volutpat. Suspendisse ac imperdiet turpis. Aenean finibus sollicitudin eros pharetra congue. Duis ornare egestas augue ut luctus. Proin blandit quam nec lacus varius commodo et a urna. Ut id ornare felis, eget fermentum sapien.</p> </div> <div class='wrapper2'> <header>Header sticky2</header> <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci, pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc, at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta. Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula. Curabitur vehicula tellus neque, ac ornare ex malesuada et. In vitae convallis lacus. Aliquam erat volutpat. Suspendisse ac imperdiet turpis. Aenean finibus sollicitudin eros pharetra congue. Duis ornare egestas augue ut luctus. Proin blandit quam nec lacus varius commodo et a urna. Ut id ornare felis, eget fermentum sapien.</p> </div> </body> </html>"
+                ></iframe>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- responsive-design -->
+      <section id="responsive-design">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design"
+            >Responsive design</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Information</th>
+              <th>Html</th>
+              <th>Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <b>Viewport meta tag</b><br />
+                You can use media query after adding viewport
+              </td>
+              <td>
+                <pre>
+&lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;
+                </pre>
+              </td>
+              <td>You can use media query after adding viewport</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- media-query -->
+      <section id="media-query">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Media_queries"
+            >Media query</a
+          >
+        </h2>
+
+        <h4>Syntax</h4>
+        <pre>
+@media media-type and (media-feature-rule) {
+  /* CSS rules go here */
+}
+        </pre>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Information</th>
+              <th>Selector</th>
+              <th>Html</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <b>Viewport meta tag</b><br />
+                You can use media query after adding viewport
+              </td>
+              <td></td>
+              <td>
+                <pre>
+&lt;meta name="viewport" content="width=device-width,
+initial-scale=1"&gt;
+                </pre>
+              </td>
+            </tr>
+            <tr>
+              <td>Width</td>
+              <td>
+                <pre>
+@media screen and (max-width: 600px) {
+    body {
+        color: blue;
+    }
+}
+                </pre>
+              </td>
+              <td>Works on device width less than 600px</td>
+            </tr>
+            <tr>
+              <td>Orientation</td>
+              <td>
+                <pre>
+@media (orientation: landscape) {
+    body {
+        color: cadetblue;
+    }
+}
+                </pre>
+              </td>
+              <td>Works on landscape</td>
+            </tr>
+            <tr>
+              <td>Pointing device</td>
+              <td>
+                <pre>
+@media (hover: hover) {
+    body {
+        color: rebeccapurple;
+    }
+}
+                </pre>
+              </td>
+              <td>On hover change color</td>
+            </tr>
+            <tr>
+              <td>Logical "and"</td>
+              <td>
+                <pre>
+@media screen and (min-width: 600px) and (orientation: landscape) {
+    body {
+        color: blue;
+    }
+}
+                </pre>
+              </td>
+              <td>Device is at least 600 pixels wide in landscape mode.</td>
+            </tr>
+            <tr>
+              <td>Logical "or"</td>
+              <td>
+                <pre>
+@media screen and (min-width: 600px), screen and (orientation: landscape) {
+    body {
+        color: blue;
+    }
+}
+                </pre>
+              </td>
+              <td>
+                Text will be blue if the viewport is at least 600 pixels wide OR
+                the device is in landscape orientation.
+              </td>
+            </tr>
+            <tr>
+              <td>Logical "not"</td>
+              <td>
+                <pre>
+@media not all and (orientation: landscape) {
+    body {
+        color: blue;
+    }
+}
+                </pre>
+              </td>
+              <td>
+                You can negate an entire media query by using the not operator.
+                This reverses the meaning of the entire media query. Therefore
+                in this next example the text will only be blue if the
+                orientation is portrait.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+      </section>
+    </div>
+  </body>
+</html>

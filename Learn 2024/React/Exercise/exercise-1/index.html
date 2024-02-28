@@ -1,0 +1,2281 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Intro to React</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="assets/css/prism.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+
+  <body>
+    <div class="sidebar">
+      <a class="active" href="#introduction">Introduction</a>
+      <a href="#todo">Todo</a>
+      <a href="#componentizing">Componentizing</a>
+      <a href="#event-state">Event & State</a>
+      <a href="#edit-filter">Edit, Filter & Condition</a>
+      <a href="#accessibility">Accessibility</a>
+      <a href="#resources">Resources</a>
+    </div>
+
+    <div class="content">
+      <!-- Introduction -->
+      <section id="introduction">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_getting_started"
+            >Introduction</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Info</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>How does React use JavaScript?</td>
+              <td>- JSX extends JavaScript's syntax so that We can use HTML</td>
+              <td>
+                <pre><code class="language-javascript">
+// JSX expression
+const heading = <h1>Mozilla Developer Network</h1>;
+
+// Nested JSX
+// Below JSX is not well intended
+const header = <header>
+  <h1>Mozilla Developer Network</h1>
+</header>;
+
+--- or ---
+
+const header = (
+  <header>
+    <h1>Mozilla Developer Network</h1>
+  </header>
+);
+
+// When we compile above expression with Babel or Parcel
+const header = React.createElement("header", null,
+  React.createElement("h1", null, "Mozilla Developer Network")
+);
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Setting up your first React app</td>
+              <td>- Install Node.js</td>
+              <td>
+                <pre><code class="language-javascript">
+// Initializing your app
+  > npx create-react-app moz-todo-react
+
+// Select Folder
+  > cd moz-todo-react
+
+// Run application
+  > npm start
+
+// Open http://localhost:3000 in browser
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Application structure</td>
+              <td>
+                - React injects your code into "public > index.html"<br />
+                - package.json contains npm package details.
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+moz-todo-react
+├── README.md
+├── node_modules
+├── package.json
+├── package-lock.json
+├── .gitignore
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   └── manifest.json
+└── src
+    ├── App.css
+    ├── App.js
+    ├── App.test.js
+    ├── index.css
+    ├── index.js
+    ├── logo.svg
+    └── serviceWorker.js
+                  </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">Exploring our first React component</td>
+            </tr>
+
+            <tr>
+              <td>Import statements</td>
+              <td>- Allow to use code that has been defined elsewhere.</td>
+              <td>
+                <pre><code class="language-javascript">
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>The App component</td>
+              <td>
+                - React components name use pascal-case variable names, like
+                "HelloWorld"<br />
+                - The App function returns a JSX expression.<br />
+                -
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
+}
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Export statements</td>
+              <td>
+                - "export default App" makes our App component available to
+                other modules.
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+export default App;
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Interrogating the index</td>
+              <td>
+                - "src/index.js" this file is the entry point for our app<br />
+                - ReactDOM.render() function with two arguments. <br />
+                &nbsp;&nbsp;1) Component Name.<br />
+                &nbsp;&nbsp;2) DOM element where Component will render.<br />
+                - Service workers are code that help application performance and
+                allow features of your web applications to work offline. But we
+                can remove it.
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// Default index.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
+
+ReactDOM.render(
+  &lt;React.StrictMode&gt;
+    &lt;App /&gt;
+  &lt;/React.StrictMode&gt;,
+  document.getElementById('root')
+);
+
+serviceWorker.unregister();
+
+// Changed index.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+
+ReactDOM.render(&lt;App /&gt;, document.getElementById('root'));
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Variables in JSX</td>
+              <td>
+                - Variables are convenient but doesn't make great use of React
+                features. That's where props comes in.
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// App.js
+import logo from './logo.svg';
+&lt;img src={logo} className="App-logo" alt="logo" /&gt;
+
+// subject variable
+function App() {
+  const subject = "React";
+  return (
+    &lt;div className="App"&gt;
+      &lt;p&gt; Hello, {subject}!&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+
+// Output: Hello, React!
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Component props</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// index.js
+ReactDOM.render(<App subject="Clarice" />, document.getElementById('root'));
+
+// App.js
+function App(props) {
+  console.log(props);   // { subject: "Clarice" }
+  return (
+    &lt;div className="App"&gt;
+      &lt;p&gt; Hello, {props.subject}!&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+
+// Output: Hello, Clarice!
+                </code></pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- todo -->
+      <section id="todo">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_todo_list_beginning"
+            >Todo</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Info</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Our app's user stories</td>
+              <td>
+                - User story is an actionable goal from the perspective of the
+                user<br />
+                - User can
+                <ul>
+                  <li>read a list of tasks.</li>
+                  <li>add a task using the mouse or keyboard.</li>
+                  <li>
+                    mark any task as completed, using the mouse or keyboard.
+                  </li>
+                  <li>delete any task, using the mouse or keyboard.</li>
+                  <li>edit any task, using the mouse or keyboard.</li>
+                  <li>
+                    view a specific subset of tasks: All tasks, only the active
+                    task, or only the completed tasks.
+                  </li>
+                </ul>
+              </td>
+              <td></td>
+            </tr>
+
+            <tr>
+              <td>Pre-project housekeeping</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+# Move into the src directory of your project
+cd src
+# Delete a few files
+rm -- App.test.js App.css logo.svg serviceWorker.js setupTests.js
+# Move back up to the root of the project
+cd ..
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">Project starter code</td>
+            </tr>
+
+            <tr>
+              <td>The JSX</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// App.js
+function App(props) {
+  return (
+    &lt;div className="todoapp stack-large"&gt;
+      &lt;h1&gt;TodoMatic&lt;/h1&gt;
+      &lt;form&gt;
+        &lt;h2 className="label-wrapper"&gt;
+          &lt;label htmlFor="new-todo-input" className="label__lg"&gt;
+            What needs to be done?
+          &lt;/label&gt;
+        &lt;/h2&gt;
+        &lt;input
+          type="text"
+          id="new-todo-input"
+          className="input input__lg"
+          name="text"
+          autoComplete="off"
+        /&gt;
+        &lt;button type="submit" className="btn btn__primary btn__lg"&gt;
+          Add
+        &lt;/button&gt;
+      &lt;/form&gt;
+      &lt;div className="filters btn-group stack-exception"&gt;
+        &lt;button type="button" className="btn toggle-btn" aria-pressed="true"&gt;
+          &lt;span className="visually-hidden"&gt;Show &lt;/span&gt;
+          &lt;span&gt;all&lt;/span&gt;
+          &lt;span className="visually-hidden"&gt; tasks&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;button type="button" className="btn toggle-btn" aria-pressed="false"&gt;
+          &lt;span className="visually-hidden"&gt;Show &lt;/span&gt;
+          &lt;span&gt;Active&lt;/span&gt;
+          &lt;span className="visually-hidden"&gt; tasks&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;button type="button" className="btn toggle-btn" aria-pressed="false"&gt;
+          &lt;span className="visually-hidden"&gt;Show &lt;/span&gt;
+          &lt;span&gt;Completed&lt;/span&gt;
+          &lt;span className="visually-hidden"&gt; tasks&lt;/span&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+      &lt;h2 id="list-heading"&gt;
+        3 tasks remaining
+      &lt;/h2&gt;
+      &lt;ul
+        role="list"
+        className="todo-list stack-large stack-exception"
+        aria-labelledby="list-heading"
+      &gt;
+        &lt;li className="todo stack-small"&gt;
+          &lt;div className="c-cb"&gt;
+            &lt;input id="todo-0" type="checkbox" defaultChecked={true} /&gt;
+            &lt;label className="todo-label" htmlFor="todo-0"&gt;
+              Eat
+            &lt;/label&gt;
+          &lt;/div&gt;
+          &lt;div className="btn-group"&gt;
+            &lt;button type="button" className="btn"&gt;
+              Edit &lt;span className="visually-hidden"&gt;Eat&lt;/span&gt;
+            &lt;/button&gt;
+            &lt;button type="button" className="btn btn__danger"&gt;
+              Delete &lt;span className="visually-hidden"&gt;Eat&lt;/span&gt;
+            &lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li className="todo stack-small"&gt;
+          &lt;div className="c-cb"&gt;
+            &lt;input id="todo-1" type="checkbox" /&gt;
+            &lt;label className="todo-label" htmlFor="todo-1"&gt;
+              Sleep
+            &lt;/label&gt;
+          &lt;/div&gt;
+          &lt;div className="btn-group"&gt;
+            &lt;button type="button" className="btn"&gt;
+              Edit &lt;span className="visually-hidden"&gt;Sleep&lt;/span&gt;
+            &lt;/button&gt;
+            &lt;button type="button" className="btn btn__danger"&gt;
+              Delete &lt;span className="visually-hidden"&gt;Sleep&lt;/span&gt;
+            &lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li className="todo stack-small"&gt;
+          &lt;div className="c-cb"&gt;
+            &lt;input id="todo-2" type="checkbox" /&gt;
+            &lt;label className="todo-label" htmlFor="todo-2"&gt;
+              Repeat
+            &lt;/label&gt;
+          &lt;/div&gt;
+          &lt;div className="btn-group"&gt;
+            &lt;button type="button" className="btn"&gt;
+              Edit &lt;span className="visually-hidden"&gt;Repeat&lt;/span&gt;
+            &lt;/button&gt;
+            &lt;button type="button" className="btn btn__danger"&gt;
+              Delete &lt;span className="visually-hidden"&gt;Repeat&lt;/span&gt;
+            &lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  );
+}
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Accessibility features</td>
+              <td>
+                - "aria-pressed" tells assistive technology (like screen
+                readers) that the button can be in one of two states<br />
+                - "role": what kind of element a tag represents<br />
+                - "aria-labelledby": we're treating our list heading as the
+                label<br />
+                - "defaultChecked": check this checkbox initially.<br />
+                - "htmlFor": corresponds to the "for" attribute used in HTML.
+                "for" is a reserved word in JSX.
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// aria-pressed
+&lt;button type="button" className="btn toggle-btn" aria-pressed="true"&gt;
+  &lt;span className="visually-hidden"&gt;Show &lt;/span&gt;
+  &lt;span&gt;all&lt;/span&gt;
+  &lt;span className="visually-hidden"&gt; tasks&lt;/span&gt;
+&lt;/button&gt;
+
+// role
+&lt;ul
+  role="list"
+  className="todo-list stack-large stack-exception"
+  aria-labelledby="list-heading"
+&gt;
+
+// defaultChecked, htmlFor
+&lt;input id="todo-0" type="checkbox" defaultChecked={true} /&gt;
+&lt;label className="todo-label" htmlFor="todo-0"&gt;
+  Eat
+&lt;/label&gt;
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Implementing our styles</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// src/index.css
+/* RESETS */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+*:focus {
+  outline: 3px dashed #228bec;
+  outline-offset: 0;
+}
+html {
+  font: 62.5% / 1.15 sans-serif;
+}
+h1,
+h2 {
+  margin-bottom: 0;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  -webkit-appearance: none;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+button,
+input {
+  overflow: visible;
+}
+input[type="text"] {
+  border-radius: 0;
+}
+body {
+  width: 100%;
+  max-width: 68rem;
+  margin: 0 auto;
+  font: 1.6rem/1.25 Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #4d4d4d;
+}
+@media screen and (min-width: 620px) {
+  body {
+    font-size: 1.9rem;
+    line-height: 1.31579;
+  }
+}
+/*END RESETS*/
+/* GLOBAL STYLES */
+.form-group &gt; input[type="text"] {
+  display: inline-block;
+  margin-top: 0.4rem;
+}
+.btn {
+  padding: 0.8rem 1rem 0.7rem;
+  border: 0.2rem solid #4d4d4d;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+.btn.toggle-btn {
+  border-width: 1px;
+  border-color: #d3d3d3;
+}
+.btn.toggle-btn[aria-pressed="true"] {
+  text-decoration: underline;
+  border-color: #4d4d4d;
+}
+.btn__danger {
+  color: #fff;
+  background-color: #ca3c3c;
+  border-color: #bd2130;
+}
+.btn__filter {
+  border-color: lightgrey;
+}
+.btn__primary {
+  color: #fff;
+  background-color: #000;
+}
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+}
+.btn-group &gt; * {
+  flex: 1 1 49%;
+}
+.btn-group &gt; * + * {
+  margin-left: 0.8rem;
+}
+.label-wrapper {
+  margin: 0;
+  flex: 0 0 100%;
+  text-align: center;
+}
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+[class*="stack"] &gt; * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.stack-small &gt; * + * {
+  margin-top: 1.25rem;
+}
+.stack-large &gt; * + * {
+  margin-top: 2.5rem;
+}
+@media screen and (min-width: 550px) {
+  .stack-small &gt; * + * {
+    margin-top: 1.4rem;
+  }
+  .stack-large &gt; * + * {
+    margin-top: 2.8rem;
+  }
+}
+.stack-exception {
+  margin-top: 1.2rem;
+}
+/* END GLOBAL STYLES */
+.todoapp {
+  background: #fff;
+  margin: 2rem 0 4rem 0;
+  padding: 1rem;
+  position: relative;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2.5rem 5rem 0 rgba(0, 0, 0, 0.1);
+}
+@media screen and (min-width: 550px) {
+  .todoapp {
+    padding: 4rem;
+  }
+}
+.todoapp &gt; * {
+  max-width: 50rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.todoapp &gt; form {
+  max-width: 100%;
+}
+.todoapp &gt; h1 {
+  display: block;
+  max-width: 100%;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 1rem;
+}
+.label__lg {
+  line-height: 1.01567;
+  font-weight: 300;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.input__lg {
+  padding: 2rem;
+  border: 2px solid #000;
+}
+.input__lg:focus {
+  border-color: #4d4d4d;
+  box-shadow: inset 0 0 0 2px;
+}
+[class*="__lg"] {
+  display: inline-block;
+  width: 100%;
+  font-size: 1.9rem;
+}
+[class*="__lg"]:not(:last-child) {
+  margin-bottom: 1rem;
+}
+@media screen and (min-width: 620px) {
+  [class*="__lg"] {
+    font-size: 2.4rem;
+  }
+}
+.filters {
+  width: 100%;
+  margin: unset auto;
+}
+/* Todo item styles */
+.todo {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.todo &gt; * {
+  flex: 0 0 100%;
+}
+.todo-text {
+  width: 100%;
+  min-height: 4.4rem;
+  padding: 0.4rem 0.8rem;
+  border: 2px solid #565656;
+}
+.todo-text:focus {
+  box-shadow: inset 0 0 0 2px;
+}
+/* CHECKBOX STYLES */
+.c-cb {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.25;
+  display: block;
+  position: relative;
+  min-height: 44px;
+  padding-left: 40px;
+  clear: left;
+}
+.c-cb &gt; label::before,
+.c-cb &gt; input[type="checkbox"] {
+  box-sizing: border-box;
+  top: -2px;
+  left: -2px;
+  width: 44px;
+  height: 44px;
+}
+.c-cb &gt; input[type="checkbox"] {
+  -webkit-font-smoothing: antialiased;
+  cursor: pointer;
+  position: absolute;
+  z-index: 1;
+  margin: 0;
+  opacity: 0;
+}
+.c-cb &gt; label {
+  font-size: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  display: inline-block;
+  margin-bottom: 0;
+  padding: 8px 15px 5px;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.c-cb &gt; label::before {
+  content: "";
+  position: absolute;
+  border: 2px solid currentColor;
+  background: transparent;
+}
+.c-cb &gt; input[type="checkbox"]:focus + label::before {
+  border-width: 4px;
+  outline: 3px dashed #228bec;
+}
+.c-cb &gt; label::after {
+  box-sizing: content-box;
+  content: "";
+  position: absolute;
+  top: 11px;
+  left: 9px;
+  width: 18px;
+  height: 7px;
+  transform: rotate(-45deg);
+  border: solid;
+  border-width: 0 0 5px 5px;
+  border-top-color: transparent;
+  opacity: 0;
+  background: transparent;
+}
+.c-cb &gt; input[type="checkbox"]:checked + label::after {
+  opacity: 1;
+}
+                </code></pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Componentizing -->
+      <section id="componentizing">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_components"
+            >Componentizing</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Info</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Make a Todo component</td>
+              <td>
+                - Components must always return something.<br />
+                - Output:
+                <img
+                  src="assets/images/todo-list-repeating-todos.png"
+                  width="300"
+                />
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+> mkdir src/components
+> touch src/components/Todo.js
+
+// Todo.js
+import React from "react";
+
+export default function Todo() {
+  return (
+    &lt;li className="todo stack-small"&gt;
+      &lt;div className="c-cb"&gt;
+        &lt;input id="todo-0" type="checkbox" defaultChecked={true} /&gt;
+        &lt;label className="todo-label" htmlFor="todo-0"&gt;
+          Eat
+        &lt;/label&gt;
+      &lt;/div&gt;
+      &lt;div className="btn-group"&gt;
+        &lt;button type="button" className="btn"&gt;
+          Edit &lt;span className="visually-hidden"&gt;Eat&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;button type="button" className="btn btn__danger"&gt;
+          Delete &lt;span className="visually-hidden"&gt;Eat&lt;/span&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+  );
+}
+
+// App.js
+import Todo from "./components/Todo";
+
+&lt;ul
+  role="list"
+  className="todo-list stack-large stack-exception"
+  aria-labelledby="list-heading"
+&gt;
+  &lt;Todo /&gt;
+  &lt;Todo /&gt;
+  &lt;Todo /&gt;
+&lt;/ul&gt;
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Make a unique Todo</td>
+              <td>
+                - We should ensure that each <Todo /> component renders a unique
+                name.<br />
+                - Output:
+                <img
+                  src="assets/images/todo-list-unique-todos.png"
+                  width="300"
+                />
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// App.js
+&lt;Todo name="Eat" /&gt;
+&lt;Todo name="Sleep" /&gt;
+&lt;Todo name="Repeat" /&gt;
+
+// Todo.js
+export default function Todo(props) {
+  return (
+    &lt;li className="todo stack-small"&gt;
+      &lt;div className="c-cb"&gt;
+        &lt;input id="todo-0" type="checkbox" defaultChecked={true} /&gt;
+        &lt;label className="todo-label" htmlFor="todo-0"&gt;
+          {props.name}
+        &lt;/label&gt;
+      &lt;/div&gt;
+      &lt;div className="btn-group"&gt;
+        &lt;button type="button" className="btn"&gt;
+          Edit &lt;span className="visually-hidden"&gt;{props.name}&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;button type="button" className="btn btn__danger"&gt;
+          Delete &lt;span className="visually-hidden"&gt;{props.name}&lt;/span&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+  );
+}
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Is it completed?</td>
+              <td>
+                - Output:
+                <img
+                  src="assets/images/todo-list-differing-checked-states.png"
+                  width="300"
+                />
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// App.js 
+&lt;Todo name="Eat" completed={true} /&gt;
+&lt;Todo name="Sleep" completed={false} /&gt;
+&lt;Todo name="Repeat" completed={false} /&gt;
+
+// Todo.js 
+&lt;input id="todo-0" type="checkbox" defaultChecked={props.completed} /&gt;
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Gimme some id, please</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// App.js 
+&lt;Todo name="Eat" completed={true} id="todo-0" /&gt;
+&lt;Todo name="Sleep" completed={false} id="todo-1" /&gt;
+&lt;Todo name="Repeat" completed={false} id="todo-2" /&gt;
+
+// Todo.js 
+&lt;div className="c-cb"&gt;
+  &lt;input id={props.id} type="checkbox" defaultChecked={props.completed} /&gt;
+  &lt;label className="todo-label" htmlFor={props.id}&gt;
+    {props.name}
+  &lt;/label&gt;
+&lt;/div&gt;
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Tasks as data</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// src/index.js 
+const DATA = [
+  { id: "todo-0", name: "Eat", completed: true },
+  { id: "todo-1", name: "Sleep", completed: false },
+  { id: "todo-2", name: "Repeat", completed: false }
+];
+
+ReactDOM.render(<App tasks={DATA} />, document.getElementById("root"));
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Rendering with iteration</td>
+              <td>
+                - To render our array of objects, we have to turn each one into
+                a Todo component.
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// App.js 
+// Below line will show names
+// const taskList = props.tasks.map(task => task.name);
+const taskList = props.tasks.map(task =&gt; (
+  &lt;Todo id={task.id} name={task.name} completed={task.completed} /&gt;
+));
+
+&lt;ul
+  role="list"
+  className="todo-list stack-large stack-exception"
+  aria-labelledby="list-heading"
+&gt;
+  {taskList}
+&lt;/ul&gt;
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Unique keys</td>
+              <td>
+                - You should always pass a unique key to anything you render
+                with iteration.<br />
+                - React tries to do its own guesswork to keep track of things,
+                but we can help it out by passing a key prop<br />
+                - "key" is a special prop that's managed by React – you cannot
+                use the word "key" for any other purpose.
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+const taskList = props.tasks.map(task =&gt; (
+    &lt;Todo
+      id={task.id}
+      name={task.name}
+      completed={task.completed}
+      key={task.id}
+    /&gt;
+  )
+);
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Componentizing the rest of the app</td>
+              <td>
+                - we can make two more components:
+                <ul>
+                  <li><code>&lt;Form/&gt;</code></li>
+                  <li><code>&lt;FilterButton/&gt;</code></li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+> touch src/components/Form.js src/components/FilterButton.js
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>The Form Component</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// components/Form.js
+import React from "react";
+
+function Form(props) {
+  return (
+    &lt;form&gt;
+      &lt;h2 className="label-wrapper"&gt;
+        &lt;label htmlFor="new-todo-input" className="label__lg"&gt;
+          What needs to be done?
+        &lt;/label&gt;
+      &lt;/h2&gt;
+      &lt;input
+        type="text"
+        id="new-todo-input"
+        className="input input__lg"
+        name="text"
+        autoComplete="off"
+      /&gt;
+      &lt;button type="submit" className="btn btn__primary btn__lg"&gt;
+        Add
+      &lt;/button&gt;
+    &lt;/form&gt;
+  );
+}
+
+export default Form;
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>The FilterButton component</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// FilterButton.js
+import React from "react";
+
+function FilterButton(props) {
+  return (
+    &lt;button type="button" className="btn toggle-btn" aria-pressed="true"&gt;
+      &lt;span className="visually-hidden"&gt;Show &lt;/span&gt;
+      &lt;span&gt;all &lt;/span&gt;
+      &lt;span className="visually-hidden"&gt; tasks&lt;/span&gt;
+    &lt;/button&gt;
+  );
+}
+
+export default FilterButton;
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Importing all our components</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// App.js
+import React from "react";
+import Form from "./components/Form";
+import FilterButton from "./components/FilterButton";
+import Todo from "./components/Todo";
+
+function App(props) {
+  const taskList = props.tasks.map(task =&gt; (
+    &lt;Todo
+        id={task.id}
+        name={task.name}
+        completed={task.completed}
+        key={task.id}
+      /&gt;
+    )
+  );
+  return (
+    &lt;div className="todoapp stack-large"&gt;
+      &lt;Form /&gt;
+      &lt;div className="filters btn-group stack-exception"&gt;
+        &lt;FilterButton /&gt;
+        &lt;FilterButton /&gt;
+        &lt;FilterButton /&gt;
+      &lt;/div&gt;
+      &lt;h2 id="list-heading"&gt;3 tasks remaining&lt;/h2&gt;
+      &lt;ul
+        role="list"
+        className="todo-list stack-large stack-exception"
+        aria-labelledby="list-heading"
+      &gt;
+        {taskList}
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;
+                </code></pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Event & State -->
+      <section id="event-state">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_interactivity_events_state"
+            >React interactivity: Events and state</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Info</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Handling form submission</td>
+              <td>
+                - At the top of the Form() component function, create a function
+                named handleSubmit().
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// Form.js 
+function handleSubmit(e) {
+  e.preventDefault();
+  alert('Hello, world!');
+}
+
+// Add function onSubmit
+&lt;form onSubmit={handleSubmit}&gt;
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Callback props</td>
+              <td>
+                - We want our <code>handleSubmit()</code> function to ultimately
+                help us create a new task, so we need a way to pass information
+                from <code>&lt;Form /&gt;</code> to <code>&lt;App /&gt;</code>.
+                We can't pass data from child to parent in the same way as we
+                pass data from parent to child using standard props. Instead, we
+                can write a function in <code>&lt;App /&gt;</code> that will
+                expect some data from our form as an input, then pass that
+                function to <code>&lt;Form /&gt;</code> as a prop. This
+                function-as-a-prop is called a callback prop. Once we have our
+                callback prop, we can call it inside
+                <code>&lt;Form /&gt;</code> to send the right data to
+                <code>&lt;App /&gt;</code>.
+              </td>
+              <td></td>
+            </tr>
+
+            <tr>
+              <td>Handling form submission via callbacks</td>
+              <td>
+                - Clicking on the "Add" button in your browser will prove that
+                the addTask() callback function works
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// Inside the top of our App() component function
+function addTask(name) {
+  alert(name);
+}
+
+// Add function to Form component
+&lt;Form addTask={addTask} /&gt;
+
+// Form.js 
+function handleSubmit(e) {
+  e.preventDefault();
+  props.addTask("Say hello!");
+}
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>State and the useState hook</td>
+              <td>
+                <ul>
+                  <li>
+                    We are setting the initial <code>name</code> value as "Use
+                    hooks!".
+                  </li>
+                  <li>
+                    We are defining a function whose job is to modify
+                    <code>name</code>, called <code>setName()</code>.
+                  </li>
+                  <li>
+                    <code>useState()</code> returns these two things, so we are
+                    using "array destructuring" to capture them both in separate
+                    variables.
+                  </li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// Form.js
+import React, { useState } from "react";
+
+const [name, setName] = useState('Use hooks!');
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Reading state</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// assign name to input value
+const [name, setName] = useState('');
+
+&lt;input
+  type="text"
+  id="new-todo-input"
+  className="input input__lg"
+  name="text"
+  autoComplete="off"
+  value={name}
+/&gt;
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Reading user input</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// near the top of the `Form` component
+function handleChange(e) {
+  console.log(e.target.value);
+}
+
+// Down in the return statement
+&lt;input
+  type="text"
+  id="new-todo-input"
+  className="input input__lg"
+  name="text"
+  autoComplete="off"
+  value={name}
+  onChange={handleChange}
+/&gt;
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Updating state</td>
+              <td>
+                - we want to actually store the updated state of the name as the
+                input value changes!<br />
+                - Add handleChange() & handleSubmit()
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// Form.js
+import React, { useState } from "react";
+
+function Form(props) {
+  const [name, setName] = useState("");
+
+  function handleChange(e) {
+    setName(e.target.value);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    props.addTask(name);
+    setName("");
+  }
+  return (
+    &lt;form onSubmit={handleSubmit}&gt;
+      &lt;h2 className="label-wrapper"&gt;
+        &lt;label htmlFor="new-todo-input" className="label__lg"&gt;
+          What needs to be done?
+        &lt;/label&gt;
+      &lt;/h2&gt;
+      &lt;input
+        type="text"
+        id="new-todo-input"
+        className="input input__lg"
+        name="text"
+        autoComplete="off"
+        value={name}
+        onChange={handleChange}
+      /&gt;
+      &lt;button type="submit" className="btn btn__primary btn__lg"&gt;
+        Add
+      &lt;/button&gt;
+    &lt;/form&gt;
+  );
+}
+
+export default Form;
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">Putting it all together: Adding a task</td>
+            </tr>
+
+            <tr>
+              <td>Tasks as state</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// App.js
+import React, { useState } from "react";
+
+const [tasks, setTasks] = useState(props.tasks);
+
+const taskList = tasks.map(task =&gt; (
+  &lt;Todo
+      id={task.id}
+      name={task.name}
+      completed={task.completed}
+      key={task.id}
+    /&gt;
+  )
+);
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Adding a task</td>
+              <td>
+                - Console: "Warning: Encountered two children with the same
+                key...".<br />
+                - our addTask() function is giving each task the same id. <br />
+                - To resolve this use package "nanoid".
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+function addTask(name) {
+  const newTask = { id: "id", name: name, completed: false };
+  setTasks([...tasks, newTask]);
+}
+
+// To resolve duplicate id issue
+> npm install nanoid
+
+// App.js
+import { nanoid } from "nanoid";
+
+const newTask = { id: "todo-" + nanoid(), name: name, completed: false };
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Detour: counting tasks</td>
+              <td>
+                - You may notice a problem: our heading reads 3 tasks remaining,
+                no matter how many tasks we have.
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// App(), before the return statement:
+const tasksNoun = taskList.length !== 1 ? 'tasks' : 'task';
+const headingText = `${taskList.length} ${tasksNoun} remaining`;
+
+// replace the list heading's text content
+&lt;h2 id="list-heading"&gt;{headingText}&lt;/h2&gt;
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Proving the bug</td>
+              <td>
+                <ul>
+                  <li>
+                    Toggling a checkbox doesn't change the state in our React
+                    application. This means that the browser and our app are now
+                    out-of-sync.
+                  </li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// Add this just above your taskList constant declaration
+function toggleTaskCompleted(id) {
+  console.log(tasks[0])
+}
+
+const taskList = tasks.map(task =&gt; (
+  &lt;Todo
+      id={task.id}
+      name={task.name}
+      completed={task.completed}
+      key={task.id}
+      toggleTaskCompleted={toggleTaskCompleted}
+  /&gt;
+));
+
+// Todo.js
+&lt;input
+  id={props.id}
+  type="checkbox"
+  defaultChecked={props.completed}
+  onChange={() =&gt; props.toggleTaskCompleted(props.id)}
+/&gt;
+
+// console: { id: "task-0", name: "Eat", completed: true }
+
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Synchronizing the browser with our data</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// App.js
+function toggleTaskCompleted(id) {
+  const updatedTasks = tasks.map(task => {
+    // if this task has the same ID as the edited task
+    if (id === task.id) {
+      // use object spread to make a new object
+      // whose `completed` prop has been inverted
+      return {...task, completed: !task.completed}
+    }
+    return task;
+  });
+  setTasks(updatedTasks);
+}
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Deleting a task</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// Todo.js
+function deleteTask(id) {
+  console.log(id)
+}
+
+const taskList = tasks.map(task =&gt; (
+  &lt;Todo
+    id={task.id}
+    name={task.name}
+    completed={task.completed}
+    key={task.id}
+    toggleTaskCompleted={toggleTaskCompleted}
+    deleteTask={deleteTask}
+  /&gt;
+));
+
+&lt;button
+  type="button"
+  className="btn btn__danger"
+  onClick={() =&gt; props.deleteTask(props.id)}
+&gt;
+  Delete &lt;span className="visually-hidden"&gt;{props.name}&lt;/span&gt;
+&lt;/button&gt;
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Deleting tasks from state and UI</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// App.js
+function deleteTask(id) {
+  const remainingTasks = tasks.filter(task => id !== task.id);
+  setTasks(remainingTasks);
+}
+                </code></pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Edit, Filter, Condition -->
+      <section id="edit-filter">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_interactivity_filtering_conditional_rendering"
+            >Edit, Filter & Condition</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Info</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Editing the name of a task</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// App.js 
+function editTask(id, newName) {
+  const editedTaskList = tasks.map(task => {
+  // if this task has the same ID as the edited task
+    if (id === task.id) {
+      //
+      return {...task, name: newName}
+    }
+    return task;
+  });
+  setTasks(editedTaskList);
+}
+
+const taskList = tasks.map(task =&gt; (
+  &lt;Todo
+    id={task.id}
+    name={task.name}
+    completed={task.completed}
+    key={task.id}
+    toggleTaskCompleted={toggleTaskCompleted}
+    deleteTask={deleteTask}
+    editTask={editTask}
+  /&gt;
+));
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>A UI for editing</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+import React, { useState } from "react";
+
+const [isEditing, setEditing] = useState(false);
+
+// Copy this block of code into the Todo() function, 
+// beneath your useState() hook but above the return statement:
+const editingTemplate = (
+  &lt;form className="stack-small"&gt;
+    &lt;div className="form-group"&gt;
+      &lt;label className="todo-label" htmlFor={props.id}&gt;
+        New name for {props.name}
+      &lt;/label&gt;
+      &lt;input id={props.id} className="todo-text" type="text" /&gt;
+    &lt;/div&gt;
+    &lt;div className="btn-group"&gt;
+      &lt;button type="button" className="btn todo-cancel"&gt;
+        Cancel
+        &lt;span className="visually-hidden"&gt;renaming {props.name}&lt;/span&gt;
+      &lt;/button&gt;
+      &lt;button type="submit" className="btn btn__primary todo-edit"&gt;
+        Save
+        &lt;span className="visually-hidden"&gt;new name for {props.name}&lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+);
+const viewTemplate = (
+  &lt;div className="stack-small"&gt;
+    &lt;div className="c-cb"&gt;
+        &lt;input
+          id={props.id}
+          type="checkbox"
+          defaultChecked={props.completed}
+          onChange={() =&gt; props.toggleTaskCompleted(props.id)}
+        /&gt;
+        &lt;label className="todo-label" htmlFor={props.id}&gt;
+          {props.name}
+        &lt;/label&gt;
+      &lt;/div&gt;
+      &lt;div className="btn-group"&gt;
+        &lt;button type="button" className="btn"&gt;
+          Edit &lt;span className="visually-hidden"&gt;{props.name}&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;button
+          type="button"
+          className="btn btn__danger"
+          onClick={() =&gt; props.deleteTask(props.id)}
+        &gt;
+          Delete &lt;span className="visually-hidden"&gt;{props.name}&lt;/span&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+  &lt;/div&gt;
+);
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Conditional rendering</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// Todo.js
+return <li className="todo">{isEditing ? editingTemplate : viewTemplate}</li>;
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Toggling the Todo component templates</td>
+              <td>
+                <ul>
+                  <li>
+                    Output: <br />
+                    <img src="assets/images/view.png" width="300" /><br /><br />
+                    <img src="assets/images/edit.png" width="300" /><br />
+                  </li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// Update the "Edit" button in the "viewTemplate"
+&lt;button type="button" className="btn" onClick={() =&gt; setEditing(true)}&gt;
+  Edit &lt;span className="visually-hidden"&gt;{props.name}&lt;/span&gt;
+&lt;/button&gt;
+
+// Update the "Cancel" button in the "editingTemplate"
+&lt;button
+  type="button"
+  className="btn todo-cancel"
+  onClick={() =&gt; setEditing(false)}
+&gt;
+  Cancel
+  &lt;span className="visually-hidden"&gt;renaming {props.name}&lt;/span&gt;
+&lt;/button&gt;
+
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Editing from the UI</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// Todo.js
+const [newName, setNewName] = useState('');
+
+function handleChange(e) {
+  setNewName(e.target.value);
+}
+
+// editingTemplate
+&lt;input
+  id={props.id}
+  className="todo-text"
+  type="text"
+  value={newName}
+  onChange={handleChange}
+/&gt;
+
+function handleSubmit(e) {
+  e.preventDefault();
+  props.editTask(props.id, newName);
+  setNewName("");
+  setEditing(false);
+}
+
+// editingTemplate
+&lt;form className="stack-small" onSubmit={handleSubmit}&gt;
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">Filter Button</td>
+            </tr>
+
+            <tr>
+              <td>Adding a filter hook</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// App()
+const [filter, setFilter] = useState('All');
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Defining our filters</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// App.js
+const FILTER_MAP = {
+  All: () => true,
+  Active: task => !task.completed,
+  Completed: task => task.completed
+};
+
+// Object.keys() method to collect an array of FILTER_NAMES
+const FILTER_NAMES = Object.keys(FILTER_MAP);
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Rendering the filters</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+//  underneath your taskList constant
+const filterList = FILTER_NAMES.map(name =&gt; (
+  &lt;FilterButton key={name} name={name}/&gt;
+));
+
+// App.js - Remove FilterButtons
+<!-- <FilterButton />
+<FilterButton />
+<FilterButton /> -->
+{filterList}
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Interactive filters</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+const filterList = FILTER_NAMES.map(name =&gt; (
+  &lt;FilterButton
+    key={name}
+    name={name}
+    isPressed={name === filter}
+    setFilter={setFilter}
+  /&gt;
+));
+
+// FilterButton.js
+function FilterButton(props) {
+  return (
+    &lt;button
+      type="button"
+      className="btn toggle-btn"
+      aria-pressed={props.isPressed}
+      onClick={() =&gt; props.setFilter(props.name)}
+    &gt;
+      &lt;span className="visually-hidden"&gt;Show &lt;/span&gt;
+      &lt;span&gt;{props.name}&lt;/span&gt;
+      &lt;span className="visually-hidden"&gt; tasks&lt;/span&gt;
+    &lt;/button&gt;
+  );
+}
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Filtering tasks in the UI</td>
+              <td>
+                <ul>
+                  <li>
+                    Output:<br />
+                    <img
+                      src="assets/images/filtered-todo-list.png"
+                      width="300"
+                    />
+                  </li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// Update your taskList
+const taskList = tasks
+.filter(FILTER_MAP[filter])
+.map(task =&gt; (
+  &lt;Todo
+    id={task.id}
+    name={task.name}
+    completed={task.completed}
+    key={task.id}
+    toggleTaskCompleted={toggleTaskCompleted}
+    deleteTask={deleteTask}
+    editTask={editTask}
+  /&gt;
+));
+                </code></pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Accessibility -->
+      <section id="accessibility">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_accessibility"
+            >Accessibility</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Info</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Exploring the keyboard usability problem</td>
+              <td>
+                <ul>
+                  <li>
+                    If you press tab button browser focus is not working
+                    correctly. So we need to fix this.
+                  </li>
+                </ul>
+              </td>
+              <td></td>
+            </tr>
+
+            <tr>
+              <td>Targeting our elements</td>
+              <td>
+                <ul>
+                  <li>
+                    React’s useRef hook creates an object with a single
+                    property: current
+                  </li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// Todo.js
+import React, { useRef, useState } from "react";
+
+// Todo()
+const editFieldRef = useRef(null);
+const editButtonRef = useRef(null);
+
+&lt;input
+  id={props.id}
+  className="todo-text"
+  type="text"
+  value={newName}
+  onChange={handleChange}
+  ref={editFieldRef}
+/&gt;
+
+&lt;button
+  type="button"
+  className="btn"
+  onClick={() =&gt; setEditing(true)}
+  ref={editButtonRef}
+&gt;
+  Edit &lt;span className="visually-hidden"&gt;{props.name}&lt;/span&gt;
+&lt;/button&gt;
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Focusing on our refs with useEffect</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// Todo.js
+import React, { useEffect, useRef, useState } from "react";
+
+useEffect(() => {
+  console.log("main render");
+  console.log("side effect");
+});
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Focusing on our editing field</td>
+              <td>
+                <ul>
+                  <li>
+                    When you click an "Edit" button, focus moves to the
+                    corresponding edit &lt;input /&gt;!
+                  </li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// Update your existing useEffect() hook
+useEffect(() => {
+  if (isEditing) {
+    editFieldRef.current.focus();
+  }
+}, [isEditing]);
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Moving focus back to the edit button</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+useEffect(() => {
+  if (isEditing) {
+    editFieldRef.current.focus();
+  } else {
+    editButtonRef.current.focus();
+  }
+}, [isEditing]);
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>More robust focus management</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// Todo.js
+function usePrevious(value) {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  });
+  return ref.current;
+}
+
+const wasEditing = usePrevious(isEditing);
+
+useEffect(() => {
+  if (!wasEditing && isEditing) {
+    editFieldRef.current.focus();
+  }
+  if (wasEditing && !isEditing) {
+    editButtonRef.current.focus();
+  }
+}, [wasEditing, isEditing]);
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Focusing when the user deletes a task</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// App.js
+import React, { useState, useRef, useEffect } from "react";
+
+const listHeadingRef = useRef(null);
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Prepare the heading</td>
+              <td>
+                <ul>
+                  <li>
+                    we can make any element programmatically focusable by adding
+                    the attribute <b>tabindex="-1"</b> to it.
+                  </li>
+                  <li>
+                    You can't press Tab to focus on an element with a tabindex
+                    of -1
+                  </li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+&lt;h2 id="list-heading" tabIndex="-1" ref={listHeadingRef}&gt;
+  {headingText}
+&lt;/h2&gt;
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Getting previous state</td>
+              <td></td>
+              <td>
+                <pre><code class="language-javascript">
+// App.js
+function usePrevious(value) {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  });
+  return ref.current;
+}
+
+// App()
+const prevTaskLength = usePrevious(tasks.length);
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Using useEffect() to control our heading focus</td>
+              <td>
+                <ul>
+                  <li>
+                    when you delete a task in your browser, you will see our
+                    dotted focus outline appear around the heading above the
+                    list.
+                  </li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// App()
+useEffect(() => {
+  if (tasks.length - prevTaskLength === -1) {
+    listHeadingRef.current.focus();
+  }
+}, [tasks.length, prevTaskLength]);
+                </code></pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Resources -->
+      <section id="resources">
+        <h2>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_resources"
+            >Resources</a
+          >
+        </h2>
+
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Info</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Component-level styles</td>
+              <td>
+                <ul>
+                  <li>Import Form style inside form component file</li>
+                </ul>
+              </td>
+              <td>
+                <pre><code class="language-javascript">
+// Form.js
+import Form from './Form';
+import './Form.css'
+                </code></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td>React DevTools</td>
+              <td>
+                <ul>
+                  <li>
+                    React DevTools is available in a number of forms:<br />
+
+                    <ul>
+                      <li>
+                        <a
+                          href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en"
+                          target="_blank"
+                          >Chrome browser extension</a
+                        >.
+                      </li>
+                      <li>
+                        <a
+                          href="https://addons.mozilla.org/en-US/firefox/addon/react-devtools/"
+                          target="_blank"
+                          >Firefox browser extension</a
+                        >.
+                      </li>
+                      <li>
+                        <a
+                          href="https://www.npmjs.com/package/react-devtools"
+                          target="_blank"
+                          >stand-alone application you can install with NPM or
+                          Yarn</a
+                        >.
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    screenshot shows our finished application as it appears in
+                    React DevTools<br /><br />
+                    <img src="assets/images/react-devtools.png" width="300" />
+                  </li>
+                </ul>
+              </td>
+              <td></td>
+            </tr>
+
+            <tr>
+              <td>The Context API</td>
+              <td>
+                <ul>
+                  <li>
+                    React provides the
+                    <a href="https://reactjs.org/docs/context.html"
+                      >Context API</a
+                    >
+                    as a way to provide data to components that need it
+                    <em>without</em> passing props down the component tree.
+                    There's also
+                    <a
+                      href="https://reactjs.org/docs/hooks-reference.html#usecontext"
+                      >a useContext hook</a
+                    >
+                    that facilitates this.
+                  </li>
+                </ul>
+              </td>
+              <td></td>
+            </tr>
+
+            <tr>
+              <td>Class components</td>
+              <td>
+                <ul>
+                  <li>
+                    It is possible to build React components using ES6 classes –
+                    these are called class components
+                  </li>
+                  <li>
+                    Features:<br />
+                    <ul>
+                      <li>
+                        <a
+                          href="https://reactjs.org/docs/state-and-lifecycle.html"
+                          target="_blank"
+                          >State and Lifecycle in the React Docs</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="https://reactjs.org/tutorial/tutorial.html"
+                          target="_blank"
+                          >Intro To React in the React Docs</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="/en-US/docs/Web/JavaScript/Reference/Classes"
+                          target="_blank"
+                          >Read about JavaScript classes at MDN</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </td>
+              <td></td>
+            </tr>
+
+            <tr>
+              <td>Testing</td>
+              <td>
+                <ul>
+                  <li>
+                    <a
+                      href="https://create-react-app.dev/docs/running-tests/"
+                      target="_blank"
+                      >covers some basics for testing</a
+                    >
+                  </li>
+                </ul>
+              </td>
+              <td></td>
+            </tr>
+
+            <tr>
+              <td>Routing</td>
+              <td>
+                <p>
+                  The React community has produced two major libraries for
+                  client-side routing:
+                  <a
+                    href="https://reacttraining.com/react-router/"
+                    target="_blank"
+                    >React Router</a
+                  >
+                  and
+                  <a href="https://reach.tech/router" target="_blank"
+                    >Reach Router</a
+                  >.
+                </p>
+
+                <ul>
+                  <li>
+                    React Router is well-suited to applications with complex
+                    routing needs, and it meets some edge cases better than
+                    Reach Router. React Router is a larger library, however.
+                  </li>
+                  <li>
+                    Reach Router is well-suited to simpler applications, and
+                    automatically manages focus as the user navigates from page
+                    to page.
+                  </li>
+                </ul>
+              </td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+
+    <script src="assets/js/prism.js"></script>
+    <script src="assets/js/scripts.js"></script>
+  </body>
+</html>
