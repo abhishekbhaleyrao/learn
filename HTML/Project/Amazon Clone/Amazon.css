@@ -19,7 +19,7 @@ a {
 nav {
 
   display: flex;
-  alig-items: center;
+  align-items: center;
   justify-content: space-between;
   background: #131921;
   padding: 10px 20px;
