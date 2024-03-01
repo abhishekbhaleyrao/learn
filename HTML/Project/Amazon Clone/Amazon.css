@@ -17,11 +17,10 @@ a {
 }
 
 nav {
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #0e1217;
+  background: #131921;
   padding: 10px 20px;
   color: #fff;
 }
