@@ -17,10 +17,107 @@ a {
 }
 
 nav {
+
   display: flex;
   align-items: center;
   justify-content: space-between;
   background: #131921;
   padding: 10px 20px;
   color: #fff;
+}
+
+nav-country {
+  display: flex;
+  align-items: end;
+  margin-left: 15px;
+}
+
+.nav-country h1 {
+  color: white;
+  font-size: 14px;
+
+}
+
+.nav-search {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  color: grey;
+  max-width: 1000px;
+  border-radius: 4px;
+  margin-left: 15px;
+}
+
+.nav-search-catg {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-right: 1px solid #c4c4c4;
+}
+
+.nav-search-input {
+  border: none;
+  outline: none;
+  padding-left: 20px;
+  width: 100%;
+}
+
+.nav-search-icon {
+  max-width: 41px;
+  padding: 8px;
+  background: #ffd64f;
+  border-radius: 0 4px 4px 0;
+}
+
+.nav-lang {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-weight: 600;
+  margin-left: 15px;
+}
+
+.nav-text {
+  margin-left: 15px;
+}
+
+.nav-text p {
+  font-size: 10px;
+}
+
+.nav-text h1 {
+  font-size: 14px;
+}
+
+.nav-cart {
+
+  display: flex;
+  align-items: center;
+  margin: 0px 15px;
+
+}
+
+.nav-cart h1 {
+
+  font-size: 14px;
+}
+
+.nav-bottom {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 8px 20px;
+  background: #232f3e;
+  color: white;
+  font-size: 15px;
+
+
+}
+
+.nav-bottom div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 500;
 }
