@@ -40,7 +40,7 @@
     - [2. Record Triggered Flow](#2-record-triggered-flow)
     - [3. Schedule Triggered Flow](#3-schedule-triggered-flow)
     - [4. Platform Event Triggered Flow](#4-platform-event-triggered-flow)
-  - [5. Autolaunched Flow](#5-autolaunched-flow)
+    - [5. Autolaunched Flow](#5-autolaunched-flow)
 - [WebToLead](#webtolead)
 - [WebToCase](#webtocase)
 - [EmailToCase](#emailtocase)
@@ -440,7 +440,7 @@ Page Setup
 
 ### 4. Platform Event Triggered Flow
 
-## 5. Autolaunched Flow
+### 5. Autolaunched Flow
 
 - It is invoked by
   - Apex
