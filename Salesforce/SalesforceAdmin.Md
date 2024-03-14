@@ -494,20 +494,4 @@ Then goto Specific Object PageLayout > Add >Save
 <div align="right"><a href="#top-of-page">(^)</a></div>
 <div align="right"><a href="#top-of-page">(^)</a></div>
 
-# INTERVIEW
 
-1. Tell me about yourself
-2. How to configure Object level security?
-   Create, Read, Delete
-3. How many Relationships in Salesforce?
-4. What is Static & Dynamic Dashboard?
-5. How do you access Historical data report?
-6. What is OWD?
-7. What is Triggers?
-8. Best Practices of Triggers?
-9. What are the limit for SOQL and SOSL? Async and Sync
-10. What is deployment? Workbench changeset?
-11. What is Custom Page Layout and Lightning Page Layout?
-12. What are different types of Dashboard Components?
-13. Waht is Async and Sync Apex?
-14.
