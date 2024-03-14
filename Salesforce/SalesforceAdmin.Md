@@ -30,6 +30,20 @@
       - [MUTE in Permission Set Group](#mute-in-permission-set-group)
     - [4. Record Level Security](#4-record-level-security)
       - [APPROVAL PROCESS](#approval-process)
+      - [Dynamic Forms](#dynamic-forms)
+      - [Object Specific Actions/ Quick Actions](#object-specific-actions-quick-actions)
+      - [FLOWS](#flows)
+    - [When to Use?](#when-to-use)
+    - [Flow Elements](#flow-elements)
+    - [Types of Flows](#types-of-flows)
+  - [1. Screen Flow](#1-screen-flow)
+  - [2. Record Triggered Flow](#2-record-triggered-flow)
+  - [3. Schedule Triggered Flow](#3-schedule-triggered-flow)
+  - [4. Platform Event Triggered Flow](#4-platform-event-triggered-flow)
+  - [5. Autolaunched Flow](#5-autolaunched-flow)
+      - [WebToLead](#webtolead)
+      - [WebToCase](#webtocase)
+      - [EmailToCase](#emailtocase)
 - [INTERVIEW](#interview)
 
 # RELATIONSHIPS
@@ -334,16 +348,146 @@ What is MUTE in Permission Set Group?
 - Approver can take steps that when a record is approved, reiected or recalled.
 - We have to create email template for approve n reject. Also we have assign role to the user if not assigned. Manager or any person. It depends on criteria weather we have to approve or reject the record creation. 
 
+<div align="right"><a href="#top-of-page">(^)</a></div> 
+
+#### Dynamic Forms
+Page Setup
+<div align="right"><a href="#top-of-page">(^)</a></div>
+
+#### Object Specific Actions/ Quick Actions
+- Object related actions on the top right corner.
+  - Object Manager-> Select Object ->Buttons, Links and Actions -> New Actions
+<div align="right"><a href="#top-of-page">(^)</a></div> 
+
+#### FLOWS
+- Provides declarative process automation.
+  - Lightning flow provides this point and click automation tool i.e. Taw Butter.
+  - Lightning Flow is the name of product.
+- Process Builder and Flow Builder are name of the tools.
+- Use Process Builder to create Processes.
+- Use Flow Builder to create Flows.
+
+### When to Use?
+- Automate a guided visual experience.
+  - Screen Flow
+- To build complex functionality which can run automatically in the background.
+  - Record Triggered Flow
+  - Scheduled Triggered Flow
+- Need to call flows from apex or lightning com
+  - Auto launched Flow
+
+### Flow Elements
+
+**Interaction**
+- Screen
+- Action
+- Subflow
+
+**Logic**
+- Assignment
+- Decision
+- Loop
+- Collection Sort
+- Collection Filter
+
+**Data** 
+- Create Records
+- Update Records
+- Get Records
+- Delete Records
+
+**Resources That can be created:**
+
+- Variable
+- Constant
+- Formula
+- Text Template
+- Choice
+- Record Choice Set
+- Picklist Choice Set
+- Stage
+
+### Types of Flows
+
+1. Screen Flow
+2. Record Triggered Flow
+3. Schedule Triggered Flow
+4. Platform Event Triggered Flow
+5. Autolaunched Flow
+6. Record Triggered Orchestration 
+   - Record Triggered Orchestration - runs whenever a specified type of record is created or updated
+
+## 1. Screen Flow
+- It guides user through a business process
+- It can be launched through
+  - Lightning Page,
+  - Experience Cloud Sites,
+  - Quick Actions and more.
+ 
+## 2. Record Triggered Flow
+
+- Record - Triggered Flow
+- Launches when a Record is
+  - Created
+  - Updated or
+  - Deleted
+- This autolaunched flow runs in the background.
+
+- It actually replaces WORKFLOW and PROCESS BUILDER functionality. Because WORKFLOW and PROCESS BUILDER are used to create and update records only. But the RECORD TRIGGERED FLOW is launch when record ths Created updated and deleted.
+
+ 
+## 3. Schedule Triggered Flow
+
+- Launches at a specified time and frequency for each record in a batch.
+  - This autolaunched flow also runs in the background.
+
+## 4. Platform Event Triggered Flow
+
+## 5. Autolaunched Flow
+
+- It is invoked by
+  - Apex
+  - Processes means Process Builders
+  - REST API
+  - and more...
+- This autolaunched flow also runs in the background.
+
+**Migrate to Flows**
+- All the process automations which are in workflow rules and process builders we can migrate to flow using this functionality. because Process builder and workflow rules are depricated.
+
+
+<div align="right"><a href="#top-of-page">(^)</a></div>
+
+#### WebToLead
+- Generate Web-To Lead form (map with standard field/custom field/record type)
+- Generate Web—To Lead form (map With Campaign)
+- Default Lead Creator
+- Default Lead Response Template
+- Default Lead Owner (User/Queue)
+- Notify Default Lead Owner (User/Queue)
+- Generate Web-To Lead with re-CAPTCHA  API (to avoid Spam Records)
+      
+- Debug your web-to lead form
+- Lead Assignment Rules
+- Lead Auto-Response Rules
+- Place Web-To Lead form into Public Website
+- Lead Convert (Account, Contact, Opportunity)
+- Generate Reports
+- Web-To Lead Limitations
+
+<div align="right"><a href="#top-of-page">(^)</a></div> 
+
+#### WebToCase
+
+<div align="right"><a href="#top-of-page">(^)</a></div> 
+
+#### EmailToCase
+
+<div align="right"><a href="#top-of-page">(^)</a></div> 
 
 <div align="right"><a href="#top-of-page">(^)</a></div> 
 <div align="right"><a href="#top-of-page">(^)</a></div>
-<div align="right"><a href="#top-of-page">(^)</a></div> 
-<div align="right"><a href="#top-of-page">(^)</a></div> 
 <div align="right"><a href="#top-of-page">(^)</a></div>
-<div align="right"><a href="#top-of-page">(^)</a></div> 
-<div align="right"><a href="#top-of-page">(^)</a></div> 
-<div align="right"><a href="#top-of-page">(^)</a></div>
-
 # INTERVIEW
 
 1. Tell me about yourself
