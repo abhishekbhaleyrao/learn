@@ -29,6 +29,7 @@
       - [PERMISSION SET GROUPS](#permission-set-groups)
       - [MUTE in Permission Set Group](#mute-in-permission-set-group)
     - [4. Record Level Security](#4-record-level-security)
+      - [APPROVAL PROCESS](#approval-process)
 - [INTERVIEW](#interview)
 
 # RELATIONSHIPS
@@ -295,7 +296,45 @@ What is MUTE in Permission Set Group?
     - You can use other Record Level security and sharing tools to open up the sharing of records.
     - **OWD used to Restrict Record**
   
+    #### 2. Role hierarchies
+
+    - It gives access for higher in the hierarchy.
+    - That user can access all records owned by the users below them in the hierarchy.
+    - Each role in the hierarchy should represent a level of Data access that a user or group of user needs.
+    - **Role Hierarchy used to Openup records** 
+    - Automatically assigns
+  
+    #### 3. Sharing Rules
+
+    - These are exceptions to Org-Wide defaults.
+    - Through sharing rules you can share records to a group of users.
+      So that, they can get access to the records they don't own or can't manually see.
+    - **Sharing Rules used to Openup Records**
+    - Owner based(public group we have to create) and criteria based
+    - Record access Cant be share through Profile n permission sets. 
+
+    #### 4. Manual Sharing
+
+    - It allows owners of particular records to share them with another users.
+    - Manual sharing is not automated like Org-wide defaults, Role hierarchy or sharing rules.
+    - It can be useful in some situation where you manually want to share a record with another user.
+    - **Manual Sharing Rules used to Openup records**
+    - Used to share specific record to the group of users or particular user
+    - We can bypass record level security through Profile and permissions sets using viewall n modifyall 
+  
 <div align="right"><a href="#top-of-page">(^)</a></div> 
+
+#### APPROVAL PROCESS
+
+- An approval process is an automated process.
+- It is implemented to approve records.
+- We can specifies the steps those are necessary for approval.
+- It allows a step to apply to all records or just records that have certain attributes.
+- In approval process we can also define who will be approving at each step.
+- Approver can take steps that when a record is approved, reiected or recalled.
+- We have to create email template for approve n reject. Also we have assign role to the user if not assigned. Manager or any person. It depends on criteria weather we have to approve or reject the record creation. 
+
+
 <div align="right"><a href="#top-of-page">(^)</a></div> 
 <div align="right"><a href="#top-of-page">(^)</a></div>
 <div align="right"><a href="#top-of-page">(^)</a></div> 
