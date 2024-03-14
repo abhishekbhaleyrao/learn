@@ -7,16 +7,16 @@
     - [How to convert Lookup to Master-Detail Relationship](#how-to-convert-lookup-to-master-detail-relationship)
     - [How to convert Master-Detail relationship into Lookup.](#how-to-convert-master-detail-relationship-into-lookup)
   - [3.Junction Object (Many To Many) Relationship](#3junction-object-many-to-many-relationship)
-  - [List View](#list-view)
-  - [Lightning Pages - Home Page, Record Page, App Page](#lightning-pages---home-page-record-page-app-page)
-  - [Duplicate and Matching Rule](#duplicate-and-matching-rule)
-    - [DUPLICATE RULE](#duplicate-rule)
-    - [MATCHING RULE](#matching-rule)
-  - [Activities : Task, Events, Call, Email](#activities--task-events-call-email)
-  - [Feed Tracking](#feed-tracking)
-  - [Field History Tracking](#field-history-tracking)
-  - [Global Actions](#global-actions)
-  - [View setup audit trails](#view-setup-audit-trails)
+- [List View](#list-view)
+- [Lightning Pages - Home Page, Record Page, App Page](#lightning-pages---home-page-record-page-app-page)
+- [Duplicate and Matching Rule](#duplicate-and-matching-rule)
+  - [DUPLICATE RULE](#duplicate-rule)
+  - [MATCHING RULE](#matching-rule)
+- [Activities : Task, Events, Call, Email](#activities--task-events-call-email)
+- [Feed Tracking](#feed-tracking)
+- [Field History Tracking](#field-history-tracking)
+- [Global Actions](#global-actions)
+- [View setup audit trails](#view-setup-audit-trails)
 - [DATA SECURITY](#data-security)
   - [Level of Data Access](#level-of-data-access)
     - [1. Organization Level Security](#1-organization-level-security)
@@ -29,22 +29,23 @@
       - [PERMISSION SET GROUPS](#permission-set-groups)
       - [MUTE in Permission Set Group](#mute-in-permission-set-group)
     - [4. Record Level Security](#4-record-level-security)
-      - [APPROVAL PROCESS](#approval-process)
-      - [Dynamic Forms](#dynamic-forms)
-      - [Object Specific Actions/ Quick Actions](#object-specific-actions-quick-actions)
-      - [FLOWS](#flows)
-    - [When to Use?](#when-to-use)
-    - [Flow Elements](#flow-elements)
-    - [Types of Flows](#types-of-flows)
-  - [1. Screen Flow](#1-screen-flow)
-  - [2. Record Triggered Flow](#2-record-triggered-flow)
-  - [3. Schedule Triggered Flow](#3-schedule-triggered-flow)
-  - [4. Platform Event Triggered Flow](#4-platform-event-triggered-flow)
+- [APPROVAL PROCESS](#approval-process)
+- [Dynamic Forms](#dynamic-forms)
+- [Object Specific Actions/ Quick Actions](#object-specific-actions-quick-actions)
+- [FLOWS](#flows)
+  - [When to Use?](#when-to-use)
+  - [Flow Elements](#flow-elements)
+  - [Types of Flows](#types-of-flows)
+    - [1. Screen Flow](#1-screen-flow)
+    - [2. Record Triggered Flow](#2-record-triggered-flow)
+    - [3. Schedule Triggered Flow](#3-schedule-triggered-flow)
+    - [4. Platform Event Triggered Flow](#4-platform-event-triggered-flow)
   - [5. Autolaunched Flow](#5-autolaunched-flow)
-      - [WebToLead](#webtolead)
-      - [WebToCase](#webtocase)
-      - [EmailToCase](#emailtocase)
+- [WebToLead](#webtolead)
+- [WebToCase](#webtocase)
+- [EmailToCase](#emailtocase)
 - [INTERVIEW](#interview)
+
 
 # RELATIONSHIPS
 
@@ -104,7 +105,7 @@
 
 <div align="right"><a href="#top-of-page">(^)</a></div>
 
-## List View
+# List View
 
 - All record and Recently Viewed.
 - Shows list of records available under object.
@@ -113,7 +114,7 @@
 
 <div align="right"><a href="#top-of-page">(^)</a></div>
 
-## Lightning Pages - Home Page, Record Page, App Page
+# Lightning Pages - Home Page, Record Page, App Page
 
 - Home Page, Record Page, App Page
   - Steps: Setup-> Home-> Search Lightning App Builder-> New
@@ -125,15 +126,15 @@
 
 <div align="right"><a href="#top-of-page">(^)</a></div>
 
-## Duplicate and Matching Rule
+# Duplicate and Matching Rule
 
-### DUPLICATE RULE
+## DUPLICATE RULE
 
 - Prevent creation of Duplicate Records.
 - It shows either Warning or block record creation and updation in case of duplicates.
 - We can create reports on Duplicate Records as well.
 
-### MATCHING RULE
+## MATCHING RULE
 
 - Here we need to set Criteria for Duplicate Check.
 - If we want to create Duplicate Rule, then we must have to create matching rule.
@@ -147,20 +148,20 @@
 
 <div align="right"><a href="#top-of-page">(^)</a></div>
 
-## Activities : Task, Events, Call, Email
+# Activities : Task, Events, Call, Email
 
 - Bydefault these activities are ON for standard Objects.
 - For Custom Objects, We need to check the option **"Allow Activities"** while creation of Object.
 - <div align="right"><a href="#top-of-page">(^)</a></div>
 
-## Feed Tracking
+# Feed Tracking
 
 - Feed tracking enables to **track changes** of **Selected Field and Related Record Field**
 - Changes are shown in Chatter Component.
 - It shows Old Value, New Value and who has change the Value. - You can select upto 20 Field for Feed Tracking for one Object. -
 <div align="right"><a href="#top-of-page">(^)</a></div>
 
-## Field History Tracking
+# Field History Tracking
 
 - Field History Tracking enables to **track changes of Selected Fields**
 - Changes are shown in History Related List.
@@ -170,13 +171,13 @@
 - We have to add Related Field History to the Page Layout, So that we can able to see the Field History Tracking.
 - <div align="right"><a href="#top-of-page">(^)</a></div>
 
-## Global Actions
+# Global Actions
 
 - Top Right + Sign (New Event, New Task, New Contact, Log a Call, New Opportunity, New Case, New Lead, Email)
 
 <div align="right"><a href="#top-of-page">(^)</a></div>
 
-## View setup audit trails
+# View setup audit trails
 
 - It shows list of changes done by user in differet components.
 - We can download past 6 month changes.
@@ -338,7 +339,7 @@ What is MUTE in Permission Set Group?
   
 <div align="right"><a href="#top-of-page">(^)</a></div> 
 
-#### APPROVAL PROCESS
+# APPROVAL PROCESS
 
 - An approval process is an automated process.
 - It is implemented to approve records.
@@ -350,16 +351,16 @@ What is MUTE in Permission Set Group?
 
 <div align="right"><a href="#top-of-page">(^)</a></div> 
 
-#### Dynamic Forms
+# Dynamic Forms
 Page Setup
 <div align="right"><a href="#top-of-page">(^)</a></div>
 
-#### Object Specific Actions/ Quick Actions
+# Object Specific Actions/ Quick Actions
 - Object related actions on the top right corner.
   - Object Manager-> Select Object ->Buttons, Links and Actions -> New Actions
-<div align="right"><a href="#top-of-page">(^)</a></div> 
+<div align="right"><a href="#top-of-page">(^)</a></div>
 
-#### FLOWS
+# FLOWS
 - Provides declarative process automation.
   - Lightning flow provides this point and click automation tool i.e. Taw Butter.
   - Lightning Flow is the name of product.
@@ -367,7 +368,7 @@ Page Setup
 - Use Process Builder to create Processes.
 - Use Flow Builder to create Flows.
 
-### When to Use?
+## When to Use?
 - Automate a guided visual experience.
   - Screen Flow
 - To build complex functionality which can run automatically in the background.
@@ -376,8 +377,7 @@ Page Setup
 - Need to call flows from apex or lightning com
   - Auto launched Flow
 
-### Flow Elements
-
+## Flow Elements
 **Interaction**
 - Screen
 - Action
@@ -397,7 +397,6 @@ Page Setup
 - Delete Records
 
 **Resources That can be created:**
-
 - Variable
 - Constant
 - Formula
@@ -407,8 +406,7 @@ Page Setup
 - Picklist Choice Set
 - Stage
 
-### Types of Flows
-
+## Types of Flows
 1. Screen Flow
 2. Record Triggered Flow
 3. Schedule Triggered Flow
@@ -417,15 +415,14 @@ Page Setup
 6. Record Triggered Orchestration 
    - Record Triggered Orchestration - runs whenever a specified type of record is created or updated
 
-## 1. Screen Flow
+### 1. Screen Flow
 - It guides user through a business process
 - It can be launched through
   - Lightning Page,
   - Experience Cloud Sites,
   - Quick Actions and more.
  
-## 2. Record Triggered Flow
-
+### 2. Record Triggered Flow
 - Record - Triggered Flow
 - Launches when a Record is
   - Created
@@ -436,12 +433,12 @@ Page Setup
 - It actually replaces WORKFLOW and PROCESS BUILDER functionality. Because WORKFLOW and PROCESS BUILDER are used to create and update records only. But the RECORD TRIGGERED FLOW is launch when record ths Created updated and deleted.
 
  
-## 3. Schedule Triggered Flow
+### 3. Schedule Triggered Flow
 
 - Launches at a specified time and frequency for each record in a batch.
   - This autolaunched flow also runs in the background.
 
-## 4. Platform Event Triggered Flow
+### 4. Platform Event Triggered Flow
 
 ## 5. Autolaunched Flow
 
@@ -458,7 +455,15 @@ Page Setup
 
 <div align="right"><a href="#top-of-page">(^)</a></div>
 
-#### WebToLead
+**How to Add Screen Flow to Quick action and page Layout**
+- Object Manager-> Select Object ->Buttons, Links and Actions -> New Actions
+Then goto Specific Object PageLayout > Add >Save
+- Using Section we can split the object element in screen flow
+
+**How to Add Screen Flow to record page Layout**
+- Setting Gear icon > Edit Page> Right side serch for flow> Drag Flow to Activity and chatter
+  
+# WebToLead
 - Generate Web-To Lead form (map with standard field/custom field/record type)
 - Generate Web—To Lead form (map With Campaign)
 - Default Lead Creator
@@ -477,11 +482,11 @@ Page Setup
 
 <div align="right"><a href="#top-of-page">(^)</a></div> 
 
-#### WebToCase
+# WebToCase
 
 <div align="right"><a href="#top-of-page">(^)</a></div> 
 
-#### EmailToCase
+# EmailToCase
 
 <div align="right"><a href="#top-of-page">(^)</a></div> 
 
