@@ -1,10 +1,10 @@
 <div id="top-of-page"></div>
 
 - [JAVASCRIPT](#javascript)
-- [What is JavaScript?](#what-is-javascript)
+  - [What is JavaScript?](#what-is-javascript)
   - [How to write JS in browser chrome?](#how-to-write-js-in-browser-chrome)
   - [VS Code Installation](#vs-code-installation)
-- [Variable Data Types](#variable-data-types)
+- [Chapter1:  Variable Data Types](#chapter1--variable-data-types)
   - [Console.log](#consolelog)
   - [Variables in JS](#variables-in-js)
   - [Variable Rules in JS](#variable-rules-in-js)
@@ -12,11 +12,23 @@
     - [var](#var)
     - [let](#let)
     - [const](#const)
+- [Data Types in JS (Primitive \& NonPrimitive)](#data-types-in-js-primitive--nonprimitive)
+  - [Primitive DataTypes (7)](#primitive-datatypes-7)
+  - [NonPrimitive](#nonprimitive)
+    - [Objects (Arrays, Functions)](#objects-arrays-functions)
+- [Chapter2: Operators and Conditional Statements](#chapter2-operators-and-conditional-statements)
+  - [Comments in JS](#comments-in-js)
+  - [Operators in JS](#operators-in-js)
+    - [Arithmetic Opeators](#arithmetic-opeators)
+    - [Unary Operators **++** and **--**](#unary-operators--and---)
+    - [](#)
+    - [Assignment Operators](#assignment-operators)
+    - [Comparison Operators](#comparison-operators)
 
 
 # JAVASCRIPT
 
-# What is JavaScript?
+## What is JavaScript?
 - JS is programming language used to give instructions to the computer.
 - Input(code) -> Computer -> Output
 
@@ -30,9 +42,10 @@
 
 <div align="right"><a href="#top-of-page">(^)</a></div>
 
-# Variable Data Types
+# Chapter1: <br> Variable Data Types
 
 ## Console.log 
+
 - IT is used to print a message to the console.
 - console.log("This is console example");
 - console.log('This is console example');
@@ -41,6 +54,7 @@
 - **Shift + !**  Used to generate bydefault html code structure.
   
 ## Variables in JS
+
 - Variables are containers for data.
 - Dynamically typed language.
   
@@ -57,6 +71,7 @@
 <img src="assets/images/VariablesJS.jpg" width="500"/></br>
 
 ## Variable Rules in JS
+
 - Variable names are case sensitive; "a" & "A" is different.
 - Only letters, digits, underscore( _ ) and $ is allowed. (not even space)
 - Only a letter, underscore( _ ) and $ should be 1st character.
@@ -69,7 +84,7 @@
     - FullName (Pascal Case)
     - fullname (Dont use)
   
-<img src="assets/images/VariableRules.jpg" width="500"/></br>
+<img src="assets/images/VariableRules.jpg" width="400"/></br>
 
 ## let, const & var
 
@@ -91,3 +106,133 @@
     - let fullName = "tony stark";<br>
       let age = 24;<br>
       console.log(fullName);<br>
+
+
+
+# Data Types in JS (Primitive & NonPrimitive)
+
+<img src="assets/images/DataTypesJS.jpg" width="400"/></br>
+
+## Primitive DataTypes (7)
+- Number 
+  - eg. <br>
+        let age = 24;
+- String
+  - eg. <br>
+        let fullName = "Tony Stark";
+- Boolean
+  - eg. <br>
+        isFollow = true;
+- Undefined<br>
+  - eg.<br> 
+        let x = x;
+- Null<br>
+  - eg.<br> 
+        let x =  null;
+- BigInt<br>
+  - eg.<br> 
+        let x = BigInt("123") ;
+- Symbol<br>
+  - eg.<br> 
+        let y =  symnbol("Hello !");
+
+
+## NonPrimitive 
+
+###  Objects (Arrays, Functions)
+- Its a collection of values
+- Key value pair stored
+  - eg.<br>
+        age : 24 <br>
+        name : "Rahul";
+  - eg.<br>
+        const student = {<br>
+        fullName : "Rahul Kumar", <br>
+        age : 20, <br>
+        cgpa = 8.2, <br>
+        isPass : True<br>
+        };<br>
+
+- How to access 
+  - obj.key<br>
+  - obj["key"]<br>
+- How to update Object key value 
+  - student["name"] = "Abhishek";
+
+- **Note :** 
+  1. We can Update **let** value <br>
+  2. We cannot upate const value.<br>
+  3. We can update const obj -> Key<br>
+  
+- eg.<br>
+    const product = {<br>
+title: "Ball Pen",<br>
+offer: 5,<br>
+price: 270,<br>
+ };<br>
+
+- eg.<br>
+    const profile = {<br>
+            userName: "Anjali",<br>
+            isfollow: false,<br>
+            followers: 123;<br>
+            following: 112<br>
+    };<br>
+
+
+# Chapter2: <br>Operators and Conditional Statements
+
+## Comments in JS
+
+- Part of Code which is not executed.
+
+  
+<img src="assets/images/CommentJS.jpg" width="400"/></br>
+
+## Operators in JS
+
+- Used to perform some operation on data.</br>
+
+<img src="assets/images/OperatorsJS.jpg" width="300"/></br>
+
+###  Arithmetic Opeators
+- eg. <br>
+    let a = 5;<br>
+    let b = 6;<br>
+    
+    console.log("a + b =", a + b);<br>
+    console.log("a - b =", a - b);<br>
+    console.log("a * b =", a * b);<br>
+    console.log("a / b =", a / b);<br> 
+    console.log("a % b =", a % b);<br> Modulus
+    console.log("a ** b =", a ** b);<br> Exponential //5^5 = 25
+
+### Unary Operators **++** and **--**
+
+- eg. <br>
+    let a = 5;<br>
+    let b = 2;<br>
+
+    a = a + 1; // 6
+    a++;
+    
+###
+- 
+    a++   and   a-- (Post)<br>
+    ++a   and   --a (Pre)<br>
+
+### Assignment Operators
+
+- To assign value 
+- left = right
+  - Value goes right to left
+- a += 1 means a = a+1
+- 
+<img src="assets/images/AssignmentOperatorsJS.jpg" width="300"/></br>
+
+
+### Comparison Operators
+
+- Used to compare two values.
+
+<img src="assets/images/ComparisonOperatorsJS.jpg" width="300"/></br>
