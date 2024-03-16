@@ -24,6 +24,10 @@
     - [](#)
     - [Assignment Operators](#assignment-operators)
     - [Comparison Operators](#comparison-operators)
+    - [Logical Operators](#logical-operators)
+    - [Conditional Statements in JS](#conditional-statements-in-js)
+      - [if Statement](#if-statement)
+      - [if-else Statement](#if-else-statement)
 
 
 # JAVASCRIPT
@@ -236,3 +240,42 @@ price: 270,<br>
 - Used to compare two values.
 
 <img src="assets/images/ComparisonOperatorsJS.jpg" width="300"/></br>
+
+### Logical Operators
+
+- Logical AND &&  :   (all values will be true then it will return true)
+- Logical OR || : (all values will be False then it will return False)
+- Logical NOT ! :
+
+<img src="assets/images/LogicalOperatorsJS.jpg" width="200"/></br>
+
+- eg.<br>
+    // Logical Operators</br>
+let a = 6;</br>
+let b = 5;</br>
+
+let cond1 = a > b; //true</br>
+let cond2 = a === 6; //true</br>
+console.log("cond1 && cond2", cond1 && cond2);</br>
+
+- //if both cond are true then it will return true</br>
+//if one cond is false then it will return false</br>
+/*  cond1   cond2   Result(&&)  Result(||)</br>
+    True    True    True        True</br>
+    True    False   False       True</br>
+    False   True    False       True</br>
+    False   False   False       False </br>
+*/</br>
+
+
+### Conditional Statements in JS
+- To implement some condition in the code.
+  
+#### if Statement
+
+<img src="assets/images/ConditionalStatementsJS.jpg" width="300"/></br>
+
+#### if-else Statement
+
+<img src="assets/images/CondIfElseJS.jpg" width="300"/></br>
+
