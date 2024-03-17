@@ -38,6 +38,8 @@
   - [while Loop](#while-loop)
   - [do-while Loop](#do-while-loop)
   - [for-of Loop \& for-in Loop](#for-of-loop--for-in-loop)
+  - [for-in Loop](#for-in-loop)
+      - [Practice Que](#practice-que-1)
 
 
 **Project**
@@ -387,3 +389,29 @@ console.log("cond1 && cond2", cond1 && cond2);</br>
 - Output 
 
 <img src="assets/images/forofLoopExAns1JS.jpg" width="200"/></br>
+
+## for-in Loop
+- It returns Key of an Object and array.
+- Iterator used with Object and arrays.
+  
+<img src="assets/images/forinLoopJS.jpg" width="200"/></br>
+
+- Example - 
+
+<img src="assets/images/forinLoopExJS.jpg" width="400"/></br>
+
+#### Practice Que 
+1. To Print Even number from 0 to 100.
+<img src="assets/images/PracticeQue2JS.jpg" width="300"/></br>
+
+- Ans :<br>
+
+<img src="assets/images/PracticeAns2JS.jpg" width="400"/></br>
+
+2. Create a game where you start with any random game number. Ask the user to keep
+guessing the game number until the user enters correct value.
+<img src="assets/images/PracticeQue3JS.jpg" width="300"/></br>
+
+- Ans :<br>
+
+<img src="assets/images/PracticeAns3JS.jpg" width="600"/></br>

@@ -197,3 +197,36 @@ for (let i of str) {
   size++;
 }
 console.log("String size", size);
+
+//Example for-in Loop
+let student = {
+  name: "Rahul Kumar",
+  age: 20,
+  cgpa: 7.5,
+  isPss: true,
+};
+
+for (let key in student) {
+  console.log("Key =", key, "Value =", student[key]);
+}
+
+//Practice Que
+/* 
+Qs1. Print all even numbers from 0 to 100.*/
+
+for (let num = 0; num <= 100; num++) {
+  if (num % 2 === 0)
+    //even number
+    console.log("Even num =", num);
+}
+
+/* Qs2. Create a game where you start with any random game number. Ask the user to keep
+guessing the game number until the user enters correct value. */
+
+let gameNum = 25;
+let userNum = prompt("Guess the game Number : ");
+
+while (userNum != gameNum) {
+  userNum = prompt("You entered Wrong number, Guess again : ");
+}
+console.log("Congratulations!!!, you have entered right number");
