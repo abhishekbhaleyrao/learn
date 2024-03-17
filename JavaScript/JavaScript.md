@@ -33,6 +33,7 @@
       - [Switch Statement](#switch-statement)
       - [Practice Que](#practice-que)
 - [Chapter 3: Loops \& Strings](#chapter-3-loops--strings)
+- [Loops](#loops)
   - [for Loop](#for-loop)
   - [for Loop](#for-loop-1)
   - [while Loop](#while-loop)
@@ -40,6 +41,8 @@
   - [for-of Loop \& for-in Loop](#for-of-loop--for-in-loop)
   - [for-in Loop](#for-in-loop)
       - [Practice Que](#practice-que-1)
+- [Strings](#strings)
+- [Template Literals in JS](#template-literals-in-js)
 
 
 **Project**
@@ -331,7 +334,7 @@ console.log("cond1 && cond2", cond1 && cond2);</br>
 
 
 # Chapter 3: <br>Loops & Strings
-
+# Loops
 ## for Loop
 
 - Loops are used to execute a piece of code again & again.
@@ -409,9 +412,29 @@ console.log("cond1 && cond2", cond1 && cond2);</br>
 <img src="assets/images/PracticeAns2JS.jpg" width="400"/></br>
 
 2. Create a game where you start with any random game number. Ask the user to keep
-guessing the game number until the user enters correct value.
-<img src="assets/images/PracticeQue3JS.jpg" width="300"/></br>
+guessing the game number until the user enters correct value.<br>
+
+<img src="assets/images/PracticeQue3JS.jpg" width="500"/></br>
 
 - Ans :<br>
 
-<img src="assets/images/PracticeAns3JS.jpg" width="600"/></br>
+<img src="assets/images/PracticeAns3JS.jpg" height="250 " width="800"/></br>
+
+# Strings
+- inbuilt Properties: length
+
+<img src="assets/images/StringsJS.jpg" width="350"/></br>
+
+# Template Literals in JS
+- A way to have embeded expressions in strings.
+- backticks `` used to denote template literals
+
+**String Interpolation** 
+- To create string by doing substitution of placeholders
+
+<img src="assets/images/TemplateLiteralsJS.jpg" width="350"/></br>
+
+- Example
+
+<img src="assets/images/TemplateLiteralsExJS.jpg" width="400"/></br>
+

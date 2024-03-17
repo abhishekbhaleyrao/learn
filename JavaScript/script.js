@@ -230,3 +230,30 @@ while (userNum != gameNum) {
   userNum = prompt("You entered Wrong number, Guess again : ");
 }
 console.log("Congratulations!!!, you have entered right number");
+
+//Example String
+let str = "I love JavaScript";
+let str2 = "Programming";
+//String length
+str.length;
+str2.length;
+//String indices
+console.log(str[0]); //I
+
+//Template Literals
+
+let specialString = `This is a template literal`;
+console.log(typeof specialString);
+
+//Example Template Literal
+
+let obj = {
+item ="pen",
+price: 10,
+};
+
+console.log("The cost of", obj.item, "is", obj.price, "rupees");
+
+//Template Literal
+let output = `the cost of ${obj.item} is ${obj.price} rupees`;
+console.log(output);
