@@ -34,7 +34,10 @@
       - [Practice Que](#practice-que)
 - [Chapter 3: Loops \& Strings](#chapter-3-loops--strings)
   - [for Loop](#for-loop)
-  - [Infinite Loop](#infinite-loop)
+  - [for Loop](#for-loop-1)
+  - [while Loop](#while-loop)
+  - [do-while Loop](#do-while-loop)
+  - [for-of Loop \& for-in Loop](#for-of-loop--for-in-loop)
 
 
 **Project**
@@ -337,7 +340,50 @@ console.log("cond1 && cond2", cond1 && cond2);</br>
 
 <img src="assets/images/forLoopExJS.jpg" width="550"/></br>
 
-## Infinite Loop
+## for Loop
  - A loop that never ends.
+ - Never do it in programe.
+ - Stopping condition is always true.
+ - It takes all memory in system.
+
+## while Loop
+- Condition will check in start ofthe loop.
   
- 
+<img src="assets/images/whileLoopJS.jpg" width="200"/></br>
+
+- Example
+
+<img src="assets/images/whileLoopExJS.jpg" width="250"/></br>
+
+## do-while Loop
+- Condition will check in last of the loop
+- We have to add Semicolon in last
+- minimum it will run for 1 time.
+
+<img src="assets/images/dowhileLoopJS.jpg" width="200"/></br>
+
+- Example - It will run for 1 time
+
+<img src="assets/images/dowhileLoopExJS.jpg" width="250"/></br>
+
+## for-of Loop & for-in Loop
+
+- It help to iterate(loop) on special datatype
+
+<img src="assets/images/forofLoopJS.jpg" width="200"/></br>
+
+- Example - It will run for 1 time
+
+<img src="assets/images/forofLoopExJS.jpg" width="250"/></br>
+
+- Output 
+
+<img src="assets/images/forofLoopExAnsJS.jpg" width="80"/></br>
+
+- Example - 
+
+<img src="assets/images/forofLoopEx1JS.jpg" width="250"/></br>
+
+- Output 
+
+<img src="assets/images/forofLoopExAns1JS.jpg" width="200"/></br>

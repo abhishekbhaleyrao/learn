@@ -161,3 +161,39 @@ console.log("Sum =", sum);
 for (let count = 1; count <= 5; count++) {
   console.log("i =", i);
 }
+
+//Example While Loop
+let i = 1;
+while (i <= 10) {
+  console.log("Sai");
+  i++;
+}
+
+//Example d0-while Loop
+let i = 20;
+do {
+  console.log("Sairam");
+  i++;
+} while (i <= 10);
+
+//Example for-of Loop
+
+let str = "JavaScript";
+
+for (let i of str) {
+  //iterator -> character
+  console.log("i =", i);
+}
+
+//Example for-of Loop
+//To check lenght of string
+
+let str = "JavaScript";
+let size = 0;
+
+for (let i of str) {
+  //iterator -> character
+  console.log("i =", i);
+  size++;
+}
+console.log("String size", size);
