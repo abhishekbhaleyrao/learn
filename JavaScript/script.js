@@ -155,3 +155,9 @@ for (let i = 1; i <= n; i++) {
   sum = sum + i;
 }
 console.log("Sum =", sum);
+
+//Example
+//To Print i
+for (let count = 1; count <= 5; count++) {
+  console.log("i =", i);
+}

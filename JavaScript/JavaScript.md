@@ -25,7 +25,7 @@
     - [Assignment Operators](#assignment-operators)
     - [Comparison Operators](#comparison-operators)
     - [Logical Operators](#logical-operators)
-    - [Conditional Statements in JS](#conditional-statements-in-js)
+  - [Conditional Statements in JS](#conditional-statements-in-js)
       - [if Statement](#if-statement)
       - [if-else Statement](#if-else-statement)
       - [else-if Statement](#else-if-statement)
@@ -34,6 +34,7 @@
       - [Practice Que](#practice-que)
 - [Chapter 3: Loops \& Strings](#chapter-3-loops--strings)
   - [for Loop](#for-loop)
+  - [Infinite Loop](#infinite-loop)
 
 
 **Project**
@@ -280,7 +281,7 @@ console.log("cond1 && cond2", cond1 && cond2);</br>
 */</br>
 
 
-### Conditional Statements in JS
+## Conditional Statements in JS
 - To implement some condition in the code.
   
 #### if Statement
@@ -336,5 +337,7 @@ console.log("cond1 && cond2", cond1 && cond2);</br>
 
 <img src="assets/images/forLoopExJS.jpg" width="550"/></br>
 
- 
+## Infinite Loop
+ - A loop that never ends.
+  
  
