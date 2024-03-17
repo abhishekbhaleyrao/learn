@@ -4,7 +4,7 @@
   - [What is JavaScript?](#what-is-javascript)
   - [How to write JS in browser chrome?](#how-to-write-js-in-browser-chrome)
   - [VS Code Installation](#vs-code-installation)
-- [Chapter1:  Variable Data Types](#chapter1--variable-data-types)
+- [Chapter 1:  Variable Data Types](#chapter-1--variable-data-types)
   - [Console.log](#consolelog)
   - [Variables in JS](#variables-in-js)
   - [Variable Rules in JS](#variable-rules-in-js)
@@ -16,7 +16,7 @@
   - [Primitive DataTypes (7)](#primitive-datatypes-7)
   - [NonPrimitive](#nonprimitive)
     - [Objects (Arrays, Functions)](#objects-arrays-functions)
-- [Chapter2: Operators and Conditional Statements](#chapter2-operators-and-conditional-statements)
+- [Chapter 2: Operators and Conditional Statements](#chapter-2-operators-and-conditional-statements)
   - [Comments in JS](#comments-in-js)
   - [Operators in JS](#operators-in-js)
     - [Arithmetic Opeators](#arithmetic-opeators)
@@ -28,7 +28,19 @@
     - [Conditional Statements in JS](#conditional-statements-in-js)
       - [if Statement](#if-statement)
       - [if-else Statement](#if-else-statement)
+      - [else-if Statement](#else-if-statement)
+      - [Ternary Operators in JS](#ternary-operators-in-js)
+      - [Switch Statement](#switch-statement)
+      - [Practice Que](#practice-que)
+- [Chapter 3: Loops \& Strings](#chapter-3-loops--strings)
+  - [for Loop](#for-loop)
 
+
+**Project**
+https://github.com/codewithsadee/grilli
+
+**MDN**
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch
 
 # JAVASCRIPT
 
@@ -46,7 +58,7 @@
 
 <div align="right"><a href="#top-of-page">(^)</a></div>
 
-# Chapter1: <br> Variable Data Types
+# Chapter 1: <br> Variable Data Types
 
 ## Console.log 
 
@@ -184,7 +196,7 @@ price: 270,<br>
     };<br>
 
 
-# Chapter2: <br>Operators and Conditional Statements
+# Chapter 2: <br>Operators and Conditional Statements
 
 ## Comments in JS
 
@@ -279,3 +291,50 @@ console.log("cond1 && cond2", cond1 && cond2);</br>
 
 <img src="assets/images/CondIfElseJS.jpg" width="300"/></br>
 
+#### else-if Statement
+- Used to check multiple conditions
+  
+<img src="assets/images/CondElseIfJS.jpg" width="300"/></br>
+
+#### Ternary Operators in JS
+- Used to check  with 3 Operands <br>
+- eg.</br> a ? b : c <br>
+<img src="assets/images/TernaryOperatorJS.jpg" width="300"/></br>
+
+#### Switch Statement
+
+<img src="assets/images/SwitchJS.jpg" width="250"/></br>
+
+- Example
+  
+<img src="assets/images/SwitchExJS.jpg" width="450"/></br>
+
+#### Practice Que 
+1. 
+<img src="assets/images/PracticeQueJS.jpg" width="550"/></br>
+
+- Ans :<br>
+
+<img src="assets/images/PracticeAnsJS.jpg" width="350"/></br>
+
+2.  
+<img src="assets/images/PracticeQue1JS.jpg" width="550"/></br>
+- Ans :<br>
+
+<img src="assets/images/PracticeAns1JS.jpg" width="550"/></br>
+
+
+# Chapter 3: <br>Loops & Strings
+
+## for Loop
+
+- Loops are used to execute a piece of code again & again.
+
+<img src="assets/images/LoopsJS.jpg" width="550"/></br>
+
+- Example
+
+<img src="assets/images/forLoopExJS.jpg" width="550"/></br>
+
+ 
+ 

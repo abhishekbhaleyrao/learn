@@ -24,7 +24,7 @@ console.log("cond1 && cond2", cond1 && cond2);
 */
 
 //Conditional Statements
-//Example 1
+//Example if Statement
 let age = 25;
 
 if (age > 18) {
@@ -34,7 +34,7 @@ if (age < 18) {
   console.log("You CANNOT Vote!!!");
 }
 
-//Example 2
+//Example if Statement
 let color;
 let mode = "dark";
 
@@ -45,3 +45,113 @@ if (mode === "light") {
   color = white;
 }
 console.log(color);
+
+//Example if-else Statement
+let color;
+let mode = "dark";
+
+if (mode === "dark") {
+  color = black;
+} else {
+  color = white;
+}
+console.log(color);
+
+//Example if-else Statement
+let age = 25;
+
+if (age >= 18) {
+  console.log("You can Vote");
+} else {
+  console.log("You CANNOT Vote!!!");
+}
+
+//Example if-else Statement
+//Odd Even X % 2===0
+
+let num = 10;
+
+if (num % 2 === 0) {
+  console.log(num, "is Even");
+} else {
+  console.log(num, "is Odd");
+}
+
+//Example Else-if Statement
+let mode = "dark";
+let color;
+
+if (mode === "dark") {
+  color = "black";
+} else if (mode === "blue") {
+  color = "blue";
+} else if (mode === "pink") {
+  color = "pink";
+} else {
+  color = "white";
+}
+console.log(color);
+
+//Ternary Operators
+//Example
+let age = 25;
+
+let result = age >= 18 ? "adult" : "not adult";
+console.log(result);
+
+//Practice Que
+/* 
+Qsl. Get user to input a number using prompt("Enter a number:"). Check if the number is
+a multiple of 5 or not.*/
+
+let num = prompt("Enter a Number:");
+
+if (num % 5 === 0) {
+  console.log(num, " is a multiple of 5");
+} else {
+  console.log(num, " is NOT multiple of 5");
+}
+
+/* 
+Qs2. Write a code which can give grades to students according to their scores:
+
+90-100, A
+70-89, B
+60-69, c
+50-59, D
+0-49, F
+*/
+
+let score = 75;
+let grade;
+
+if (score >= 90 && score <= 100) {
+  grade = "A";
+} else if (score >= 70 && score <= 89) {
+  grade = "B";
+} else if (score >= 60 && score <= 69) {
+  grade = "C";
+} else if (score >= 50 && score <= 59) {
+  grade = "D";
+} else if (score >= 0 && score <= 49) {
+  grade = "F";
+}
+
+console.log("According to your score, your grade is ", grade);
+
+//Loops & Strings
+
+// for Loop
+// Example To Print sentense to 5 times
+
+for (let count = 1; count <= 5; count++) {
+  console.log("Apna College");
+}
+
+//Example To Calculate sum of 1 to n.
+let sum = 0;
+let n = 5;
+for (let i = 1; i <= n; i++) {
+  sum = sum + i;
+}
+console.log("Sum =", sum);
