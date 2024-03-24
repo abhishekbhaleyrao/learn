@@ -42,7 +42,10 @@
   - [for-in Loop](#for-in-loop)
       - [Practice Que](#practice-que-1)
 - [Strings](#strings)
-- [Template Literals in JS](#template-literals-in-js)
+  - [Template Literals in JS](#template-literals-in-js)
+  - [String Methods in JS](#string-methods-in-js)
+      - [Practice Que](#practice-que-2)
+- [Arrays](#arrays)
 
 
 **Project**
@@ -425,7 +428,7 @@ guessing the game number until the user enters correct value.<br>
 
 <img src="assets/images/StringsJS.jpg" width="350"/></br>
 
-# Template Literals in JS
+## Template Literals in JS
 - A way to have embeded expressions in strings.
 - backticks `` used to denote template literals
 
@@ -437,4 +440,41 @@ guessing the game number until the user enters correct value.<br>
 - Example
 
 <img src="assets/images/TemplateLiteralsExJS.jpg" width="400"/></br>
+
+**Escape Characters** 
+- \n used to move line to the **next line**
+- \t used to give **tab** space 
+  
+## String Methods in JS
+
+- It will not change original string. 
+- It will store in variable with new string.
+- Stings are **Immutable** in JS.
+- str.trim is used to remove tart and end space whitespaces from string.
+
+
+<img src="assets/images/StringMethodsJS.jpg" width="350"/></br>
+
+
+<img src="assets/images/Strings1JS.jpg" width="350"/></br>
+
+
+#### Practice Que 
+
+1. Prompt the user to enter their full name. Generate a username for them based on the input.
+Start username with @, followed by their full name and ending with the fullname length.
+eg: user name = "shradhakhapra" , username should be "@shradhakhapra13"
+
+<img src="assets/images/PracticeQue4JS.jpg" width="500"/></br>
+
+- Ans :<br>
+
+<img src="assets/images/PracticeAns4JS.jpg" width="400"/></br>
+
+# Arrays
+
+- Its a collection of items.
+- 
+
+<img src="assets/images/ArraysJS.jpg" width="400"/></br>
 

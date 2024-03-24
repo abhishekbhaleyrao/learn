@@ -257,3 +257,48 @@ console.log("The cost of", obj.item, "is", obj.price, "rupees");
 //Template Literal
 let output = `the cost of ${obj.item} is ${obj.price} rupees`;
 console.log(output);
+
+//String Methods in JS
+
+// str.slice()
+
+let str = "0123456";
+console.log(str.slice(1,3)); // (1,3) start and end index. It will not print last index eg it will print 12
+
+//str1.concat(str2)
+//Joins str2 with str1
+
+let str1 = "Abhishek";
+let str2 = "Bhalerao";
+
+let res = str2.concat(Str1); //We can concate string with + eg "hello" + 123 it will print hello123
+
+console.log(res);
+
+//str.replace(searchVal, newVal)
+
+let str = "hello";
+
+console.log(str.replace("h","y")); // It will print yello
+
+// str.charAt(idx)
+
+let str = "ILoveJS";
+
+console.log(str.charAt(0)); // I
+console.log(str.charAt(2)); // o
+
+
+//Practice Que
+/* 
+Qs1. Prompt the user to enter their full name. Generate a username for them based on the input.
+Start username with @, followed by their full name and ending with the fullname length.
+eg: user name = "shradhakhapra" , username should be "@shradhakhapra13"*/
+
+
+let fullname = prompt("Enter your fullname without spaces");
+
+let username = "@" + fullname + fullname.length;
+
+console.log(username);
+
