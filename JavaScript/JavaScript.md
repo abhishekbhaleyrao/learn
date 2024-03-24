@@ -46,6 +46,8 @@
   - [String Methods in JS](#string-methods-in-js)
       - [Practice Que](#practice-que-2)
 - [Arrays](#arrays)
+  - [Array Indices](#array-indices)
+    - [Looping over an Array](#looping-over-an-array)
 
 
 **Project**
@@ -474,7 +476,29 @@ eg: user name = "shradhakhapra" , username should be "@shradhakhapra13"
 # Arrays
 
 - Its a collection of items.
-- 
+- Its linear
+- Arrays are **Mutable**. Arrays we can change with index
+- index/position start with 0 zero.
+- Array prints undefined when there is no value present in the array.
 
 <img src="assets/images/ArraysJS.jpg" width="400"/></br>
 
+## Array Indices
+
+<img src="assets/images/ArrayIndicesJS.jpg" width="400"/></br>
+
+### Looping over an Array
+
+To print all the elements in an Array.
+<br>
+Loops -> Iterable (Strings, Objects, Array)<br>
+<br>
+for Loop : length<br>
+<br>
+for(let idx=0 ; idx < arr.length ; idx++ ){<br>
+<br>
+}<br>
+
+1. **for Loop & for Of Loop :**
+
+<img src="assets/images/ArrayLoopsJS.jpg" width="400"/></br>

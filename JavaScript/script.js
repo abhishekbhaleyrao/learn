@@ -302,3 +302,37 @@ let username = "@" + fullname + fullname.length;
 
 console.log(username);
 
+//Arrays
+
+let marks = [97, 82, 66, 70, 99];
+
+console.log(marks);
+
+console.log(marks.length); //length is property in arrays. 
+
+
+let heros = ["ironman","Thor", "Hulk"];
+
+console.log(heros);
+
+console.log(heros.indexOf("Thor",0)); //length is property in arrays.
+
+
+// To print all array element using for loop
+
+
+let heros = ["ironman","Thor", "Hulk"];
+
+for(let i=0 ; i<heros.length ; i++){
+
+  console.log(heros[i]);
+}
+
+//for of 
+
+for(let hero of heros){
+console.log(hero);
+
+}
+
+//for in
