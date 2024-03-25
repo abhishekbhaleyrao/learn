@@ -502,3 +502,17 @@ for(let idx=0 ; idx < arr.length ; idx++ ){<br>
 1. **for Loop & for Of Loop :**
 
 <img src="assets/images/ArrayLoopsJS.jpg" width="400"/></br>
+
+
+.jpg
+
+#### Practice Que 
+
+1. Qs. For a given array with marks of students -> [85, 97, 44, 37, 76, 60]
+Find the average marks of the entire class.
+
+<img src="assets/images/PracticeQue5JS.jpg" width="500"/></br>
+
+- Ans :<br>
+
+<img src="assets/images/PracticeAns5JS.jpg" width="400"/></br>
