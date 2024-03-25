@@ -48,6 +48,8 @@
 - [Arrays](#arrays)
   - [Array Indices](#array-indices)
     - [Looping over an Array](#looping-over-an-array)
+      - [Practice Que](#practice-que-3)
+  - [Array Methods](#array-methods)
 
 
 **Project**
@@ -515,4 +517,20 @@ Find the average marks of the entire class.
 
 - Ans :<br>
 
-<img src="assets/images/PracticeAns5JS.jpg" width="400"/></br>
+<img src="assets/images/PracticeAns5JS.jpg" width="600"/></br>
+
+2. Qs. For a given array with prices of 5 items -> [250, 645, 300, 900, 50]
+All items have an offer of 10% OFF on them. Change the array to store final price after
+applying offer.
+
+<img src="assets/images/PracticeQue6JS.jpg" width="500"/></br>
+
+- Ans :<br>
+
+<img src="assets/images/PracticeAns6JS.jpg" width="700"/></br>
+
+
+
+## Array Methods
+
+<img src="assets/images/ArrayMethodsJS.jpg" width="500"/></br>
