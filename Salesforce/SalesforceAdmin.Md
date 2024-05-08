@@ -1,5 +1,8 @@
 <div id=top-of-page></div>
 
+- [INTRODUCTION](#introduction)
+- [CRM Overview](#crm-overview)
+- [Salesforce CRM Benefits](#salesforce-crm-benefits)
 - [RELATIONSHIPS](#relationships)
   - [1.Lookup Field / Lookup Relationship](#1lookup-field--lookup-relationship)
   - [2.Master Detail Relationship](#2master-detail-relationship)
@@ -44,8 +47,37 @@
 - [WebToLead](#webtolead)
 - [WebToCase](#webtocase)
 - [EmailToCase](#emailtocase)
-- [INTERVIEW](#interview)
 
+
+# INTRODUCTION
+- Salesforce is the world's most popular CRM system.
+- Many companies and customers rely on this dynamic,
+  web-based, low-cost CRM platform.
+- It was founded in March 1999 by Marc Benioff.
+- Salesforce unites businesses marketing, sales, commerce,
+  service and IT teams from anywhere with Customer 360 - one
+  integrated CRM platform that powers entire suite of
+  connected apps.
+
+# CRM Overview
+- Customer Relationship Management
+- Broadly defined, CRM is a strategy for managing a
+  company's interactions with clients and sales
+  prospects and ensuring the 'Connect' sustains
+  throughout the relation.
+  
+# Salesforce CRM Benefits
+- Helps businesses manage their customer interactions and sales
+  processes.
+- Known for customer-centric approach.
+- Provides tools for managing customer data, tracking sales, automating
+  marketing, customer services tasks, and analyzing business performance.
+- Cloud based so can be accessed from anywhere with an internet
+  connection.
+- It is highly customizable and can be integrated with other systems and
+  applications.
+- Provides industry specific solutions to help various sectors like education,
+  healthcare, communication, nonprofit, financial services etc.
 
 # RELATIONSHIPS
 
