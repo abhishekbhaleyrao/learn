@@ -79,6 +79,8 @@
 - Provides industry specific solutions to help various sectors like education,
   healthcare, communication, nonprofit, financial services etc.
 
+
+
 # RELATIONSHIPS
 
 ## 1.Lookup Field / Lookup Relationship
