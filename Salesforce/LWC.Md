@@ -6,8 +6,13 @@
   - [Benefits of LWC](#benefits-of-lwc)
   - [More on LWC](#more-on-lwc)
 - [Files to Create Component (HTML CSS JS)](#files-to-create-component-html-css-js)
-- [Aura VS LWC](#aura-vs-lwc)
-- [HTML file](#html-file)
+  - [Aura VS LWC](#aura-vs-lwc)
+  - [HTML file](#html-file)
+  - [JS File](#js-file)
+  - [CSS File](#css-file)
+  - [LWC Module](#lwc-module)
+- [LWC Component Configuration File](#lwc-component-configuration-file)
+- [Important to Remember](#important-to-remember)
 
 
 <br />
@@ -39,11 +44,30 @@
   - CSS
     - Provides look and feel to component.
 
-# Aura VS LWC 
+## Aura VS LWC 
 
 <img src="SFAssets/images/AuraVsLWC.jpg" width="500"/></br>
 
-# HTML file
+## HTML file
 
-<img src="SFAssets/images/HTMLfile.jpg" width="500"/></br>
+<img src="SFAssets/images/HTMLfile.jpg" width="400"/></br>
 
+## JS File
+
+<img src="SFAssets/images/JSfile.jpg" width="500"/></br>
+
+## CSS File
+
+<img src="SFAssets/images/CSSfile.jpg" width="200"/></br>
+
+## LWC Module
+
+<img src="SFAssets/images/LWCModule.jpg" width="500"/></br>
+
+# LWC Component Configuration File
+
+<img src="SFAssets/images/LWCConfigFile.jpg" width="500"/></br>
+
+# Important to Remember
+  - Aura Components can contain LWC.
+  - LWC cannot contain Aura Components.
