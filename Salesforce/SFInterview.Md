@@ -14,6 +14,7 @@
 - [BEST PRACTICES to Write Apex Trigger](#best-practices-to-write-apex-trigger)
 - [Trigger Context Variables](#trigger-context-variables)
 - [INTERVIEW](#interview)
+- [USER Mode or SYSTEM Mode](#user-mode-or-system-mode)
 
 
 # Apex Governor Limits
@@ -485,6 +486,7 @@ When to use them
 13. Waht is Async and Sync Apex?
 <div align="right"><a href="#top-of-page">(^)</a></div>
 
+# USER Mode or SYSTEM Mode
 
 By default all the apex classes and triggers web services runs in system mode
 
