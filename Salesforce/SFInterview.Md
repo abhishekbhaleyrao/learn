@@ -485,6 +485,12 @@ When to use them
 13. Waht is Async and Sync Apex?
 <div align="right"><a href="#top-of-page">(^)</a></div>
 
+
+By default all the apex classes and triggers web services runs in system mode
+
+If we want  run the apex  in a user mode we should use with sharing or without sharing keyword in the method and schema checks also can be done to run the apex in user mode
+
+
 <div align="right"><a href="#top-of-page">(^)</a></div>
 <div align="right"><a href="#top-of-page">(^)</a></div>
 <div align="right"><a href="#top-of-page">(^)</a></div>

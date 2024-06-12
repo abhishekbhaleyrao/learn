@@ -47,6 +47,10 @@
 - [WebToLead](#webtolead)
 - [WebToCase](#webtocase)
 - [EmailToCase](#emailtocase)
+- [SOQL Salesforce Object Query Language](#soql-salesforce-object-query-language)
+  - [What is SOQL](#what-is-soql)
+  - [SOQL Statement](#soql-statement)
+  - [Building SOQL](#building-soql)
 
 
 # INTRODUCTION
@@ -523,6 +527,22 @@ Then goto Specific Object PageLayout > Add >Save
 # EmailToCase
 
 <div align="right"><a href="#top-of-page">(^)</a></div> 
+
+# SOQL Salesforce Object Query Language
+
+## What is SOQL 
+- SOQL - Salesforce Object Query Language
+- Query the data from Salesforce Object
+
+##  SOQL Statement 
+
+<img src="SFAssets/images/SOQLStatement.jpg" width="500"/></br>
+
+## Building SOQL 
+
+<img src="SFAssets/images/BuildingSOQL.jpg" width="500"/></br>
+
+
 
 <div align="right"><a href="#top-of-page">(^)</a></div> 
 <div align="right"><a href="#top-of-page">(^)</a></div>
