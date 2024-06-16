@@ -15,6 +15,20 @@
 - [Trigger Context Variables](#trigger-context-variables)
 - [INTERVIEW](#interview)
 - [USER Mode or SYSTEM Mode](#user-mode-or-system-mode)
+- [Question and Answers](#question-and-answers)
+  - [What is Salesforce?](#what-is-salesforce)
+  - [What is CRM](#what-is-crm)
+  - [Editions in Salesforce?](#editions-in-salesforce)
+  - [Licenses in Salesforce?](#licenses-in-salesforce)
+  - [What is Object?](#what-is-object)
+  - [What is Field?](#what-is-field)
+  - [What is Tab?](#what-is-tab)
+  - [What is App?](#what-is-app)
+  - [What is Record?](#what-is-record)
+  - [Standard Navigation and Console Navigation Apps?](#standard-navigation-and-console-navigation-apps)
+  - [Name Datatypes to create fields?](#name-datatypes-to-create-fields)
+  - [What is Lookup Relationship?](#what-is-lookup-relationship)
+  - [What is Master-Detail Relationship?](#what-is-master-detail-relationship)
 
 
 # Apex Governor Limits
@@ -494,6 +508,100 @@ If we want  run the apex  in a user mode we should use with sharing or without s
 
 
 <div align="right"><a href="#top-of-page">(^)</a></div>
+
+# Question and Answers
+
+## What is Salesforce?
+- Salesforce is the most popular CRM system.
+- Many companies & Customers rely on this dynamic, web-based, low-cost CRM platform.
+- It was founded in MARCH 1999 by Marc Benioff.
+- Salesforce CRM Provides a complete feature-rich solutions for Sales, Marketing, Service, Health, Non-Profit, Education, Partner & Community Management etc.
+
+## What is CRM
+- Stats for Customer Relationship Manager
+- CRM is a stratergy for managing a company's interaction with client and sales prospects and ensuring the "Connect" sustains throught the Solution.
+
+## Editions in Salesforce?
+- Personal Edition
+- Group Edition
+- Professional Edition
+- Enterprise Edition
+- Performance Edition
+- Unlimited Edition
+- Developer Edition
+- Contact Manager Edition
+
+## Licenses in Salesforce?
+- Salesforce Users
+- Salesforce Platform and Lightning Platform Users
+- Chatter Plus Users(Chatter Only), Chatter Free USers, Chatter External Users.
+- Customer Community, Customer Community Plus and Partner Community External USers.
+- Portal USers who are a member of a Salesforce Community.
+
+## What is Object?
+- An Object is similar to a database table in salesforce where you can store information.
+- Object can be Standard and Custom.
+
+-                Stnadard    Custom
+- Lable           Account     Student
+- Plural Lable    Accounts    Students
+- API Name        Account     Student__C   
+
+## What is Field?
+- A field is like a database column.
+- There are various data types are available in Salesforce to create fields.
+- By Entering values in fields, We create a record in Salesforce.
+- Field can be standard as well as custom.
+
+## What is Tab?
+- Clicking on Tabs we can navigate around an app.
+- Every tab service as the starting point for viewing, editing and entering information for a specific object.
+- Wehen we click a tab, the corresponding home page that object appears.
+- Eg Account Tab, Accounts tab home page will appears.
+  
+## What is App?
+- An App is a container for all the objects, tabs and Oother functionality.
+- It is similar to a programming project where we keep all our code files.
+- In Salesorce App consist simply Name, Logo and Ordered set of Tabs.
+
+## What is Record?
+- Records are the rows(entries) in object which are uniquely identified by their ids.
+- We can create records by entering values in fields avaialable in an object
+- We can create, edit, view and delete a record in Salesforce.
+
+## Standard Navigation and Console Navigation Apps?
+- Standard Navigation opens one record at a time on the Page whereas in Console Navigation if you open more than one records so they are opened in sub tabs together.
+
+## Name Datatypes to create fields?
+- Auto Number                   - Number
+- Formula                       - Percent
+- Roll-up Summary               - Phone
+- Lookup Relationship           - Picklist
+- Master-Detail Relationship    - Picklist(Multiselect)
+- External Lookup Relationship  - Text
+- Checkbox                      - Text Area
+- Currency                      - Text Area (Long)
+- Date                          - Text Area (Rich)
+- Date/Time                     - Text (Encrypted)
+- Email                         - Time
+- Geolocation                   - URL
+
+## What is Lookup Relationship?
+- Create a relationship that links one object to another object.
+- The relationship field allow users to click on a lookup icon to select a value from popup lisk.
+- The other is the source of the values in the list.
+
+## What is Master-Detail Relationship?
+- Creates a special type of parent-child relationship between two objects.
+- One is known as child/detail where we create Master-Detail relationship and another one is known as Parent/Master.
+- Required on all detail records.
+- Ownership and sharing of a detail record is determined by the master record.
+- If user deletes the Master record then all the detail records are delated.
+- One can create roll-up summary field on the Master records so that detail records can be summarized.
+
+
+
+
 <div align="right"><a href="#top-of-page">(^)</a></div>
 <div align="right"><a href="#top-of-page">(^)</a></div>
 <div align="right"><a href="#top-of-page">(^)</a></div>
