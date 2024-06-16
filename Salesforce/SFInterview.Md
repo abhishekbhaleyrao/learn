@@ -56,6 +56,11 @@
   - [Global Action Vs Object Specific Action?](#global-action-vs-object-specific-action)
     - [Global Action :](#global-action-)
     - [Object Specific Action :](#object-specific-action-)
+  - [What is Sales Proces?](#what-is-sales-proces)
+  - [What is Support Process?](#what-is-support-process)
+  - [What is Lead Process?](#what-is-lead-process)
+  - [What is Setup Audit Trails?](#what-is-setup-audit-trails)
+  - [Different ways to mke a field required?](#different-ways-to-mke-a-field-required)
 
 
 # Apex Governor Limits
@@ -721,7 +726,27 @@ If we want  run the apex  in a user mode we should use with sharing or without s
 ### Object Specific Action :
 - Can be executed through records of an Object.
 
+## What is Sales Proces?
+- One cannot control Stage picklist values of Opporunity object through record type.
+- So one can Create a Sales Process to Control Stage picklist values of Opportunity object for different Record Types.
 
+## What is Support Process?
+- One cannot control Status picklist values of case object through record type.
+- So one can Create a Support Process to Control Status picklist values of case object for different Record Types.
+
+## What is Lead Process?
+- One cannot control Status picklist values of Lead object through record type.
+- So one can Create a Lead Process to Control Status picklist values of Lead object for different Record Types.
+
+## What is Setup Audit Trails?
+- Setup Audit Trails shows a list of changes done by users in the org in different components.
+- One can download past 6 months changes.
+
+## Different ways to mke a field required?
+- Field itself
+- Page Layout
+- Validation Rule
+- Trigger
 
 <div align="right"><a href="#top-of-page">(^)</a></div>
 <div align="right"><a href="#top-of-page">(^)</a></div>
