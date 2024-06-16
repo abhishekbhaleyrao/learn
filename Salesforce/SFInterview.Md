@@ -63,6 +63,7 @@
   - [Different ways to mke a field required?](#different-ways-to-mke-a-field-required)
   - [What is Data Import Wizard?](#what-is-data-import-wizard)
   - [What is Data Loader?](#what-is-data-loader)
+    - [Operations in Data Loader?](#operations-in-data-loader)
 
 
 # Apex Governor Limits
@@ -759,7 +760,18 @@ If we want  run the apex  in a user mode we should use with sharing or without s
 ## What is Data Loader?
 - It helps to import data from excel/csv format into Salesforce.
 - One has to install it in the computer through setup
-- We can import upto 5,000,000 record at time.
+- We can import upto 5,000,000 (Million) record at time.
+
+### Operations in Data Loader?
+- Insert
+- Update
+- Upset
+- Delete
+- Export
+- Export All(Include deleted records as well)
+
+
+
 <div align="right"><a href="#top-of-page">(^)</a></div>
 <div align="right"><a href="#top-of-page">(^)</a></div>
 <div align="right"><a href="#top-of-page">(^)</a></div>
