@@ -61,6 +61,8 @@
   - [What is Lead Process?](#what-is-lead-process)
   - [What is Setup Audit Trails?](#what-is-setup-audit-trails)
   - [Different ways to mke a field required?](#different-ways-to-mke-a-field-required)
+  - [What is Data Import Wizard?](#what-is-data-import-wizard)
+  - [What is Data Loader?](#what-is-data-loader)
 
 
 # Apex Governor Limits
@@ -748,6 +750,16 @@ If we want  run the apex  in a user mode we should use with sharing or without s
 - Validation Rule
 - Trigger
 
+## What is Data Import Wizard?
+- It helps to import data from excel/csv format into Salesforce.
+- One can find this in Setup.
+- One can import upto 50,000 records at a time.
+- One can perform insert, update and upsert oprations.
+
+## What is Data Loader?
+- It helps to import data from excel/csv format into Salesforce.
+- One has to install it in the computer through setup
+- We can import upto 5,000,000 record at time.
 <div align="right"><a href="#top-of-page">(^)</a></div>
 <div align="right"><a href="#top-of-page">(^)</a></div>
 <div align="right"><a href="#top-of-page">(^)</a></div>
