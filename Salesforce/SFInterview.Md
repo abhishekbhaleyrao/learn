@@ -42,6 +42,20 @@
   - [Types of Lightning Pages?](#types-of-lightning-pages)
   - [Component Visibility?](#component-visibility)
   - [What is Validation Rule?](#what-is-validation-rule)
+  - [What is Feed Tracking?](#what-is-feed-tracking)
+  - [What is Field History Tracking?](#what-is-field-history-tracking)
+  - [What is Activity Component?](#what-is-activity-component)
+  - [What is Chatter Component?](#what-is-chatter-component)
+  - [What isDuplicate Rule and Matching Rule?](#what-isduplicate-rule-and-matching-rule)
+    - [Duplicate Rule](#duplicate-rule)
+    - [Matching Rule](#matching-rule)
+  - [What is List View?](#what-is-list-view)
+  - [What is Record Type?](#what-is-record-type)
+  - [What is Scema Builder?](#what-is-scema-builder)
+  - [What is Email Template?](#what-is-email-template)
+  - [Global Action Vs Object Specific Action?](#global-action-vs-object-specific-action)
+    - [Global Action :](#global-action-)
+    - [Object Specific Action :](#object-specific-action-)
 
 
 # Apex Governor Limits
@@ -662,6 +676,50 @@ If we want  run the apex  in a user mode we should use with sharing or without s
 - To apply custom validation we can build validation Rules.
 - Validation Rule fires when the defined criteria matches upon record insert, update and Delete.
 
+## What is Feed Tracking?
+- Feed tracking enables to track changes of selected fields and related record fields as well. Changes are shown in the chatter component.
+- It shows old value, new value and who changed.
+
+## What is Field History Tracking?
+- Field History Tracking enables to track changes of selected fields.
+- Changes are shown in the History related list.
+- It shows old value, new value and who changed.
+
+## What is Activity Component?
+- Activity Component enables users to use following actions : Event, Tast, Email, Log a Call.
+
+## What is Chatter Component?
+- Chatter Component is used to track feeds, users can post content on records also they can mention other users.
+
+## What isDuplicate Rule and Matching Rule?
+### Duplicate Rule
+- Prevent creation of duplicate records. 
+- It shows either warning or block record creation and updation in case of duplicate. 
+- We can create reports on duplicate record as well.
+### Matching Rule
+- Here we need to set the criteria for duplicate check.
+  
+## What is List View?
+- List view shows list of records available under object. 
+- We can choose which field to display in the list view.
+- We can also apply sharing and filters on the list view.
+
+## What is Record Type?
+- Record Type helps to launch different page layouts and can show different picklist values for different layout.
+
+## What is Scema Builder?
+- Shema Builder helps to view objects in pictorial representation.
+- One can see the relationship between multiple objects.
+- One can create Objects and Fields through schema builder as well.
+
+## What is Email Template?
+
+## Global Action Vs Object Specific Action?
+### Global Action : 
+- One can execution operation without open any record aon object.
+
+### Object Specific Action :
+- Can be executed through records of an Object.
 
 
 
