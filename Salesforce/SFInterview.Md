@@ -29,6 +29,19 @@
   - [Name Datatypes to create fields?](#name-datatypes-to-create-fields)
   - [What is Lookup Relationship?](#what-is-lookup-relationship)
   - [What is Master-Detail Relationship?](#what-is-master-detail-relationship)
+  - [What is Rollup Summary Field?](#what-is-rollup-summary-field)
+  - [Can We convert Lookup to Master-Detail?](#can-we-convert-lookup-to-master-detail)
+  - [Can we convert Master-Detail to Lookup?](#can-we-convert-master-detail-to-lookup)
+  - [Many-To-Many Relationship?](#many-to-many-relationship)
+  - [What is Formula Field?](#what-is-formula-field)
+  - [Difference between Picklist and Multiselect Picklist?](#difference-between-picklist-and-multiselect-picklist)
+  - [What is Global Picklist ValueSet?](#what-is-global-picklist-valueset)
+  - [What is Field Dependency?](#what-is-field-dependency)
+  - [What is Page Layout?](#what-is-page-layout)
+  - [What is Related List?](#what-is-related-list)
+  - [Types of Lightning Pages?](#types-of-lightning-pages)
+  - [Component Visibility?](#component-visibility)
+  - [What is Validation Rule?](#what-is-validation-rule)
 
 
 # Apex Governor Limits
@@ -598,6 +611,56 @@ If we want  run the apex  in a user mode we should use with sharing or without s
 - Ownership and sharing of a detail record is determined by the master record.
 - If user deletes the Master record then all the detail records are delated.
 - One can create roll-up summary field on the Master records so that detail records can be summarized.
+
+## What is Rollup Summary Field?
+- A read-only field that displays the SUM, MINIMUM or MAXIMUM value of a field in a related list.
+- This Field also can COUNT all records available in related list.
+- Rollup Summary field is always created on parent object.
+
+## Can We convert Lookup to Master-Detail?
+- Yes, but first you need to populate values in lookup field on each record available on the object.
+
+## Can we convert Master-Detail to Lookup?
+- Yes, but ifyou have create rollup summary field then you need to delete those field before converting Master-Detail to Lookup.
+
+## Many-To-Many Relationship?
+- This can be implemented with the help of Junction Object.
+- Eg    Object1 : Class
+-       Object2 : Student
+- Junction Object : Create Lookup/Master-detail field one related to Class and another related to Student Object.
+
+## What is Formula Field?
+- A read only field that derives its value from a formula expression you define. The formula field is updated when any of the source field change.
+
+## Difference between Picklist and Multiselect Picklist?
+- Picklist - User can select on option
+- Multiselect Picklist -  USer can select one or more options together.
+
+## What is Global Picklist ValueSet?
+- Global picklist value set can be used by any picklist or multiselect picklist in any object.
+
+## What is Field Dependency?
+- Create a dependent relationship that caused the values in a picklist or multiselct picklist to be dynamically filtered based on the value slected by the user in another field.
+- The field that derives filtering is called the "Controlling Field". Standard and Custom checkboxex and picklist with at least one and less that 300 values can be controlling fields.
+- The filed that has its values filtered is called the "dependent field". Custom picklists and multi-select picklist can be dependent fields.
+
+## What is Page Layout?
+- Page Layout is used to display field values for records. Through page layout we can control related lists as well.
+
+## What is Related List?
+- When lookup and master-detail relationship field are created then on parent object related lists will be available. through related list we can view child object records on parent object.
+
+## Types of Lightning Pages?
+- App Page
+- Home Page
+- Record Oage
+
+## Component Visibility?
+- Component Visibility helps to apply filter criteria to control whether component should be visible on the page or not.
+
+## What is Validation Rule?
+- To apply custom validation we can build validation Rules.
+- Validation Rule fires when the defined criteria matches upon record insert, update and Delete.
 
 
 
