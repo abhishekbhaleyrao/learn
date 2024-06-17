@@ -95,6 +95,20 @@
   - [What is Report Type?](#what-is-report-type)
   - [What is Report Type?](#what-is-report-type-1)
   - [Types of Reports?](#types-of-reports)
+  - [What is Tabular Report?](#what-is-tabular-report)
+  - [What is Summary Report?](#what-is-summary-report)
+  - [What is Matrix Report?](#what-is-matrix-report)
+  - [What is Joined Report?](#what-is-joined-report)
+  - [Filters in reports?](#filters-in-reports)
+  - [Charts can be added in which type of Reports?](#charts-can-be-added-in-which-type-of-reports)
+  - [Types of Charts available in Reports?](#types-of-charts-available-in-reports)
+  - [What is Bucket Field in Report?](#what-is-bucket-field-in-report)
+  - [About Report Folder](#about-report-folder)
+  - [Can we share a report with User or Group?](#can-we-share-a-report-with-user-or-group)
+  - [Access Levels while sharing Report Folder?](#access-levels-while-sharing-report-folder)
+  - [Can we place a report on Lightning Page?](#can-we-place-a-report-on-lightning-page)
+  - [What is Dashboard?](#what-is-dashboard)
+  - [](#)
 
 
 # Apex Governor Limits
@@ -986,6 +1000,86 @@ If we want  run the apex  in a user mode we should use with sharing or without s
 - Joined Report
   - Have more than one reports together
 
+## What is Tabular Report?
+- Tabular report is the simplest report format.
+- Rows display records and columns display fields.
+- Filters can be applied.
+- Sorting can be applied.
+- Chart is not supported in this type of reports.
+
+## What is Summary Report?
+- Ths report allows the user to group records based on rows.
+- We can summarize the report based on particular field.
+- This report supports chart.
+- Filters and Sorting can be applied.
+- It displays subtotal as well for numeric fields.
+
+## What is Matrix Report?
+- This report summarize the records based on rows and columns.
+- It baiscally creates a grid and show number of records based of grouping of rows and columns.
+- This report also support charts.
+
+## What is Joined Report?
+- User can create multiple blocks of reports having different types of reports.
+- Each block is defined as sub report and can have different report type.
+- Each block has its own field, filter criteria, charts etc.
+
+## Filters in reports?
+- Standard Filter
+  - Show me & Created Date
+- Field Filter
+  - Specific to fields
+- Filter Logic
+  - Boolean Conditions to control field filters
+- Cross Filter
+  - Filter a report by child object using With or Without conditions
+
+## Charts can be added in which type of Reports?
+- Summary, Matrix & Joined Report
+
+## Types of Charts available in Reports?
+- Bar
+- Column
+- Stacked Bar
+- Stacked Column
+- Line
+- Donut
+- Funnel
+- Scatter Plot
+
+## What is Bucket Field in Report?
+- Bucket Field is created in report itself.
+- This field is used to group values of particular field available on the object.
+- It supports fields of type Picklist, Number & Text.
+
+## About Report Folder
+- Report folders determines how one can access reports to View, Edit or Manage.
+- Report folders can be public, hidden, or shared.
+- We can control access of contents of the folder based on Roles, Permissions, public groups, territorie and license types.
+
+## Can we share a report with User or Group?
+- Yes, We can share report folder.
+- We cannot share individual report.
+
+## Access Levels while sharing Report Folder?
+- View
+- Edit
+- Manage
+
+## Can we place a report on Lightning Page?
+- Yes, We can place report on below lightning pages:
+  - Home Page
+  - App Page
+  - Record Page
+- Report should not be in private folder.
+
+## What is Dashboard?
+- A dashboard is a visual display of key metrics and trends for records in your org.
+- Source of dashboard is Reports.
+- You can place one report in multiple dashboards components on a single dashboard.
+- Having multiple reports on a single dashboard page makes it a powerful visual display tool.
+
+##
 
 
 <div align="right"><a href="#top-of-page">(^)</a></div>
