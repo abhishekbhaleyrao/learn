@@ -51,7 +51,7 @@
     - [Matching Rule](#matching-rule)
   - [What is List View?](#what-is-list-view)
   - [What is Record Type?](#what-is-record-type)
-  - [What is Scema Builder?](#what-is-scema-builder)
+  - [What is Schema Builder?](#what-is-schema-builder)
   - [What is Email Template?](#what-is-email-template)
   - [Global Action Vs Object Specific Action?](#global-action-vs-object-specific-action)
     - [Global Action :](#global-action-)
@@ -70,7 +70,13 @@
   - [What is Organization Level Security?](#what-is-organization-level-security)
   - [Object Level Security](#object-level-security)
   - [Field Level Security](#field-level-security)
-  - [](#)
+  - [What is Profile?](#what-is-profile)
+  - [What can be controlled through a Profile?](#what-can-be-controlled-through-a-profile)
+  - [Enhanced Profile User Interface?](#enhanced-profile-user-interface)
+  - [What is Permission Set?](#what-is-permission-set)
+  - [What can be controlled through a Permission Set?](#what-can-be-controlled-through-a-permission-set)
+  - [What is Permission Set Group?](#what-is-permission-set-group)
+  - [What is MUTE in permission Set Group?](#what-is-mute-in-permission-set-group)
 
 
 # Apex Governor Limits
@@ -722,7 +728,7 @@ If we want  run the apex  in a user mode we should use with sharing or without s
 ## What is Record Type?
 - Record Type helps to launch different page layouts and can show different picklist values for different layout.
 
-## What is Scema Builder?
+## What is Schema Builder?
 - Shema Builder helps to view objects in pictorial representation.
 - One can see the relationship between multiple objects.
 - One can create Objects and Fields through schema builder as well.
@@ -810,7 +816,57 @@ If we want  run the apex  in a user mode we should use with sharing or without s
 - You can give Read and Edit permission to a field, if you don't give both then that field will not be visible.
 - Field Level Security can be controlled using Profiles and Permission Sets.
 
-##
+## What is Profile?
+- A Profile is a collection of settings and permissions.
+- Profile settings determine which data the user can see and permission determine what the user can do with that data.
+- A profile can be assigned to many users but a user can have only one profile at a time.
+
+## What can be controlled through a Profile?
+- Assigned App & Assigned Connected Apps
+- Object Settings
+- App Permissions
+- Apex Class & VF Page Access
+- External Data Source Access
+- Named Credential Access
+- Flow Access
+- Custom Permissions & Custom Metadata Type
+- Custom Setting Definitions
+- System Permissions
+
+## Enhanced Profile User Interface?
+- You can switch to Enhanced Profile User Interface through Setup > User Management Settings.
+- If enabled then you can Browse, Search and Modify settings and permissions in a profile through a streamlined user interface.
+
+## What is Permission Set?
+- A Permission set is collection of settings and permissions that give user accesss to various tools and functions.
+- Permission sets extends users functional access without changing their profile.
+- Through Permission sets permission can be granted and any time it can be taken away as well.
+- User can have only one profile but they can have multiple permission sets assigned.
+
+## What can be controlled through a Permission Set?
+- Assigned App & Assigned Connected Apps
+- Object Settings
+- App Permissions
+- Apex Class & VF Page Access
+- External Data Source Access
+- Named Credential Access
+- Flow Access
+- Custom Permissions & Custom Metadata Type
+- Custom Setting Definitions
+- System Permissions
+
+## What is Permission Set Group?
+- Permission Set Group bundles different permission sets together based on a persona.
+- A permission set group includes all the permissions available in the permission sets.
+- One permission set can be included in more than one permission set groups.
+- A user can be assigned one or more Permission set groups.
+- Also we can assign Permission Set and PErmission Set Groups together to users.
+  
+## What is MUTE in permission Set Group?
+- One can Mute some permission in Permission Set Groups so that they won't be giver to the user.
+- If you mute particular permission in Permission Set Group then it won't impact individual Permission Set, they remain intact.
+- You can anytime unmute the permissions in permission set group.
+
 
 
 <div align="right"><a href="#top-of-page">(^)</a></div>
