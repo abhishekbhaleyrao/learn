@@ -155,6 +155,9 @@
   - [Trigger Events?](#trigger-events)
   - [Trigger Context Variables?](#trigger-context-variables-1)
   - [Trigger.new Vs Trigger.newMap?](#triggernew-vs-triggernewmap)
+- [Changeset](#changeset)
+  - [What is change Set in Salesforce?](#what-is-change-set-in-salesforce)
+  - [Types of change set](#types-of-change-set)
 
 
 # Apex Governor Limits
@@ -1397,4 +1400,24 @@ requirements.
 
 <div align="right"><a href="#top-of-page">(^)</a></div>
 <div align="right"><a href="#top-of-page">(^)</a></div>
+<div align="right"><a href="#top-of-page">(^)</a></div>
+
+# Changeset
+## What is change Set in Salesforce?
+- Use change sets to send customizations from one Salesforce org to another.
+- For example, you can create and test a new object in a sandbox org, then send it to your production org using a change set.
+- Change sets can contain only modifications you can make through the Setup menu.
+- For example, you can't use a change set to upload a list of contact records. Change sets contain information about the org. They don't contain data, such as records.
+
+## Types of change set
+- Inbound Change Set
+  - Accept Outbond Change Set
+- Outbond Change Set
+  - Accept Inbound Change Set
+
+-  Eg. Setup > QuickFind > Object > Create custom Object > Create Custom Field 
+- To Create ChangeSet
+- Go to QuickFind > Find Outbond Change Set > new Outbond Change Set > Give Name to Change Set > Save > Add Component > Component type (Custom Obj) Add to ChangeSet > View Add Dependency > Add To ChangeSet > Upload > Target Org Production > Check in Production Successfully.
+- To check Inbound ChangeSet > Select Changeset > Validate > Deploy > Deplyment Status > check the object which is deployed in other org.     
+
 <div align="right"><a href="#top-of-page">(^)</a></div>
