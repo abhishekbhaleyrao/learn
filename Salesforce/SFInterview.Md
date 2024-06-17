@@ -108,6 +108,15 @@
   - [Access Levels while sharing Report Folder?](#access-levels-while-sharing-report-folder)
   - [Can we place a report on Lightning Page?](#can-we-place-a-report-on-lightning-page)
   - [What is Dashboard?](#what-is-dashboard)
+  - [Can we place a Dashboard on Lightning Page?](#can-we-place-a-dashboard-on-lightning-page)
+  - [an we apply filters in Dashboard?](#an-we-apply-filters-in-dashboard)
+  - [About Dashboard Folder:](#about-dashboard-folder)
+  - [Can we share a dashboard with User or Group?](#can-we-share-a-dashboard-with-user-or-group)
+  - [Access Levels while sharing Dashboard Folder?](#access-levels-while-sharing-dashboard-folder)
+  - [Important About Dashboard?](#important-about-dashboard)
+- [Flows](#flows)
+  - [What is Process Automation?](#what-is-process-automation)
+  - [What is Flow Builder?](#what-is-flow-builder)
   - [](#)
 
 
@@ -1079,7 +1088,68 @@ If we want  run the apex  in a user mode we should use with sharing or without s
 - You can place one report in multiple dashboards components on a single dashboard.
 - Having multiple reports on a single dashboard page makes it a powerful visual display tool.
 
+## Can we place a Dashboard on Lightning Page?
+- Yes, We can place Dashboard on below lightning pages:
+  - Home Page
+  - App Page
+  - Record Page
+- Dashboard should not be in private folder.
+
+## an we apply filters in Dashboard?
+- Yes, We can apply.
+
+## About Dashboard Folder:
+- Dashboard folder controls who has access to its content.
+- If one has access to folder then only one can access its dashboards.
+- However, to view the dashboard components, one need access to underlying reports as well.
+
+## Can we share a dashboard with User or Group?
+- Yes, We can share dashboard folder.
+- We cannot share individual dashboard.
+
+## Access Levels while sharing Dashboard Folder?
+- View
+- Edit
+- Manage
+
+## Important About Dashboard?
+- Eash Dashboard has a running user.
+- Running user's security settings determine which data to display in dashboard.
+- If the running user is a specific user, then all dashboard viewers sees data based the security setting of that user, regardless of their own security settings.
+- Dynamic Dashboards are those for which running user is always logged in user. Here, each user views the dashboard as per their own security settings.
+
+# Flows 
+
+## What is Process Automation?
+- Process Automation provides declarative tools to do automation in Salesforce.
+  - Workflow Rule
+  - Process builder
+  - Flows
+  - Approval Process
+
+## What is Flow Builder?
+- Provides declarative process automation.
+- Lightning flow provides this point and click automation tool
+i.e. Flow Builder
+- Lightning Flow is the name of product.
+- Process Builder and Flow Builder are name of the tools.
+  - Use Process Builder to create Processes.
+  - Use Flow Builder to create Flows.
+
 ##
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <div align="right"><a href="#top-of-page">(^)</a></div>
