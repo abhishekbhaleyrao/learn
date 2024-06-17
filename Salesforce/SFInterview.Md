@@ -77,6 +77,22 @@
   - [What can be controlled through a Permission Set?](#what-can-be-controlled-through-a-permission-set)
   - [What is Permission Set Group?](#what-is-permission-set-group)
   - [What is MUTE in permission Set Group?](#what-is-mute-in-permission-set-group)
+  - [How many Profiles can be assigned to a user?](#how-many-profiles-can-be-assigned-to-a-user)
+  - [How many Permission Sets can be assigned to a user?](#how-many-permission-sets-can-be-assigned-to-a-user)
+  - [What is Record Level Security](#what-is-record-level-security)
+  - [What is OWD?](#what-is-owd)
+  - [What is Role Hierarchy?](#what-is-role-hierarchy)
+  - [What is Grant Access using Hierarchies?](#what-is-grant-access-using-hierarchies)
+  - [What is Sharing Rule?](#what-is-sharing-rule)
+  - [Two ways to create Sharing Rule?](#two-ways-to-create-sharing-rule)
+  - [What is Manual Sharing?](#what-is-manual-sharing)
+  - [What is Public Group?](#what-is-public-group)
+  - [Object dose not have EDIT permission but OWD is Public Read/Write?](#object-dose-not-have-edit-permission-but-owd-is-public-readwrite)
+  - [View All \& Modify All?](#view-all--modify-all)
+- [Q\&A Reports and Dashboards](#qa-reports-and-dashboards)
+  - [What are Data Analysis Tools available in Salesforce?](#what-are-data-analysis-tools-available-in-salesforce)
+  - [What is Report?](#what-is-report)
+  - [What is Report Type?](#what-is-report-type)
 
 
 # Apex Governor Limits
@@ -867,6 +883,92 @@ If we want  run the apex  in a user mode we should use with sharing or without s
 - If you mute particular permission in Permission Set Group then it won't impact individual Permission Set, they remain intact.
 - You can anytime unmute the permissions in permission set group.
 
+## How many Profiles can be assigned to a user?
+- One
+
+## How many Permission Sets can be assigned to a user?
+- Zero or Any number of Permission Sets.
+
+## What is Record Level Security
+- You can restrict access to records for users, even if user has object level permissions.
+- Eg. a user can view his own records but not others.
+- You can manage Record LEvel Access in following Ways:
+  - Organization-wide defaults
+  - Role Hierarchies
+  - Sharing Rules
+  - Manual Sharing
+
+## What is OWD?
+- It Specifies the default level of access fo records.
+- Org-Wide Sharing setting lock down the data to the most restrictive level.
+- Here you have three acess level:
+    - Private 
+    - Public Read-Only
+    - Public Read/Write
+- You can use other Record LVel Security and Sharing tools to open up the sharing of records.
+  
+## What is Role Hierarchy?
+- Role Hierarchy gives access for users higher in the hierarchy.
+- That user can access all records owned by the users below them in the hierarchy.
+- Each role in the hierarchy should represent a level of data access that a user or group of user needs.
+- You can assign users to role through Role Hierarchy or USer detail page.
+
+## What is Grant Access using Hierarchies?
+- This feature controls wether the user who is above in the role hierarchy can access the records of subordinates or not.
+- It is checked by default for all standard object,
+- We can control it for custom objects.
+
+## What is Sharing Rule?
+- Sharing Rules are exceptions to Org-Wide defaults.
+- Through sharing rules you can share records to a group of users or to roles, Roles and subordinates.
+- So that they can get access to the records they dont own or cant manually see.
+
+## Two ways to create Sharing Rule?
+- Owner Based Sharing
+- Criteria Based Sharing
+
+## What is Manual Sharing?
+- Manual Sharing allows owners of particular records to share them with another users.
+- Manual Sharing is not automated like Org-wide defaults, Role Hierarchy or Sharing Rules.
+- IT can be useful in some situation where you manually want to share a record with another user.
+
+## What is Public Group?
+- A group of users
+- You can add or remove users from one public group any time.
+- Following can be member of a public group:
+    - Public Group
+    - Roles
+    - Roles and Subordinates
+    - Users
+- You can also control Grant Access using Hierarchies while creating public group.
+
+## Object dose not have EDIT permission but OWD is Public Read/Write?
+- User won't be able to edit the record.
+
+## View All & Modify All?
+- Grant access to all records of the object regardless of the sharing and security settings.
+- View all and Modify all permissions ignore the sharing model, roles and sharig rules.
+
+# Q&A Reports and Dashboards 
+
+## What are Data Analysis Tools available in Salesforce?
+- Report
+- Dashboard
+
+## What is Report?
+- Its a list of records related to object that mee the criteria defined.
+- One can filter, group and do maths on reports.
+- One can display records graphically through charts.
+- Every report is stored in a folder.
+- Report folders determined how one can access reports to View, Edit or Manage.
+- Report folders can be public, hidden or shared.
+
+## What is Report Type?
+- a report type is like a templated for reports.
+- Report type determines which fields and records are available for use, when one is creating a report.
+- This is based on relationship between a primary object and its related objects.
+- Eg. With Accounts with Contact report type, Account is primary object and Contact as related object.
+- Reports display those records that meed the criteria defined in report types.
 
 
 <div align="right"><a href="#top-of-page">(^)</a></div>
