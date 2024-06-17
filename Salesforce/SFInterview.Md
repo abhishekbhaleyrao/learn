@@ -93,6 +93,8 @@
   - [What are Data Analysis Tools available in Salesforce?](#what-are-data-analysis-tools-available-in-salesforce)
   - [What is Report?](#what-is-report)
   - [What is Report Type?](#what-is-report-type)
+  - [What is Report Type?](#what-is-report-type-1)
+  - [Types of Reports?](#types-of-reports)
 
 
 # Apex Governor Limits
@@ -969,6 +971,21 @@ If we want  run the apex  in a user mode we should use with sharing or without s
 - This is based on relationship between a primary object and its related objects.
 - Eg. With Accounts with Contact report type, Account is primary object and Contact as related object.
 - Reports display those records that meed the criteria defined in report types.
+
+## What is Report Type?
+- Primary object with related object.
+- Primary object with or without related object.
+
+## Types of Reports?
+- Tabular Report
+  - Make a List
+- Summary Report
+  - Group by Rows
+- Matrix Report
+  - Group by Rows & Columns
+- Joined Report
+  - Have more than one reports together
+
 
 
 <div align="right"><a href="#top-of-page">(^)</a></div>
