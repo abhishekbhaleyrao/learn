@@ -117,7 +117,20 @@
 - [Flows](#flows)
   - [What is Process Automation?](#what-is-process-automation)
   - [What is Flow Builder?](#what-is-flow-builder)
-  - [](#)
+  - [Types of FLOWS?](#types-of-flows)
+  - [Flow Elements?](#flow-elements)
+  - [Flow Resources?](#flow-resources)
+  - [Screen Flow](#screen-flow)
+  - [Record - Triggered Flow?](#record---triggered-flow)
+  - [Schedule - Triggered Flow?](#schedule---triggered-flow)
+  - [Platform Event - Triggered Flow?](#platform-event---triggered-flow)
+  - [Autolaunched Flow?](#autolaunched-flow)
+  - [What to Debug a Flow?](#what-to-debug-a-flow)
+  - [Version Control](#version-control)
+  - [Can we Call Apex class through Flow?](#can-we-call-apex-class-through-flow)
+  - [Which annotation we use with apex class method when we call Apex class through Flow?](#which-annotation-we-use-with-apex-class-method-when-we-call-apex-class-through-flow)
+  - [How to Call a Flow into another Flow?](#how-to-call-a-flow-into-another-flow)
+  - [Some Important Actions that can be done through Flow?](#some-important-actions-that-can-be-done-through-flow)
 
 
 # Apex Governor Limits
@@ -1136,19 +1149,96 @@ i.e. Flow Builder
   - Use Process Builder to create Processes.
   - Use Flow Builder to create Flows.
 
-##
+## Types of FLOWS?
+- Screen Flow
+- Record - Triggered Flow
+- Schedule - Triggered Flow
+- Platform Event - Triggered Flow
+- Autolaunched Flow
 
+## Flow Elements?
+- Screen
+- Action
+- Subflow
+- Assignment
+- Decision
+- Loop
+- Collection Sort
+- Collection Filter
+- Create Record
+- Get Record
+- Update Record
+- Delete Record
+- Roll Back Records
 
+## Flow Resources?
+- Variable
+- Constant
+- Formula
+- Text Template
+- Choice
+- Collection Choice Set
+- Record Choice Set
+- Picklist Choice Set
+- Stage
 
+## Screen Flow
+- It guides user through a business process.
+- It can be launched through
+  - Lightning Page,
+  - Experience Cloud Sites,
+  - Quick Actions
+  - and more
 
+## Record - Triggered Flow?
+- Launches when a Record is
+- Created
+- Updated or
+- Deleted
+- This autolaunched flow runs in the background.
 
+## Schedule - Triggered Flow?
+- Launches at a specified time and frequency for each record in a batch.
+- This autolaunched flow also runs in the background.
 
+## Platform Event - Triggered Flow?
+- Launched when a platform event message is received.
+- This autolaunched flow also runs in the background.
 
+## Autolaunched Flow?
+- It is invoked by
+  - Apex
+  - Processes
+  - REST API
+  - and more...
+- This autolaunched flow also runs in the background.
 
+## What to Debug a Flow?
+- Helps to test the flow execution before activating it.
+- It shows step by step results and shows errors (if any).
 
+## Version Control
+- Each time you update something in flow a new version is created.
+- After creating new version we need to activate the flow to run.
 
+## Can we Call Apex class through Flow?
+- Yes 
 
+## Which annotation we use with apex class method when we call Apex class through Flow?
+- @lnvocableMethod
 
+## How to Call a Flow into another Flow?
+- Sub Flow Element
+    - Screen Flow can call another screen flow as sub flow.
+    - Record Triggered Flow can call another Autolaunched flow as sub flow.
+
+## Some Important Actions that can be done through Flow?
+- Post to Chatter
+- Send Email or Email Alert
+- Send Notification
+- call Sub Flow
+- Call Apex Class
+- Call Approval Process
 
 
 
