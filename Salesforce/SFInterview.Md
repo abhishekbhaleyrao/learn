@@ -89,7 +89,7 @@
   - [What is Public Group?](#what-is-public-group)
   - [Object dose not have EDIT permission but OWD is Public Read/Write?](#object-dose-not-have-edit-permission-but-owd-is-public-readwrite)
   - [View All \& Modify All?](#view-all--modify-all)
-- [Q\&A Reports and Dashboards](#qa-reports-and-dashboards)
+- [Reports and Dashboards](#reports-and-dashboards)
   - [What are Data Analysis Tools available in Salesforce?](#what-are-data-analysis-tools-available-in-salesforce)
   - [What is Report?](#what-is-report)
   - [What is Report Type?](#what-is-report-type)
@@ -131,6 +131,21 @@
   - [Which annotation we use with apex class method when we call Apex class through Flow?](#which-annotation-we-use-with-apex-class-method-when-we-call-apex-class-through-flow)
   - [How to Call a Flow into another Flow?](#how-to-call-a-flow-into-another-flow)
   - [Some Important Actions that can be done through Flow?](#some-important-actions-that-can-be-done-through-flow)
+  - [$Record Vs $Record Prior?](#record-vs-record-prior)
+  - [What happens when flow fails?](#what-happens-when-flow-fails)
+  - [Fast Field Update Vs Actions \& Related Records?](#fast-field-update-vs-actions--related-records)
+  - [Can records be shared with users through flow?](#can-records-be-shared-with-users-through-flow)
+  - [Can we set the order of execution of record triggered flows?](#can-we-set-the-order-of-execution-of-record-triggered-flows)
+  - [What are two paths we have in Record Triggered Flow?](#what-are-two-paths-we-have-in-record-triggered-flow)
+  - [From where we can validate whether Flow is scheduled or not?](#from-where-we-can-validate-whether-flow-is-scheduled-or-not)
+  - [Can we debug a flow as another user?](#can-we-debug-a-flow-as-another-user)
+  - [What frequency we can set in Schedule Triggered Flow?](#what-frequency-we-can-set-in-schedule-triggered-flow)
+  - [Record Single Variable Vs Record Collection Variable?](#record-single-variable-vs-record-collection-variable)
+    - [Record Single Variable :](#record-single-variable-)
+    - [Record Collection Variable :](#record-collection-variable-)
+  - [Can we pause and resume a screen flow?](#can-we-pause-and-resume-a-screen-flow)
+  - [Does Flow support versioning?](#does-flow-support-versioning)
+  - [Can we deactivate flow anytime?](#can-we-deactivate-flow-anytime)
 
 
 # Apex Governor Limits
@@ -837,6 +852,9 @@ If we want  run the apex  in a user mode we should use with sharing or without s
 - Export
 - Export All(Include deleted records as well)
 
+
+<div align="right"><a href="#top-of-page">(^)</a></div>
+
 # Data Sharing and Security Q&A
 
 ## What is Sharing and Security in Salesforce?
@@ -987,7 +1005,12 @@ If we want  run the apex  in a user mode we should use with sharing or without s
 - Grant access to all records of the object regardless of the sharing and security settings.
 - View all and Modify all permissions ignore the sharing model, roles and sharig rules.
 
-# Q&A Reports and Dashboards 
+
+
+
+<div align="right"><a href="#top-of-page">(^)</a></div>
+
+# Reports and Dashboards 
 
 ## What are Data Analysis Tools available in Salesforce?
 - Report
@@ -1131,6 +1154,8 @@ If we want  run the apex  in a user mode we should use with sharing or without s
 - If the running user is a specific user, then all dashboard viewers sees data based the security setting of that user, regardless of their own security settings.
 - Dynamic Dashboards are those for which running user is always logged in user. Here, each user views the dashboard as per their own security settings.
 
+
+<div align="right"><a href="#top-of-page">(^)</a></div>
 # Flows 
 
 ## What is Process Automation?
@@ -1239,6 +1264,64 @@ i.e. Flow Builder
 - call Sub Flow
 - Call Apex Class
 - Call Approval Process
+
+## $Record Vs $Record Prior?
+- Both are global variables available in Flow.
+- $Record is available while record is created, updated or deleted.
+ - $Record Prior is available only when record is updated.
+- $Record : Provides the values of the record through which flow is triggered.
+- $Record Prior : Provides old values of the record through which flow is triggered.
+
+## What happens when flow fails?
+- It gives an error message on the I-Jl.
+- Also throws an email to the user who last modified it.
+
+## Fast Field Update Vs Actions & Related Records?
+- Fast Field Update : Update fields on the record that triggers the flow to run. In this case flow runs before the record is saved to the database.
+- Actions & Related Records: Update any record and perform
+actions, like send an email. In this case flow runs after the record is saved to the database.
+
+## Can records be shared with users through flow?
+- Yes
+- For example, if you want to share account records so in flow you can create a record of AccountShare object.
+
+## Can we set the order of execution of record triggered flows?
+- Yes, through Flow Trigger Explorer
+
+## What are two paths we have in Record Triggered Flow?
+- Run Immediately
+- Run Asynchronously
+
+## From where we can validate whether Flow is scheduled or not?
+- Setup > Scheduled Jobs
+
+## Can we debug a flow as another user?
+- Yes, We need to enable this setting from Process Automation Settings.
+
+## What frequency we can set in Schedule Triggered Flow?
+- Once
+- Daily
+- Weekly
+
+## Record Single Variable Vs Record Collection Variable?
+### Record Single Variable : 
+  - Can store information in form of a single record about specified object.
+### Record Collection Variable : 
+  - Can store information in form of multiple records about specified object.
+
+## Can we pause and resume a screen flow?
+- Yes
+- You can pause through button present on screens.
+- You can resume through Setup > Paused and Failed Flow Interviews.
+
+## Does Flow support versioning?
+- Yes, when we update something in flow it always create a new version.
+- We can anytime activate or deactivate any version as per
+requirements.
+- We can also delete existing versions, if they are not in use anymore.
+
+## Can we deactivate flow anytime?
+- Yes, we can deactivate flows any time if we don't want it to run. Later we can activate as well any version that we want to run
 
 
 
