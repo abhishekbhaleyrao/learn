@@ -64,6 +64,13 @@
   - [What is Data Import Wizard?](#what-is-data-import-wizard)
   - [What is Data Loader?](#what-is-data-loader)
     - [Operations in Data Loader?](#operations-in-data-loader)
+- [Data Sharing and Security Q\&A](#data-sharing-and-security-qa)
+  - [What is Sharing and Security in Salesforce?](#what-is-sharing-and-security-in-salesforce)
+  - [Sharing and Security Model](#sharing-and-security-model)
+  - [What is Organization Level Security?](#what-is-organization-level-security)
+  - [Object Level Security](#object-level-security)
+  - [Field Level Security](#field-level-security)
+  - [](#)
 
 
 # Apex Governor Limits
@@ -770,6 +777,40 @@ If we want  run the apex  in a user mode we should use with sharing or without s
 - Export
 - Export All(Include deleted records as well)
 
+# Data Sharing and Security Q&A
+
+## What is Sharing and Security in Salesforce?
+- Data Security is important because you need to control what a user or group of user can see in the org or app.
+- Salesforce provides layered sharing model.
+- You can easily assign different data sets to different group of users.
+- You can control access to your whole org, any specific object, fields and records.
+
+## Sharing and Security Model
+- Organization Level Security
+- Object Level Security
+- Field Level Security
+- Record Level Security
+  
+## What is Organization Level Security?
+- Maintain a list of authorized users
+- Set password policies
+- Limit login to certain hours and locations
+    -   Limit IP addresses from which users can log in
+    -   Limit the times at which users can log in
+
+## Object Level Security
+- You can control object level permissions for both Standard and Custom Objects.
+- You can set permissions for a particular object.
+- You can give permissions to view, create, edit and delete any records of the object.
+- You can control object permisiions using profiles and permission sets.
+
+## Field Level Security
+- You can restrict access to certain fields in salesforce, even if user has object level access.
+- You can make a field visible to a particular user and can hide that from another user.
+- You can give Read and Edit permission to a field, if you don't give both then that field will not be visible.
+- Field Level Security can be controlled using Profiles and Permission Sets.
+
+##
 
 
 <div align="right"><a href="#top-of-page">(^)</a></div>
