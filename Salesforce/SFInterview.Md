@@ -146,6 +146,15 @@
   - [Can we pause and resume a screen flow?](#can-we-pause-and-resume-a-screen-flow)
   - [Does Flow support versioning?](#does-flow-support-versioning)
   - [Can we deactivate flow anytime?](#can-we-deactivate-flow-anytime)
+- [Triggers](#triggers)
+  - [What is a Trigger?](#what-is-a-trigger)
+  - [What is Trigger Syntax?](#what-is-trigger-syntax)
+  - [Types of Trigger?](#types-of-trigger)
+    - [Before Triggers](#before-triggers)
+    - [After Triggers](#after-triggers)
+  - [Trigger Events?](#trigger-events)
+  - [Trigger Context Variables?](#trigger-context-variables-1)
+  - [Trigger.new Vs Trigger.newMap?](#triggernew-vs-triggernewmap)
 
 
 # Apex Governor Limits
@@ -1323,9 +1332,69 @@ requirements.
 ## Can we deactivate flow anytime?
 - Yes, we can deactivate flows any time if we don't want it to run. Later we can activate as well any version that we want to run
 
-
-
 <div align="right"><a href="#top-of-page">(^)</a></div>
+
+# Triggers
+
+## What is a Trigger?
+- Triggers are initiated when a record is inserted, updated, deleted and undeleted.
+- We can perform custom operations before or after events to records.
+- Use triggers to do operations that cannot be done by point and click tools provided in Salesforce.
+- We can do things using triggers that we can do through Apex, including execution SOQL and DML or calling custom methods.
+- Triggers can be created for both Standard and Custom objects.
+- By default triggers are active as you create them.
+
+## What is Trigger Syntax?
+- trigger TriggerName on ObjectApiName (trigger_events){
+- //write some code here or call apex class methods }
+
+## Types of Trigger?
+### Before Triggers
+- It is used to update or validate record values before saved to database.
+### After Triggers
+- It is used to access field values that are set by the system such as Ids and to make changes in the related/other records. The records that fire the after trigger are read-only.
+
+## Trigger Events?
+- before insert
+- before update
+- before delete
+
+- after insert
+- after update
+- after delete
+- after undelete
+
+## Trigger Context Variables?
+- All triggers define implicit variable that allow developer to access run-tme context. These variable are contained in the System.Trigger class.
+
+    - isExecuting 
+      - Returns true if the current context of apex code is a trigger, not a VF page, a web service or an executeanonymous() API call.
+    - isInsert
+      - Returns true if trigger was fired due to an insert operation form the Salesforce UI, Apex or API.
+    - isUpdate
+      - Returns true if trigger was fired due to an update operation form the Salesforce UI, Apex or API.
+    - isDelete
+      - Returns true if trigger was fired due to an delete operation form the Salesforce UI, Apex or API.
+    - isBefore
+      - Returns true if the trigger was fired before any record was saved.
+    - isAfter
+      - Returns true if the trigger was fired after all records were saved.
+    - isUndelete
+      - Returns true if the trigger was fired after a record is recovered from Recycle Bin.
+    - Size
+      - The total number of records in a trigger invocation both old and new.
+
+## Trigger.new Vs Trigger.newMap?
+- new
+  - Returns a list of new versions of sObject records.
+  - This sObject list is available in Insert, Update and Undelete triggers, and the records can only be modified in before trigger.
+- newMap
+  - A Map of ids to the new versions of sObject records.
+  - Available in after insert, before update, after update, after undelete triggers.    
+
+
+
+
 <div align="right"><a href="#top-of-page">(^)</a></div>
 <div align="right"><a href="#top-of-page">(^)</a></div>
 <div align="right"><a href="#top-of-page">(^)</a></div>
