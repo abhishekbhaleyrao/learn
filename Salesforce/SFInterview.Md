@@ -158,7 +158,17 @@
 - [Changeset](#changeset)
   - [What is change Set in Salesforce?](#what-is-change-set-in-salesforce)
   - [Types of change set](#types-of-change-set)
-- [Triggerssssssssss](#triggerssssssssss)
+- [Tell me something about yourself](#tell-me-something-about-yourself)
+- [Roles and Responsibilities of a Salesforce Developer](#roles-and-responsibilities-of-a-salesforce-developer)
+  - [1. Requirement Analysis and Planning](#1-requirement-analysis-and-planning)
+  - [2. Development and Customization](#2-development-and-customization)
+  - [3. Database Management](#3-database-management)
+  - [4. Integration](#4-integration)
+  - [5. Testing and Quality Assurance](#5-testing-and-quality-assurance)
+  - [6. Documentation](#6-documentation)
+  - [7. Collaboration and Communication](#7-collaboration-and-communication)
+  - [8. Maintenance and Support](#8-maintenance-and-support)
+  - [9. Continuous Learning and Improvement](#9-continuous-learning-and-improvement)
 
 
 # Apex Governor Limits
@@ -1426,4 +1436,75 @@ requirements.
 
 <div align="right"><a href="#top-of-page">(^)</a></div>
 
-# Triggerssssssssss
+# Tell me something about yourself
+
+- Your Background
+Your total experience- use adjectives like diverse, large scale projects, end to end
+Describe your role in the project- with Devs, QA team, Business Team, situational role
+Your expertise in Salesforce - as a BA. Dev or Admin
+Your experience with Salesforce clouds- Sales. Service, Marketing. Community.
+Education. Finance etc.
+Your experience with integrations
+Your experience in Project cycles- Waterfall, Agile, Hybrid etc
+Something unique about your personality
+
+# Roles and Responsibilities of a Salesforce Developer
+## 1. Requirement Analysis and Planning
+- Morning Stand-ups/Meetings : 
+  - Attend daily stand-up meetings or sync-up sessions with the project team to discuss progress, blockers, and plans for the day.
+- Requirement Gathering: 
+  - Review new requirements or changes in existing requirements from business stakeholders or project managers.
+
+## 2. Development and Customization
+- Coding and Development: 
+  - Write, test, and debug custom code using Apex, Visualforce, and Lightning Components (Aura and LWC). Ensure that the code meets business requirements and adheres to best practices.
+  - Customization: 
+    - Use Salesforce's point-and-click tools like Process Builder, Workflow Rules, Flows, and Validation Rules to implement business logic without code when possible.
+  
+  ## 3. Database Management
+- Data Schema Design: 
+  - Create and modify objects, fields, and relationships within Salesforce to support new features and functionalities.
+  - Data Management: 
+  - Perform data migration tasks, data cleansing, and data updates using tools like Data Loader, Workbench, or custom scripts.
+
+## 4. Integration
+API Development: Develop and maintain integrations with external systems using REST or SOAP APIs. This involves writing Apex classes to handle API requests and responses.
+Integration Tools: Use middleware solutions like MuleSoft or Informatica to manage complex integrations and ensure seamless data flow between systems.
+
+## 5. Testing and Quality Assurance
+Unit Testing: Write unit tests for all custom Apex code to ensure at least 75% code coverage as required by Salesforce.
+Testing: Perform integration testing, user acceptance testing (UAT), and regression testing to ensure that new changes do not adversely affect existing functionality.
+
+## 6. Documentation
+- Technical Documentation: 
+  - Document custom development work, including Apex classes, triggers, Visualforce pages, and Lightning components.
+- Process Documentation: 
+  - Update or create process documentation to help users understand new features or changes in workflows.
+
+## 7. Collaboration and Communication
+- Team Collaboration: 
+  - Work closely with other developers, Salesforce administrators, business analysts, and project managers to ensure cohesive development efforts.
+- Status Reporting: 
+  - Provide regular updates on development progress, issues encountered, and solutions implemented to the project team.
+
+## 8. Maintenance and Support
+- Bug Fixing: 
+  - Identify, analyze, and fix bugs reported by users or detected during testing.
+- User Support: 
+  - Respond to and resolve support tickets or user queries related to Salesforce functionalities and customizations.
+
+## 9. Continuous Learning and Improvement
+- Skill Enhancement: 
+  - Stay up-to-date with the latest Salesforce releases, features, and best practices by attending webinars, reading documentation, and participating in the Salesforce community.
+- Training and Certification: 
+  - Work towards Salesforce certifications to enhance knowledge and skills.
+- Tools and Technologies Commonly Used Salesforce Platform: 
+  - Apex, Visualforce, Lightning Components (Aura and LWC), Salesforce APIs
+- Development Tools: 
+  - Salesforce Developer Console, Visual Studio Code with Salesforce Extensions, Git, Bitbucket
+- Data Tools: 
+  - Salesforce Data Loader, Workbench, ETL tools (e.g., MuleSoft, Informatica)
+- Collaboration Tools: 
+  - JIRA, Trello, Slack, Microsoft Teams, Confluence
+- Testing Tools: 
+  - Salesforce Test Classes, Selenium, Provar
