@@ -177,6 +177,30 @@
   - [@isTest(SeeAlIData=True) Annotation?](#istestseealidatatrue-annotation)
   - [Using the runAs Method?](#using-the-runas-method)
   - [Using the runAs Method?](#using-the-runas-method-1)
+- [Asynchronous Apex](#asynchronous-apex)
+  - [What is Asynchronous Apex?](#what-is-asynchronous-apex)
+  - [Benefits of Asynchronous Processing?](#benefits-of-asynchronous-processing)
+  - [Types of Asynchronous Processing?](#types-of-asynchronous-processing)
+  - [Governor \& Execution Limits in Asynchronous Processing?](#governor--execution-limits-in-asynchronous-processing)
+  - [Challenges of Asynchronous Processing?](#challenges-of-asynchronous-processing)
+  - [What is Future Apex/Method?](#what-is-future-apexmethod)
+  - [hen to use Future Methods?](#hen-to-use-future-methods)
+  - [Best Practices : Future Method](#best-practices--future-method)
+  - [Things to Remember while using Future Method:](#things-to-remember-while-using-future-method)
+  - [What is Batch Apex?](#what-is-batch-apex)
+  - [How Batch Apex works?](#how-batch-apex-works)
+  - [Which methods are used in Batch Apex ?](#which-methods-are-used-in-batch-apex-)
+    - [What is the use of start( ) method in Batch Apex?](#what-is-the-use-of-start--method-in-batch-apex)
+    - [What is the use of execute( ) method in Batch Apex?](#what-is-the-use-of-execute--method-in-batch-apex)
+    - [What is the use of finish( ) method in Batch Apex?](#what-is-the-use-of-finish--method-in-batch-apex)
+  - [Batch Practices: Batch Apex](#batch-practices-batch-apex)
+  - [What is Queueable Apex?](#what-is-queueable-apex)
+  - [What are the benefits of Queueable Apex?](#what-are-the-benefits-of-queueable-apex)
+  - [Important to Remember while using Queueable Apex:](#important-to-remember-while-using-queueable-apex)
+  - [What is Scheduled Apex?](#what-is-scheduled-apex)
+  - [How many ways are there to Schedule Apex?](#how-many-ways-are-there-to-schedule-apex)
+  - [What is CRON Expression?](#what-is-cron-expression)
+  - [Things to Remember while Scheduling Apex:](#things-to-remember-while-scheduling-apex)
 - [Changeset](#changeset)
   - [What is change Set in Salesforce?](#what-is-change-set-in-salesforce)
   - [Types of change set](#types-of-change-set)
@@ -1600,9 +1624,192 @@ organization has not additional user licenses.
             //some code
             }
 
-
-
 <div align="right"><a href="#top-of-page">(^)</a></div>
+
+# Asynchronous Apex
+
+## What is Asynchronous Apex? 
+- An asynchronous process executes a task in the background.
+- User doesn't have to wait for the task to finish.
+- Use Asynchronous Apex for:
+    - Callouts to external systems
+    - Operations that require higher limits
+    - Code that needs to run at a certain time.
+
+## Benefits of Asynchronous Processing?
+- Use efficiency
+- Scalability
+- Higher Limits
+
+## Types of Asynchronous Processing? 
+<img src="SFAssets/images/AsyncApex.jpg" width="500"/></br>
+
+## Governor & Execution Limits in Asynchronous Processing?
+- Asynchronous apex provides higher governor and execution limits.
+- Number of SOQL is doubled from 100 to 200.
+- Total heap size and maximum CPU time are similarly larger for asynchronous calls.
+- As you get higher limits with async, also those governor limits are independent of the limits in the synchronous request that queued the async request initially.
+
+
+## Challenges of Asynchronous Processing?
+- Ensure fairness of processing
+- Ensure fault tolerance
+
+## What is Future Apex/Method?
+- Future Apex runs process in a separate thread, at a later time when system resources become available.
+- Use @future annotation to create future methods.
+- In Synchronous processing, all method calls are made from the same thread and no additional processing can occur until the process is complete.
+- Whereas in future method, methods runs synchronously in its own thread.
+- This unblocks users from performing other operations.
+- Provides higher governor & execution limits for processing.
+
+## hen to use Future Methods?
+- Callouts to external Web services. To make callouts from a trigger use a future or
+queueable method.
+- Process that needs to executed in a separate or their own thread.
+- Isolating DML operations on different sObject types to prevent the mixed DML error.
+
+## Best Practices : Future Method
+- Ensure future methods execute as fast as possible.
+- In case of Web service cållouts, try to bundle all callouts together from the same future method, rather that using a separate future method for each callout.
+- Test that a trigger enqueuing the @future calls is able to handle a trigger collection of
+200 records.
+- To process large number of records synchronously, use Batch Apex instead of future
+methods.
+
+## Things to Remember while using Future Method:
+- @future annotation method must be static.
+- Future method can only return a void type.
+- Future method can take primitive data types, array of primitive data types, or collections of
+primitive data types as arguments.
+- Future methods cannot take objects as arguments.
+- It can happen that future methods are running in different order as they are called.
+- You can't call a future method from a future method. Nor can you invoke a trigger that calls a
+future method while running a future method.
+- There is a limit of 50 future calls per Apex invocation.
+- There is an additional limit on the number of calls in a 24-hour period.
+
+## What is Batch Apex?
+- Batch Apex runs large jobs. It can process thousands or millions of records.
+- It processes records asynchronously in batches.
+- For Data cleansing or archiving, Batch Apex is probably best solution.
+
+## How Batch Apex works?
+- The execution logic of the batch class is called once for each batch of records that is
+being processed.
+- Each time when a batch class is invoked, the job is placed on the Apex job queue and is executed as a discrete transaction.
+- Advantages are:
+  - Every transaction starts with a new set of governor limits.
+  - If one batch fails to process successfully, all other successful batch transactions aren't rolled back.
+
+## Which methods are used in Batch Apex ?
+- Batch Apex class must implement the Database.Batchable interface and include the
+following three methods:
+      - start
+      - execute
+      - finish
+
+### What is the use of start( ) method in Batch Apex?
+- Collects the records or objects to be passed to the execute( ) method for processing.
+- start( ) is called once at the beginning of a Batch Apex Job.
+- It returns a Database.QueryLocator object or an Iterable that contains the records or objects passed to the job.
+- When QueryLocator object is used, the governor limit for the total number of records retrieved by SOQL queries is bypassed and upto 50 million records can be queried.
+- Whereas with an Iterable, governor limit by SOQL queries is enforced.
+
+### What is the use of execute( ) method in Batch Apex?
+- Perform actual processing for each batch of data passed.
+- Default batch size is 200 records.
+- Batches of records can execute in any order, it doesn't depends on which order they are received from the start method.
+- It take a reference to the Database.BatchableContext object and A List<sObject> or a
+list of parameterized types.
+- When using Database.QueryLocator use the returned list.
+
+### What is the use of finish( ) method in Batch Apex?
+- Executes post-processing operations.
+- Calls once after all batches are processed.
+- For example, sending an email process can be implemented in finish method.
+
+## Batch Practices: Batch Apex
+- To ensure fast execution of batch jobs, minimize web service callout times.
+- Tune any SOQL query to gather the records to execute as quickly as possible.
+- The longer the batch job executes, the more likely other queued jobs are delayed when many jobs are in the queue.
+- Use Batch Apex when more than one batch of records are there, in case of one batch, you can prefer Queueable Apex.
+- Minimize the number of asynchronous requests.
+- If you are planning to invoke a batch job from a trigger then you must be able to guarantee that the trigger won't add more batch jobs than the limit.
+
+## What is Queueable Apex?
+- Superset of future methods with extra features.
+- Combination of future methods and Batch Apex.
+- Works beyond primitive arguments.
+- Called by a simple System.enqueueJob( ) method.
+- enqueueJob( ) return a job ID that can be monitored.
+
+## What are the benefits of Queueable Apex?
+- Non-primitive types
+- Monitoring
+- Chaining Jobs
+
+## Important to Remember while using Queueable Apex:
+- The execution of a queued job counts once against the shared limit for asynchronous
+Apex method executions.
+- You can add up to 50 jobs to the queue with System.enqueueJob( ) in a single transaction.
+- When chaining jobs, you can add only one job from an executing job with System.enqueueJob( ).
+- No limit is enforced on the depth of chained jobs. Note, for Developer Edition and Trial
+orgs, the maximum stack depth for chained jobs is 5 (including the initial parent queueable job).
+
+## What is Scheduled Apex?
+- You can run Apex classes at a specified time.
+- Run Maintenance tasks on Daily or Weekly basis.
+- Implements Schedulable interface in Apex class.
+
+## How many ways are there to Schedule Apex?
+- Using the System.Schedule( ) Method through CRON expression.
+  - System.schedule(JobName, CronExpression, SchedulableClasslnstance);
+- Scheduling a Job from the UI
+  - Setup > Apex Classes > Schedule Apex
+
+## What is CRON Expression?
+- A CRON expression is basically a string of five or six fields that represents a set of times, normally as a schedule to execute some routine.
+- Example:
+    - String sch = '20 30 8 10 2 6 2022';
+- 20 = Seconds
+- 30 = Minutes
+- 8 = Hours
+- 10 = Day of Month
+- 2 = Month (1 for Jan and 12 for Dec)
+- 6 = Day of Week (1 for Sun and 7 for Sat)
+- 2022 = Year (Optional - null or 1970 - 2099)
+
+## Things to Remember while Scheduling Apex:
+- You can only have 100 scheduled jobs at one time.
+- While scheduling a class from a trigger then you must guarantee that the trigger won't
+add more scheduled jobs than the limit.
+- Synchronous web service callouts are not supported from scheduled Apex.
+- Make an Asynchronous callout by placing the callout in a method annotated with @future(callout=true) and call this method from scheduled Apex.
+- If scheduled apex executes a batch job then callouts are supported from the batch class.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div align="right"><a href="#top-of-page">(^)</a></div>
 <div align="right"><a href="#top-of-page">(^)</a></div>
 
