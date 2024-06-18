@@ -1395,6 +1395,111 @@ requirements.
   - A Map of ids to the new versions of sObject records.
   - Available in after insert, before update, after update, after undelete triggers.    
 
+## Trigger.old Vs Trigger.oldMap?
+- old
+  - Returns a list of old versions of sObject records.
+  - Available in before update, after update, before delete, after delete triggers.
+- oldMap
+  - A map of ids to the old versions of sObject records.
+  - Available in before update, after update, before delete, after delete triggers.
+
+## Can we call a apex class through trigger?
+- Yes, we can.
+- Example 
+trigger AccountTrigger on Account ( before insert ) {
+AccountTriggerHandler.beforelnsert(Trigger.New);
+}
+public class AccountTriggerHandler{
+public void beforelnsert(List<Account> newList){
+
+for(Account acc : Trigger.New){
+acc.Description = • Test Description';
+}
+}
+}
+
+## Trigger Best Practices?
+- One Trigger per object
+- bulkify your code
+- Logicless trigger
+- Avoid using SOQL or DML inside for loop to avoid hitting governor limits
+- Avoid nested loops, try to use map instead.
+- Use Static boolean variable to avoid recursive trigger
+
+# What is Recursive Trigger?
+- In some scenarios it can happen that the result of the trigger can end up calling the same trigger again and again. This situation is known as recursive trigger.
+- To avoid this scenario we should create a static variable and check the value of this variable before we execute anything in the trigger.
+- Example: When you update a record from Ul then trigger will be called. Now in trigger as well you applied update DML so it will call same trigger again and ends up as recursion.
+
+## Can we apply validation through trigger?
+- Yes, we can use addError( ) to apply validation through trigger.
+
+## Can a trigger call a batch class?
+- Yes, we can call a batch class in the trigger as we do in the normal apex code.
+
+## Can a trigger make a call Apex callout method?
+- Yes, we can call a callout method in Apex Trigger but the only condition is that it has to be an asynchronous callout because the trigger flow cannot wait on the response received by the callout method.
+
+## What is trigger bulkification?
+- Trigger should be able to handle single records and bulk records.
+- You should write triggers that operate on collections of sObjects.
+- Trigger should perform efficient SOQL and DML operations.
+
+## Is there any limit on number of triggers defined on an object?
+- We can define as many triggers on an object but it is recommended to have one trigger per object as the order of execution of different trigger is not guaranteed and any trigger can start execution first.
+
+## Order of execution in Triggers?
+- When you save a record with an insert, Update or upsert statement, Salesforce performs the following events in order:
+  - Loads the original record from the database or initialized the record for an upsert statement.
+  - Loads the new record field values from the request and overwrites the old values.
+  - Executes record-triggered flows those are configured to run before the record is saved.
+  - Executes all before triggers.
+  - Runs most system validation steps again and runs custom validation rules. The only system validation that Salesforce doesn't run a second time (when the request comes from a standard Ul edit page) is the enforcement of layout-specific rules.
+  - Executes duplicate rules.
+  - Saves the record to the database, but does not commit yet.
+  - Executes all after triggers.
+  - Executes assignment rules.
+  - Executes auto-response rules.
+  - Executes workflow rules.
+  - Executes escalation rules.
+  - Executes Processes, Flows launched by processes (order is not guaranteed)
+  - Executes entitlement rules.
+  - Executes record-triggered flows those are configured to run after the record is saved.
+  - If the record contains a roll-up summary field or is part of a cross-object workflow, performs calculations and updates the roll-up summary field in the parent record. Then parent record goes through save procedure.
+  - If the parent record is updated, and a grandparent record contains a roll-up summary field or is part of a cross-object workflow, performs calculations and updates the roll-up summary field in the grandparent record. Grandparent record goes through save procedure.
+  - Executes Criteria based Sharing evaluation.
+  - Commits all DML operations to the database.
+  - After the changes are committed to the database,executes post-commit logic such as sending email and executing enqueued asynchronous Apex jobs, including queueable jobs and future methods.
+
+<div align="right"><a href="#top-of-page">(^)</a></div>
+
+# Test Class
+
+## What is Apex Test Class?
+- The Apex testing framework enables you to write and execute tests for your Apex classes and triggers on the Lightning Platform.
+- Apex unit tests ensure high quality for your Apex code and let you meet requirements for deploying Apex.
+- Apex code can only be written in a sandbox environment or a Developer org, not in production.
+- Apex unit tests are required for deploying and distributing Apex.
+
+## Benefits of Apex Unit Tests?
+- Ensuring that your Apex classes and triggers work as expected.
+- Having a suite of regression tests that can be rerun every time classes and triggers are updated to ensure that future updates you make to your app don't break existing functionality.
+- Meeting the code coverage requirements for deploying Apex to production or distributing Apex to customers via packages.
+
+## Code Coverage requirement for Deployment?
+- To deploy code or package it for the Lightning Platform AppExchange, at least 75% of Apex code must be covered by tests, and all those tests must pass.
+- In addition, each trigger must have some coverage. Even though code coverage is a requirement for deployment, don't write tests only to meet this requirement.
+- Make sure to test the common use cases in your app, including positive and negative test cases, and bulk and single-record processing.
+
+## Important about Test Class?
+- Calls to System.debug are not counted as part of Apex code coverage.
+- Test methods and test classes are not counted as part of Apex code limit. So, no worries about writing long test class with more methods just to make sure that all your
+code branches are covered.
+- Class can be deployed on 0% coverage as well, but that overall coverage of your production org after getting your code deployed should be 75%, otherwise Salesforce
+won't let you deploy your code.
+
+
+
 
 
 
