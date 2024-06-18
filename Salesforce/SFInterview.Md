@@ -201,6 +201,7 @@
   - [How many ways are there to Schedule Apex?](#how-many-ways-are-there-to-schedule-apex)
   - [What is CRON Expression?](#what-is-cron-expression)
   - [Things to Remember while Scheduling Apex:](#things-to-remember-while-scheduling-apex)
+- [LWC Lightning Web Component](#lwc-lightning-web-component)
 - [Changeset](#changeset)
   - [What is change Set in Salesforce?](#what-is-change-set-in-salesforce)
   - [Types of change set](#types-of-change-set)
@@ -1788,7 +1789,9 @@ add more scheduled jobs than the limit.
 - Make an Asynchronous callout by placing the callout in a method annotated with @future(callout=true) and call this method from scheduled Apex.
 - If scheduled apex executes a batch job then callouts are supported from the batch class.
 
+<div align="right"><a href="#top-of-page">(^)</a></div>
 
+# LWC Lightning Web Component
 
 
 
