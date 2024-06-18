@@ -159,6 +159,7 @@
   - [What is change Set in Salesforce?](#what-is-change-set-in-salesforce)
   - [Types of change set](#types-of-change-set)
 - [Tell me something about yourself](#tell-me-something-about-yourself)
+- [My Intro](#my-intro)
 - [Roles and Responsibilities of a Salesforce Developer](#roles-and-responsibilities-of-a-salesforce-developer)
   - [1. Requirement Analysis and Planning](#1-requirement-analysis-and-planning)
     - [Morning Stand-ups/Meetings :](#morning-stand-upsmeetings-)
@@ -1471,7 +1472,36 @@ Your experience with integrations
 Your experience in Project cycles- Waterfall, Agile, Hybrid etc
 Something unique about your personality
 
+
+# My Intro
+- My name is Abhishek Bhalerao. My native. place is Pune.  I lived here for long. I have lots of friends & family relatives in this city. In terms of qualification I have done masters in Computer Application.
+
+- I joined Infosys in 2016 as an Analyst & its almost 8 years with this firm. I have learned so much & always greateful.
+
+ - I Started my Salesforce journey in 2022 January. But in the past I have used Salesforce as Business User & that got me intrested to learn about it.
+
+- I have done my certifications Salesforce associate Certification  & platform development 1
+
+- My recent project is on sales cloud for a food & Beverage firm. Their main product are dairy products, soups, sauces, dressings, Bakery & snacks, Sweetners etc.
+
+- We are team of five and my primary role ( is a as Admin. However I also worked on the development tasks)/ is developer.
+
+- So far we have implemented the Sales process which includes web to lead, Campaign management for the marketing team, product configuration, Opportunity Management with approval process & reporting requirements for the business.
+All of the above where implemented using the outofbox capabilities.
+
+- We also did. Some customization for resource & timesheet management
+
+- What is your salary expectations? 
+I am drawing 4.6LPA. Also since this is a new role and fresher position anything close to my current salary is doable. 
+
+
+
+
+
+<div align="right"><a href="#top-of-page">(^)</a></div>
+
 # Roles and Responsibilities of a Salesforce Developer
+
 ## 1. Requirement Analysis and Planning
 ### Morning Stand-ups/Meetings : 
   - Attend daily stand-up meetings or sync-up sessions with the project team to discuss progress, blockers, and plans for the day.
