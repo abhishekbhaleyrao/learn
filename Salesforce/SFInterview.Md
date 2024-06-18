@@ -159,6 +159,12 @@
   - [Can we call a apex class through trigger?](#can-we-call-a-apex-class-through-trigger)
   - [Trigger Best Practices?](#trigger-best-practices)
   - [What is Recursive Trigger?](#what-is-recursive-trigger)
+  - [Can we apply validation through trigger?](#can-we-apply-validation-through-trigger)
+  - [Can a trigger call a batch class?](#can-a-trigger-call-a-batch-class)
+  - [Can a trigger make a call Apex callout method?](#can-a-trigger-make-a-call-apex-callout-method)
+  - [What is trigger bulkification?](#what-is-trigger-bulkification)
+  - [Is there any limit on number of triggers defined on an object?](#is-there-any-limit-on-number-of-triggers-defined-on-an-object)
+  - [](#)
 - [Changeset](#changeset)
   - [What is change Set in Salesforce?](#what-is-change-set-in-salesforce)
   - [Types of change set](#types-of-change-set)
@@ -1466,6 +1472,26 @@ acc.Description = • Test Description';
 - In some scenarios it can happen that the result of the trigger can end up calling the same trigger again and again. This situation is known as recursive trigger.
 - To avoid this scenario we should create a static variable and check the value of this variable before we execute anything in the trigger.
 - Example: When you update a record from Ul then trigger will be called. Now in trigger as well you applied update DML so it will call same trigger again and ends up as recursion.
+
+## Can we apply validation through trigger?
+- Yes, we can use addError( ) to apply validation through trigger.
+
+## Can a trigger call a batch class?
+- Yes, we can call a batch class in the trigger as we do in the normal apex code.
+
+## Can a trigger make a call Apex callout method?
+- Yes, we can call a callout method in Apex Trigger but the only condition is that it has to be an asynchronous callout because the trigger flow cannot wait on the response received by the callout method.
+
+## What is trigger bulkification?
+- Trigger should be able to handle single records and bulk records.
+- You should write triggers that operate on collections of sObjects.
+- Trigger should perform efficient SOQL and DML operations.
+
+## Is there any limit on number of triggers defined on an object?
+- We can define as many triggers on an object but it is recommended to have one trigger per object as the order of execution of different trigger is not guaranteed and any trigger can start execution first.
+
+## 
+
 
 
 
