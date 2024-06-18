@@ -155,6 +155,10 @@
   - [Trigger Events?](#trigger-events)
   - [Trigger Context Variables?](#trigger-context-variables-1)
   - [Trigger.new Vs Trigger.newMap?](#triggernew-vs-triggernewmap)
+  - [Trigger.old Vs Trigger.oldMap?](#triggerold-vs-triggeroldmap)
+  - [Can we call a apex class through trigger?](#can-we-call-a-apex-class-through-trigger)
+  - [Trigger Best Practices?](#trigger-best-practices)
+  - [What is Recursive Trigger?](#what-is-recursive-trigger)
 - [Changeset](#changeset)
   - [What is change Set in Salesforce?](#what-is-change-set-in-salesforce)
   - [Types of change set](#types-of-change-set)
@@ -1430,6 +1434,38 @@ requirements.
   - A Map of ids to the new versions of sObject records.
   - Available in after insert, before update, after update, after undelete triggers.    
 
+## Trigger.old Vs Trigger.oldMap?
+- old
+  - Returns a list of old versions of sObject records.
+  - Available in before update, after update, before delete, after delete triggers.
+- oldMap
+  - A map of ids to the old versions of sObject records.
+  - Available in before update, after update, before delete, after delete triggers.
+
+## Can we call a apex class through trigger?
+- Yes, we can.
+- Example :
+  - trigger AccountTrigger on Account ( before insert ) {
+Account TriggerHandler.beforelnsert(Trigger.New);
+  }
+public class AccountTriggerHandler{
+public void beforelnsert(List<Account> newList){
+for(Account acc : Trigger.New){
+acc.Description = • Test Description';
+}}}
+
+## Trigger Best Practices?
+- One Trigger per object
+- bulkify your code
+- Logicless trigger
+- Avoid using SOQL or DML inside for loop to avoid hitting governor limits
+- Avoid nested loops, try to use map instead.
+- Use Static boolean variable to avoid recursive trigger
+
+## What is Recursive Trigger?
+- In some scenarios it can happen that the result of the trigger can end up calling the same trigger again and again. This situation is known as recursive trigger.
+- To avoid this scenario we should create a static variable and check the value of this variable before we execute anything in the trigger.
+- Example: When you update a record from Ul then trigger will be called. Now in trigger as well you applied update DML so it will call same trigger again and ends up as recursion.
 
 
 
