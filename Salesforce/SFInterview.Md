@@ -210,7 +210,27 @@
   - [Can a Lightning Web Component call another Lightning Web Component?](#can-a-lightning-web-component-call-another-lightning-web-component)
   - [Camel Case Vs Kebab Case?](#camel-case-vs-kebab-case)
   - [What is decorator ?](#what-is-decorator-)
-  - [](#)
+  - [What is the use of @api decorator?](#what-is-the-use-of-api-decorator)
+  - [What is the use of @track decorator?](#what-is-the-use-of-track-decorator)
+  - [What is the use of @wire decorator?](#what-is-the-use-of-wire-decorator)
+  - [Conditional Rendering in HTML?](#conditional-rendering-in-html)
+  - [Rendering List in HTML?](#rendering-list-in-html)
+  - [How to write expression in component?](#how-to-write-expression-in-component)
+  - [How to call Controller function in component?](#how-to-call-controller-function-in-component)
+  - [@AuraEnabled(cacheabIe=true)](#auraenabledcacheabietrue)
+  - [What is Lifecycle Hooks?](#what-is-lifecycle-hooks)
+  - [What is Lifecycle Flow?](#what-is-lifecycle-flow)
+  - [What are three ways to work with Salesforce Data?](#what-are-three-ways-to-work-with-salesforce-data)
+  - [ightning Data Service?](#ightning-data-service)
+  - [Wire Service?](#wire-service)
+  - [Wire Service Syntax?](#wire-service-syntax)
+  - [Why to import References to Salesforce Objects \& Fields?](#why-to-import-references-to-salesforce-objects--fields)
+  - [How to get current record id in lightning web component?](#how-to-get-current-record-id-in-lightning-web-component)
+  - [How can we deploy lightning web components?](#how-can-we-deploy-lightning-web-components)
+  - [Communicate with Events in LWC?](#communicate-with-events-in-lwc)
+  - [Use of Lightning Message Service?](#use-of-lightning-message-service)
+  - [Use of pubsub Module?](#use-of-pubsub-module)
+  - [Where we can use Lightning Web Components?](#where-we-can-use-lightning-web-components)
 - [Changeset](#changeset)
   - [What is change Set in Salesforce?](#what-is-change-set-in-salesforce)
   - [Types of change set](#types-of-change-set)
@@ -1851,7 +1871,169 @@ functionality from the Iwc module.
               - @track
               - @wire
 
-##
+## What is the use of @api decorator?
+- Marks a field/property as public.
+- HTML markup can access the component's public properties.
+- All public properties are reactive. Reactive means the framework observe the property for change. When property changes value then the framework reacts and renders the component.
+
+## What is the use of @track decorator?
+- Observe changes to the properties of an object or to the elements of an array.
+- Framework render the component when changes occurs.
+
+## What is the use of @wire decorator?
+- It provides a way to get and bind data from a Salesforce Org.
+
+## Conditional Rendering in HTML?
+- <template if:true={areDetailsVisible}>
+- These is true block!
+- <template if:false={areDetailsVisible}>
+- These is false block!
+- </template>
+
+## Rendering List in HTML?
+- <template for:each={contacts} for:item="contact">
+- <li key={contact.ld}>
+- {contact. Name}, {contact. Title}
+- </li>
+- </template>
+
+## How to write expression in component?
+- <!--todoltem.html-->
+- <template>
+- {itemName}
+- </template>
+- 
+- // todoltem.js
+- import { LightningElement, api } from 'lwc';
+- export default class Todoltem extends LightningElement {
+- @api itemName;
+- }
+
+## How to call Controller function in component?
+- HTML
+- <lightning-input type="checkbox" label="Show details"
+- onchange={handleChange}></lightning-input>
+- 
+- //JS
+- handleChange(event) {
+- this.areDetailsVisible = event.target.checked;
+- }
+
+## @AuraEnabled(cacheabIe=true)
+- AuraEnabled annotation exposes the method to lightning components and caches the returned list on the client.
+
+## What is Lifecycle Hooks?
+- Lightning Web Components provides methods that allow you to "hook" your code up to critical events in a component's lifecycle.
+- These events include when a component is:
+- Created                 = constructor( )
+- Added to the DOM        = connectedCallback( )
+- Rendered in the browser = renderedCallback( )
+- Removed from the DOM    = disconnectedCallback( )
+- Encountering errors     = errorCallback( )
+
+## What is Lifecycle Flow?
+- Constructor Called on Parent
+- Public Property våiue of Parent updated
+- Parent Inserted into the DOM
+- connectedCallback( ) called on Parent
+- Parent rendered
+    - Constructor called on child
+    - Public Property value of child updated
+    - Child inserted into the DOM
+    - connectedCallback( ) called on child
+    - Child rendered
+    - renderedCallback( ) called on Child
+  - renderedCallback( ) called on Parent
+
+## What are three ways to work with Salesforce Data?
+- Use Base Lightning Components Built on Lightning Data service
+  - lightning-record-form
+  - lightning-record-view-form
+  - lightning-record-edit-form
+- Use Lightning Data Service Wire Adapters and Functions
+  - lightning/ui*Api module
+- Use Apex
+
+## ightning Data Service?
+- Lightning Data Service manages data for, changes to a record are reflected in all the technologies built on it. Whereas, data from Apex is not managed, you must refresh
+the data.
+- Lightning Data Service does a lot of work to make code perform well:
+  - Loads record data progressively.
+  - Caches results on the client.
+  - Invalidates cache entries when dependent Salesforce data and metadata changes.
+  - Optimizes server calls by bulkifying tha deduping requests.
+
+## Wire Service?
+- The wire service provisions an immutable stream of data to the component.
+- Each value in the stream is a newer version of the value that precedes it.
+- Objects passed to a component are read-only.
+- To mutate the data, a component should make a shallow copy of the objects it wants to mutate.
+
+## Wire Service Syntax?
+- import { adapterld } frpm 'adapterModule';
+- @wire(adapterld, adapterConfig)
+- propertyOrFunction;
+
+- adapterld (Identifier)— The identifier of the wire adapter.
+- adapterModule (String)— The identifier of the module that contains the wire adapter function, in the format namespace/moduleName.
+- adapterConfig (Object)— A configuration object specific to the wire adapter. Configuration object property values can be either strings or references to objects and fields imported from @salesforce/schema.
+- propertyOrFunction— A private property or function that receives the stream of data from the wire service. If a property is decorated with @wire, the results are returned to the property's data property or error property. If a function is decorated with @wire, the results are returned in an object with a data property and an error property.
+
+## Why to import References to Salesforce Objects & Fields?
+- When you use a wire adapter in a lightning/ui*Api module, we strongly recommend importing references to objects and fields.
+- Salesforce verifies that the objects and fields exist, prevents objects and fields from being deleted, and cascades any renamed objects and fields into your component's source code.
+- It also ensures that dependent objects and fields are included in change sets and packages.
+- If a component isn't aware of which object it's using, use strings instead of imported references. Use getObjectlnfo to return the object's fields.
+- All wire adapters in the lightning/ui*Api modules respect object CRUD rules, field-level security, and sharing.
+- If a user doesn't have access to a field, it isn't included in the response.
+
+- import POSITION_OBJECT from '@salesforce/schema/Position c';
+- import ACCOUNT_OBJECT from '@salesforce/schema/Account';
+- import POSITION_LEVEL_FIELD from '@salesforce/schema/Position c.Level__c';
+- import ACCOUNT_NAME_FIELD from '@salesforce/schema/Account.Name';
+- import POSITION_HIRINGMANAGER_NAME_FIELD from
+'@saIesforce/schema/Position_c.HiringManager_r.Name c';
+- import ACCOUNT_OWNER_NAME_FIELD from
+'@salesforce/schema/Account.Owner.Name';
+
+## How to get current record id in lightning web component?
+- Create a property named as recordld and decorate it with @api decorator.
+
+## How can we deploy lightning web components?
+- Lightning components can be deployed like any other component using change set, ANT migration tool, Gearset, Copado or other migration tool.
+
+## Communicate with Events in LWC?
+- Lightning web components dispatch standard DOM events.
+- Components can also create and dispatch custom events.
+- You can use events to communicate up the component containment hierarchy.
+- Create and dispatch events in a component's JavaScript file.
+- To create an event, use the CustomEvent( ) constructor. To dispatch an event, call the EventTarget.dispatchEvent( ) method.
+- To listen an event use component's HTML template. to handle events, define methods in the component's JavaScript class.
+
+## Use of Lightning Message Service?
+- To communicate between components within a single lightning page or across multiple pages, use Lightning message service to communicate over a Lightning
+message channel.
+- The advantage over pubsub module is that message channels aren't restricted to a single page.
+- Any component in a Lightning Experience application that listens for events on a message channel updates when it receives a message.
+- It works between Lightning web components, Aura components, and VF Pages in any tab or in any pop-out window in Lightning Experience.
+
+## Use of pubsub Module?
+- In containers that don't support Lightning Messaging Service, use the pubsub module.
+- In a publish-subscribe paitern, one component publishes an event. Other Component subscribe to receive and handle the event.
+- Every component that subscribes to the event receives the event.
+- The pubsub module restricts events to a single page.
+
+## Where we can use Lightning Web Components?
+- Distribute Components on AppExchange
+- Lightning App Builder
+- Flows
+- Experience Builder
+- Utility Bar
+- Create Components for Outlook and Gmail Integrations
+- Quick Actions
+- Standalone Aura Apps
+- Visualforce Pages
+- Custom Tabs
 
 
 
