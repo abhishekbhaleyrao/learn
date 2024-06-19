@@ -202,6 +202,15 @@
   - [What is CRON Expression?](#what-is-cron-expression)
   - [Things to Remember while Scheduling Apex:](#things-to-remember-while-scheduling-apex)
 - [LWC Lightning Web Component](#lwc-lightning-web-component)
+  - [What is LWC?](#what-is-lwc)
+  - [Lightning Web Component Files?](#lightning-web-component-files)
+  - [What is LWC Module?](#what-is-lwc-module)
+  - [What is use of XML File?](#what-is-use-of-xml-file)
+  - [Can Aura Component contain Lightning Web component?](#can-aura-component-contain-lightning-web-component)
+  - [Can a Lightning Web Component call another Lightning Web Component?](#can-a-lightning-web-component-call-another-lightning-web-component)
+  - [Camel Case Vs Kebab Case?](#camel-case-vs-kebab-case)
+  - [What is decorator ?](#what-is-decorator-)
+  - [](#)
 - [Changeset](#changeset)
   - [What is change Set in Salesforce?](#what-is-change-set-in-salesforce)
   - [Types of change set](#types-of-change-set)
@@ -1793,23 +1802,56 @@ add more scheduled jobs than the limit.
 
 # LWC Lightning Web Component
 
+## What is LWC?
+- LWC stands for Lightning Web Component.
+- LWC is an implementation of the W3C's web component standards.
+- It supports the parts of web components that works in browser and adds parts supported by Salesforce as well.
+- Quick component development because developer has to use only HTML, CSS and JavaScript.
 
+## Lightning Web Component Files?
+- test. html
+- test.js
+- test.css
+- test.js-meta.xml
 
+## What is LWC Module?
+- LWC uses modules to bundle core functionality and make it accessible to the
+- JavaScript in your component file.
+- The core module for lightning web component is lwc.
+- Begin the module with the import statement and specify the functionality of the
+module that your component uses.
+- Example : import {LightningElement} from 'lwc';
+- The import statement indicates the JavaScript uses the LightningElement
+functionality from the Iwc module.
 
+## What is use of XML File?
+- This file defines component's configuration like where developer can use the lightning web component.
+- <isExposed> true </isExposed>
+- <targets>
+- <target>lightning_HomePage</target>
+- <target>lightning RecordPage</target>
+- </targets>
 
+## Can Aura Component contain Lightning Web component?
+- Yes
 
+## Can a Lightning Web Component call another Lightning Web Component?
+- Yes
 
+## Camel Case Vs Kebab Case?
+- LWC match web standards wherever possible. The HTML standard requires that custom element names contain a hyphen.Since all LWC have a namespace that's separated from the folder name by a hyphen, component names meet the HTML standard.
+- For example, the markup for the Lightning web component with the folder name widget in the default namespace c is <c-widget>.
+- However, the Salesforce platform doesn't allow hyphens in tbe component folder or file names. What if a component's name has more than one word, like "mycomponent"? You can't name the folder and file my-component, but we do have a handy solution.
+- Use camel case to name your component like myComponent. Camel case component folder names map to kebab-case in markup. In markup, to reference a component with the folder name myComponent, use <c-my-component>.
 
+## What is decorator ?
+- Decorators are often used in JavaScript to modify the behavior of a property or function.
+- Examples:
+              - @api
+              - @track
+              - @wire
 
-
-
-
-
-
-
-
-
-
+##
 
 
 
