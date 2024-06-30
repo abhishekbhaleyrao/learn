@@ -238,6 +238,10 @@
 3. Fields
 4. Records
 
+
+<img src="SFAssets/images/LevelsofDataAccess.png" width="500"/></br>
+
+
 <div align="right"><a href="#top-of-page">(^)</a></div>
 
 ### 1. Organization Level Security
