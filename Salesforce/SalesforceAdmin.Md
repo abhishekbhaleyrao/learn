@@ -51,6 +51,8 @@
   - [What is SOQL](#what-is-soql)
   - [SOQL Statement](#soql-statement)
   - [Building SOQL](#building-soql)
+  - [Salesforce Admin: Roles \& Responsibilities](#salesforce-admin-roles--responsibilities)
+- [User Management:](#user-management)
 
 
 # INTRODUCTION
@@ -546,7 +548,108 @@ Then goto Specific Object PageLayout > Add >Save
 
 <img src="SFAssets/images/BuildingSOQL.jpg" width="500"/></br>
 
+## Salesforce Admin: Roles & Responsibilities
+# User Management:
 
+Creating and managing user accounts.
+Assigning and managing profiles, permission sets, roles, and licenses.
+Troubleshooting user access issues and login problems.
+Security and Access Control:
+
+Implementing and managing security features like profiles, roles, sharing rules, and field-level security.
+Ensuring data security and access control by managing record visibility.
+Data Management:
+
+Managing data import/export using tools like Data Loader, Data Import Wizard, and Salesforce native tools.
+Regular data maintenance tasks like deduplication, mass updates, and data cleaning.
+Ensuring data quality and integrity across objects and records.
+Customization & Configuration:
+
+Configuring standard Salesforce objects, fields, page layouts, and record types.
+Creating and managing custom objects, fields, and validation rules.
+Implementing workflows, Process Builder, and flows for automation.
+Reports & Dashboards:
+
+Creating and customizing reports to meet business needs.
+Building dashboards to provide a visual representation of key metrics.
+Managing report folders and setting report access permissions.
+Automation:
+
+Automating business processes using declarative tools like Process Builder, Workflow Rules, and Flows.
+Managing approval processes for document routing and approvals.
+Salesforce Updates and Maintenance:
+
+Monitoring Salesforce updates and releases, ensuring the org is up to date.
+Testing new features in sandbox environments before deployment.
+Ensuring that customizations are compatible with Salesforce releases.
+Training & Support:
+
+Providing support and training to end users to enhance adoption and effective use of Salesforce.
+Creating user documentation and delivering training sessions.
+Assisting users with questions, troubleshooting, and issue resolution.
+AppExchange & Third-Party Integration:
+
+Installing and managing apps from Salesforce AppExchange.
+Assisting with integrating third-party applications into the Salesforce environment.
+System Health Monitoring:
+
+Monitoring system performance, managing licenses, and monitoring storage usage.
+Conducting regular system audits to ensure compliance with security policies.
+Salesforce Developer: Roles & Responsibilities
+Custom Development:
+
+Writing and maintaining Apex classes, triggers, and batch processes for custom development needs.
+Developing Lightning Web Components (LWC) and Aura components for custom user interfaces.
+Customizing Visualforce pages to extend functionality and create tailored interfaces.
+Apex and Database Management:
+
+Writing SOQL (Salesforce Object Query Language) and SOSL (Salesforce Object Search Language) queries.
+Handling large data sets and managing data processing using Batch Apex, Queueable Apex, and Future methods.
+Working with governor limits and ensuring efficient, scalable code.
+Integration:
+
+Integrating Salesforce with external systems via REST, SOAP APIs, and web services.
+Using Platform Events, Change Data Capture (CDC), and Salesforce Connect for real-time integrations.
+Setting up callouts to third-party services using HTTP requests.
+Custom UI and Frontend Development:
+
+Building custom UIs using Lightning Web Components and Aura framework.
+Creating reusable components and managing complex client-side logic with JavaScript.
+Ensuring a responsive and optimized user interface.
+Testing and Debugging:
+
+Writing unit tests to ensure code coverage and following best practices for deployment.
+Debugging issues using debug logs, Salesforce Inspector, and other tools.
+Performing error handling in Apex code and ensuring smooth user experiences.
+Salesforce APIs and Tools:
+
+Working with various Salesforce APIs (REST, SOAP, Bulk, Metadata, Tooling API).
+Using Salesforce CLI and Developer Console for deployment and debugging.
+Managing metadata using the Metadata API or tools like the ANT Migration Tool.
+Deployments & Version Control:
+
+Managing deployments between Salesforce environments using Change Sets, Salesforce DX, or tools like Git, Jenkins, or Copado.
+Creating and deploying managed/unmanaged packages.
+Collaborating with admins and stakeholders to ensure proper testing and successful deployment of solutions.
+Automation & Logic:
+
+Implementing complex business logic and workflows through custom code.
+Leveraging Process Automation tools in combination with custom logic (Flows, Process Builder, and Apex).
+Environment Management:
+
+Working with multiple orgs (sandbox, developer, and production environments).
+Setting up continuous integration/continuous delivery (CI/CD) pipelines.
+Managing version control and automating deployments.
+AppExchange Product Development:
+
+Developing apps for Salesforce AppExchange.
+Managing security reviews and packaging apps for distribution.
+Key Differences Between Salesforce Admin and Developer:
+Salesforce Admins focus more on declarative (point-and-click) configurations, security, and user management. They implement changes to improve system performance, handle data management, and provide user support.
+
+Salesforce Developers focus on programmatic solutions, writing code to extend the platform’s capabilities, custom integrations, and building new functionalities using Salesforce’s development tools and frameworks (Apex, LWC, API integration).
+
+Both roles complement each other, with Admins handling the configuration and customization side, while Developers tackle more complex, coded solutions that require higher technical expertise.
 
 <div align="right"><a href="#top-of-page">(^)</a></div> 
 <div align="right"><a href="#top-of-page">(^)</a></div>
