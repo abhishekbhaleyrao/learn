@@ -112,6 +112,22 @@
     - [**8. Salesforce App Development**](#8-salesforce-app-development)
     - [**9. Security and Access Control**](#9-security-and-access-control)
     - [**10. Miscellaneous**](#10-miscellaneous)
+- [Salesforce Developers Interview Question answers](#salesforce-developers-interview-question-answers)
+    - [1. **What is Salesforce?**](#1-what-is-salesforce)
+    - [2. **What are the different types of relationships in Salesforce?**](#2-what-are-the-different-types-of-relationships-in-salesforce)
+    - [3. **What are Apex triggers?**](#3-what-are-apex-triggers)
+    - [4. **Can you explain the different types of Apex Governor Limits?**](#4-can-you-explain-the-different-types-of-apex-governor-limits)
+    - [5. **What is the difference between `after` and `before` triggers?**](#5-what-is-the-difference-between-after-and-before-triggers)
+    - [6. **What is a Visualforce Page?**](#6-what-is-a-visualforce-page)
+    - [7. **What is a Lightning Component?**](#7-what-is-a-lightning-component)
+    - [8. **What are Custom Objects and Custom Fields in Salesforce?**](#8-what-are-custom-objects-and-custom-fields-in-salesforce)
+    - [9. **What are the differences between `SOQL` and `SOSL`?**](#9-what-are-the-differences-between-soql-and-sosl)
+    - [10. **Explain the concept of `Dynamic Apex`.**](#10-explain-the-concept-of-dynamic-apex)
+    - [11. **What is a Batch Apex?**](#11-what-is-a-batch-apex)
+    - [12. **What is a Salesforce Platform Event?**](#12-what-is-a-salesforce-platform-event)
+    - [13. **What is the difference between a Workflow and Process Builder?**](#13-what-is-the-difference-between-a-workflow-and-process-builder)
+    - [14. **What is the use of `@future` annotation in Apex?**](#14-what-is-the-use-of-future-annotation-in-apex)
+    - [15. **What is a Trigger Framework?**](#15-what-is-a-trigger-framework)
 
 
 # INTRODUCTION
@@ -1029,6 +1045,91 @@ CloseDate < TODAY()
 
 These are additional topic-wise questions and answers to help with your **Salesforce Admin** interview preparation. Let me know if you need further clarification or additional questions on specific topics!
 <div align="right"><a href="#top-of-page">(^)</a></div>
+
+# Salesforce Developers Interview Question answers
+
+Here are some common Salesforce Developer interview questions and answers:
+
+### 1. **What is Salesforce?**
+   **Answer:**  
+   Salesforce is a cloud-based Customer Relationship Management (CRM) platform that helps organizations manage their sales, customer service, marketing, and other related business functions. It offers tools for automation, analytics, and collaboration in various business processes.
+
+### 2. **What are the different types of relationships in Salesforce?**
+   **Answer:**  
+   In Salesforce, there are 4 primary types of relationships:
+   - **Lookup Relationship**: A one-to-one relationship where one record points to another. It’s loosely coupled.
+   - **Master-Detail Relationship**: A one-to-many relationship where the child record is tightly bound to the parent. The child record’s lifecycle depends on the parent.
+   - **Many-to-Many Relationship**: Created using junction objects (which are custom objects with two master-detail relationships).
+   - **Hierarchical Relationship**: A special lookup relationship that is available only for the User object and allows users to be linked hierarchically.
+
+### 3. **What are Apex triggers?**
+   **Answer:**  
+   Apex Triggers are used to execute custom logic before or after specific data manipulation language (DML) operations occur on Salesforce records. They can be set to run on events like `insert`, `update`, `delete`, or `undelete`.
+
+### 4. **Can you explain the different types of Apex Governor Limits?**
+   **Answer:**  
+   Governor limits are enforced in Salesforce to ensure efficient use of shared resources. Common limits include:
+   - **DML Statements**: Maximum of 150 DML statements in a transaction.
+   - **SOQL Queries**: Maximum of 100 SOQL queries in a transaction.
+   - **Heap Size**: The total memory used in Apex code, with a limit of 6 MB in synchronous and 12 MB in asynchronous transactions.
+   - **CPU Time**: Apex transactions are limited to 10,000 milliseconds of CPU time.
+   - **Transaction Rollback**: Salesforce rolls back the entire transaction if any governor limit is exceeded.
+
+### 5. **What is the difference between `after` and `before` triggers?**
+   **Answer:**  
+   - **Before Triggers**: These are executed before changes are committed to the database. They are used to validate or modify the record before it's saved. They are commonly used for validation and setting default field values.
+   - **After Triggers**: These are executed after the data has been committed to the database. They are used for operations that depend on the record being saved, like sending notifications or updating related records.
+
+### 6. **What is a Visualforce Page?**
+   **Answer:**  
+   Visualforce is a markup language used to create custom user interfaces in Salesforce. It allows developers to build pages with custom layouts, dynamic content, and integrate them with Apex code to execute logic. Visualforce pages can be used for both standard and custom applications within Salesforce.
+
+### 7. **What is a Lightning Component?**
+   **Answer:**  
+   A Lightning Component is part of the Salesforce Lightning framework, which is used to build modern, responsive, and dynamic web applications. Components are reusable units of functionality that can be combined to create custom interfaces. Lightning components can be built using two models:
+   - **Aura Components** (older model)
+   - **Lightning Web Components (LWC)** (modern approach, based on web standards)
+
+### 8. **What are Custom Objects and Custom Fields in Salesforce?**
+   **Answer:**  
+   - **Custom Objects**: These are user-defined objects in Salesforce that store data specific to the organization’s needs. Custom objects are similar to standard objects but allow for customization of fields, relationships, and business logic.
+   - **Custom Fields**: These are user-defined fields on standard or custom objects. Custom fields allow you to store data that is specific to the business requirements, such as adding a field for a customer’s ID or custom attributes.
+
+### 9. **What are the differences between `SOQL` and `SOSL`?**
+   **Answer:**  
+   - **SOQL (Salesforce Object Query Language)** is used to query a single object or related objects in Salesforce. It retrieves records based on specific conditions.
+   - **SOSL (Salesforce Object Search Language)** is used for text-based searches across multiple objects in Salesforce. It is more suitable for keyword searches across a wide range of records.
+
+### 10. **Explain the concept of `Dynamic Apex`.**
+   **Answer:**  
+   Dynamic Apex is a feature in Salesforce that allows developers to write code that can dynamically access metadata and manipulate it at runtime. This enables developers to write more generic and reusable code without hardcoding field names, object names, or other metadata. It is often used for handling schema changes dynamically, such as querying fields dynamically based on runtime data.
+
+### 11. **What is a Batch Apex?**
+   **Answer:**  
+   Batch Apex is used for processing large volumes of records asynchronously. It allows you to break the records into smaller batches and process them in parallel. A batch job can process up to 50 million records in a single run.
+
+### 12. **What is a Salesforce Platform Event?**
+   **Answer:**  
+   Platform Events are a part of Salesforce’s event-driven architecture. They allow Salesforce applications to communicate with each other by sending and receiving event messages. These events can be triggered and processed asynchronously, which makes it ideal for integrating with external systems or for handling custom business logic.
+
+### 13. **What is the difference between a Workflow and Process Builder?**
+   **Answer:**  
+   - **Workflow Rules**: A simple automation tool in Salesforce to automate standard internal procedures and processes, like sending emails, updating fields, or creating tasks. It supports limited actions compared to Process Builder.
+   - **Process Builder**: A more powerful tool that can perform complex automation tasks, including calling Apex classes, invoking flows, and updating related records. Process Builder is more flexible and offers a better user interface for creating automation.
+
+### 14. **What is the use of `@future` annotation in Apex?**
+   **Answer:**  
+   The `@future` annotation in Apex allows methods to run asynchronously in the background. It is typically used for long-running operations like making callouts to external systems, sending emails, or performing heavy computations that can be offloaded from the main thread.
+
+### 15. **What is a Trigger Framework?**
+   **Answer:**  
+   A Trigger Framework is a design pattern used to streamline and manage trigger logic across different objects in Salesforce. It helps in organizing trigger execution in a modular way, making it easier to manage complex business logic and prevent conflicts with other triggers. It often involves separating trigger logic from business logic, usually in a handler class.
+
+---
+
+These questions and answers should give you a good foundation for your Salesforce Developer interview preparation. If you need more in-depth explanations or examples, feel free to ask!
+
+
 <div align="right"><a href="#top-of-page">(^)</a></div>
 <div align="right"><a href="#top-of-page">(^)</a></div>
 <div align="right"><a href="#top-of-page">(^)</a></div>
