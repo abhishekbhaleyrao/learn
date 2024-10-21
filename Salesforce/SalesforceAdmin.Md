@@ -71,6 +71,23 @@
 - [Deployments: Managing deployments through Change Sets, Salesforce DX, and version control tools (Git, Jenkins).](#deployments-managing-deployments-through-change-sets-salesforce-dx-and-version-control-tools-git-jenkins)
 - [API \& Automation: Using Salesforce APIs and building automation solutions with Apex and Flows.](#api--automation-using-salesforce-apis-and-building-automation-solutions-with-apex-and-flows)
 - [This provides a concise overview of each role’s responsibilities for an interview setting.](#this-provides-a-concise-overview-of-each-roles-responsibilities-for-an-interview-setting)
+- [Interview Discussion](#interview-discussion)
+    - [Interviewer:](#interviewer)
+    - [Abhishek:](#abhishek)
+    - [Interviewer:](#interviewer-1)
+    - [Abhishek:](#abhishek-1)
+    - [Interviewer:](#interviewer-2)
+    - [Abhishek:](#abhishek-2)
+    - [Interviewer:](#interviewer-3)
+    - [Abhishek:](#abhishek-3)
+    - [Interviewer:](#interviewer-4)
+    - [Abhishek:](#abhishek-4)
+    - [Interviewer:](#interviewer-5)
+    - [Abhishek:](#abhishek-5)
+    - [Interviewer:](#interviewer-6)
+    - [Abhishek:](#abhishek-6)
+    - [Interviewer:](#interviewer-7)
+    - [Abhishek:](#abhishek-7)
 
 
 # INTRODUCTION
@@ -694,7 +711,78 @@ Both roles complement each other, with Admins handling the configuration and cus
 # This provides a concise overview of each role’s responsibilities for an interview setting.
 
 
-<div align="right"><a href="#top-of-page">(^)</a></div>S
+<div align="right"><a href="#top-of-page">(^)</a></div>
+
+# Interview Discussion
+
+Here’s an **interview discussion** based on **Abhishek Bhalerao's resume**:
+
+### Interviewer:  
+**Can you briefly summarize your experience in Salesforce?**
+
+### Abhishek:  
+I have 2.5 years of experience working as a Salesforce Developer and Administrator. Over the years, I’ve developed a strong understanding of Salesforce's security model, built Lightning Components, and worked with both Aura framework and Lightning Web Components (LWC). Additionally, I have experience in developing Apex Classes and Triggers to meet various functional requirements. I’ve worked with Salesforce standard objects like Accounts, Contacts, Leads, and Opportunities, and have built custom objects, validation rules, dashboards, and reports to address business needs【17†source】.
+
+---
+
+### Interviewer:  
+**What experience do you have with Salesforce automation tools like Flows and Process Builder?**
+
+### Abhishek:  
+I’ve worked extensively with both Flows and Process Builder. I’ve used Flows to automate complex business processes by creating screen flows, record-triggered flows, and auto-launched flows. Process Builder was used to automate more straightforward tasks, such as field updates and approval processes. These tools helped streamline workflows, reducing manual tasks, and increasing efficiency across different departments【17†source】.
+
+---
+
+### Interviewer:  
+**Can you elaborate on your experience with Lightning Web Components (LWC)?**
+
+### Abhishek:  
+Yes, I have hands-on experience with LWC. I’ve developed custom Lightning Web Components for various projects, handling both the client-side and server-side logic. I am proficient in the LWC bundle structure, including HTML templates, JavaScript controllers, and CSS. I’ve also used Lightning Data Service (LDS) to interact with Salesforce data, ensuring that components are lightweight and performant. I worked on integrating LWC with Apex for more complex business logic【17†source】.
+
+---
+
+### Interviewer:  
+**How do you ensure data security in Salesforce, particularly when handling sensitive information?**
+
+### Abhishek:  
+Data security is critical, and I manage it through Salesforce's built-in security features. I use profiles, permission sets, and roles to control access at the object, field, and record levels. I also configure sharing settings and validation rules to maintain data integrity and privacy. Additionally, I am familiar with Salesforce's Field Level Security (FLS) and Shield Platform Encryption when dealing with particularly sensitive data【17†source】.
+
+---
+
+### Interviewer:  
+**Can you describe a project where you worked on Salesforce customization, and what challenges you faced?**
+
+### Abhishek:  
+I worked on a project for a UK-based client in the food and beverage industry. The goal was to capture leads and track product status globally. My responsibilities included creating custom objects, fields, validation rules, and dashboards to support the sales cycle. One challenge was ensuring data quality and consistency across different regions, which I addressed by implementing strict validation rules and building automated flows to handle complex workflows efficiently【17†source】.
+
+---
+
+### Interviewer:  
+**What tools do you use for deployment, and how do you manage version control in Salesforce?**
+
+### Abhishek:  
+I use various deployment tools, including Salesforce DX and Change Sets, depending on the complexity of the deployment. For version control, I rely on Git to track changes and manage code versions. In larger projects, I’ve integrated Salesforce CLI with Jenkins for CI/CD to streamline the deployment process and reduce errors when moving between sandbox and production environments【17†source】.
+
+---
+
+### Interviewer:  
+**You’ve mentioned that you have experience with Apex development. Can you give an example of a complex Apex trigger or class you’ve developed?**
+
+### Abhishek:  
+One example was developing a complex trigger to automate the lead assignment process. Based on specific criteria like region, product interest, and lead score, the trigger automatically assigned leads to the right team. I had to ensure that the trigger adhered to Salesforce governor limits, so I optimized SOQL queries and used bulkified triggers to handle larger datasets efficiently【17†source】.
+
+---
+
+### Interviewer:  
+**What certifications do you hold, and how do they help in your Salesforce career?**
+
+### Abhishek:  
+I have the **Salesforce Certified Administrator**, **Salesforce Certified App Builder**, **Platform Developer I**, and **Salesforce Associate** certifications. These certifications validate my skills in different aspects of Salesforce, from development and administration to advanced customization and automation. They’ve helped me stay up-to-date with Salesforce best practices and have enhanced my ability to provide solutions that meet both technical and business requirements【17†source】.
+
+---
+
+This interview script highlights Abhishek’s experience and skills as outlined in his resume, presenting him as a well-rounded Salesforce professional with strong hands-on experience in development and administration.
+
 <div align="right"><a href="#top-of-page">(^)</a></div>
 
 
