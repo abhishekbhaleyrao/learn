@@ -88,6 +88,19 @@
     - [Abhishek:](#abhishek-6)
     - [Interviewer:](#interviewer-7)
     - [Abhishek:](#abhishek-7)
+- [Possible Interview Questions](#possible-interview-questions)
+    - [1. **Can you explain your role as a Salesforce Developer/Administrator at Infosys?**](#1-can-you-explain-your-role-as-a-salesforce-developeradministrator-at-infosys)
+    - [2. **What specific features of Lightning Web Components (LWC) have you worked with?**](#2-what-specific-features-of-lightning-web-components-lwc-have-you-worked-with)
+    - [3. **How have you handled data integration between Salesforce and external systems?**](#3-how-have-you-handled-data-integration-between-salesforce-and-external-systems)
+    - [4. **What challenges did you face when managing data quality in Salesforce?**](#4-what-challenges-did-you-face-when-managing-data-quality-in-salesforce)
+    - [5. **What automation tools in Salesforce have you worked with?**](#5-what-automation-tools-in-salesforce-have-you-worked-with)
+    - [6. **Can you describe a complex trigger or Apex class you’ve written?**](#6-can-you-describe-a-complex-trigger-or-apex-class-youve-written)
+    - [7. **How do you manage Salesforce deployments and version control?**](#7-how-do-you-manage-salesforce-deployments-and-version-control)
+    - [8. **What kind of reports and dashboards have you created in Salesforce?**](#8-what-kind-of-reports-and-dashboards-have-you-created-in-salesforce)
+    - [9. **How do you ensure that your Salesforce applications are secure?**](#9-how-do-you-ensure-that-your-salesforce-applications-are-secure)
+    - [10. **Can you share an instance when you received appreciation or recognition for your work?**](#10-can-you-share-an-instance-when-you-received-appreciation-or-recognition-for-your-work)
+    - [11. **What certifications do you hold, and how have they contributed to your role?**](#11-what-certifications-do-you-hold-and-how-have-they-contributed-to-your-role)
+    - [12. **How have you used Salesforce Data Loader or Workbench in your projects?**](#12-how-have-you-used-salesforce-data-loader-or-workbench-in-your-projects)
 
 
 # INTRODUCTION
@@ -785,4 +798,92 @@ This interview script highlights Abhishek’s experience and skills as outlined 
 
 <div align="right"><a href="#top-of-page">(^)</a></div>
 
+# Possible Interview Questions  
+
+Here are **possible interview questions and their answers** based on **Abhishek Bhalerao's resume**:
+
+### 1. **Can you explain your role as a Salesforce Developer/Administrator at Infosys?**
+   **Answer**:  
+   At Infosys, I worked as a Technology Support Specialist where I performed both developer and administrator tasks. I developed custom objects, fields, and dashboards, and created validation rules to ensure data quality. On the development side, I worked extensively with Lightning Web Components (LWC), Apex classes, and triggers to meet client-specific business requirements. I also handled automation using flows, Process Builder, and maintained security configurations like profiles and roles【17†source】.
+
+---
+
+### 2. **What specific features of Lightning Web Components (LWC) have you worked with?**
+   **Answer**:  
+   I have developed several components using LWC. This includes handling client-side logic with JavaScript, HTML templates for rendering UI, and using Lightning Data Service (LDS) for fetching and saving records without writing Apex code. I also integrated LWC with Apex when complex business logic was required. Additionally, I utilized standard SLDS classes to ensure components adhered to Salesforce's design standards【17†source】.
+
+---
+
+### 3. **How have you handled data integration between Salesforce and external systems?**
+   **Answer**:  
+   In my projects, I have worked on Salesforce integrations using REST and SOAP APIs. I utilized these APIs to send and receive data from external systems securely. Additionally, I used Salesforce Connect to bring in external data as external objects and worked on configuring Named Credentials for secure integrations【17†source】.
+
+---
+
+### 4. **What challenges did you face when managing data quality in Salesforce?**
+   **Answer**:  
+   One of the main challenges was ensuring that the data captured was consistent and error-free across different teams and regions. I addressed this by creating strict validation rules and automation flows to check data before it was saved in the system. I also used deduplication tools and regular data audits to ensure the accuracy of records【17†source】.
+
+---
+
+### 5. **What automation tools in Salesforce have you worked with?**
+   **Answer**:  
+   I’ve worked with **Flows**, **Process Builder**, and **Workflow Rules** to automate business processes. I often use Flows for complex automation scenarios like multi-step approvals and conditional routing. Process Builder has been handy for field updates and immediate task automation, while Workflow Rules are used for simpler tasks like email alerts【17†source】.
+
+---
+
+### 6. **Can you describe a complex trigger or Apex class you’ve written?**
+   **Answer**:  
+   I developed an Apex trigger to handle lead assignment based on multiple criteria like region, product interest, and score. This required optimizing SOQL queries and bulkifying the trigger to ensure it adhered to Salesforce governor limits. I also ensured the trigger handled errors gracefully and wrote test classes to achieve high code coverage【17†source】.
+
+---
+
+### 7. **How do you manage Salesforce deployments and version control?**
+   **Answer**:  
+   For deployments, I primarily use **Salesforce DX** and **Change Sets** depending on the size and scope of the project. For version control, I rely on **Git** to manage code changes and track development across environments. I have also used Jenkins for continuous integration and automated deployment, which helps maintain consistent deployment practices【17†source】.
+
+---
+
+### 8. **What kind of reports and dashboards have you created in Salesforce?**
+   **Answer**:  
+   I’ve created reports that track key performance metrics for leads, sales opportunities, and team performance. I also built custom dashboards for stakeholders to visualize data like lead conversion rates and time-to-assignment metrics. These reports helped improve decision-making and allowed teams to monitor their KPIs effectively【17†source】.
+
+---
+
+### 9. **How do you ensure that your Salesforce applications are secure?**
+   **Answer**:  
+   I use Salesforce's robust security model, starting with configuring profiles and permission sets to control access at the object and field levels. I also ensure record-level security by setting up roles, sharing rules, and OWD (Organization-Wide Defaults). Additionally, I work with FLS (Field-Level Security) to protect sensitive data and maintain best practices around secure coding in Apex【17†source】.
+
+---
+
+### 10. **Can you share an instance when you received appreciation or recognition for your work?**
+   **Answer**:  
+   I’ve received several appreciations from clients and my onshore operational manager. One instance was when I successfully handled a critical requirement under tight deadlines and received recognition for my problem-solving ability and attention to detail. This project involved developing custom validation rules and flows that significantly improved the client's sales process【17†source】.
+
+---
+
+### 11. **What certifications do you hold, and how have they contributed to your role?**
+   **Answer**:  
+   I hold four Salesforce certifications: **Salesforce Certified Administrator**, **Salesforce Certified App Builder**, **Platform Developer I**, and **Salesforce Associate**. These certifications have strengthened my technical and functional knowledge of Salesforce. They’ve helped me implement best practices in customization, development, and security within the platform【17†source】.
+
+---
+
+### 12. **How have you used Salesforce Data Loader or Workbench in your projects?**
+   **Answer**:  
+   I frequently use **Data Loader** for bulk data operations like importing, updating, and exporting large datasets. I’ve used **Workbench** for testing SOQL queries, debugging, and interacting with Salesforce APIs. Both tools have helped me manage data efficiently, especially during migrations and data clean-up tasks【17†source】.
+
+---
+
+These answers align with Abhishek's resume and demonstrate his expertise across various Salesforce tools, development, and administration tasks.
+
+<div align="right"><a href="#top-of-page">(^)</a></div>
+<div align="right"><a href="#top-of-page">(^)</a></div>
+<div align="right"><a href="#top-of-page">(^)</a></div>
+<div align="right"><a href="#top-of-page">(^)</a></div>
+<div align="right"><a href="#top-of-page">(^)</a></div>
+<div align="right"><a href="#top-of-page">(^)</a></div>
+<div align="right"><a href="#top-of-page">(^)</a></div>
+<div align="right"><a href="#top-of-page">(^)</a></div>
+<div align="right"><a href="#top-of-page">(^)</a></div>
+<div align="right"><a href="#top-of-page">(^)</a></div>
 
