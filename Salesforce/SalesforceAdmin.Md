@@ -53,6 +53,24 @@
   - [Building SOQL](#building-soql)
   - [Salesforce Admin: Roles \& Responsibilities](#salesforce-admin-roles--responsibilities)
 - [User Management:](#user-management)
+  - [Salesforce Admin: Key Roles \& Responsibilities (Interview Summary)](#salesforce-admin-key-roles--responsibilities-interview-summary)
+- [User Management: Creating users, assigning roles, profiles, and managing permissions.](#user-management-creating-users-assigning-roles-profiles-and-managing-permissions)
+- [Data Management: Import/export data, maintain data quality, and clean up records.](#data-management-importexport-data-maintain-data-quality-and-clean-up-records)
+- [Security: Configuring profiles, roles, sharing rules, and field-level security.](#security-configuring-profiles-roles-sharing-rules-and-field-level-security)
+- [Customization: Creating and managing objects, fields, validation rules, and workflows.](#customization-creating-and-managing-objects-fields-validation-rules-and-workflows)
+- [Automation: Using declarative tools like Flow Builder, Process Builder, and Approval Processes.](#automation-using-declarative-tools-like-flow-builder-process-builder-and-approval-processes)
+- [Reports \& Dashboards: Building custom reports and dashboards to visualize key metrics.](#reports--dashboards-building-custom-reports-and-dashboards-to-visualize-key-metrics)
+- [System Maintenance: Monitoring updates, performing audits, and testing features in sandbox environments.](#system-maintenance-monitoring-updates-performing-audits-and-testing-features-in-sandbox-environments)
+- [Support \& Training: Assisting users, troubleshooting issues, and delivering training.](#support--training-assisting-users-troubleshooting-issues-and-delivering-training)
+  - [Salesforce Developer: Key Roles \& Responsibilities (Interview Summary)](#salesforce-developer-key-roles--responsibilities-interview-summary)
+- [Custom Development: Writing Apex classes, triggers, and developing Lightning Web Components (LWC).](#custom-development-writing-apex-classes-triggers-and-developing-lightning-web-components-lwc)
+- [Integration: Integrating Salesforce with external systems via REST, SOAP APIs, and Platform Events.](#integration-integrating-salesforce-with-external-systems-via-rest-soap-apis-and-platform-events)
+- [Apex \& Database: Writing SOQL/SOSL queries and handling batch processing.](#apex--database-writing-soqlsosl-queries-and-handling-batch-processing)
+- [UI Development: Creating custom UIs using LWC and Aura, ensuring responsiveness and usability.](#ui-development-creating-custom-uis-using-lwc-and-aura-ensuring-responsiveness-and-usability)
+- [Testing \& Debugging: Writing unit tests for code coverage and troubleshooting using debug logs.](#testing--debugging-writing-unit-tests-for-code-coverage-and-troubleshooting-using-debug-logs)
+- [Deployments: Managing deployments through Change Sets, Salesforce DX, and version control tools (Git, Jenkins).](#deployments-managing-deployments-through-change-sets-salesforce-dx-and-version-control-tools-git-jenkins)
+- [API \& Automation: Using Salesforce APIs and building automation solutions with Apex and Flows.](#api--automation-using-salesforce-apis-and-building-automation-solutions-with-apex-and-flows)
+- [This provides a concise overview of each role’s responsibilities for an interview setting.](#this-provides-a-concise-overview-of-each-roles-responsibilities-for-an-interview-setting)
 
 
 # INTRODUCTION
@@ -652,7 +670,31 @@ Salesforce Developers focus on programmatic solutions, writing code to extend th
 Both roles complement each other, with Admins handling the configuration and customization side, while Developers tackle more complex, coded solutions that require higher technical expertise.
 
 <div align="right"><a href="#top-of-page">(^)</a></div> 
-<div align="right"><a href="#top-of-page">(^)</a></div>
+
+## Salesforce Admin: Key Roles & Responsibilities (Interview Summary)
+# User Management: Creating users, assigning roles, profiles, and managing permissions.
+# Data Management: Import/export data, maintain data quality, and clean up records.
+# Security: Configuring profiles, roles, sharing rules, and field-level security.
+# Customization: Creating and managing objects, fields, validation rules, and workflows.
+# Automation: Using declarative tools like Flow Builder, Process Builder, and Approval Processes.
+# Reports & Dashboards: Building custom reports and dashboards to visualize key metrics.
+# System Maintenance: Monitoring updates, performing audits, and testing features in sandbox environments.
+# Support & Training: Assisting users, troubleshooting issues, and delivering training.
+
+
+
+## Salesforce Developer: Key Roles & Responsibilities (Interview Summary)
+# Custom Development: Writing Apex classes, triggers, and developing Lightning Web Components (LWC).
+# Integration: Integrating Salesforce with external systems via REST, SOAP APIs, and Platform Events.
+# Apex & Database: Writing SOQL/SOSL queries and handling batch processing.
+# UI Development: Creating custom UIs using LWC and Aura, ensuring responsiveness and usability.
+# Testing & Debugging: Writing unit tests for code coverage and troubleshooting using debug logs.
+# Deployments: Managing deployments through Change Sets, Salesforce DX, and version control tools (Git, Jenkins).
+# API & Automation: Using Salesforce APIs and building automation solutions with Apex and Flows.
+# This provides a concise overview of each role’s responsibilities for an interview setting.
+
+
+<div align="right"><a href="#top-of-page">(^)</a></div>S
 <div align="right"><a href="#top-of-page">(^)</a></div>
 
 
