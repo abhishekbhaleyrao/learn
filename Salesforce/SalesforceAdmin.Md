@@ -161,7 +161,6 @@
   healthcare, communication, nonprofit, financial services etc.
 
 
-
 # RELATIONSHIPS
 
 ## 1.Lookup Field / Lookup Relationship
