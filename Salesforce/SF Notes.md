@@ -57,3 +57,48 @@
 It gives you access to all of the account records. We can view details of a particular record by clicking on it on it.
 
 ## Types of Navigation (Standard & Console)
+
+# FIELDS
+- A fields is like a database column.
+- There are various data types are available in Salesforce to create fields.
+- By entering values in fields, we create a record in Salesforce.
+
+## Data Type For Fields
+
+  <img src="SFAssets/images/DataTypeFields.jpg" width="550"/></br>
+
+
+## IMP 
+### Which 4 Fields are created automatically while creation of Custom Object.
+- Ans : Created By, Last Modified By, Owner, Student ID.
+
+### How many ways we can able to create Tab?
+- Ans : Two. 
+- 1 With Custom object creation page Launch New Custom Tab Wizard after saving this custom object
+- 2 Home > Search 'TAB' > New 
+
+# RECORD
+- Records are the rows(entries) in object which are uniquely identified by there ids.
+- We can create records by entering values in fields available in an object.
+- We can create, edit, view and delete a record in Salesforce.
+
+# APPS
+- An App is a container for all the objects, tabs and other functionality.
+- It is similar to a programming project where we keep all our code files.
+- In Salesforce App consists simply of a name, a logo and an ordered set of tabs.
+
+### Types of Navigation in Apps
+- Two types : 1 Standard Navigation 2 Console Navigation
+
+## Text Fields
+-Text, Text Area, Text Aread Long, Text Area Rich
+
+## Picklist Fields
+- Picklist
+- Multi-Select Picklist
+
+## Global Picklist Value Set
+- Generic Picklist used with many object's picklist fields
+  
+
+
