@@ -88,7 +88,9 @@ It gives you access to all of the account records. We can view details of a part
 - In Salesforce App consists simply of a name, a logo and an ordered set of tabs.
 
 ### Types of Navigation in Apps
-- Two types : 1 Standard Navigation 2 Console Navigation
+- Two types : 
+- 1 Standard Navigation 
+- 2 Console Navigation
 
 ## Text Fields
 -Text, Text Area, Text Aread Long, Text Area Rich
