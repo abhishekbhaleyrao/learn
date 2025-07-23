@@ -2,7 +2,26 @@
 
 - [INTRODUCTION](#introduction)
 - [CRM Overview](#crm-overview)
-- [Salesforce CRM Benefits](#salesforce-crm-benefits)
+- [SALESFORCE CRM Benefits](#salesforce-crm-benefits)
+- [Database Table](#database-table)
+- [OBJECTS (Standard \& Custom)](#objects-standard--custom)
+  - [Introduction](#introduction-1)
+  - [Standard \& Custom Objects](#standard--custom-objects)
+- [TABS](#tabs)
+  - [Introduction](#introduction-2)
+  - [Types of Navigation (Standard \& Console)](#types-of-navigation-standard--console)
+- [FIELDS](#fields)
+  - [Data Type For Fields](#data-type-for-fields)
+  - [IMP](#imp)
+    - [Which 4 Fields are created automatically while creation of Custom Object.](#which-4-fields-are-created-automatically-while-creation-of-custom-object)
+    - [How many ways we can able to create Tab?](#how-many-ways-we-can-able-to-create-tab)
+- [RECORD](#record)
+- [APPS](#apps)
+    - [Types of Navigation in Apps](#types-of-navigation-in-apps)
+  - [Text Fields](#text-fields)
+  - [Picklist Fields](#picklist-fields)
+  - [Global Picklist Value Set](#global-picklist-value-set)
+- [FORMULA FIELD](#formula-field)
 - [RELATIONSHIPS](#relationships)
   - [1.Lookup Field / Lookup Relationship](#1lookup-field--lookup-relationship)
   - [2.Master Detail Relationship](#2master-detail-relationship)
@@ -53,6 +72,8 @@
   - [Building SOQL](#building-soql)
 
 
+<div id=top-of-page></div>
+
 # INTRODUCTION
 - Salesforce is the world's most popular CRM system.
 - Many companies and customers rely on this dynamic,
@@ -63,6 +84,7 @@
   integrated CRM platform that powers entire suite of
   connected apps.
 
+
 # CRM Overview
 - Customer Relationship Management
 - Broadly defined, CRM is a strategy for managing a
@@ -70,7 +92,7 @@
   prospects and ensuring the 'Connect' sustains
   throughout the relation.
   
-# Salesforce CRM Benefits
+# SALESFORCE CRM Benefits
 - Helps businesses manage their customer interactions and sales
   processes.
 - Known for customer-centric approach.
@@ -83,6 +105,80 @@
 - Provides industry specific solutions to help various sectors like education,
   healthcare, communication, nonprofit, financial services etc.
 
+  <div align="right"><a href="#top-of-page">(^)</a></div>
+
+# Database Table 
+
+  <img src="SFAssets/images/DBTable.png" width="550"/></br>
+
+# OBJECTS (Standard & Custom)
+## Introduction
+- An Object is very similar to a database table in the Force.com platform.
+- The platform comes with a number of standard objects like Account, Contact, Case, Lead, Opportunity, etc.
+- The standard objects support default apps like Salesforce Sales and Salesforce Service.
+- We can create Custom Objects in Salesforce as per requirement of the project.
+
+## Standard & Custom Objects
+
+  <img src="SFAssets/images/Std&CustObj.jpg" width="550"/></br>
+
+# TABS
+## Introduction
+- Through Tabs we can navigate around an app.
+- Every tab serves as the starting point for viewing, editing & entering information for a specific object.
+- When we click a tab, the corresponding home page that object appears.
+- For example, if we click the Accounts tab, the Accounts tab home page appears. 
+It gives you access to all of the account records. We can view details of a particular record by clicking on it on it.
+
+## Types of Navigation (Standard & Console)
+
+# FIELDS
+- A fields is like a database column.
+- There are various data types are available in Salesforce to create fields.
+- By entering values in fields, we create a record in Salesforce.
+
+## Data Type For Fields
+
+  <img src="SFAssets/images/DataTypeFields.jpg" width="550"/></br>
+
+
+## IMP 
+### Which 4 Fields are created automatically while creation of Custom Object.
+- Ans : Created By, Last Modified By, Owner, Student ID.
+
+### How many ways we can able to create Tab?
+- Ans : Two. 
+- 1 With Custom object creation page Launch New Custom Tab Wizard after saving this custom object
+- 2 Home > Search 'TAB' > New 
+
+# RECORD
+- Records are the rows(entries) in object which are uniquely identified by there ids.
+- We can create records by entering values in fields available in an object.
+- We can create, edit, view and delete a record in Salesforce.
+
+# APPS
+- An App is a container for all the objects, tabs and other functionality.
+- It is similar to a programming project where we keep all our code files.
+- In Salesforce App consists simply of a name, a logo and an ordered set of tabs.
+
+### Types of Navigation in Apps
+- Two types : 
+- 1 Standard Navigation 
+- 2 Console Navigation
+
+## Text Fields
+-Text, Text Area, Text Aread Long, Text Area Rich
+
+## Picklist Fields
+- Picklist
+- Multi-Select Picklist
+
+## Global Picklist Value Set
+- Generic Picklist used with many object's picklist fields
+
+# FORMULA FIELD
+
+  <img src="SFAssets/images/FormulaField.jpg" width="550"/></br>
 
 # RELATIONSHIPS
 
@@ -195,7 +291,7 @@
 
 - Feed tracking enables to **track changes** of **Selected Field and Related Record Field**
 - Changes are shown in Chatter Component.
-- It shows Old Value, New Value and who has change the Value. - You can select upto 20 Field for Feed Tracking for one Object. -
+- It shows Old Value, New Value and who has change the Value. - You can select upto **20 Field** for Feed Tracking for one Object. -
 <div align="right"><a href="#top-of-page">(^)</a></div>
 
 # Field History Tracking
@@ -206,7 +302,7 @@
 - We have to Set History Tracking on the Object.
 - We have to check the option **"Track Field History"** while creating the Object or Edit and check the same option.
 - We have to add Related Field History to the Page Layout, So that we can able to see the Field History Tracking.
-- <div align="right"><a href="#top-of-page">(^)</a></div>
+<div align="right"><a href="#top-of-page">(^)</a></div>
 
 # Global Actions
 
@@ -217,7 +313,7 @@
 # View setup audit trails
 
 - It shows list of changes done by user in differet components.
-- We can download past 6 month changes.
+- We can download past 6 months changes.
 
 <div align="right"><a href="#top-of-page">(^)</a></div>
 
