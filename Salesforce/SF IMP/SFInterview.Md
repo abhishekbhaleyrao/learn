@@ -2066,18 +2066,18 @@ message channel.
 # Tell me something about yourself
 
 - Your Background
-Your total experience- use adjectives like diverse, large scale projects, end to end
-Describe your role in the project- with Devs, QA team, Business Team, situational role
-Your expertise in Salesforce - as a BA. Dev or Admin
-Your experience with Salesforce clouds- Sales. Service, Marketing. Community.
-Education. Finance etc.
-Your experience with integrations
-Your experience in Project cycles- Waterfall, Agile, Hybrid etc
-Something unique about your personality
+- Your total experience- use adjectives like diverse, large scale projects, end to end
+- Describe your role in the project- with Devs, QA team, Business Team, situational role
+- Your expertise in Salesforce - as a BA. Dev or Admin
+- Your experience with Salesforce clouds- Sales. Service, Marketing. Community.
+- Education. Finance etc.
+- Your experience with integrations
+- Your experience in Project cycles- Waterfall, Agile, Hybrid etc
+- Something unique about your personality
 
 
 # My Intro
-- My name is Abhishek Bhalerao. My native. place is Pune.  I lived here for long. I have lots of friends & family relatives in this city. In terms of qualification I have done masters in Computer Application.
+- My name is . My native. place is Pune.  I lived here for long. I have lots of friends & family relatives in this city. In terms of qualification I have done masters in Computer Application.
 
 - I joined Infosys in 2016 as an Analyst & its almost 8 years with this firm. I have learned so much & always greateful.
 
@@ -2095,7 +2095,7 @@ All of the above where implemented using the outofbox capabilities.
 - We also did. Some customization for resource & timesheet management
 
 - What is your salary expectations? 
-I am drawing 4.6LPA. Also since this is a new role and fresher position anything close to my current salary is doable. 
+I am drawing LPA. Also since this is a new role and fresher position anything close to my current salary is doable. 
 
 
 
