@@ -2079,7 +2079,7 @@ message channel.
 # My Intro
 - My name is . My native. place is Pune.  I lived here for long. I have lots of friends & family relatives in this city. In terms of qualification I have done masters in Computer Application.
 
-- I joined Infosys in 2016 as an Analyst & its almost 8 years with this firm. I have learned so much & always greateful.
+- I joined Infosys in (Year) as an Analyst & its almost (No) years with this firm. I have learned so much & always greateful.
 
  - I Started my Salesforce journey in 2022 January. But in the past I have used Salesforce as Business User & that got me intrested to learn about it.
 
