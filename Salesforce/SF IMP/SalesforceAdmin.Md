@@ -63,6 +63,7 @@
     - [3. Schedule Triggered Flow](#3-schedule-triggered-flow)
     - [4. Platform Event Triggered Flow](#4-platform-event-triggered-flow)
     - [5. Autolaunched Flow](#5-autolaunched-flow)
+    - [6. Record-Triggered Orchestration](#6-record-triggered-orchestration)
 - [WebToLead](#webtolead)
 - [WebToCase](#webtocase)
 - [EmailToCase](#emailtocase)
@@ -128,7 +129,7 @@
 - Every tab serves as the starting point for viewing, editing & entering information for a specific object.
 - When we click a tab, the corresponding home page that object appears.
 - For example, if we click the Accounts tab, the Accounts tab home page appears. 
-It gives you access to all of the account records. We can view details of a particular record by clicking on it on it.
+It gives you access to all of the account records. We can view details of a particular record by clicking on it.
 
 ## Types of Navigation (Standard & Console)
 
@@ -167,7 +168,7 @@ It gives you access to all of the account records. We can view details of a part
 - 2 Console Navigation
 
 ## Text Fields
--Text, Text Area, Text Aread Long, Text Area Rich
+-Text, Text Area, Text Area Long, Text Area Rich
 
 ## Picklist Fields
 - Picklist
@@ -571,11 +572,15 @@ Page Setup
 
  
 ### 3. Schedule Triggered Flow
-
 - Launches at a specified time and frequency for each record in a batch.
   - This autolaunched flow also runs in the background.
+  - If you are not crating updating or deleting any record, still want to run a process on buch of record.
+  - eg. If you want to execute, query, fetch existing records at certain time. 
+  - eg. Mobile data refilled at midnight at same time in batch. 
 
 ### 4. Platform Event Triggered Flow
+- Launched when a platform event message is received.
+- This Autolaunched flow runs in background.
 
 ### 5. Autolaunched Flow
 
@@ -585,6 +590,9 @@ Page Setup
   - REST API
   - and more...
 - This autolaunched flow also runs in the background.
+
+### 6. Record-Triggered Orchestration
+- Launches when a record is created or updated. An Orchestration lets you create a multi-step, Multi-user process.
 
 **Migrate to Flows**
 - All the process automations which are in workflow rules and process builders we can migrate to flow using this functionality. because Process builder and workflow rules are depricated.

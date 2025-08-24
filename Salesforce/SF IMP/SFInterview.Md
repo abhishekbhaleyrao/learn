@@ -269,6 +269,38 @@
     - [Data Tools:](#data-tools)
     - [Collaboration Tools:](#collaboration-tools)
     - [Testing Tools:](#testing-tools)
+- [1. Screen Flow](#1-screen-flow)
+- [2. Record-Triggered Flow](#2-record-triggered-flow)
+- [3. Scheduled-Triggered Flow](#3-scheduled-triggered-flow)
+- [4. Platform Event-Triggered Flow](#4-platform-event-triggered-flow)
+- [5. Autolaunched Flow (No Trigger)](#5-autolaunched-flow-no-trigger)
+  - [Summary Table:](#summary-table)
+- [🌀 Salesforce Flows – Interview Q\&A (25 Questions)](#-salesforce-flows--interview-qa-25-questions)
+  - [**1. What are the different types of Flows in Salesforce?**](#1-what-are-the-different-types-of-flows-in-salesforce)
+  - [**2. What is a Screen Flow?**](#2-what-is-a-screen-flow)
+  - [**3. What is a Record-Triggered Flow?**](#3-what-is-a-record-triggered-flow)
+  - [**4. Difference between Before-Save and After-Save Record-Triggered Flows?**](#4-difference-between-before-save-and-after-save-record-triggered-flows)
+  - [**5. What is a Scheduled-Triggered Flow?**](#5-what-is-a-scheduled-triggered-flow)
+  - [**6. What is a Platform Event-Triggered Flow?**](#6-what-is-a-platform-event-triggered-flow)
+  - [**7. What is an Autolaunched Flow?**](#7-what-is-an-autolaunched-flow)
+  - [**8. When would you use Flow vs Apex?**](#8-when-would-you-use-flow-vs-apex)
+  - [**9. Can Flows replace Workflow Rules and Process Builder?**](#9-can-flows-replace-workflow-rules-and-process-builder)
+  - [**10. What are Flow Limits (Governor-like)?**](#10-what-are-flow-limits-governor-like)
+  - [**11. What is Subflow in Salesforce?**](#11-what-is-subflow-in-salesforce)
+  - [**12. How do you debug Flows?**](#12-how-do-you-debug-flows)
+  - [**13. What are Fault Paths in Flow?**](#13-what-are-fault-paths-in-flow)
+  - [**14. How do you deploy Flows to Production?**](#14-how-do-you-deploy-flows-to-production)
+  - [**15. Can Flows be versioned?**](#15-can-flows-be-versioned)
+  - [**16. What is the difference between Fast Field Update and Actions/Related Records in Record-Triggered Flow?**](#16-what-is-the-difference-between-fast-field-update-and-actionsrelated-records-in-record-triggered-flow)
+  - [**17. How do you call Apex from Flow?**](#17-how-do-you-call-apex-from-flow)
+  - [**18. Can you call a Flow from LWC or Aura?**](#18-can-you-call-a-flow-from-lwc-or-aura)
+  - [**19. What are Flow Best Practices?**](#19-what-are-flow-best-practices)
+  - [**20. Give a real-time example of Flow you built.**](#20-give-a-real-time-example-of-flow-you-built)
+  - [**21. Difference between Flow and Process Builder?**](#21-difference-between-flow-and-process-builder)
+  - [**22. What is a Rollback in Flow?**](#22-what-is-a-rollback-in-flow)
+  - [**23. Can Flows handle bulk data (like Data Loader operations)?**](#23-can-flows-handle-bulk-data-like-data-loader-operations)
+  - [**24. What are some Flow UI Components?**](#24-what-are-some-flow-ui-components)
+  - [**25. How do you handle Flow performance issues?**](#25-how-do-you-handle-flow-performance-issues)
 
 
 # Apex Governor Limits
@@ -2168,3 +2200,230 @@ I am drawing LPA. Also since this is a new role and fresher position anything cl
   - JIRA, Trello, Slack, Microsoft Teams, Confluence
 ### Testing Tools: 
   - Salesforce Test Classes, Selenium, Provar
+
+
+
+# 1. Screen Flow
+
+- Runs with user interaction.
+
+- Used when you need to collect inputs from users.
+
+- Example → A guided screen for Sales reps to enter Lead Qualification details step by step.
+
+# 2. Record-Triggered Flow
+
+- Runs automatically when a record is created, updated, or deleted.
+
+- Works like a trigger (Admin-friendly replacement for Apex Triggers).
+
+- Example → When an Opportunity is Closed Won, auto-create a Contract record.
+
+# 3. Scheduled-Triggered Flow
+
+- Runs at a scheduled time (like a batch job).
+- Example → Send reminder emails every Monday morning for open cases.
+
+# 4. Platform Event-Triggered Flow
+
+- Runs when a Platform Event message is received.
+
+- Useful in real-time integrations.
+
+- Example → Trigger a Flow when an Order event comes from an external system.
+
+# 5. Autolaunched Flow (No Trigger)
+
+- Can be invoked from Apex, Process Builder, or another Flow.
+
+- Runs in the background without UI.
+
+- Example → A reusable Flow to calculate discount that can be called from multiple automations.
+
+## Summary Table:
+
+Flow Type	Trigger / Execution	Example Use Case
+Screen Flow	User runs it via button/Lightning page	Guided lead entry form
+Record-Triggered Flow	On create/update/delete of record	Auto-create Contract when Opportunity is Won
+Scheduled-Triggered Flow	At a scheduled time	Weekly case reminders
+Platform Event-Triggered Flow	On receiving Platform Event	Real-time integration updates
+Autolaunched Flow	Invoked programmatically	Reusable discount calculation logic
+
+
+# 🌀 Salesforce Flows – Interview Q&A (25 Questions)
+
+---
+
+## **1. What are the different types of Flows in Salesforce?**
+- Screen Flow  
+- Record-Triggered Flow  
+- Scheduled-Triggered Flow  
+- Platform Event-Triggered Flow  
+- Autolaunched Flow  
+
+---
+
+## **2. What is a Screen Flow?**
+- Flow with **user interaction** (displays screens, collects input).  
+- Example: Guided wizard for Lead Qualification.  
+
+---
+
+## **3. What is a Record-Triggered Flow?**
+- Runs **automatically** when a record is created, updated, or deleted.  
+- Example: When an Opportunity is Won → create a Contract.  
+
+---
+
+## **4. Difference between Before-Save and After-Save Record-Triggered Flows?**
+- **Before-Save Flow** → Runs before DML commit, faster, can update fields on the same record.  
+- **After-Save Flow** → Runs after record is saved, used for creating related records or calling subflows.  
+
+---
+
+## **5. What is a Scheduled-Triggered Flow?**
+- Runs at a **scheduled time** (like a batch job).  
+- Example: Weekly reminder emails for open cases.  
+
+---
+
+## **6. What is a Platform Event-Triggered Flow?**
+- Triggered by **Platform Events** (real-time integration messages).  
+- Example: Flow triggers when an external ERP publishes an Order event.  
+
+---
+
+## **7. What is an Autolaunched Flow?**
+- Runs **without user interaction**.  
+- Can be called from Apex, another Flow, or API.  
+- Example: Discount calculation Flow.  
+
+---
+
+## **8. When would you use Flow vs Apex?**
+- Use **Flow**: For simple to medium business automation, admin-friendly, low-code.  
+- Use **Apex**: For complex logic, handling huge data volumes, or integrations.  
+
+---
+
+## **9. Can Flows replace Workflow Rules and Process Builder?**
+- Yes ✅ Salesforce has announced deprecation of Workflow Rules & Process Builder.  
+- Flows are the **future of automation**.  
+
+---
+
+## **10. What are Flow Limits (Governor-like)?**
+- **Elements at runtime**: 2000  
+- **DML Statements**: 150  
+- **SOQL Queries**: 100  
+- **CPU time**: 10,000 ms  
+- Same as Apex limits.  
+
+---
+
+## **11. What is Subflow in Salesforce?**
+- A Flow that is **invoked inside another Flow**.  
+- Useful for reusability (like modular functions).  
+
+---
+
+## **12. How do you debug Flows?**
+- Use **Flow Debug Tool** in Setup.  
+- Use **Fault connectors** to capture errors.  
+- Use **Debug Logs** in Setup → Debug Logs.  
+
+---
+
+## **13. What are Fault Paths in Flow?**
+- Error-handling paths when a Flow element fails.  
+- Example: If a DML fails, send error email to admin.  
+
+---
+
+## **14. How do you deploy Flows to Production?**
+- **Change Sets**  
+- **SFDX / Metadata API**  
+- **Third-party tools** (Copado, Gearset)  
+
+---
+
+## **15. Can Flows be versioned?**
+- Yes ✅ Each saved Flow has a **Version**.  
+- Only **1 version can be Active** at a time.  
+
+---
+
+## **16. What is the difference between Fast Field Update and Actions/Related Records in Record-Triggered Flow?**
+- **Fast Field Update** → Updates record before save (very fast).  
+- **Actions/Related Records** → After save actions like creating related records or sending emails.  
+
+---
+
+## **17. How do you call Apex from Flow?**
+- Use **Apex-Defined Actions**.  
+- Create Apex class with `@InvocableMethod`.  
+
+```apex
+public class DiscountCalculator {
+   @InvocableMethod
+   public static List<Decimal> calculate(List<Decimal> amounts){
+       List<Decimal> result = new List<Decimal>();
+       for(Decimal a : amounts){
+           result.add(a * 0.9);
+       }
+       return result;
+   }
+}
+```
+
+---
+
+## **18. Can you call a Flow from LWC or Aura?**
+- Yes ✅ via **Flow component** (`lightning-flow`) or **Flow APIs**.  
+
+---
+
+## **19. What are Flow Best Practices?**
+- Bulkify Flows (use **Get Records** wisely).  
+- Avoid hard-coded IDs.  
+- Use Subflows for reusability.  
+- Add Fault paths for error handling.  
+- Document business logic inside Flow description.  
+
+---
+
+## **20. Give a real-time example of Flow you built.**
+**Answer:**  
+“I built a Record-Triggered Flow on Opportunity. When stage = Closed Won, it auto-creates a Contract, sends an email to Sales Manager, and updates renewal reminder tasks.”  
+
+---
+
+## **21. Difference between Flow and Process Builder?**
+- **Process Builder** is older, being retired.  
+- **Flows** are faster, more scalable, handle before-save & after-save logic, and replace both Workflow & PB.  
+
+---
+
+## **22. What is a Rollback in Flow?**
+- Flows do not directly support rollback, but errors can stop execution.  
+- For rollback logic → Apex or Platform Events may be needed.  
+
+---
+
+## **23. Can Flows handle bulk data (like Data Loader operations)?**
+- Yes, but must be **bulkified**.  
+- Avoid unnecessary queries/updates.  
+- Prefer **Apex** for very large data volumes.  
+
+---
+
+## **24. What are some Flow UI Components?**
+- Screen Elements: Text Box, Picklist, Radio Buttons, Checkbox, File Upload.  
+- Display Elements: Display Text, Images.  
+
+---
+
+## **25. How do you handle Flow performance issues?**
+- Minimize number of **Get Records**.  
+- Use **Decision elements** efficiently.  
+- Use **Scheduled Paths** instead of waiting in Flow.  
