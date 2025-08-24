@@ -1,0 +1,483 @@
+# Salesforce Apex Comprehensive Study Guide
+
+## Table of Contents
+1. [Apex Fundamentals](#apex-fundamentals)  
+2. [Apex Triggers](#apex-triggers)  
+3. [Apex Classes and Interfaces](#apex-classes-and-interfaces)  
+4. [Governor Limits](#governor-limits)  
+5. [SOQL & SOSL in Apex](#soql--sosl-in-apex)  
+6. [Dynamic Apex](#dynamic-apex)  
+7. [HTTP Callouts](#http-callouts)  
+8. [Asynchronous Apex](#asynchronous-apex)  
+   1. [Future Methods](#future-methods)  
+   2. [Queueable Apex](#queueable-apex)  
+   3. [Batch Apex](#batch-apex)  
+   4. [Scheduled Apex](#scheduled-apex)  
+9. [Apex Testing](#apex-testing)  
+10. [Custom Exceptions & Error Handling](#custom-exceptions--error-handling)  
+11. [Security & CRUD/FLS Enforcement](#security--crudfls-enforcement)  
+12. [Apex REST & SOAP Services](#apex-rest--soap-services)  
+13. [Platform Events & Change Data Capture](#platform-events--change-data-capture)  
+14. [JSON & XML Processing](#json--xml-processing)  
+15. [Dependency Injection & Mocking](#dependency-injection--mocking)  
+16. [Best Practices](#best-practices)  
+
+---
+
+## 1. Apex Fundamentals
+
+Apex is Salesforce’s server-side, strongly-typed, object-oriented programming language. It runs in a multitenant environment and is tightly integrated with the platform’s data model.
+
+**Key Features**
+- Syntax similar to Java  
+- Direct database access (DML) within code  
+- Support for triggers, batch jobs, web services, and test classes  
+
+**Example**
+```apex
+public class HelloCafe {
+    public static String greet(String name) {
+        return 'Welcome to Café Cloud, ' + name + '!';
+    }
+}
+
+Calling in Anonymous Window
+
+System.debug(HelloCafe.greet('Tina'));  // → Welcome to Café Cloud, Tina!
+
+2. Apex Triggers
+
+Triggers execute before or after DML events on sObjects to enforce business logic.
+
+Trigger Contexts
+
+before insert/update/delete
+
+after insert/update/delete/undelete
+
+Example: Decrement Bean Stock after Order_Item__c Insert
+
+trigger OrderItemTrigger on Order_Item__c (after insert) {
+    Map<Id, Integer> soldQty = new Map<Id, Integer>();
+    for (Order_Item__c item : Trigger.new) {
+        soldQty.put(
+            item.Bean_Batch__c,
+            soldQty.getOrDefault(item.Bean_Batch__c, 0) + item.Quantity__c
+        );
+    }
+    List<Bean_Batch__c> batches = [
+        SELECT Id, Stock__c
+        FROM Bean_Batch__c
+        WHERE Id IN :soldQty.keySet()
+    ];
+    for (Bean_Batch__c batch : batches) {
+        batch.Stock__c -= soldQty.get(batch.Id);
+    }
+    update batches;
+}
+
+3. Apex Classes and Interfaces
+
+Classes encapsulate reusable logic; interfaces define contracts.
+
+Example Interface & Implementation
+
+public interface IPriceCalculator {
+    Decimal calculatePrice(Order_Item__c item);
+}
+
+public class SmoothiePriceCalculator implements IPriceCalculator {
+    public Decimal calculatePrice(Order_Item__c item) {
+        return item.Base_Price__c + (item.Topping_Count__c * 10);
+    }
+}
+
+Usage in Code
+
+IPriceCalculator calc = new SmoothiePriceCalculator();
+Decimal price = calc.calculatePrice(myOrderItem);
+
+4. Governor Limits
+
+Salesforce enforces limits per transaction to ensure fair resource usage.
+
+Common Limits
+
+SOQL queries: 100
+
+DML statements: 150
+
+CPU time: 10,000 ms
+
+Heap size: 6 MB
+
+Example Bulkification <details> <summary>Click to expand bad vs. good example</summary>
+
+// Bad: SOQL inside loop → hits query limit
+for (Order_Item__c item : trigger.new) {
+    Bean_Batch__c batch = [
+        SELECT Stock__c
+        FROM Bean_Batch__c
+        WHERE Id = :item.Bean_Batch__c
+    ];
+    // ...
+}
+
+// Good: bulk query outside loop
+Set<Id> batchIds = new Set<Id>();
+for (Order_Item__c item : trigger.new) {
+    batchIds.add(item.Bean_Batch__c);
+}
+Map<Id, Bean_Batch__c> batches = new Map<Id, Bean_Batch__c>(
+    [SELECT Id, Stock__c FROM Bean_Batch__c WHERE Id IN :batchIds]
+);
+for (Order_Item__c item : trigger.new) {
+    Bean_Batch__c b = batches.get(item.Bean_Batch__c);
+    // ...
+}
+
+</details>
+
+5. SOQL & SOSL in Apex
+
+SOQL
+
+Query records with SELECT statements.
+
+Example
+
+List<Beverage__c> darkRoasts = [
+    SELECT Id, Name, Price__c
+    FROM Beverage__c
+    WHERE Roast_Level__c = 'Dark'
+    ORDER BY Price__c DESC
+];
+
+SOSL
+
+Search text across multiple objects.
+
+Example
+
+List<List<SObject>> searchLists = [
+    FIND 'Espresso*' IN NAME FIELDS RETURNING
+    Beverage__c(Id, Name), Supplier__c(Id, Name)
+];
+
+6. Dynamic Apex
+
+Inspect and manipulate metadata at runtime.
+
+Example: Describe an sObject and set a field dynamically
+
+SObjectType tType = Schema.getGlobalDescribe().get('Order_Item__c');
+Map<String, Schema.SObjectField> fields = tType.getDescribe().fields.getMap();
+SObject record = tType.newSObject();
+record.put(fields.get('Quantity__c'), 3);
+insert record;
+
+7. HTTP Callouts
+
+Perform REST or SOAP requests to external services.
+
+Example: GET Commitments from a supplier API
+
+public class SupplierApi {
+    public class Commitment {
+        public String date;
+        public Integer qty;
+    }
+    public static List<Commitment> fetchCommitments(Id supplierId) {
+        HttpRequest req = new HttpRequest();
+        req.setEndpoint('https://api.supplier.com/commit/' + supplierId);
+        req.setMethod('GET');
+        HttpResponse res = new Http().send(req);
+        return (List<Commitment>) JSON.deserialize(
+            res.getBody(),
+            List<Commitment>.class
+        );
+    }
+}
+
+8. Asynchronous Apex
+
+Offload long-running or large-volume work outside the initiating transaction.
+
+8.1 Future Methods
+
+@future(callout=true)
+public static void updateBeanRatings(Set<Id> beanIds) {
+    // heavy callout logic
+}
+
+8.2 Queueable Apex
+
+public class InventoryRecalcJob implements Queueable {
+    public void execute(QueueableContext ctx) {
+        // complex logic
+    }
+}
+// Enqueue
+System.enqueueJob(new InventoryRecalcJob());
+
+8.3 Batch Apex
+
+global class LoyaltyPointsBatch implements Database.Batchable<SObject> {
+    global Database.QueryLocator start(Database.BatchableContext BC) {
+        return Database.getQueryLocator(
+            'SELECT Id, Total_Spent__c FROM Account'
+        );
+    }
+    global void execute(
+        Database.BatchableContext BC,
+        List<Account> scope
+    ) {
+        for (Account acct : scope) {
+            acct.Loyalty_Points__c = acct.Total_Spent__c / 100;
+        }
+        update scope;
+    }
+    global void finish(Database.BatchableContext BC) {
+        // Post-processing
+    }
+}
+
+8.4 Scheduled Apex
+
+public class NightlySalesScheduler implements Schedulable {
+    public void execute(SchedulableContext sc) {
+        LoyaltyPointsBatch batch = new LoyaltyPointsBatch();
+        Database.executeBatch(batch);
+    }
+}
+// Schedule in Dev Console
+String cronExp = '0 0 2 * * ?'; // every night at 2 AM
+System.schedule('Nightly Loyalty Points', cronExp, new NightlySalesScheduler());
+
+9. Apex Testing
+
+Every Apex class must be covered by unit tests (≥ 75% coverage) using @isTest.
+
+Example Test Class for HelloCafe
+
+@isTest
+private class HelloCafeTest {
+    @isTest static void testGreet() {
+        String result = HelloCafe.greet('Alex');
+        System.assertEquals(
+            'Welcome to Café Cloud, Alex!',
+            result
+        );
+    }
+}
+
+Example Mocking HTTP Callout
+
+@isTest
+private class SupplierApiMock implements HttpCalloutMock {
+    public HTTPResponse respond(HTTPRequest req) {
+        HttpResponse res = new HttpResponse();
+        res.setStatusCode(200);
+        res.setBody('[{"date":"2025-08-24","qty":50}]');
+        return res;
+    }
+}
+
+@isTest
+private class SupplierApiTest {
+    @isTest static void testFetch() {
+        Test.setMock(
+            HttpCalloutMock.class,
+            new SupplierApiMock()
+        );
+        List<SupplierApi.Commitment> commits =
+            SupplierApi.fetchCommitments('001xx000003DGb2');
+        System.assertEquals(1, commits.size());
+        System.assertEquals(50, commits[0].qty);
+    }
+}
+
+10. Custom Exceptions & Error Handling
+
+Define domain-specific exceptions to clarify error causes.
+
+Example
+
+public class InsufficientStockException extends Exception {}
+
+public class InventoryService {
+    public static void deductStock(Id batchId, Integer qty) {
+        Bean_Batch__c batch = [
+            SELECT Stock__c
+            FROM Bean_Batch__c
+            WHERE Id = :batchId
+        ];
+        if (batch.Stock__c < qty) {
+            throw new InsufficientStockException(
+                'Not enough beans in batch ' + batchId
+            );
+        }
+        batch.Stock__c -= qty;
+        update batch;
+    }
+}
+
+11. Security & CRUD/FLS Enforcement
+
+Always respect user permissions in Apex.
+
+Example Checking CRUD & FLS
+
+if (
+    Schema.sObjectType.Order_Item__c.isAccessible() &&
+    Schema.sObjectType.Order_Item__c
+        .fields.Price__c.isUpdateable()
+) {
+    Order_Item__c oi = new Order_Item__c(
+        Id = recId,
+        Price__c = newPrice
+    );
+    update oi;
+} else {
+    throw new InsufficientAccessException(
+        'No permission to update price'
+    );
+}
+
+12. Apex REST & SOAP Services
+
+Expose Apex logic as web services.
+
+REST Example
+
+@RestResource(urlMapping='/menu/*')
+global with sharing class MenuService {
+    @HttpGet
+    global static List<Beverage__c> getMenu() {
+        return [
+            SELECT Id, Name, Price__c
+            FROM Beverage__c
+            WHERE Active__c = true
+        ];
+    }
+}
+
+SOAP Example
+
+global with sharing class InventoryWebService {
+    webservice static Integer getStock(String batchId) {
+        Bean_Batch__c batch = [
+            SELECT Stock__c
+            FROM Bean_Batch__c
+            WHERE Id = :batchId
+        ];
+        return batch.Stock__c;
+    }
+}
+
+13. Platform Events & Change Data Capture
+
+Publish and subscribe to business events.
+
+Example Publish Event
+
+public class OrderPublisher {
+    public static void publishOrderEvent(Order__c ord) {
+        Café_Order_Event__e evt = new Café_Order_Event__e(
+            OrderId__c = ord.Id,
+            Amount__c = ord.Total_Amount__c
+        );
+        EventBus.publish(evt);
+    }
+}
+
+Example Trigger on Event
+
+trigger OrderEventTrigger on Café_Order_Event__e (
+    after insert
+) {
+    for (Café_Order_Event__e e : Trigger.new) {
+        System.debug(
+            'Received order ' +
+            e.OrderId__c +
+            ' for ₹' +
+            e.Amount__c
+        );
+    }
+}
+
+14. JSON & XML Processing
+
+Serialize and deserialize data formats.
+
+JSON
+
+public class OrderWrapper {
+    public String customer;
+    public Decimal total;
+}
+OrderWrapper ow = new OrderWrapper();
+ow.customer = 'Ria';
+ow.total = 250.5;
+String jsonString = JSON.serialize(ow);
+OrderWrapper parsed = (OrderWrapper) JSON.deserialize(
+    jsonString,
+    OrderWrapper.class
+);
+
+XML
+
+Dom.Document doc = new Dom.Document();
+doc.load('<order><id>123</id><amt>300</amt></order>');
+Dom.XmlNode root = doc.getRootElement();
+String id = root
+    .getChildElement('id', null)
+    .getText();
+
+15. Dependency Injection & Mocking
+
+Design classes for easy testing by injecting collaborators.
+
+Example
+
+public interface IInventoryApi {
+    List<Commitment> fetch(Id batchId);
+}
+
+public class InventoryController {
+    private IInventoryApi api;
+    public InventoryController(IInventoryApi apiService) {
+        api = apiService;
+    }
+    public Integer totalCommitted(Id batchId) {
+        List<Commitment> commits = api.fetch(batchId);
+        Integer sum = 0;
+        for (Commitment c : commits) {
+            sum += c.qty;
+        }
+        return sum;
+    }
+}
+
+// In production
+InventoryController ctrl =
+    new InventoryController(new SupplierApi());
+
+// In tests: pass a mock implementation
+
+16. Best Practices
+
+Bulkify all code; avoid SOQL/DML inside loops
+
+One trigger per object; delegate logic to handler classes
+
+Handle nulls and exceptions gracefully
+
+Respect CRUD/FLS in all operations
+
+Write clear, maintainable tests with setup methods and meaningful assertions
+
+Use custom settings or custom metadata for org-specific configuration
+
+Continue practicing by building a mini café application that uses all of these patterns—orders, inventory, partner integrations, batch jobs, and real-time notifications—to reinforce your mastery of Apex.
+

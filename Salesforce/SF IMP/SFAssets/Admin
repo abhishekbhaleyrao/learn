@@ -1,0 +1,1607 @@
+
+---
+
+## 🧩 Topics Covered
+
+1. **Organization Setup**
+2. **User Setup & Security**
+3. **Standard and Custom Objects**
+4. **Sales and Marketing Applications**
+5. **Service and Support Applications**
+6. **Activity Management and Collaboration**
+7. **Data Management**
+8. **Reports and Dashboards**
+9. **Workflow and Automation**
+10. **AppExchange**
+11. **Desktop and Mobile Administration**
+12. **Chatter and Collaboration**
+13. **Environment Management**
+14. **Security and Compliance**
+
+---
+
+## 🎯 How to Use This Guide
+
+- Each file (`.md`) is a **standalone guide** for that topic.  
+- All files contain:
+  - 🔹 **Concepts explained** in simple language  
+  - 🔹 **Step-by-step Salesforce UI navigation**  
+  - 🔹 **Examples** from real-world scenarios  
+  - 🔹 **Diagrams & flowcharts** (with placeholders for Salesforce screenshots)  
+  - 🔹 **Exam tips & best practices**  
+
+---
+
+## 📝 Example of Screenshot Placeholder
+
+When a file shows Salesforce steps, screenshots are referenced like this:
+
+```markdown
+![User Setup Screen](images/user_setup.png)
+
+
+# 🏢 Salesforce Organization Setup
+
+Organization Setup is the **foundation** of Salesforce Administration.  
+It defines the **company profile, settings, and default configurations** that apply across the entire Salesforce Org.
+
+---
+
+## 📌 Key Concepts
+
+| Feature              | Description                                                                 | Example |
+|----------------------|-----------------------------------------------------------------------------|---------|
+| **Company Information** | Stores details like company name, address, license info, org ID.         | "ABC Corp" with 50 Salesforce licenses |
+| **Fiscal Year**      | Defines the financial year start and end.                                   | Fiscal Year starts in April instead of January |
+| **Business Hours**   | Sets working hours for case escalation & SLA.                               | Mon–Fri, 9 AM–6 PM |
+| **Holidays**         | Defines non-working days that impact case escalations.                      | 26th Jan (Republic Day), 15th Aug (Independence Day) |
+| **Currencies**       | Supports multiple currencies for global businesses.                         | USD, INR, EUR |
+| **Default Locale**   | Controls formats (date, number, time).                                      | India → dd/mm/yyyy |
+| **Language Settings**| Sets default language and allows multiple languages.                        | English, French |
+
+---
+
+## ⚙️ Steps in Salesforce Setup
+
+1. **Company Information**
+   - Go to **Setup → Company Information**  
+   - View/Edit company name, address, default currency, licenses  
+   - Example: Set *Company Name = Tech Solutions Pvt Ltd*
+
+   ![Company Info](images/company_info.png)
+
+---
+
+2. **Fiscal Year**
+   - Navigate to **Setup → Fiscal Year**  
+   - Choose:
+     - *Standard Fiscal Year* (Jan–Dec) OR
+     - *Custom Fiscal Year* (April–March, 4-4-5 calendar, etc.)
+   - Example: Indian companies often use April–March.
+
+   ![Fiscal Year](images/fiscal_year.png)
+
+---
+
+3. **Business Hours & Holidays**
+   - Go to **Setup → Business Hours**  
+   - Create default hours (e.g., Mon–Fri, 9 AM–6 PM)  
+   - Add **Holidays** (e.g., Diwali, Christmas)  
+
+   ![Business Hours](images/business_hours.png)
+
+---
+
+4. **Currencies**
+   - Go to **Setup → Company Information → Manage Currencies**  
+   - Enable **Multiple Currencies** (irreversible action ⚠️)  
+   - Set *Corporate Currency* and add others (USD, INR, GBP)  
+
+   ![Currency Setup](images/currency.png)
+
+---
+
+5. **Locale & Language Settings**
+   - Navigate to **Setup → Company Information → Default Locale**  
+   - Options:
+     - Locale = *English (India)* → dd/mm/yyyy  
+     - Time Zone = *(GMT+5:30) Asia/Kolkata*  
+     - Default Language = *English*  
+
+   ![Locale Settings](images/locale.png)
+
+---
+
+## 🖼️ Diagram: Org Setup Flow
+
+```text
+          +-------------------+
+          | Company Profile   |
+          +-------------------+
+                    |
+         +----------+----------+
+         |                     |
+ +------------------+  +-------------------+
+ | Fiscal Year      |  | Business Hours    |
+ +------------------+  +-------------------+
+         |                     |
+ +------------------+  +-------------------+
+ | Currency Setup   |  | Locale/Language   |
+ +------------------+  +-------------------+
+
+
+# 👥 User Setup & Security in Salesforce
+
+User Setup & Security ensures the **right people** in the organization get the **right level of access** to Salesforce data and features.  
+It is the backbone of **data security, compliance, and governance** in Salesforce.
+
+---
+
+## 📌 Key Concepts
+
+| Feature                  | Description | Example |
+|--------------------------|-------------|---------|
+| **User**                 | A person with login access to Salesforce | Sales Rep, Manager |
+| **Profile**              | Defines what a user can do in Salesforce (object-level & system permissions) | Sales Profile |
+| **Permission Set**       | Grants additional permissions without changing profile | Extra access to Reports |
+| **Role**                 | Defines data visibility in the org (role hierarchy) | Manager sees subordinates records |
+| **Sharing Rules**        | Exceptions to org-wide defaults (OWD) | Share Opportunities with Marketing |
+| **Login Access Policies**| Controls how users log in (MFA, IP restrictions, hours) | Only allow login from India |
+| **Password Policies**    | Defines complexity, expiry, lockout | Min 8 chars, expires in 90 days |
+
+
+
+## ⚙️ Steps in Salesforce Setup
+
+### 1. **Creating a User**
+- Go to **Setup → Users → Users → New User**
+- Enter details: First Name, Last Name, Email, Username (must be unique), Role, Profile
+- Example: Create user *Rohit Sharma* (Sales Rep, Profile = Standard User, Role = Sales Executive)
+
+![User Setup](images/user_setup.png)
+
+---
+
+### 2. **Profiles**
+- **Profiles control access** to:
+  - Objects (CRED → Create, Read, Edit, Delete)
+  - Fields (FLS → Field Level Security)
+  - Apps, Tabs, Record Types, Page Layouts
+- Example: *Sales Profile* can access Leads & Opportunities but not Cases.
+
+![Profile Setup](images/profile.png)
+
+---
+
+### 3. **Permission Sets**
+- Grant extra permissions **without cloning/changing profiles**
+- Assignable to multiple users
+- Example: Create *Report Access Permission Set* → Give access to Dashboards → Assign to Sales Reps.
+
+![Permission Set](images/permission_set.png)
+
+---
+
+### 4. **Roles & Role Hierarchy**
+- **Roles define record visibility** (who can see whose records)
+- Hierarchy: CEO → Sales Manager → Sales Rep
+- Example: Sales Manager can see all records of Sales Reps under them.
+
+```text
+CEO
+ └── VP of Sales
+      └── Sales Manager
+            └── Sales Reps
+
+
+
+
+
+
+### 5. Organization-Wide Defaults (OWD)
+
+- Sets the baseline level of record access.
+
+Example: Opportunities OWD = Private → Only owner & managers see records.
+
+- Object	OWD Setting	Meaning
+- Accounts	Public Read/Write	Everyone can view & edit
+- Opportunities	Private	Only owner & manager can see
+- Cases	Public Read Only	Everyone can view, but only owner can edit
+
+###6. Sharing Rules
+
+- Used to open up access (cannot restrict)
+
+- Example: Share Opportunities (Private OWD) with Marketing Group as Read Only
+
+### 7. Login Access Policies
+
+- Restrict logins by:
+
+- IP Ranges (e.g., 192.168.x.x only)
+
+- Login Hours (Mon–Fri 9 AM–6 PM)
+
+- Example: Disallow login outside office hours.
+
+### 8. Password Policies
+
+- Setup → Password Policies
+
+- Example:
+
+- Min length = 8
+
+- Require special char & number
+
+- Lockout after 3 failed attempts
+
+- Expire after 90 days
+
+### 9. Multi-Factor Authentication (MFA)
+
+- Mandatory for Salesforce logins
+
+- User verifies with:
+
+- Salesforce Authenticator app
+
+- OTP via SMS/email
+
+- Security key
+
+🖼️ Diagram: User Security Model
+       +----------------------+
+       |   Organization       |
+       +----------------------+
+                  |
+         +--------+---------+
+         |                  |
+   +-----------+      +------------+
+   |  Profiles |      | Permission |
+   | (Base)    |      |   Sets     |
+   +-----------+      +------------+
+         |                  |
+   +-----------+      +------------+
+   |   Roles   | ---> | Sharing    |
+   | (Data)    |      |   Rules    |
+   +-----------+      +------------+
+
+### 💡 Example Scenario
+
+- Company: XYZ Global Pvt Ltd
+
+- User: Priya (Sales Rep)
+
+- Profile: Sales Profile (access to Leads, Accounts, Opportunities)
+
+- Permission Set: Dashboard Access
+
+- Role: Sales Executive → Reports to Sales Manager
+
+- OWD: Opportunities = Private
+
+- Sharing Rule: Share Opportunities with Marketing (Read Only)
+
+- Login Hours: 9 AM–6 PM IST
+
+- Password Policy: 8+ chars, expires in 90 days
+
+- MFA: Enabled
+
+
+
+# 📦 Standard & Custom Objects in Salesforce
+
+Objects are the **database tables** in Salesforce that store records.  
+They are the backbone of the Salesforce data model.
+
+---
+
+## 📌 Types of Objects
+
+| Type        | Description | Examples |
+|-------------|-------------|----------|
+| **Standard Objects** | Pre-built by Salesforce | Account, Contact, Lead, Opportunity, Case |
+| **Custom Objects**   | Created by Admins to store unique business data | Invoice, Project, Student__c |
+
+---
+
+## ⚙️ Working with Objects
+
+### 1. **Standard Objects**
+- Available by default in Salesforce
+- Cannot delete, but can customize (fields, page layouts, record types)
+
+📍 Example: *Account* stores company details, *Opportunity* stores potential deals.
+
+---
+
+### 2. **Custom Objects**
+- Created to store data unique to business
+- Naming: `ObjectName__c`
+- Steps:
+  - Setup → Objects → Create Custom Object
+  - Example: *Invoice__c*
+    - Fields: Invoice Number, Amount, Due Date
+    - Relationships: Lookup to Account
+
+![Custom Object](images/custom_object.png)
+
+---
+
+## 📊 Fields in Objects
+
+| Field Type      | Description | Example |
+|-----------------|-------------|---------|
+| **Text**        | Short string | Customer Name |
+| **Number**      | Numeric values | Order Amount |
+| **Checkbox**    | Boolean true/false | Active Customer |
+| **Picklist**    | Dropdown options | Lead Status (New, Working, Closed) |
+| **Formula**     | Auto-calculated values | Age = TODAY() – DOB |
+| **Lookup**      | Relationship to another object | Contact linked to Account |
+| **Master-Detail** | Strong parent-child relationship | Invoice Line → Invoice |
+
+---
+
+## 🔗 Object Relationships
+
+### 1. **Lookup Relationship**
+- Loose connection between objects
+- Child record **can exist without parent**
+- Example: Contact (child) → Account (parent)
+
+### 2. **Master-Detail Relationship**
+- Strong dependency
+- Child **cannot exist without parent**
+- Parent controls child’s ownership, security, deletion
+- Example: Opportunity Product → Opportunity
+
+### 3. **Many-to-Many Relationship**
+- Implemented using a **junction object**
+- Example: Students ↔ Courses (StudentCourse__c junction object)
+
+---
+
+## 📑 Record Types & Page Layouts
+
+### **Record Types**
+- Different business processes for the same object
+- Example: Opportunity Record Types → *New Business*, *Renewal*
+
+### **Page Layouts**
+- Control fields, sections, related lists visible on record page
+- Can assign different layouts to different profiles
+
+---
+
+## 🖼️ Schema Builder
+
+- Graphical tool to view & manage objects and relationships
+- Setup → Schema Builder
+- Example: See how *Account*, *Contact*, *Opportunity* are linked
+
+![Schema Builder](images/schema_builder.png)
+
+---
+
+## 💡 Example Scenario
+
+**Business Need:**  
+ABC Corp wants to track **Projects** in Salesforce.
+
+- Create **Custom Object: Project__c**
+  - Fields: Project Name, Start Date, End Date, Budget
+  - Lookup to Account
+- Create **Record Types:**
+  - Internal Project
+  - Client Project
+- Create **Page Layouts:**
+  - Internal Project Layout
+  - Client Project Layout
+
+Now, **Managers** can track all projects linked to Accounts.
+
+---
+
+## 🖼️ Diagram: Object Relationships
+
+```text
+Account (Standard)
+   |
+   |---< Contact (Standard)
+   |
+   |---< Project__c (Custom)
+           |
+           |---< Task (Standard)
+
+
+
+
+# 🎯 Sales & Marketing Applications in Salesforce
+
+Salesforce provides powerful features to manage the **end-to-end sales cycle** (Lead → Opportunity → Closed Deal) and run **marketing campaigns** to generate leads.
+
+---
+
+## 📌 Key Sales Objects
+
+| Object        | Purpose | Example |
+|---------------|---------|---------|
+| **Lead**      | Potential customer (not yet qualified) | John Doe from ABC Corp interested in demo |
+| **Account**   | Company or organization | ABC Corp |
+| **Contact**   | Individual linked to Account | John Doe (IT Manager at ABC Corp) |
+| **Opportunity** | Potential deal | $50,000 software deal |
+| **Campaign**  | Marketing initiative | Email campaign for Summer Sale |
+
+---
+
+## 🔄 Lead Management
+
+- **Lead Capture:** From forms, email, imports, or integrations  
+- **Lead Qualification:** Decide if lead is *Sales-ready*  
+- **Lead Conversion:**  
+  - Creates: Account + Contact + Opportunity  
+  - Example: John Doe (Lead) → converted into *Contact* under *ABC Corp* with a *$50,000 Opportunity*  
+
+![Lead Conversion Flow](images/lead_conversion.png)
+
+---
+
+## 💰 Opportunity Management
+
+- Tracks **potential deals** in pipeline  
+- Stages: *Prospecting → Qualification → Proposal → Negotiation → Closed Won/Lost*  
+- Fields: Amount, Close Date, Probability (%)  
+- **Products/Price Books**: Link products to Opportunities  
+
+📍 Example:  
+Opportunity: *ABC Corp - Software License*  
+- Stage: Negotiation  
+- Amount: $50,000  
+- Close Date: 31-Dec-2025  
+- Linked Product: *Enterprise License (Price $50k)*  
+
+---
+
+## 📢 Campaign Management (Marketing)
+
+- Used to plan, execute, and measure **marketing activities**  
+- Examples: Email campaigns, Trade shows, Social media promotions  
+- Features:
+  - Add Leads/Contacts as Campaign Members
+  - Track Responses (e.g., Clicked Email, Attended Event)
+  - Measure ROI: *Revenue / Cost*  
+
+📍 Example:  
+Campaign: *Summer Webinar 2025*  
+- Cost: $2,000  
+- Leads Generated: 50  
+- Opportunities Won: $20,000 revenue  
+- ROI = (20,000 – 2,000) / 2,000 = **900%** 🎉  
+
+---
+
+## 📊 Sales Processes
+
+- Define different **selling stages** for different sales teams
+- Example:  
+  - **B2B Process:** Prospecting → Qualification → Proposal → Negotiation → Closed Won/Lost  
+  - **B2C Process:** Inquiry → Demo → Payment → Closed  
+
+⚙️ Setup:  
+- Create **Sales Process** → Assign stages  
+- Link to **Record Types** of Opportunity  
+
+---
+
+## 📈 Forecasting & Quotas
+
+- **Forecasting** helps predict sales revenue
+- Based on Opportunity stage & probability  
+- **Quota**: Sales targets for reps/managers  
+
+📍 Example:  
+- Rep’s quota = $100,000  
+- Pipeline = $120,000 (80% in Negotiation, 20% in Prospecting)  
+- Forecasted Revenue = $96,000  
+
+---
+
+## 🤝 Sales Cloud Features
+
+- **Path & Guidance** → Visual indicator of Opportunity stages  
+- **Einstein Lead Scoring** → AI recommends best leads  
+- **Territory Management** → Assign accounts to regions  
+- **Quotes** → Generate pricing quotes for customers  
+
+---
+
+## 💡 Example Scenario
+
+**Business Case:**  
+XYZ Ltd wants to track sales opportunities and run campaigns.
+
+1. **Marketing Team:** Runs *Email Campaign* → generates 200 leads.  
+2. **Sales Team:** Qualifies leads → converts 50 into Opportunities.  
+3. **Pipeline:** 50 Opportunities worth $500,000.  
+4. **Forecasting:** Predicts $400,000 revenue this quarter.  
+
+---
+
+## 🖼️ Diagram: Sales & Marketing Flow
+
+```text
+Campaign → Lead → Account → Contact → Opportunity → Closed Won
+
+
+# 🛠️ Service & Support Applications in Salesforce
+
+Salesforce Service Cloud helps organizations deliver **world-class customer support** by managing Cases, Knowledge, and Service Processes.
+
+---
+
+## 📌 Key Service Objects
+
+| Object          | Purpose | Example |
+|-----------------|---------|---------|
+| **Case**        | Customer issue or request | "Unable to reset password" |
+| **Solution**    | Deprecated, legacy knowledge base | FAQ: "Steps to reset password" |
+| **Knowledge**   | Modern knowledge base for support | Article: "Reset password using mobile app" |
+| **Entitlement** | Defines service agreements (SLAs) | "24/7 Platinum Support" |
+| **Milestone**   | Timeline-based targets | "First response within 1 hour" |
+
+---
+
+## 🎫 Case Management
+
+- **Cases** represent customer problems, issues, or requests.
+- Created via:
+  - Web-to-Case
+  - Email-to-Case
+  - Phone/Manual entry
+  - Chatbots / Omni-Channel
+- Can be assigned using:
+  - **Assignment Rules** (auto-assign to teams)
+  - **Queues** (shared work pool)
+  - **Escalation Rules** (reassign when SLA missed)
+
+📍 Example:
+- Customer: John Doe reports *"Unable to login"* via email.  
+- Salesforce automatically creates a **Case** and routes it to the *Support Queue*.  
+
+---
+
+## 📚 Knowledge Management
+
+- **Salesforce Knowledge** stores articles, FAQs, troubleshooting guides.  
+- Articles can be published internally or externally (customer portals).  
+- Rich text, images, files supported.  
+
+📍 Example:
+- Article: *"How to reset your password?"*  
+- Linked to multiple Cases where customers reported login issues.  
+
+---
+
+## 🧑‍💻 Service Console
+
+- **Console App** designed for agents:
+  - Tab-based view
+  - Multiple Cases at once
+  - Related records visible (Contacts, Entitlements, Knowledge)
+- Boosts productivity by reducing navigation.
+
+📍 Example:
+Agent views:
+- Case Details
+- Customer Profile (Contact + Account)
+- Suggested Knowledge Articles
+- Previous Support History  
+
+---
+
+## 📜 Entitlements & Milestones
+
+- Define **SLAs (Service Level Agreements)**.
+- **Entitlements:** Service contracts linked to Accounts/Cases.
+- **Milestones:** Time-based targets inside Entitlements.  
+
+📍 Example:
+- Entitlement: *Gold Support*  
+- Milestones:  
+  - First Response: within 2 hours  
+  - Resolution: within 24 hours  
+
+If breached → Case escalated.
+
+---
+
+## ⚡ Omni-Channel Routing
+
+- Routes Cases, Chats, Leads to the **right agent** automatically.
+- Based on:
+  - Agent Skills
+  - Availability
+  - Capacity (number of cases handled at once)
+- Supports:
+  - Live Chat
+  - Messaging (WhatsApp, SMS)
+  - Email
+  - Voice  
+
+📍 Example:
+- Customer starts live chat  
+- Omni-Channel assigns it to the **first available skilled agent**  
+
+---
+
+## 🔧 Service Processes & Automations
+
+- **Macros:** Predefined actions (close Case, send email, update field).  
+- **Quick Text:** Canned responses for agents.  
+- **Case Escalation Rules:** Ensure high-priority issues are resolved on time.  
+- **Approvals:** Some cases may need manager approval.  
+
+---
+
+## 📊 Reports & Dashboards
+
+- Common metrics:
+  - Average Resolution Time
+  - Case Volume by Channel
+  - SLA Compliance
+  - Agent Productivity
+
+📍 Example:
+- Dashboard showing: *Open Cases by Priority*  
+
+![Service Dashboard](images/service_dashboard.png)
+
+---
+
+## 🖼️ Diagram: Case Lifecycle
+
+```text
+Customer Issue → Case Creation → Assignment → Resolution → Closure
+
+
+
+
+# 📅 Activity Management & Collaboration in Salesforce
+
+Activity management ensures that Salesforce users can track **what needs to be done** (Tasks), **what has happened** (Events), and **how teams collaborate** (Chatter, Groups, Feeds).
+
+---
+
+## 📌 Key Concepts
+
+| Feature             | Purpose | Example |
+|---------------------|---------|---------|
+| **Tasks**           | To-do items assigned to users | "Call customer for renewal" |
+| **Events**          | Scheduled meetings/appointments | "Product demo with client" |
+| **Activity Timeline** | Unified view of tasks, events, emails | See all interactions with a customer |
+| **Chatter**         | Social collaboration platform | "Tag manager for approval on discount" |
+| **Groups**          | Team collaboration spaces | "Sales Team Group" |
+| **Feeds**           | Real-time updates on records | Post on an Opportunity feed |
+
+---
+
+## 📝 Tasks
+
+- Represent **to-do actions** for users.
+- Can be assigned to:
+  - Single user
+  - Multiple users (mass tasks)
+- Can be recurring.
+
+📍 Example:
+- Task: *"Follow up with customer for payment"* assigned to Account Executive.
+
+---
+
+## 📅 Events
+
+- Represent **scheduled calendar events**:
+  - Meetings
+  - Demos
+  - Appointments
+- Synced with Outlook, Gmail, or mobile app.
+
+📍 Example:
+- Event: *"Customer Demo with ABC Corp"* on Friday at 3 PM.
+
+---
+
+## 📊 Activity Timeline
+
+- Shows all **interactions** with a record:
+  - Tasks
+  - Events
+  - Emails
+  - Calls
+- Available on **Leads, Contacts, Accounts, Opportunities**.
+
+📍 Example:
+- Contact record shows:
+  - Task: Call on Monday
+  - Event: Demo on Friday
+  - Email sent yesterday
+
+---
+
+## 🖥️ Calendar Management
+
+- Users can view:
+  - Personal Calendar
+  - Public Calendars
+  - Resource Calendars (e.g., meeting rooms)
+- Can share calendars with others.
+
+📍 Example:
+- Sales Manager shares calendar with team to schedule meetings.
+
+---
+
+## 💬 Collaboration with Chatter
+
+- Salesforce’s **social collaboration platform**.
+- Features:
+  - **Posts, Comments, Likes**
+  - @Mentions
+  - File sharing
+  - Polls
+- Used for:
+  - Collaboration on deals
+  - Cross-team communication
+  - Announcements
+
+📍 Example:
+- Sales Rep posts: *"Big deal with XYZ Corp closed today 🎉"* in Sales Team Group.
+
+---
+
+## 👥 Chatter Groups
+
+- **Public Groups**: Anyone in org can join.  
+- **Private Groups**: Invitation-only.  
+- **Unlisted Groups**: Hidden, invitation-only.  
+
+📍 Example:
+- Private Group: *"Enterprise Support Team"* for handling VIP customers.
+
+---
+
+## 📰 Record Feeds
+
+- Each record (Lead, Case, Opportunity) has a **feed**.
+- Users can:
+  - Post updates
+  - Share files
+  - Mention colleagues
+- Keeps communication linked to records.
+
+📍 Example:
+- On Opportunity feed: *"Need manager approval for 15% discount."*
+
+---
+
+## 🔧 Productivity Features
+
+- **Email Integration** (Outlook/Gmail sync).  
+- **Quick Actions** (Log a Call, Create Task).  
+- **Macros** (automate repetitive actions).  
+- **Notes** (rich text notes linked to records).  
+
+---
+
+## 🖼️ Diagram: Activity Flow
+
+```text
+Task Assigned → Event Scheduled → Collaboration via Chatter → Closure
+
+
+
+# 🗂️ Data Management in Salesforce
+
+Data is the **core asset** of Salesforce. Effective data management ensures:
+- Accuracy
+- Security
+- Accessibility
+- Compliance
+
+---
+
+## 📌 Key Concepts
+
+| Feature | Purpose | Example |
+|---------|---------|---------|
+| **Data Import Wizard** | Simple UI-based tool for importing small datasets (up to 50k records). | Importing Leads from Excel. |
+| **Data Loader** | Advanced client tool for importing/exporting large datasets (up to 5M records). | Mass updating 200k Accounts. |
+| **Data Export** | Backup data (manual or scheduled). | Weekly data export for compliance. |
+| **Mass Transfer** | Reassign ownership of records. | Reassigning Leads when a rep leaves. |
+| **Mass Delete** | Delete multiple records at once. | Cleaning up old test data. |
+| **Duplicate Management** | Prevent/handle duplicate records. | Avoid creating duplicate Leads. |
+
+---
+
+## 📥 Data Import Wizard
+
+- Accessible via **Setup → Data Import Wizard**.
+- Supports:
+  - Accounts
+  - Contacts
+  - Leads
+  - Campaign Members
+  - Custom Objects
+- Features:
+  - De-duplication rules
+  - Easy mapping
+
+📍 Example:
+- Import a CSV file of 10,000 Leads from a trade show.
+
+---
+
+## ⚡ Data Loader
+
+- Client application (requires installation).
+- Handles **large data volumes** (up to 5 million records).
+- Operations:
+  - Insert
+  - Update
+  - Upsert
+  - Delete
+  - Export
+
+📍 Example:
+- Upsert 200,000 Accounts with updated phone numbers.
+
+---
+
+## 📤 Data Export
+
+- Purpose: **Backup** or **migration**.
+- Options:
+  - Manual Export (on-demand).
+  - Scheduled Export (weekly/monthly).
+- Provides **.zip files with CSV data**.
+
+📍 Example:
+- Weekly export for compliance and DR (disaster recovery).
+
+---
+
+## 🔄 Mass Transfer & Mass Delete
+
+- **Mass Transfer**: Reassign ownership of records (Accounts, Leads, Custom Objects).  
+- **Mass Delete**: Remove multiple records quickly.  
+
+📍 Example:
+- Sales Rep leaves company → All Leads transferred to new rep.  
+- Old test records deleted using Mass Delete tool.  
+
+---
+
+## 🧹 Data Quality & Deduplication
+
+- **Duplicate Rules**: Define how to detect duplicates.
+- **Matching Rules**: Define fields to check (e.g., Email, Phone).
+- Actions:
+  - Allow duplicates
+  - Block duplicates
+  - Alert users
+
+📍 Example:
+- Duplicate Rule: Prevent duplicate Leads with same Email.
+
+---
+
+## 🧾 Data Archival & Retention
+
+- Salesforce has **storage limits**:
+  - Data Storage (records)
+  - File Storage (attachments, files)
+- Archive old/inactive data using:
+  - Big Objects
+  - External storage
+  - Scheduled exports
+
+---
+
+## 🔐 Data Security in Management
+
+- Use **profiles & permission sets** to control access.
+- Restrict **Data Loader** usage to trusted admins.
+- Apply **field-level security** to sensitive fields.
+
+---
+
+## 🖼️ Diagram: Data Management Flow
+
+```text
+CSV/External Data → Import (Wizard/Data Loader) → Stored in Salesforce
+            ↑
+   Export/Backup ← Data Export Tool
+
+
+
+# 📊 Reports & Dashboards in Salesforce
+
+Reports and Dashboards are the **analytical tools** of Salesforce.  
+They help users **analyze data, track KPIs, and make informed business decisions**.
+
+---
+
+## 📌 Key Concepts
+
+| Feature | Purpose | Example |
+|---------|---------|---------|
+| **Report** | A list of records that meet certain criteria, displayed in rows and columns. | List of all Open Opportunities > $50k. |
+| **Dashboard** | A visual display of data from one or more reports. | Pipeline chart showing Opportunities by Stage. |
+| **Folders** | Store and share reports/dashboards with proper access. | Sales team has a shared folder with common reports. |
+| **Report Types** | Define objects and relationships available in a report. | “Accounts with Contacts” report type. |
+| **Filters** | Narrow down report data. | Show only Leads created last month. |
+| **Grouping** | Categorize report data. | Group by Opportunity Owner. |
+
+---
+
+## 📝 Reports
+
+- Created using **Report Builder**.
+- Displayed in **tabular, summary, matrix, or joined** format.
+
+### Report Formats
+1. **Tabular Report**
+   - Simple rows/columns.
+   - Example: Contact list.
+2. **Summary Report**
+   - Grouped data with subtotals.
+   - Example: Opportunities grouped by Stage.
+3. **Matrix Report**
+   - Grouped by both rows and columns.
+   - Example: Opportunities by Stage and Owner.
+4. **Joined Report**
+   - Combine data from different report types.
+   - Example: Accounts with Opportunities and Cases.
+
+📍 Example:  
+Create a report of all **Closed Won Opportunities in the last quarter**.
+
+---
+
+## 🎨 Dashboards
+
+- Collection of **visual components** (charts, tables, metrics).  
+- Each component is **based on a report**.  
+- Common components:
+  - Vertical/Horizontal Bar Chart
+  - Pie Chart
+  - Line Chart
+  - Funnel Chart
+  - Gauge
+  - Metric Table
+
+📍 Example:  
+Dashboard showing:
+- Total Closed Won Opportunities (Gauge).  
+- Opportunities by Stage (Funnel).  
+- Top 5 Accounts by Revenue (Bar chart).  
+
+---
+
+## 📂 Folders & Sharing
+
+- Reports/Dashboards are stored in **folders**.  
+- Folders can be:
+  - Private
+  - Shared with Users, Roles, or Public Groups
+- Control:
+  - Viewer (read-only)
+  - Editor (create/edit)
+  - Manager (full control)
+
+📍 Example:  
+- “Sales Reports” folder shared with Sales Manager role.
+
+---
+
+## 🎯 Filters & Grouping
+
+- **Filters**: Define criteria (e.g., “Close Date = THIS QUARTER”).  
+- **Field Filters**: Narrow down data.  
+- **Cross Filters**: Include/exclude related objects.  
+- **Grouping**: Summarize records by field.
+
+📍 Example:  
+- Show **Opportunities by Industry** and group by Stage.
+
+---
+
+## 📖 Report Types
+
+- **Standard Report Types**: Provided by Salesforce (e.g., Accounts, Contacts, Opportunities).  
+- **Custom Report Types**: Created when standard types don’t meet needs.  
+
+📍 Example:  
+Custom report type: “Accounts with Projects (Custom Object)”.
+
+---
+
+## 📐 Example Scenario
+
+**Business Case:**  
+The Sales Director wants to monitor the pipeline.
+
+1. Create a **Summary Report** of Opportunities grouped by Stage.  
+2. Filter for **Close Date = Current Fiscal Year**.  
+3. Add to a **Dashboard** with a **Funnel Chart**.  
+4. Share Dashboard with **Sales Managers** folder.  
+
+Result → Visual real-time pipeline monitoring.
+
+---
+
+## 🖼️ Diagram: Reports & Dashboards Flow
+
+```text
+Data → Report (Tabular/Summary/Matrix/Joined) → Dashboard Component → Business Insight
+
+
+# ⚙️ Workflow & Automation in Salesforce
+
+Automation in Salesforce helps reduce manual work, enforce consistency, and increase efficiency.  
+Admins can configure **declarative automation tools** without writing code.
+
+---
+
+## 📌 Automation Tools in Salesforce
+
+| Tool | Purpose | Example |
+|------|---------|---------|
+| **Workflow Rules** | Automate simple if/then actions. | Send email when Opportunity is Closed Won. |
+| **Process Builder** | More advanced automation with multiple criteria. | Update Account when Opportunity closes. |
+| **Flows** | Visual tool for complex automation (record-triggered, screen flows, scheduled). | Guide users through case resolution. |
+| **Approval Processes** | Route records for approval. | Discount approval process for Sales. |
+
+---
+
+## 🛠️ Workflow Rules
+
+- Automates **field updates, email alerts, tasks, outbound messages**.
+- Based on **criteria + actions**.
+
+📍 Example:  
+If **Case Status = Escalated**, then **notify Manager via Email Alert**.
+
+### Workflow Actions
+- Field Update
+- Email Alert
+- Task
+- Outbound Message
+
+⚠️ Note: Workflow is **retiring**, replaced by **Flows**.
+
+---
+
+## 🏗️ Process Builder
+
+- Automates processes with **if/then branches**.
+- Supports multiple criteria.
+- Can:
+  - Create/Update records
+  - Invoke Apex/Flows
+  - Send Email alerts
+
+📍 Example:  
+If **Opportunity Amount > 100k**, update Account field “High Value Customer = TRUE”.
+
+⚠️ Note: Process Builder is also being replaced by **Flows**.
+
+---
+
+## 🔄 Flows (Future of Automation)
+
+- Most powerful tool.
+- Types:
+  - **Record-Triggered Flow** → Runs when a record is created/updated/deleted.
+  - **Screen Flow** → Provides user interface steps.
+  - **Scheduled Flow** → Runs on time-based schedule.
+  - **Autolaunched Flow** → Runs in background.
+
+📍 Example:  
+Record-Triggered Flow: When a **Case is Closed**, send a survey email.
+
+### Flow Components
+- Elements (Assignment, Decision, Loop)
+- Resources (Variables, Constants, Formulas)
+- Connectors (Define path)
+
+---
+
+## ✅ Approval Processes
+
+- Automates **multi-step approval routing**.
+- Supports:
+  - Entry criteria
+  - Multiple approval steps
+  - Approvers (User, Role, Queue)
+  - Actions (Email alert, field update, outbound message)
+
+📍 Example:  
+Discount Approval:
+- If **Discount > 20%**, send to Manager.
+- If **Discount > 40%**, send to VP.
+
+---
+
+## 📐 Example Scenario
+
+**Business Case:**  
+Company wants automation when a high-value Opportunity closes.
+
+1. Use a **Record-Triggered Flow** on Opportunity.  
+2. Criteria: **Stage = Closed Won & Amount > $50k**.  
+3. Actions:  
+   - Update Account field “High Value Customer = TRUE”.  
+   - Send email alert to Sales Director.  
+   - Create a task for Account Executive.  
+
+Result → Automated process without manual effort.
+
+---
+
+## 🖼️ Diagram: Automation Decision Tree
+
+```text
+Simple if/then → Workflow Rule
+Multi-step with branches → Process Builder
+Complex logic, UI, integrations → Flow
+Approval routing → Approval Process
+
+
+
+# 🛒 AppExchange in Salesforce
+
+**AppExchange** is Salesforce’s marketplace for apps, components, consulting services, and solutions that extend Salesforce functionality.  
+
+Think of it like the **App Store/Play Store** for Salesforce.
+
+---
+
+## 📌 What is AppExchange?
+
+- Launched in 2006 by Salesforce.
+- Contains **apps, solutions, Lightning components, data sets, and consultants**.
+- Provides **both free and paid** offerings.
+- Helps organizations **save time, reduce development, and scale faster**.
+
+---
+
+## 📂 Types of Offerings
+
+1. **Apps** – Ready-to-use solutions  
+   📍 Example: *DocuSign for Salesforce* (e-signatures).
+
+2. **Components** – Lightning components to extend UI.  
+   📍 Example: Charts, custom forms.
+
+3. **Consultants** – Certified Salesforce partners.  
+   📍 Example: Deloitte, Accenture.
+
+4. **Solutions** – Industry or business-specific solutions.  
+   📍 Example: Nonprofit Success Pack (NPSP).
+
+5. **Data & Dashboards** – Pre-built analytics templates.  
+   📍 Example: Sales Analytics, Service Analytics.
+
+---
+
+## 📦 Types of Packages
+
+- **Managed Package**
+  - Created by Salesforce ISVs (Independent Software Vendors).
+  - Upgradable & licensed.
+  - Source code hidden.
+  - Best for **commercial apps**.
+
+- **Unmanaged Package**
+  - Source code visible & editable.
+  - Not upgradable.
+  - Best for **custom development & learning**.
+
+---
+
+## 🛠️ How to Install an App from AppExchange
+
+1. Log in to Salesforce.  
+2. Navigate to **AppExchange**.  
+3. Search for the desired app (e.g., “DocuSign”).  
+4. Click **Get It Now**.  
+5. Choose **Install in Sandbox** (recommended for testing).  
+6. Approve permissions.  
+7. Deploy in **Production** after testing.
+
+---
+
+## 🏗️ Example Use Cases
+
+1. **Sales Team** → Install *LinkedIn Sales Navigator* for lead insights.  
+2. **Finance Team** → Use *Conga Composer* for automated document generation.  
+3. **Support Team** → Install *SurveyMonkey for Salesforce* to capture customer feedback.  
+
+---
+
+## 📊 Diagram: AppExchange Overview
+
+```text
+AppExchange
+ ├── Apps (Free/Paid)
+ ├── Lightning Components
+ ├── Consultants
+ ├── Solutions
+ └── Data & Dashboards
+
+
+
+# 📱 Desktop and Mobile Administration in Salesforce
+
+Salesforce provides access to users through both **desktop browsers** and the **Salesforce Mobile App**.  
+As an Admin, ensuring a consistent, secure, and optimized user experience across devices is essential.
+
+---
+
+## 🖥️ Desktop Experience
+
+- Full functionality with complete access to all Salesforce features.
+- Optimized for **configuration, setup, and development tasks**.
+- Features:
+  - Full access to Setup menu
+  - Dashboards & Reports
+  - Record management
+  - Advanced customizations
+
+📍 Example:  
+Admins configure **Validation Rules** or **Page Layouts** via the desktop.
+
+---
+
+## 📱 Mobile Experience (Salesforce Mobile App)
+
+- Optimized for **on-the-go productivity**.
+- Supports:
+  - Accounts, Contacts, Leads, Opportunities
+  - Custom apps
+  - Chatter & Collaboration
+  - Offline access (limited)
+- Customizable using:
+  - **Lightning App Builder** (mobile pages & layouts)
+  - **Compact Layouts**
+  - **Mobile Navigation Settings**
+
+📍 Example:  
+A sales rep logs in from mobile to update an **Opportunity Stage** after a client meeting.
+
+---
+
+## ⚙️ Salesforce Mobile App Setup
+
+1. **Enable Salesforce Mobile Navigation**
+   - Go to Setup → Mobile Navigation.
+   - Configure tabs for mobile users.
+
+2. **Compact Layouts**
+   - Define which fields appear at the top of mobile records.
+   - Example: Show *Name, Phone, Email* for Contacts.
+
+3. **Lightning Pages for Mobile**
+   - Use Lightning App Builder to design **mobile-optimized pages**.
+
+4. **Quick Actions**
+   - Provide one-click access to frequent tasks.
+   - Example: “Log a Call” button for Sales.
+
+---
+
+## 🔒 Security Considerations for Mobile
+
+- Use **PIN, biometrics, SSO** for secure login.
+- Set **session timeout policies** for mobile.
+- Enforce **device-level security** using Mobile Device Management (MDM).
+- Apply **profile & permission set restrictions** for mobile access.
+
+---
+
+## 📊 Example Use Case
+
+**Business Case:** A field service team needs to access and update cases on-site.  
+
+✅ Admin Configurations:  
+- Create a **Mobile Lightning Page** for Cases.  
+- Add a **Quick Action** → “Close Case”.  
+- Configure **Compact Layout** to display Case Number, Status, Priority.  
+- Enable **offline access** for field reps.  
+
+Result → Reps can **close cases instantly** from mobile, reducing delays.
+
+---
+
+## 📐 Diagram: Desktop vs Mobile
+
+```text
+Desktop Salesforce
+ ├─ Full Setup Access
+ ├─ Complete Features
+ └─ Best for Admins & Developers
+
+Mobile Salesforce
+ ├─ Compact Layouts
+ ├─ Quick Actions
+ ├─ On-the-go Productivity
+ └─ Best for Sales, Service Reps
+
+
+
+# 🛠️ App Development Basics in Salesforce
+
+Salesforce allows Admins (even without coding knowledge) to build **custom apps** that extend business functionality.  
+These apps can include **objects, fields, tabs, reports, dashboards, and automation**.
+
+---
+
+## 📌 What is a Salesforce App?
+
+A **Salesforce App** is a collection of **tabs, objects, and other elements** grouped together for a specific business purpose.
+
+📍 Example:  
+A **Recruitment App** might include:
+- Custom Object → Candidates
+- Tabs → Candidates, Jobs, Interviews
+- Reports → Candidate Pipeline
+- Dashboard → Hiring Trends
+
+---
+
+## 📂 Key Components of App Development
+
+1. **Custom Objects**
+   - Database tables that store data unique to your business.
+   - Example: `Invoice__c`, `Project__c`.
+
+2. **Custom Fields**
+   - Capture specific data points.
+   - Example: A `Job Application` object may have a **Resume URL** field.
+
+3. **Tabs**
+   - Provide a user interface for objects/data.
+   - Types: Custom Object Tabs, Web Tabs, Visualforce Tabs.
+
+4. **Lightning App Builder**
+   - Drag-and-drop tool to design custom pages.
+   - Supports **Record Pages, App Pages, Home Pages**.
+
+5. **Page Layouts**
+   - Control the arrangement of fields, sections, related lists.
+
+6. **Profiles & Permissions**
+   - Define **who can access** custom apps and fields.
+
+---
+
+## ⚙️ Steps to Create a Custom App
+
+1. Navigate to **Setup → App Manager → New Lightning App**.  
+2. Enter App Name (e.g., *Recruitment Tracker*).  
+3. Assign Navigation (Standard or Console).  
+4. Add **Objects/Tabs** (e.g., Candidates, Jobs).  
+5. Assign **Profiles** to control access.  
+6. Customize Lightning Pages with **Lightning App Builder**.  
+
+---
+
+## 🏗️ Example: Building a Recruitment App
+
+**Business Requirement:** A company needs to track job candidates and interviews.
+
+✅ Admin Solution:
+- Create **Custom Object**: `Candidate__c` with fields → Name, Email, Phone, Resume Link.  
+- Create **Custom Object**: `Job__c` with fields → Job Title, Department, Hiring Manager.  
+- Create **Relationship**: Job ↔ Candidate.  
+- Add Tabs for both objects.  
+- Use **Lightning App Builder** to create a Recruitment Dashboard page.  
+
+Result → HR team can **manage hiring process** directly in Salesforce.
+
+---
+
+## 📊 Diagram: App Development Basics
+
+```text
+Salesforce App
+ ├── Custom Objects
+ │    ├── Fields
+ │    └── Relationships
+ ├── Tabs
+ ├── Lightning App Builder
+ └── Reports & Dashboards
+
+
+
+# 📊 Reports and Dashboards in Salesforce
+
+Reports and Dashboards allow users to **analyze data, track KPIs, and make informed business decisions**.  
+As an Admin, you are responsible for creating and managing these tools for end users.
+
+---
+
+## 📌 Reports in Salesforce
+
+A **Report** is a list of records that meet certain criteria, displayed in rows and columns.  
+Reports are stored in **Folders**, which control **access**.
+
+### 🔹 Types of Reports
+1. **Tabular Report** – Simple list of records (like a spreadsheet).
+   - Example: List of all Open Opportunities.
+
+2. **Summary Report** – Grouped by rows (with subtotals).
+   - Example: Opportunities grouped by Stage.
+
+3. **Matrix Report** – Grouped by rows and columns.
+   - Example: Revenue by Sales Rep (rows) and by Quarter (columns).
+
+4. **Joined Report** – Multiple report blocks in one.
+   - Example: Opportunities + Cases related to Accounts.
+
+---
+
+## ⚙️ Report Features
+
+- **Report Filters** → Limit which records are shown.  
+- **Bucket Fields** → Categorize records without creating new fields.  
+- **Cross Filters** → Include/exclude records based on related objects.  
+- **Conditional Highlighting** → Highlight values based on thresholds.  
+- **Report Charts** → Add visuals inside reports.  
+
+📍 Example:  
+A **Sales Pipeline Report** with filters:
+- Stage = Open
+- Close Date = This Quarter
+
+---
+
+## 📊 Dashboards in Salesforce
+
+A **Dashboard** is a visual representation of one or more reports.  
+Each component is tied to a **source report**.
+
+### 🔹 Dashboard Components
+1. **Chart** (bar, line, pie, funnel)
+2. **Gauge** (progress indicator)
+3. **Metric** (single KPI value)
+4. **Table** (tabular view)
+
+---
+
+## 🏗️ Example: Sales Performance Dashboard
+
+**Business Requirement:** Sales Manager wants to track pipeline and team performance.
+
+✅ Admin Solution:
+1. Create a **Summary Report**: Opportunities by Stage.  
+2. Create a **Matrix Report**: Revenue by Rep by Quarter.  
+3. Build a **Dashboard** with components:
+   - Funnel Chart → Pipeline by Stage.
+   - Bar Chart → Revenue by Rep.
+   - Gauge → % Quota Attainment.
+   - Metric → Total Open Opportunities.  
+
+Result → Manager can **monitor pipeline health** at a glance.
+
+---
+
+## 📐 Diagram: Reports & Dashboards
+
+```text
+Reports
+ ├── Tabular
+ ├── Summary
+ ├── Matrix
+ └── Joined
+
+Dashboards
+ ├── Chart
+ ├── Gauge
+ ├── Metric
+ └── Table
+
+
+# ⚡ Workflow & Process Automation in Salesforce
+
+Automation tools in Salesforce help reduce manual work by **automating repetitive tasks** such as sending emails, updating fields, creating records, and managing approvals.  
+
+---
+
+## 📌 Automation Tools Overview
+
+1. **Workflow Rules** (Classic, legacy)
+   - Automates simple actions.
+   - Supports:
+     - Field Updates
+     - Email Alerts
+     - Tasks
+     - Outbound Messages
+   - Example: Send email when a Case is created.
+
+2. **Process Builder** (Point-and-click tool, being retired in favor of Flow)
+   - Automates **multi-step processes**.
+   - Example: Update Opportunity Stage + Create Task when a deal is closed.
+
+3. **Flow (Lightning Flow)**
+   - The most powerful automation tool.
+   - Types:
+     - **Record-Triggered Flow**
+     - **Schedule-Triggered Flow**
+     - **Screen Flow** (for user input)
+   - Example: Auto-create related records, multi-step approvals.
+
+4. **Approval Process**
+   - Structured approval workflow.
+   - Example: Discount > 30% requires Manager approval.
+
+---
+
+## ⚙️ Workflow Rule Example
+
+**Business Requirement:** Notify manager when an Opportunity is closed as Lost.
+
+✅ Solution:
+1. Create Workflow Rule on Opportunity.  
+2. Criteria → `Stage = Closed Lost`.  
+3. Action → Send Email Alert to Manager.  
+
+---
+
+## 🏗️ Process Builder Example
+
+**Business Requirement:** When a new Employee record is created, assign them a “New Hire” Task.
+
+✅ Solution:
+1. Object → Employee__c.  
+2. Criteria → When record is created.  
+3. Immediate Action → Create Task with Subject “Complete Onboarding”.  
+
+---
+
+## 🔄 Flow Example (Record-Triggered Flow)
+
+**Business Requirement:** When a Case is created with Priority = High, auto-create a Task for Support Manager.
+
+✅ Solution:
+1. Object → Case.  
+2. Trigger → Record Created.  
+3. Condition → Priority = High.  
+4. Action → Create Task assigned to Support Manager.  
+
+---
+
+## 📝 Approval Process Example
+
+**Business Requirement:** All Discounts > 40% require Director Approval.
+
+✅ Solution:
+1. Create Approval Process on Opportunity.  
+2. Entry Criteria → `Discount__c > 40`.  
+3. Step 1 → Assign to Sales Director.  
+4. Final Action → Update Status = Approved / Rejected.  
+
+---
+
+## 📐 Diagram: Automation Tools
+
+```text
+Automation Tools
+ ├── Workflow Rules (simple, legacy)
+ ├── Process Builder (multi-step, retiring)
+ ├── Flow (powerful, recommended)
+ └── Approval Process (structured approvals)
