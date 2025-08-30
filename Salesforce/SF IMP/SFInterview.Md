@@ -1,6 +1,4 @@
-
 <div id=top-of-page></div>
-
 
 - [Apex Governor Limits](#apex-governor-limits)
 - [Difference between Lookup and Master Detail Relationship](#difference-between-lookup-and-master-detail-relationship)
@@ -515,7 +513,7 @@
 - Use transactional finalizers
 - Write One Trigger Per Object Per Event 
 - Use Asynchronous Apex
-- Security And Sharing In Apex Code
+- Security and Sharing In Apex Code
 - Make Reusability Of Apex Code
 - Code Coverage 
 - Return Early Pattern
@@ -562,10 +560,9 @@
 - These hooks provide a comprehensive way to control and intervene in various phases of a component's lifecycle, and are crucial for creating responsive and robust web applications. Understanding and effectively using these hooks is pivotal for successful development in Salesforce's Lightning Web Components
 <div align="right"><a href="#top-of-page">(^)</a></div>
 
+
 # Order of execution 
-
-
-- In Salesforce, the order of execution for triggers when saving a record with an insert, update, or upsert statement is as follows:
+- In Salesforce, the order of execution for triggers when saving a record with an insert, update or upsert statement is as follows:
 1. Load the original record or initialize on insert.
 2. Override the old record values with the new values.
 3. Execute all before triggers.
@@ -584,8 +581,8 @@
 16. Commit all DML operations to the database.
 17. Execute post-commit logic such as sending emails
 18. Understanding the order of execution is crucial for developers and administrators to design efficient and reliable triggers in Salesforce
-- For a more detailed understanding, you can refer to the Salesforce Developer Guide"                          
-              
+                      
+          
 <div align="right"><a href="#top-of-page">(^)</a></div>
 
 # Bulkification
@@ -613,22 +610,22 @@
 
 <div align="right"><a href="#top-of-page">(^)</a></div>
 
--To write an effective test cases, a developer needs to ensure to include the below points into the test class
+- To write an effective test cases, a developer needs to ensure to include the below points into the test class
 
- • Test class must start with @isTest annotation.
- • Focus 90+ : To deploy to production at least 75% code coverage is required. But always try to focus on 90%+. We should not focus on the percentage of code coverage, We should make sure that every use case should covered including positive, negative,bulk and single record.
- • One Assert Statement per method : Always put assert statements for negative and positive tests.
+ - Test class must start with @isTest annotation.
+ - Focus 90+ : To deploy to production at least 75% code coverage is required. But always try to focus on 90%+. We should not focus on the percentage of code coverage, We should make sure that every use case should covered including positive, negative,bulk and single record.
+ - One Assert Statement per method : Always put assert statements for negative and positive tests.
      System.assert(condition, msg)
      System.assertEquals(expected, actual, msg)
      System.assertNotEquals(expected, actual, msg)
- • @testSetup to create test records once in a method and use in every test method in the test class.
- • Create TestFactory class with @isTest annotation to exclude from organization code size limit.
- • No SeeAllData=true : Always use ( seeAllData = false ) at class or method level. User, profile, organization, AsyncApexjob, Corntrigger, RecordType, ApexClass, ApexComponent, ApexPage we can access without (seeAllData=true) .
- • As apex runs in system mode so the permission and record sharing are not taken into account . So we need to use System.runAs to enforce record sharing.
- • Avoid Using Hard Coding Ids anywhere in test Class or any apex class
- • Governor limits : Using Test.startTest() gives developers a new set of governor limits for the act stage of their test. Test.stopTest() then allows them to return to their previous governor limits. Test classes must test for Governor Limits using Limits Class
- • Testing Exception : Any exceptions that are caught in the production methods should be tested by feeding the test data that throws exception. Exception Type and error message should be asserted
- • Exercise bulk trigger functionality – use at least 200 records in your tests
+ - @testSetup to create test records once in a method and use in every test method in the test class.
+ - Create TestFactory class with @isTest annotation to exclude from organization code size limit.
+ - No SeeAllData=true : Always use ( seeAllData = false ) at class or method level. User, profile, organization, AsyncApexjob, Corntrigger, RecordType, ApexClass, ApexComponent, ApexPage we can access without (seeAllData=true) .
+ - As apex runs in system mode so the permission and record sharing are not taken into account . So we need to use System.runAs to enforce record sharing.
+ - Avoid Using Hard Coding Ids anywhere in test Class or any apex class
+ - Governor limits : Using Test.startTest() gives developers a new set of governor limits for the act stage of their test. Test.stopTest() then allows them to return to their previous governor limits. Test classes must test for Governor Limits using Limits Class
+ - Testing Exception : Any exceptions that are caught in the production methods should be tested by feeding the test data that throws exception. Exception Type and error message should be asserted
+ - Exercise bulk trigger functionality – use at least 200 records in your tests
 
 <div align="right"><a href="#top-of-page">(^)</a></div>
 
