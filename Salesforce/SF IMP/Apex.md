@@ -108,4 +108,34 @@
 # Constructor in Apex
 <img src="SFAssets/images/Constructor.jpg" width="500"/></br>
 
+## Rectangle Example With DefaultConstructor
+<img src="SFAssets/images/RectangleWithConstructor.jpg" width="500"/></br>
 
+### Calling Rectangle Methods With Constructor using Instance of an Class
+<img src="SFAssets/images/CallingRectangleWithConstructor.jpg" width="500"/></br>
+
+## Rectangle Example With Parameterizedonstructor
+<img src="SFAssets/images/RectangleWithParameterizedConstructor.jpg" width="500"/></br>
+
+### Calling Rectangle Methods With Constructor using Instance of an Class
+<img src="SFAssets/images/CallingRectangleWithParameterizedConstructor.jpg" width="500"/></br>
+
+# Static Vs Non-Static Methods
+
+# Static Methods
+<img src="SFAssets/images/RectangleStaticDemo.jpg" width="500"/></br>
+
+### Calling Rectangle Static Method
+<img src="SFAssets/images/CallingRecStaticMethod.jpg" width="500"/></br>
+
+- Note  : If you want to call the method without creating the instance of an Class then we have to use "Static" keyword to a method. (Use Static Method)
+- IMP   :  90% Code will be implemented using Static Method.
+
+# Non Static Methods 
+
+<img src="SFAssets/images/ClassMethod.jpg" width="500"/></br>
+
+### Calling Non-Static Method using instance of an Class
+<img src="SFAssets/images/CallClassMethodIntance.jpg" width="500"/></br>
+
+- Note : In Non-Static Method we have to create Instance of an Class to call the method.
