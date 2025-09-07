@@ -155,4 +155,41 @@ example of encapsulation.
 ### Calling non-static method with constructor
 <img src="SFAssets/images/CallSquareConst.jpg" width="500"/></br>
 
+## Usinq static method
+<img src="SFAssets/images/SquareStatic.jpg" width="500"/></br>
+
+### Calling static method
+<img src="SFAssets/images/CallSquareStatic.jpg" width="200"/></br>
+
+## Using static method by passing parameters to method
+<img src="SFAssets/images/paraStatMeth.jpg" width="500"/></br>
+
+### Calling static method by passing parameters to method
+<img src="SFAssets/images/CallparaStatMeth.jpg" width="200"/></br>
+
 # Data Types in Apex
+## Apex Supports following data types:
+### A Primitive
+- Integer, Double, String, Long, Date, ID, Boolean, and more.
+### An sObject
+- either as a generic sObject or as a specific sObject eg. Account...
+### A Collection
+- list, set, map
+### A types list of values, also known as enum.
+### User - defined Apex Classes
+### System supplied Apex Classes
+
+# Primitive Data types:
+## Examples:
+- Boolean isActive = true;
+- Integer Num = 0;
+- Decimal Price = 1000.50;
+- String s = 'Hello World';
+- ID id = '00100000009R2XWPPO';
+
+<img src="SFAssets/images/DataTypeDemoApex.jpg" width="500"/></br>
+
+<img src="SFAssets/images/CallDataTypeDemoApex.jpg" width="200"/></br>
+
+<img src="SFAssets/images/Example1.jpg" width="500"/></br>
+
