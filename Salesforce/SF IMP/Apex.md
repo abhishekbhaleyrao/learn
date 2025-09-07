@@ -210,3 +210,6 @@ example of encapsulation.
 - MyObj_c obj = new MyObj_c( );
 
 <img src="SFAssets/images/sObjectDataType.jpg" width="500"/></br>
+
+<img src="SFAssets/images/sObjectDataTypeClass.jpg" width="500"/></br>
+<img src="SFAssets/images/CallsObjectDataTypeClass.jpg" width="500"/></br>
