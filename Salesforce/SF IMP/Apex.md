@@ -94,6 +94,6 @@
 - perimeter( )
 
 
-<img src="SFAssets/images/ApexClass .jpg" width="500"/></br>
+<img src="SFAssets/images/ApexClass.jpg" width="500"/></br>
 
 
