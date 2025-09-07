@@ -129,7 +129,8 @@
 <img src="SFAssets/images/CallingRecStaticMethod.jpg" width="500"/></br>
 
 - Note  : If you want to call the method without creating the instance of an Class then we have to use "Static" keyword to a method. (Use Static Method)
-- IMP   :  90% Code will be implemented using Static Method.
+- IMP   : 90% Code will be implemented using Static Method.
+- IMP   : In Trigger,Test Classes we have to use Static Methods.
 
 # Non Static Methods 
 
@@ -139,3 +140,10 @@
 <img src="SFAssets/images/CallClassMethodIntance.jpg" width="500"/></br>
 
 - Note : In Non-Static Method we have to create Instance of an Class to call the method.
+
+## Example SimpleInterest
+
+<img src="SFAssets/images/SimpleInterest.jpg" width="500"/></br>
+
+### Calling SimpleInterest Non-Static Method using
+<img src="SFAssets/images/CallSimpleInterest.jpg" width="500"/></br>
