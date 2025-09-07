@@ -96,4 +96,14 @@
 
 <img src="SFAssets/images/ApexClass.jpg" width="500"/></br>
 
+# Class as Data Type to Create Instance
+<img src="SFAssets/images/ClassasDataTypetoCreateInstance.jpg" width="500"/></br>
 
+## Class & Method Example
+<img src="SFAssets/images/ClassMethod.jpg" width="500"/></br>
+
+### Calling Method using instance of an Class
+<img src="SFAssets/images/CallClassMethodIntance.jpg" width="500"/></br>
+
+# Constructor in Apex
+<img src="SFAssets/images/Constructor.jpg" width="500"/></br>
