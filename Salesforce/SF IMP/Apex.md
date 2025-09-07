@@ -77,23 +77,9 @@
 - Once class is created then we can use it as a datatype to create an instance.
 
 # Real World Example
-## Rectangle
- ### Attributes/Properties
-- length
-- breadth
-### Behaviors
-- Area
-- Perimeter
+<img src="SFAssets/images/RealWorldEx.jpg" width="500"/></br>
 
-# Apex Class Name -> Rectangle
-## Variables
-- length
-- breadth
-## Methods
-- area()
-- perimeter( )
-
-
+## Syntax
 <img src="SFAssets/images/ApexClass.jpg" width="500"/></br>
 
 # Class as Data Type to Create Instance
@@ -145,11 +131,25 @@
 
 <img src="SFAssets/images/SimpleInterest.jpg" width="500"/></br>
 
-### Calling SimpleInterest Non-Static Method using
+### Calling SimpleInterest Non-Static Method 
 <img src="SFAssets/images/CallSimpleInterest.jpg" width="500"/></br>
 
 # Object Oriented Programming Concepts
-<img src="SFAssets/images/OOPsConcept.jpg" width="500"/></br>
+## Encapsulation
+  - Means collection of variables and methods together. Class is an
+example of encapsulation.
+## Abstraction
+  - Hides the process and focus on what to do.
+## Inheritance
+  - Reusing features of a class into another class.
 
+## Example Square Area & Perimeter
+<img src="SFAssets/images/Square.jpg" width="500"/></br>
+
+### Calling Square Area & Perimeter Non-Static Method using instance of an Class
+<img src="SFAssets/images/CallSquareMethodInstance.jpg" width="500"/></br>
+
+## Using non-static method and constructor
+<img src="SFAssets/images/SquareConst.jpg" width="500"/></br>
 
 # Data Types in Apex
