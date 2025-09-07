@@ -15,22 +15,22 @@
 
 # Apex is:
 
-## Integrated
+### Integrated
 - Provides built-in support for common Lightning Platform idioms
-## Easy to Use
+### Easy to Use
 - Uses syntax and semantics which are easy teuse and understand.
 - Apex is based on familiar Java Idioms.
-## Data Focused
+### Data Focused
 - Provides transactional access to the database, allows you to roll back operations.
-## Rigorous
+### Rigorous
 - Strongly typed language that uses direct references to schema objects such as Qbject and fields API.
-## Hosted
+### Hosted
 - It is executed, and controlled entirely by Lightning Platform.
-## Multi tenant Aware
+### Multi tenant Aware
 - Apex runs in multi tenant environment like rest of Lightning Platform.
-## Easy to Test
+### Easy to Test
 - Apex provides built-in support for unit test creation and execution. Test results indicate how much code is covered.
-## Versioned
+### Versioned
 - One can save apex code against different versions of the API.
 
 # Apex is included in:
