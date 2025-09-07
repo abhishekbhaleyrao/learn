@@ -152,4 +152,7 @@ example of encapsulation.
 ## Using non-static method and constructor
 <img src="SFAssets/images/SquareConst.jpg" width="500"/></br>
 
+### Calling non-static method with constructor
+<img src="SFAssets/images/CallSquareConst.jpg" width="500"/></br>
+
 # Data Types in Apex
