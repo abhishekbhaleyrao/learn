@@ -191,5 +191,22 @@ example of encapsulation.
 
 <img src="SFAssets/images/CallDataTypeDemoApex.jpg" width="200"/></br>
 
+
+## Examples:
 <img src="SFAssets/images/Example1.jpg" width="500"/></br>
 
+<img src="SFAssets/images/ExampleDev1.jpg" width="500"/></br>
+
+<img src="SFAssets/images/CallExampleDev1.jpg" width="500"/></br>
+
+# sObject as Data type:
+
+## Examples:
+-  Account acc = new Account();
+-  Account acc = new Account(Name = 'Test');
+-  Account acc = new Account();
+    - acc.Name = 'Test';
+    - acc.Phone = 123456;
+- MyObj_c obj = new MyObj_c( );
+
+<img src="SFAssets/images/sObjectDataType.jpg" width="500"/></br>
