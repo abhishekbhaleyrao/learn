@@ -211,5 +211,13 @@ example of encapsulation.
 
 <img src="SFAssets/images/sObjectDataType.jpg" width="500"/></br>
 
+## Examples:
 <img src="SFAssets/images/sObjectDataTypeClass.jpg" width="500"/></br>
 <img src="SFAssets/images/CallsObjectDataTypeClass.jpg" width="500"/></br>
+
+## Examples:
+<img src="SFAssets/images/sObjectDataTypeClassPara.jpg" width="500"/></br>
+<img src="SFAssets/images/CallsObjectDataTypeClassPara.jpg" width="500"/></br>
+
+# Standard Object as Data Type:
+<img src="SFAssets/images/ExsObjectDataType.jpg" width="500"/></br>
