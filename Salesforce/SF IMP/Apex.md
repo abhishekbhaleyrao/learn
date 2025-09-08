@@ -305,3 +305,37 @@ Missing Lecture Need to complete
   - start()
   - execute()
   - finish()
+
+#### start
+- Collect the records or objects to be passed to the interface method execute for processing.
+- start method is called once at the beginning of a Batch Apex Job.
+- It returns a Database.QueryLocator object or an Iterable that contains the records or objects passed to the job.
+- When QueryLocator object is used, the governor limit for the total number of records retrieved by SOQL queries is bypassed and 50 million records can be      queried.
+- Whereas with an Iterable, governor limit by SOQL queries is enforced.
+
+#### execute
+- Perform actual processing for each batch of data passed.
+- Default batch size is 200 records.
+- Batches of records can execute in any order, it doesn't depends on which order they are received from the start method.
+- It take a reference to the Database.BatchableContext object and A List<sObject> or a list of parameterized types.
+- When using Database.QueryLocator use the returned list.
+
+#### finish
+- Execute post-processing operations.
+- Calls once after all batches are processed.
+- For example, sending an email process can be implemented in finish method.
+
+##### Syntax
+<img src="SFAssets/images/BatchClassSyntax.jpg" width="500"/></br> 
+
+<img src="SFAssets/images/InvokeBatchClass.jpg" width="500"/></br>
+
+
+<img src="SFAssets/images/AsyncApexJobRecord.jpg" width="500"/></br>
+
+### Batch Exmaple
+<img src="SFAssets/images/BatchExmaple.jpg" width="500"/></br>
+<img src="SFAssets/images/BatchExmaple1.jpg" width="500"/></br>
+
+#### Batch Execution
+- <img src="SFAssets/images/BatchExecution.jpg" width="500"/></br>
