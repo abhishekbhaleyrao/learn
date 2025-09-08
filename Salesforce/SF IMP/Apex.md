@@ -221,3 +221,36 @@ example of encapsulation.
 
 # Standard Object as Data Type:
 <img src="SFAssets/images/ExsObjectDataType.jpg" width="500"/></br>
+
+Missing lectures need to add
+
+
+# Apex Trigger In Salesforce
+## Introduction to Apex Trigger
+- Triggers are initiated when a record is inserted, updated, deleted and undeleted.
+- Use triggers to do operations that cannot be done by point and click tools provided
+  in Salesforce.
+- We can do things using triggers that we can do through Apex, including execution
+- SOQL and DML or calling custom methods.
+- Triggers can be created for both Standard and Custom objects.
+- We can perform custom operations before or after events to records.
+- By default triggers are active as you create them.
+
+## Types of Triggers
+### Before Triggers
+- It is used to update or validate record values before saved to database.
+### After Triggers
+- It is used to access field values that are set by the system such as Ids, and to make changes in the related/other records.
+  The records that fire the after trigger are read-only.
+
+## Triggers Order Of Execution :
+<img src="SFAssets/images/TriggersOrderOfEx.jpg" width="500"/></br> 
+
+## Trigger Syntax
+<img src="SFAssets/images/TriggerSyntax.jpg" width="500"/></br> 
+
+## Trigger Events
+<img src="SFAssets/images/TriggerEvents.jpg" width="500"/></br> 
+
+## Trigger Example
+<img src="SFAssets/images/TriggerExample1.jpg" width="500"/></br> 
