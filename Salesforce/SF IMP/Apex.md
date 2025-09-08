@@ -302,6 +302,6 @@ Missing Lecture Need to complete
     
 ### Syntax
 - **Batch Apex** class must **implement** the **Database.Batchable** interface and include the following three methods:
-  **- start()
+  - start()
   - execute()
-  - finish()**
+  - finish()
