@@ -301,7 +301,7 @@ Missing Lecture Need to complete
   - If one batch fails to process successfully, all other successful batch transactions aren't rolled back.
     
 ### Syntax
-- Batch Apex class must implement the Database.Batchable interface and include the following three methods:
-  - start()
+- **Batch Apex** class must **implement** the **Database.Batchable** interface and include the following three methods:
+  **- start()
   - execute()
-  - finish()
+  - finish()**
