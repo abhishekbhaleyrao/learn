@@ -252,5 +252,56 @@ Missing lectures need to add
 ## Trigger Events
 <img src="SFAssets/images/TriggerEvents.jpg" width="500"/></br> 
 
-## Trigger Example
+## Trigger Example 1
 <img src="SFAssets/images/TriggerExample1.jpg" width="500"/></br> 
+
+## Trigger Context Variables
+<img src="SFAssets/images/TriggerContextVariables.jpg" width="500"/></br> 
+
+<img src="SFAssets/images/TriggerContextVariables1.jpg" width="500"/></br> 
+
+<img src="SFAssets/images/TriggerContextVariables2.jpg" width="500"/></br> 
+
+<img src="SFAssets/images/TriggerContextVariables3.jpg" width="500"/></br> 
+
+<img src="SFAssets/images/TriggerContextVariablesTab.jpg" width="500"/></br> 
+
+## Trigger Example 2
+<img src="SFAssets/images/TriggerExample2.jpg" width="500"/></br> 
+
+### Bulkified Trigger when we use Trigger.new 
+<img src="SFAssets/images/TriggerExample3.jpg" width="500"/></br> 
+
+#### Here we can create 5 records using trigger (By Writing this in Anonymous window)
+<img src="SFAssets/images/TriggerExample4.jpg" width="500"/></br> 
+
+
+## Trigger & TriggerHandler (ApexClass)
+- This 1st is Trigger & the Bottom is TriggerHandler Class (We have to create both files saperately for Trigger and Trigger Handler Class)
+<img src="SFAssets/images/TriggerHandler.jpg" width="500"/></br> 
+
+<img src="SFAssets/images/AlwaysTestTriggerScenario.jpg" width="500"/></br> 
+
+Missing Lecture Need to complete
+
+
+# Asynchronous Apex | Batch Apex
+
+## Batch Apex
+- Batch Apex runs large jobs. It can process thousands or millions of records.
+- It processes records asynchronously in batches.
+- For Data cleansing or archiving, Batch Apex is probably best solution.
+
+
+## How Batch Apex works?
+- The execution logic of the batch class is called once for each batch of records that is being processed.
+- Each time when a batch class is invoked, the job is placed on the Apex job queue and is executed as a discrete transaction.
+- Advantages are:
+  - Every transaction starts with a new set of governor limits.
+  - If one batch fails to process successfully, all other successful batch transactions aren't rolled back.
+    
+### Syntax
+- Batch Apex class must implement the Database.Batchable interface and include the following three methods:
+  - start()
+  - execute()
+  - finish()
